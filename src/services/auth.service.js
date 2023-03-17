@@ -23,8 +23,13 @@ class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    return axios.post(API_URL + "signout").then((res)=>{
+    localStorage.removeItem('token');
+      localStorage.removeItem('role');
+      localStorage.removeItem("user");
+      localStorage.removeItem("username");
+      window.location.href = "/home";
+    })
   }
 
   register(name, email, mobileNumber, password, status) {
