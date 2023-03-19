@@ -52,11 +52,11 @@ export default class Login extends Component {
     });
 
     this.form.validateAll();
-
+const StatuS="Verified"
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.email, this.state.password).then(
         () => {
-          this.props.history.push("/newnav");
+StatuS==="Verified"?this.props.history.push("/newnav"):this.props.history.push("/Application")
             window.location.reload();
           // if(localStorage.getItem('role') === 'ROLE_STUDENT'){
           //   this.props.history.push("/newnav");

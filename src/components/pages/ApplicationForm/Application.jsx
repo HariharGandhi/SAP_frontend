@@ -3,6 +3,8 @@ import "./Application.css";
 import Footer from "../Footer/Footer";
 import Navbarforapp from "../Home/Navbarforapp";
 import Axios from "axios";
+import {Link } from "react-router-dom";
+
 
     
 
@@ -47,10 +49,13 @@ const Application = () => {
       alert("Invalid");
     }
   };
+  function submit(){
+    this.history.push("/pending")
+  }
 
   return (
     <div>
-      <Navbarforapp />
+      {/* <Navbarforapp /> */}
       <form
         name="sendApplication"
         id="applicationFrom"
@@ -64,6 +69,7 @@ const Application = () => {
                 type="text"
                 placeholder="Enter Adhar Card"
                 id="adhaarCard"
+                required
               />
               <input type="text" placeholder="Enter branch" id="branch" />
             </div>
@@ -72,11 +78,15 @@ const Application = () => {
                 type="text"
                 placeholder="College Email"
                 id="collegeEmail"
+                required
+
               />
               <input
                 type="text"
                 placeholder="Enter contact Number"
                 id="contactNumber"
+                required
+
               />
             </div>
             <div className="app-content">
@@ -88,11 +98,15 @@ const Application = () => {
                 type="text"
                 placeholder="Enter year of Passing out"
                 id="passoutYear"
+                required
+
               />
               <input
                 type="text"
                 placeholder="Enter SAP Module"
                 id="sapModule"
+                required
+
               />
             </div>
             <div className="app-content">
@@ -100,15 +114,21 @@ const Application = () => {
                 type="text"
                 placeholder="Enter your specialization"
                 id="specialization"
+                required
+
               />
               <input
                 type="text"
                 placeholder="Enter your Student type"
                 id="studentType"
+                required
+
               />
             </div>
 
-            <button className="btn-app">Submit</button>
+            <button className="btn-app" >
+              <Link to={"/pending"}>Submit</Link>
+            </button>
           </div>
         </div>
       </form>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./NewNav.css";
-import cross from "./cross.webp";
-import menu from "./menu.webp";
+import cross from "./cross.png";
+import menu from "./menu.png";
 import Table from "../pages/dashboard/table/Table";
 import { Link, Route } from "react-router-dom";
 import Create from "../pages/dashboard/table/Create";
@@ -10,9 +10,11 @@ import Alluser from "../pages/dashboard/table/Alluser";
 //import axios from "axios";
 import VerifyForm from "../pages/dashboard/adminpages/ApplicationForms/Verifyform";
 import AuthService from "../../services/auth.service";
+import Application from "../pages/ApplicationForm/Application";
 
 const NewNav = (props) => {
   const a = localStorage.getItem('role');
+  const statuS = "notVerified";
   //const b = "true";
   const Onlogout = () => {
     AuthService.logout()
@@ -79,6 +81,14 @@ const NewNav = (props) => {
       {/* {nag==="Sachin"? */}
       <div>
         <div className="new-nav">
+        <img
+              className="cross-img"
+              onClick={dothis}
+              src={picimg}
+              width="10px"
+              height="10px"
+              alt=""
+            />
           <h2>
             Sanjivani
             <span className="color-teal">SAP</span>{" "}
@@ -88,14 +98,7 @@ const NewNav = (props) => {
         </div>
         <div className="compo-down">
           <div className={op}>
-            <img
-              className="cross-img"
-              onClick={dothis}
-              src={picimg}
-              width="10px"
-              height="10px"
-              alt=""
-            />
+           
             {a === "ROLE_ADMIN" ? (
               <p>Admin</p>
             ) : (
@@ -104,6 +107,10 @@ const NewNav = (props) => {
             {/*<div className="left-content">Appid</div>*/}
             <div className="left-content">Payment</div>
             <div className="left-content">Course</div>
+            <div className="left-content">
+              <Link to={"/resume"}>Resume Builder</Link>
+            </div>
+
 
             {a === "ROLE_ADMIN" ? (
               <div className="left-drop">
@@ -216,7 +223,8 @@ const NewNav = (props) => {
               </>):null}
           <div className={right}>
             {a === "ROLE_STUDENT" ? (
-              <p>nothing</p>
+              <>dashboard
+              </>
             ) : (
               // <Table path="/newnav" />
               

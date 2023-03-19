@@ -117,8 +117,8 @@ margin-right: 30px;
 }
 .cross-img{
     position: absolute;
-    right: 10px;
-    top: 10px;
+    left: 10px;
+    top: 20px;
     cursor: pointer;
 }
 

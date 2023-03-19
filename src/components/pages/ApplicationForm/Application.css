@@ -57,6 +57,7 @@ cursor: pointer;
   
   /* Style the container */
   .app-con {
+    margin: auto;
     max-width: 600px;
     padding: 20px;
     background-color: #f1f1f1;
@@ -99,4 +100,6 @@ cursor: pointer;
   .btn-app:hover {
     background-color: #3e8e41;
   }
-  
+  .Pending{
+    border: 2px solid grey;
+  }
