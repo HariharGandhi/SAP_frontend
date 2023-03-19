@@ -2,9 +2,8 @@
   "name": "react-jwt-auth",
   "version": "0.1.0",
   "private": true,
-  "proxy":"https://userbackend.sonarpratik.repl.co/",
+  "proxy": "https://userbackend.sonarpratik.repl.co/",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -17,6 +16,7 @@
     "express": "^4.18.2",
     "otp-generator": "^4.0.0",
     "react": "^16.13.0",
+    "react-bell-icon": "^1.0.1",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^16.13.0",
     "react-icons": "^4.8.0",
