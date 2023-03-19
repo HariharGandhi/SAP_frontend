@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 import AuthService from "../../../services/auth.service";
-import "../../../root.css"
-const required = value => {
+import "../../../root.css";
+const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -27,19 +27,19 @@ export default class Login extends Component {
       email: "",
       password: "",
       loading: false,
-      message: ""
+      message: "",
     };
   }
 
   onChangeEmail(e) {
     this.setState({
-      email: e.target.value
+      email: e.target.value,
     });
   }
 
   onChangePassword(e) {
     this.setState({
-      password: e.target.value
+      password: e.target.value,
     });
   }
 
@@ -48,22 +48,34 @@ export default class Login extends Component {
 
     this.setState({
       message: "",
-      loading: true
+      loading: true,
     });
 
     this.form.validateAll();
-// before navigating to other page get respose of login successfull and store userid in use state
-// after that hit other api and check weather api status is pending or verified or not verified 
-//if pending push to pending page
-//verified push to newnav => dashboard 
-//not verified then got to => application form
-const StatuS="Verified"
+   
+    const StatuS = "Verified";
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.email, this.state.password).then(
         () => {
-
-StatuS==="Verified"?this.props.history.push("/newnav"):this.props.history.push("/Application")
-            window.location.reload();
+          let userId= localStorage.getItem('id');
+          AuthService.getApplicationStatus(userId).then(
+            (response) => {
+              console.log(response);
+              if(response==="notfilled"){
+                this.props.history.push("/application");
+             }
+              if(response==="initial"){
+                this.props.history.push("/Pending");
+             }
+             if(response==="Verified"){
+               this.props.history.push("/newnav");
+            }
+              window.location.reload();
+            });
+        //  StatuS === "Verifiedd"
+        //    ? this.props.history.push("/newnav")
+        //    : this.props.history.push("/Application");
+          
           // if(localStorage.getItem('role') === 'ROLE_STUDENT'){
           //   this.props.history.push("/newnav");
           //   window.location.reload();
@@ -73,7 +85,7 @@ StatuS==="Verified"?this.props.history.push("/newnav"):this.props.history.push("
           //   window.location.reload();
           // }
         },
-        error => {
+        (error) => {
           const resMessage =
             (error.response &&
               error.response.data &&
@@ -83,17 +95,16 @@ StatuS==="Verified"?this.props.history.push("/newnav"):this.props.history.push("
 
           this.setState({
             loading: false,
-            message: resMessage
+            message: resMessage,
           });
         }
       );
     } else {
       this.setState({
-        loading: false
+        loading: false,
       });
     }
   }
-
 
   render() {
     return (
@@ -107,7 +118,7 @@ StatuS==="Verified"?this.props.history.push("/newnav"):this.props.history.push("
 
           <Form
             onSubmit={this.handleLogin}
-            ref={c => {
+            ref={(c) => {
               this.form = c;
             }}
           >
@@ -134,16 +145,19 @@ StatuS==="Verified"?this.props.history.push("/newnav"):this.props.history.push("
                 onChange={this.onChangePassword}
                 validations={[required]}
                 placeholder="Enter Your Password"
-
               />
-              <Link to="/Forgotpassword"><label className="right-label" style={{color : 'black'}}>Forget password?</label></Link>
+              <Link to="/Forgotpassword">
+                <label className="right-label" style={{ color: "black" }}>
+                  Forget password?
+                </label>
+              </Link>
             </div>
 
             <div className="form-group">
               <button
                 className="btn btn-primary btn-block"
                 disabled={this.state.loading}
-                style={{cursor : "pointer"}}
+                style={{ cursor: "pointer" }}
               >
                 {this.state.loading && (
                   <span className="spinner-border spinner-border-sm"></span>
@@ -151,8 +165,12 @@ StatuS==="Verified"?this.props.history.push("/newnav"):this.props.history.push("
                 <span>Login</span>
               </button>
             </div>
-            <div >
-            <Link to="/home"><label className="right-label" style={{color : 'black'}}>Back to home</label></Link>
+            <div>
+              <Link to="/home">
+                <label className="right-label" style={{ color: "black" }}>
+                  Back to home
+                </label>
+              </Link>
             </div>
 
             {this.state.message && (
@@ -165,7 +183,7 @@ StatuS==="Verified"?this.props.history.push("/newnav"):this.props.history.push("
 
             <CheckButton
               style={{ display: "none" }}
-              ref={c => {
+              ref={(c) => {
                 this.checkBtn = c;
               }}
             />

@@ -16,11 +16,21 @@ class AuthService {
         localStorage.setItem('role',response.data.roles)
         localStorage.setItem('token',response.data.token)
         localStorage.setItem('username',response.data.username)
-        //localStorage.setItem('username',response.data.username)
+        localStorage.setItem('id',response.data.id)
         
         return response.data;
       });
   }
+
+  getApplicationStatus(userId) {
+    return axios
+      .get("http://localhost:9190/api/getapplicationformStatus?UserId="+userId,)
+      .then(response => {
+       
+        return response.data.applicationformStatus;
+      });
+  }
+
 
   logout() {
     return axios.post(API_URL + "signout").then((res)=>{

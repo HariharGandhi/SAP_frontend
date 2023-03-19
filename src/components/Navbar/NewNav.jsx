@@ -11,7 +11,6 @@ import Modal from "../pages/dashboard/Modal";
 import BellIcon from "react-bell-icon";
 import VerifyForm from "../pages/dashboard/adminpages/ApplicationForms/Verifyform";
 import AuthService from "../../services/auth.service";
-import Application from "../pages/ApplicationForm/Application";
 
 const NewNav = (props) => {
   const a = localStorage.getItem('role');
@@ -27,40 +26,7 @@ const NewNav = (props) => {
     // hide confirmation modal
     setnotice(false)
   }
-  //console.log(SelectedOption)
-  // const handleSelect = () => {
-  //   console.log("ssssd")
-    
-  //     // window.location.href = "/newnav/verifyform"
-  // }
-  // const [nag, setnag] = useState();
-
-  // const callAboutPage = async () => {
-  //   try {
-  //     const response = await fetch("/time", {
-  //       mode: "no-cors",
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       credentials: "include",
-  //     });
-  //     const data = response;
-  //     const data1 = await response.json();
-  //     console.log();
-
-  //     setnag(data1[0].name);
-
-  //     if (data.status !== 200) {
-  //       const error = new Error(response.error);
-  //       throw error;
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
+ 
   const [op, setOp] = useState("left-nav");
   const [right, setRight] = useState("right-nav98");
   const [picimg, setPicimg] = useState(cross);
@@ -100,7 +66,7 @@ const NewNav = (props) => {
             Sanjivani
             <span className="color-teal">SAP</span>{" "}
           </h2>
-          <h2>Welcome </h2>
+          <h2>Welcome sachin</h2>
           <div>
           <button onClick={() => Onlogout()}>LogOut</button>
           <button onClick={()=> setnotice(true)}><BellIcon width='20'  height='20' color='white' active={true} /></button>
@@ -233,7 +199,7 @@ const NewNav = (props) => {
               </>):null}
           <div className={right}>
             {a === "ROLE_STUDENT" ? (
-              <>dashboard
+              <>dashboardsdsdd
               </>
             ) : (
               // <Table path="/newnav" />

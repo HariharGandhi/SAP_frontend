@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
 
-
 import AuthService from "./services/auth.service";
 import RoleAuth from "./services/RoleAuth";
 import Login from "./components/pages/Login/login.component";
@@ -61,7 +60,7 @@ class App extends Component {
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
       });
     }
-    
+
     EventBus.on("logout", () => {
       this.logOut();
     });
@@ -83,46 +82,68 @@ class App extends Component {
   render() {
     // const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
-    return (<div>
+    return (
       <div>
-       
-       
-        
+        <div>
+          <div className="container mt-3">
+            <Switch>
+              <Route exact path={["/", "/home"]} component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
+              {/* <Route exact path="/logindone" component={Logindone} /> */}
+              <Route exact path="/seemore" component={Seemoreplacements} />
+              <Route exact path="/application" component={Application} />
+              <Route exact path="/ForgotPassword" component={ForgotPassword} />
+              <Route exact path="/verify" component={Verify} />
+              <Route exact path="/changepassword" component={Changepassword} />
+              <Route
+                exact
+                path="/addnotice"
+                component={withAuth(RoleAuth(Addnotification))}
+              />
+              <Route
+                exact
+                path="/updatenotice"
+                component={withAuth(RoleAuth(UpdateNotification))}
+              />
+              <Route
+                exact
+                path="/deletenotice"
+                component={withAuth(RoleAuth(DeleteNotification))}
+              />
+              <Route
+                exact
+                path="/deleteform"
+                component={withAuth(RoleAuth(DeleteFormbyId))}
+              />
+              <Route
+                exact
+                path="/searchformbyid"
+                component={withAuth(RoleAuth(SearchbyStudentId))}
+              />
+              <Route
+                exact
+                path="/searchformbyuid"
+                component={withAuth(SearchbyUserId)}
+              />
+              <Route
+                exact
+                path="/searchbyfilter"
+                component={withAuth(GetbyFilter)}
+              />
+              <Route path="/newnav" component={NewNav} />
+              <Route exact path="/resume" component={Resume} />
+              <Route exact path="/pending" component={Pending} />
 
-        <div className="container mt-3">
-          <Switch>
-            <Route exact path={["/", "/home"]} component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            {/* <Route exact path="/logindone" component={Logindone} /> */}
-            <Route exact path="/seemore" component={Seemoreplacements} />
-            <Route exact path="/application" component={Application} />
-            <Route exact path="/ForgotPassword" component={ForgotPassword} />
-            <Route exact path="/verify" component={Verify} />
-             <Route exact path="/changepassword" component={Changepassword} /> 
-            <Route exact path="/addnotice" component={withAuth(RoleAuth(Addnotification))}/>
-            <Route exact path="/updatenotice" component={withAuth(RoleAuth(UpdateNotification))}/>
-            <Route exact path="/deletenotice" component={withAuth(RoleAuth(DeleteNotification))}/>
-            <Route exact path="/deleteform" component={withAuth(RoleAuth(DeleteFormbyId))}/>
-            <Route exact path="/searchformbyid" component={withAuth(RoleAuth(SearchbyStudentId))} />
-            <Route exact path="/searchformbyuid" component={withAuth(SearchbyUserId)} />
-            <Route exact path="/searchbyfilter" component={withAuth(GetbyFilter)} />
-            <Route  path="/newnav" component={NewNav} />
-            <Route exact path ="/resume" component={Resume}/>
-            <Route exact path ="/pending" component={Pending}/>
+              {/*<Route  path="/VerifyForm" component={VerifyForm} />*/}
+            </Switch>
+          </div>
 
-            {/*<Route  path="/VerifyForm" component={VerifyForm} />*/}
-
-          </Switch>
+          {/* <AcademicCard /> */}
         </div>
-        
-        {/* <AcademicCard /> */}
-        </div>
-        </div>
-       
+      </div>
     );
   }
 }
-
 
 export default App;
