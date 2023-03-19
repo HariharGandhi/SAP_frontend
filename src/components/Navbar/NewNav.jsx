@@ -7,7 +7,8 @@ import { Link, Route } from "react-router-dom";
 import Create from "../pages/dashboard/table/Create";
 import PostPlace from "../pages/dashboard/table/PostPlace";
 import Alluser from "../pages/dashboard/table/Alluser";
-//import axios from "axios";
+import Modal from "../pages/dashboard/Modal";
+import BellIcon from "react-bell-icon";
 import VerifyForm from "../pages/dashboard/adminpages/ApplicationForms/Verifyform";
 import AuthService from "../../services/auth.service";
 import Application from "../pages/ApplicationForm/Application";
@@ -20,7 +21,13 @@ const NewNav = (props) => {
     AuthService.logout()
   };
   const [SelectedOption,setSelectedOption] = useState("")
-  console.log(SelectedOption)
+  const [notice,setnotice] = useState(false)
+  //const [Title,setTitle] = useState("")
+  const handleCancel = () => {
+    // hide confirmation modal
+    setnotice(false)
+  }
+  //console.log(SelectedOption)
   // const handleSelect = () => {
   //   console.log("ssssd")
     
@@ -94,7 +101,10 @@ const NewNav = (props) => {
             <span className="color-teal">SAP</span>{" "}
           </h2>
           <h2>Welcome </h2>
+          <div>
           <button onClick={() => Onlogout()}>LogOut</button>
+          <button onClick={()=> setnotice(true)}><BellIcon width='20'  height='20' color='white' active={true} /></button>
+        </div>
         </div>
         <div className="compo-down">
           <div className={op}>
@@ -237,6 +247,14 @@ const NewNav = (props) => {
           </div>
         </div>
       </div>
+      {notice && <>
+      <Modal>
+        <div>
+          <h2>Notification</h2>
+          <button onClick={handleCancel}>Close</button>
+        </div>
+      </Modal>
+      </>}
     </div>
   );
 };
