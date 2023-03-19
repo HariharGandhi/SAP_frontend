@@ -49,18 +49,12 @@ class AuthService {
   getNotification(){
     return axios.get(API_URL + "/getALLNotifications");
 }
+
+  forgotpassword(){
+    return axios.post(API_URL + "/forgotpassword")
+  }
 }
-// export const getNotifications = async () = >{
-//   try {
-//     const {data} =await axios.get(API_URL + "/getALLNotifications",{
-//       headers :{
-//         "x-access-token":localStorage.getItem("token")
-//       }
-//     })
-//     return data;
-//   } catch (error) {
-//     return error;
-//   }}
+
 
 export default new AuthService();
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Modal from "../../components/pages/dashboard/Modal";
+import Modal from "../Modal";
 
 const Alluser = (right, a) => {
   const [did, setdid] = useState(0);

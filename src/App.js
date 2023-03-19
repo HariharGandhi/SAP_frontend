@@ -6,9 +6,9 @@ import "./App.css";
 
 import AuthService from "./services/auth.service";
 import RoleAuth from "./services/RoleAuth";
-import Login from "./components/login.component";
-import Register from "./components/register.component";
-import Home from "./components/home.component";
+import Login from "./components/pages/Login/login.component";
+import Register from "./components/pages/Register/register.component";
+import Home from "./components/pages/Home/home.component";
 // import Domain from "./components/Domain";
 // import Footer from "./components/pages/Footer";
 // import AcademicCard from "./components/pages/AcademicCard";
@@ -18,14 +18,11 @@ import Application from "./components/pages/ApplicationForm/Application";
 //import SuperAuth from "./services/SuperAuth";
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
-import ForgotPassword from "./components/pages/ForgotPassword";
-import Verify from "./components/pages/Verify-Change/verify";
+import ForgotPassword from "./components/pages/PasswordVerification/ForgotPassword";
+import Verify from "./components/pages/PasswordVerification/Verifypassword";
 
-import Seemore from "./components/pages/Seemore";
-//import Logindone from "./components/pages/dashboard/Studentdashboard/logindone.component"; 
-//import Logindone from "./component/pages/dashboard/"
-import Changepassword from "./components/pages/Verify-Change/Changepassword";
-import AdminLogin from "./components/pages/dashboard/adminpages/AdminLogin/AdminLogin";
+import Seemoreplacements from "./components/pages/Home/Seemoreplacements";
+import Changepassword from "./components/pages/PasswordVerification/Changepassword";
 import Addnotification from "./components/pages/dashboard/adminpages/Notifications/AddNotification/AddNotification";
 import UpdateNotification from "./components/pages/dashboard/adminpages/Notifications/UpdateNotification/UpdateNotification";
 import DeleteNotification from "./components/pages/dashboard/adminpages/Notifications/DeleteNotification/DeleteNotification";
@@ -34,8 +31,7 @@ import SearchbyStudentId from "./components/pages/dashboard/adminpages/Applicati
 import GetbyFilter from "./components/pages/dashboard/adminpages/ApplicationForms/GetByFilter/GetbyFilter";
 import SearchbyUserId from "./components/pages/dashboard/adminpages/ApplicationForms/SearchForm/SearchbyUserId";
 import withAuth from "./services/WithAuth";
-import Navigatebar from "./components/pages/Navbar+Sidebar/Navbar2";
-import NewNav from "./newSidebar/NewNav";
+import NewNav from "./components/Navbar/NewNav";
 //import VerifyForm from "./components/pages/dashboard/adminpages/ApplicationForms/VerifyForm/Verifyform";
 // const app = require("express");
 // const cors = require("cors")
@@ -97,12 +93,11 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             {/* <Route exact path="/logindone" component={Logindone} /> */}
-            <Route exact path="/seemore" component={Seemore} />
+            <Route exact path="/seemore" component={Seemoreplacements} />
             <Route exact path="/application" component={Application} />
             <Route exact path="/ForgotPassword" component={ForgotPassword} />
             <Route exact path="/verify" component={Verify} />
              <Route exact path="/changepassword" component={Changepassword} /> 
-            <Route exact path="/adminlogin" component={withAuth(RoleAuth(AdminLogin))}/>
             <Route exact path="/addnotice" component={withAuth(RoleAuth(Addnotification))}/>
             <Route exact path="/updatenotice" component={withAuth(RoleAuth(UpdateNotification))}/>
             <Route exact path="/deletenotice" component={withAuth(RoleAuth(DeleteNotification))}/>
@@ -110,7 +105,6 @@ class App extends Component {
             <Route exact path="/searchformbyid" component={withAuth(RoleAuth(SearchbyStudentId))} />
             <Route exact path="/searchformbyuid" component={withAuth(SearchbyUserId)} />
             <Route exact path="/searchbyfilter" component={withAuth(GetbyFilter)} />
-            <Route exact path="/nav" component={Navigatebar} />
             <Route  path="/newnav" component={NewNav} />
             {/*<Route  path="/VerifyForm" component={VerifyForm} />*/}
 

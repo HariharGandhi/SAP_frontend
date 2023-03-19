@@ -1,11 +1,11 @@
 import React from "react";
-import "./Placement.css";
+import "./ViewPlacement.css";
 import {useEffect, useState} from "react";
-import Navbar from "../Navbar";
-import Footer from "./Footer";
+import Navbar from "./Navbarforhome";
+import Footer from "../Footer/Footer";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
-const Seemore = () => {
+const Seemoreplacements = () => {
      const [users, setUsers] = useState([]);
 const [loading , setLoading] =useState(false);
 
@@ -164,4 +164,4 @@ setTimeout(() => {
   );
 };
 
-export default Seemore;
+export default Seemoreplacements;

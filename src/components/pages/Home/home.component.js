@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import './homecomponent.css';
 import './../../../App.css';
-import Domain from "../../Domain";
+import ViewDomain from "./ViewDomain";
 import Placment from "./ViewPlacment";
 import NewBody from "./NewBody";
 import Navbar from "./Navbarforhome";
 import Footer from "../Footer/Footer";
-import Iframe from "./pages/iframe/Iframe";
+import SAPvideo from "./../SAPvideo/SAPvideo";
 
 export default class Home extends Component {
   constructor(props) {
@@ -41,10 +41,10 @@ export default class Home extends Component {
         {/* <Body /> */}
         <NewBody/>
         <hr data-aos="fade-right" data-aos-delay="300" data-aos-offset="120"/>
-        <Iframe/>
+        <SAPvideo/>
         <hr data-aos="fade-right" data-aos-delay="300" data-aos-offset="120"/>
 
-        <Domain />
+        <ViewDomain />
         <hr data-aos="fade-right" data-aos-delay="300" data-aos-offset="120"/>
       </div>
       <Placment/>

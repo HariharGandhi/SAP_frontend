@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Placement.css";
+import "./ViewPlacement.css";
 // import AOS from 'aos';
 // // import 'aos/dist/aos.css';
 

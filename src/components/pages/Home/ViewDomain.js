@@ -2,8 +2,8 @@ import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 // import styled from 'styled-components';
-import "./Domain.css";
-function Domain() {
+import "./ViewDomain.css";
+function ViewDomain() {
   AOS.init({
     duration: 5000,
     offset: 300,
@@ -129,4 +129,4 @@ function Domain() {
   );
 }
 
-export default Domain;
+export default ViewDomain;

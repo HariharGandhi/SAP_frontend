@@ -1,7 +1,7 @@
 import React from "react";
 import "./Application.css";
-import Footer from "../Footer";
-import Navbarforapp from "../Navbarforapp";
+import Footer from "../Footer/Footer";
+import Navbarforapp from "../Home/Navbarforapp";
 import Axios from "axios";
 
     

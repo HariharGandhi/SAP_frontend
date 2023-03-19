@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../Modal";
 //import "./NewNav.css"
-import "./hari.css"
+//import "./hari.css"
 
 
 const VerifyForm = () => {

@@ -2,25 +2,20 @@ import React, { useEffect, useState } from "react";
 import "./NewNav.css";
 import cross from "./cross.webp";
 import menu from "./menu.webp";
-import Table from "./table/Table";
+import Table from "../pages/dashboard/table/Table";
 import { Link, Route } from "react-router-dom";
-import Create from "./table/Create";
-import PostPlace from "./table/PostPlace";
-import Alluser from "./table/Alluser";
-import axios from "axios";
-import VerifyForm from "./Verifyform";
+import Create from "../pages/dashboard/table/Create";
+import PostPlace from "../pages/dashboard/table/PostPlace";
+import Alluser from "../pages/dashboard/table/Alluser";
+//import axios from "axios";
+import VerifyForm from "../pages/dashboard/adminpages/ApplicationForms/Verifyform";
+import AuthService from "../../services/auth.service";
 
 const NewNav = (props) => {
   const a = localStorage.getItem('role');
   //const b = "true";
   const Onlogout = () => {
-    axios.post("http://localhost:9190/api/auth/signout").then((res) => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("role");
-      localStorage.removeItem("user");
-      localStorage.removeItem("username");
-      window.location.href = "/home";
-    });
+    AuthService.logout()
   };
   const [SelectedOption,setSelectedOption] = useState("")
   console.log(SelectedOption)
