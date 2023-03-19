@@ -52,10 +52,16 @@ export default class Login extends Component {
     });
 
     this.form.validateAll();
+// before navigating to other page get respose of login successfull and store userid in use state
+// after that hit other api and check weather api status is pending or verified or not verified 
+//if pending push to pending page
+//verified push to newnav => dashboard 
+//not verified then got to => application form
 const StatuS="Verified"
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.email, this.state.password).then(
         () => {
+
 StatuS==="Verified"?this.props.history.push("/newnav"):this.props.history.push("/Application")
             window.location.reload();
           // if(localStorage.getItem('role') === 'ROLE_STUDENT'){

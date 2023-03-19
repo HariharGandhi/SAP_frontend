@@ -1,13 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import "./Application.css"
 
-export default function Pending() {
+import axios from "axios";
 
-    
-    useEffect(() => {
-    
-    }, [])
+export default function Pending() {
+  const [UserId, setUserId] = useState();
+
+  // GET /api/getapplicationformStatus/{UserId}
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const { data } = await axios.get(
+  //         `http://localhost:9190/api/getapplicationformStatus/${UserId}`,{
+          
+  //         }
+  //       );
+  //       setUserId(data);
+  //       //setSid(data.records.student_id);
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.log("Error");
+  //     }
+  //   })();
+  // },[]);
     
   return (
     <div>
