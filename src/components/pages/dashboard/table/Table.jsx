@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../Modal";
+import VerifyForm from "../adminpages/ApplicationForms/Verifyform";
 
 const Table = (right, a) => {
   const [did, setdid] = useState(0);
@@ -13,14 +14,17 @@ const Table = (right, a) => {
   const [rname, setrname] = useState("");
   const [rdet, setrdet] = useState("");
   const [uid, setuid] = useState(0);
+  const [query,setquery] = useState(false);
   const [DeleteModal, setDeleteModal] = useState(false);
   const [VerifyModal, setVerifyModal] = useState(false);
   const [QueryModal, setQueryModal] = useState(false);
+  const [UpdateModal,setUpdateModal] = useState(false)
   const handleCancel = () => {
     // hide confirmation modal
     setDeleteModal(false);
     setVerifyModal(false);
     setQueryModal(false);
+    setUpdateModal(false);
   };
 
   const handleConfirm = () => {
@@ -33,27 +37,30 @@ const Table = (right, a) => {
       });
   };
   const handleVerify = () => {
+    setVerifyModal(false);
+    setUpdateModal(true);
+    
+  };
+  const handleUpdate = () =>{
+    const Uid = localStorage.getItem('Userid')
     axios
       .put(
-        `http://localhost:9190/api/applicationFormStatusUpdate/${did}/${stat}`
+        `http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}/${query}`
       )
       .then((res) => {
         console.log(res);
-        setVerifyModal(false);
+        setUpdateModal(false);
         window.location.reload();
       });
-  };
+  }
   const Modalview = (ele) => {
     setdid(ele.id);
     setDeleteModal(true);
   };
   const viewModal = (ele) => {
-    setdid(ele.id);
-    if (ele.applicationFromStatus === "inactive") {
-      setstat("active");
-    } else {
-      setstat("inactive");
-    }
+    const d = ele.id;
+    setdid(d);
+    localStorage.setItem('Userid',d)
     setVerifyModal(true);
   };
 
@@ -104,6 +111,8 @@ const Table = (right, a) => {
   };
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
+  const [searchmod,setsearchmod] = useState("")
+  const [searchdept,setsearchdept] = useState("")
   // const OnDelete = (e) => {
   //   axios.post(`http://localhost:9190/api/deleteapplicationform/${e}`)
   //   .then()
@@ -126,20 +135,33 @@ const Table = (right, a) => {
   return (
     <>
       <div className="table-nav">
+        <div style={{display:'flex',flexDirection:'row',justifyContent:'center'}} className="form-group">
+        <label>
+          Student Name :
+          <input
+          className="table-search"
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        /></label>
+        <label>
+          Module :
         <input
           className="table-search"
           type="text"
-          placeholder="Search Your Name"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <select className="table-drop" name="cars" id="cars">
-          <option value="volvo">Department</option>
-          <option value="saab">Computer</option>
-          <option value="saab">IT</option>
-          <option value="saab">Mechanical</option>
-          <option value="saab">ECE</option>
-          <option value="saab">Civil</option>
+          value={searchmod}
+          onChange={(e) => setsearchmod(e.target.value)}
+        /></label></div>
+        
+        <select className="table-drop" name="cars" id="cars" onChange={(e) => setsearchdept(e.target.value)}>
+          <option value="">Department</option>
+          <option value="comp">Computer</option>
+          <option value="it">IT</option>
+          <option value="mech">Mechanical</option>
+          <option value="ece">ECE</option>
+          <option value="civil">Civil</option>
         </select>
+        <button onClick={()=> setSearch("")}>Clear</button>
         <table>
           <thead>
             <tr className="main-table top-col-table">
@@ -166,16 +188,16 @@ const Table = (right, a) => {
               .filter((item) => {
                 return search.toLowerCase() === ""
                   ? item
-                  : item.name.toLowerCase().includes(search) ||
-                      item.adhaarCard.toLowerCase().includes(search) ||
-                      item.sapModule.toLowerCase().includes(search) ||
-                      item.applicationFromStatus
-                        .toLowerCase()
-                        .includes(search) ||
-                      item.branch.toLowerCase().includes(search) ||
-                      item.studentType.toLowerCase().includes(search);
-              })
-              .map((ele) => {
+                  : item.name.toLowerCase().includes(search)
+              }).filter((item) => {
+                return searchmod.toLowerCase() === ""
+                  ? item
+                  : item.sapModule.toLowerCase().includes(searchmod)
+                }).filter((item) => {
+                  return searchdept.toLowerCase() === ""
+                    ? item
+                    : item.branch.toLowerCase().includes(searchdept)
+                  }).map((ele) => {
                 return (
                   <tr key={ele.id} className="main-table">
                     <td style={{ width: "100px", padding: "2px" }}>
@@ -197,7 +219,7 @@ const Table = (right, a) => {
                       {ele.email}
                     </td>
                     <td style={{ width: "50px", padding: "2px" }}>
-                      {ele.isQueryInApplication}
+                      {ele.isQueryInApplication?"Yes":"No"}
                     </td>
                     <td style={{ width: "100px", padding: "2px" }}>
                       {ele.name}
@@ -265,9 +287,39 @@ const Table = (right, a) => {
           </Modal>
         )}
         {VerifyModal && (
+          <Modal style={{justifyContent:'center',display:'flex'}}>
+            <VerifyForm />
+            <div>
+            <button className="btn-md" onClick={handleVerify} style={{marginRight:"20px",cursor:"pointer",width:"100px",height:"25px"}}>Verify</button>
+            <button className="btn-md" onClick={() => viewQueryModal()} style={{marginRight:"20px",cursor:"pointer",width:"100px",height:"25px"}}>Query</button>
+            <button className="btn-md" onClick={handleCancel} style={{cursor:"pointer",width:"100px",height:"25px"}}>Cancel</button>
+            </div>
+            
+          </Modal>
+        )}
+        {UpdateModal && (
           <Modal>
             <div>
-              <h2>Change the status of this application ?</h2>
+      <div>
+              <h2>Change the status of this application to :</h2>
+              <dropdown>
+                <select name="" id="" onChange={(e) => setstat(e.target.value)}>
+                <option value="">Select status</option>
+                <option value="verified">Verified</option>
+                <option value="notverified">Not Verified</option>
+                <option value="inquery">In Query</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                </select>
+              </dropdown>
+              <h2>Is Query in application :</h2>
+              <dropdown>
+                <select name="" id="" onChange={(e) => setquery(e.target.value)}>
+                <option value="">Select option</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+                </select>
+              </dropdown>
               <div
                 style={{
                   display: "flex",
@@ -277,14 +329,15 @@ const Table = (right, a) => {
               >
                 <button
                   className="btn-md"
-                  onClick={handleVerify}
+                  onClick={handleUpdate}
                   style={{ marginRight: "10px" }}
                 >
-                  Yes
+                  Update
                 </button>
-                <button onClick={handleCancel}>No</button>
+                <button onClick={handleCancel}>Cancel</button>
               </div>
             </div>
+      </div>
           </Modal>
         )}
         {QueryModal && (
