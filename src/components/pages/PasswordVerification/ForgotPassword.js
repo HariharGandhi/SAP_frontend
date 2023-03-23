@@ -1,22 +1,20 @@
 import React, { Component } from "react"; //, useState -removed
-import axios from "axios";
 import "./Forgotpassword.css";
+import AuthService from "../../../services/auth.service";
 
 class ForgotPassword extends Component {
   state = {
     email: "",
   };
-
-  /* This is where the magic happens
-   */
+  
   handleSubmit = (event) => {
     event.preventDefault();
     const mail = this.state.email;
     sessionStorage.setItem("EMAIL", mail);
 
     console.log(mail);
-    axios
-      .post(`http://localhost:9190/api/auth/forgotpassword/${mail}`)
+
+    AuthService.forgotpassword(mail)
       .then((res) => {
         console.log(res.data.message);
         sessionStorage.setItem("otp", res.data.message);

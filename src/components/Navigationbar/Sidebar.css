@@ -1,0 +1,25 @@
+.vertical-navbar {
+    display: flex;
+    flex-direction: column;
+    height : 90%;
+  }
+  
+  .vertical-navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .vertical-navbar li {
+    margin: 10px 0;
+  }
+  
+  .vertical-navbar li a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .vertical-navbar li a:hover {
+    color: #000;
+  }
+  

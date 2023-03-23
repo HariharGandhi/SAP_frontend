@@ -91,6 +91,7 @@ const UpdateNotification = () => {
         <form>
           <h1>Enter the details to update</h1>
           <br />
+          <br />
           <label>
             {" "}
             Enter id

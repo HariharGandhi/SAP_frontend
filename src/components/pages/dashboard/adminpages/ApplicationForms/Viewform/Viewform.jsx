@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Modal from "../Modal";
-import VerifyForm from "../adminpages/ApplicationForms/Verifyform";
+import Modal from "../../../Modal";
+import VerifyForm from "../Verifyform";
+import "./Viewform.css"
 
-const Table = (right, a) => {
+const Viewform = (right, a) => {
   const [did, setdid] = useState(0);
   const [stat, setstat] = useState("");
   const [title, settitle] = useState("");
@@ -17,16 +18,17 @@ const Table = (right, a) => {
   const [query,setquery] = useState(false);
   const [DeleteModal, setDeleteModal] = useState(false);
   const [VerifyModal, setVerifyModal] = useState(false);
-  const [QueryModal, setQueryModal] = useState(false);
   const [UpdateModal,setUpdateModal] = useState(false)
   const handleCancel = () => {
     // hide confirmation modal
     setDeleteModal(false);
     setVerifyModal(false);
-    setQueryModal(false);
     setUpdateModal(false);
   };
-
+  const Query = () => {
+    setquery(true);
+    Addquery()
+  }
   const handleConfirm = () => {
     axios
       .delete(`http://localhost:9190/api/deleteapplicationform/${did}`)
@@ -43,15 +45,37 @@ const Table = (right, a) => {
   };
   const handleUpdate = () =>{
     const Uid = localStorage.getItem('Userid')
+    console.log(query)
     axios
       .put(
         `http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}/${query}`
       )
       .then((res) => {
-        console.log(res);
+        console.log(query,"new")
+        setquery(false)
+        setstat("")
         setUpdateModal(false);
         window.location.reload();
       });
+  }
+  const handleUpdatequery = (q) =>{
+    const Uid = localStorage.getItem('Userid')
+    //const q = true
+    axios
+      .put(
+        `http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}/${q}`
+      )
+      .then((res) => {
+        setquery(false)
+        setstat("")
+        setUpdateModal(false);
+        window.location.reload();
+      });
+  }
+  const clearsearch = () => {
+    setSearch("");
+    setsearchdept("");
+    setsearchmod("")
   }
   const Modalview = (ele) => {
     setdid(ele.id);
@@ -61,6 +85,10 @@ const Table = (right, a) => {
     const d = ele.id;
     setdid(d);
     localStorage.setItem('Userid',d)
+    setstat(ele.applicationFromStatus);
+    setmail(ele.email);
+    setnum(ele.contactNumber);
+    setuid(ele.userId);
     setVerifyModal(true);
   };
 
@@ -82,17 +110,9 @@ const Table = (right, a) => {
         }
       )
       .then((res) => {
-        setQueryModal(false);
-        window.location.reload();
+        setquery(true)
+        handleUpdatequery(true);
       });
-  };
-  const viewQueryModal = (ele) => {
-    setdid(ele.id);
-    setstat(ele.applicationFromStatus);
-    setmail(ele.email);
-    setnum(ele.contactNumber);
-    setuid(ele.userId);
-    setQueryModal(true);
   };
   const handletitle = async (event) => {
     settitle(event.target.value);
@@ -131,11 +151,10 @@ const Table = (right, a) => {
       }
     })();
   }, []);
-
   return (
     <>
       <div className="table-nav">
-        <div style={{display:'flex',flexDirection:'row',justifyContent:'center'}} className="form-group">
+        <div className="container form-group" id="tab">
         <label>
           Student Name :
           <input
@@ -153,7 +172,7 @@ const Table = (right, a) => {
           onChange={(e) => setsearchmod(e.target.value)}
         /></label></div>
         
-        <select className="table-drop" name="cars" id="cars" onChange={(e) => setsearchdept(e.target.value)}>
+        <select className="table-drop" value={searchdept} onChange={(e) => setsearchdept(e.target.value)}>
           <option value="">Department</option>
           <option value="comp">Computer</option>
           <option value="it">IT</option>
@@ -161,7 +180,7 @@ const Table = (right, a) => {
           <option value="ece">ECE</option>
           <option value="civil">Civil</option>
         </select>
-        <button onClick={()=> setSearch("")}>Clear</button>
+        <button onClick={()=> clearsearch()}>Clear</button>
         <table>
           <thead>
             <tr className="main-table top-col-table">
@@ -244,13 +263,6 @@ const Table = (right, a) => {
                         style={{ marginRight: "5px" }}
                         onClick={() => viewModal(ele)}
                       >
-                        <i className="far fa-check-square"></i>
-                      </button>
-                      {"    "}
-                      <button
-                        style={{ marginRight: "5px" }}
-                        onClick={() => viewQueryModal(ele)}
-                      >
                         <i className="far fa-edit"></i>
                       </button>
                       {"    "}
@@ -290,8 +302,7 @@ const Table = (right, a) => {
           <Modal style={{justifyContent:'center',display:'flex'}}>
             <VerifyForm />
             <div>
-            <button className="btn-md" onClick={handleVerify} style={{marginRight:"20px",cursor:"pointer",width:"100px",height:"25px"}}>Verify</button>
-            <button className="btn-md" onClick={() => viewQueryModal()} style={{marginRight:"20px",cursor:"pointer",width:"100px",height:"25px"}}>Query</button>
+            <button className="btn-md" onClick={handleVerify} style={{marginRight:"50px",cursor:"pointer",width:"100px",height:"25px"}}>Verify</button>
             <button className="btn-md" onClick={handleCancel} style={{cursor:"pointer",width:"100px",height:"25px"}}>Cancel</button>
             </div>
             
@@ -312,37 +323,9 @@ const Table = (right, a) => {
                 <option value="inactive">Inactive</option>
                 </select>
               </dropdown>
-              <h2>Is Query in application :</h2>
-              <dropdown>
-                <select name="" id="" onChange={(e) => setquery(e.target.value)}>
-                <option value="">Select option</option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-                </select>
-              </dropdown>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "right",
-                  alignItems: "right",
-                }}
-              >
-                <button
-                  className="btn-md"
-                  onClick={handleUpdate}
-                  style={{ marginRight: "10px" }}
-                >
-                  Update
-                </button>
-                <button onClick={handleCancel}>Cancel</button>
-              </div>
-            </div>
-      </div>
-          </Modal>
-        )}
-        {QueryModal && (
-          <Modal>
-            <div>
+              {stat==="inquery" && 
+              <>
+              <div>
               <h2>Enter Query details: </h2>
               <form>
                 <label>
@@ -402,7 +385,7 @@ const Table = (right, a) => {
                 <br />
                 <button
                   type="submit"
-                  onClick={() => Addquery()}
+                  onClick={() => Query()}
                   className="btn btn-outline-white"
                   style={{
                     margin: "auto",
@@ -421,10 +404,31 @@ const Table = (right, a) => {
                 </button>
               </form>
             </div>
+              </>}
+              {stat!=="inquery" && 
+              <div
+              style={{
+                display: "flex",
+                justifyContent: "right",
+                alignItems: "right",
+              }}
+            >
+              <button
+                className="btn-md"
+                onClick={handleUpdate}
+                style={{ marginRight: "10px" }}
+              >
+                Update
+              </button>
+              <button onClick={handleCancel}>Cancel</button>
+            </div>}
+              
+            </div>
+      </div>
           </Modal>
         )}
       </div>
     </>
   );
 };
-export default Table;
+export default Viewform;

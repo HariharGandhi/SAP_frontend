@@ -27,11 +27,11 @@ export default function Footer() {
 				
 					<a href="#">Pricing</a> */}
 
-            <a href="#">About</a>
+            <a href="/">About</a>
 
-            <a href="#">Faq</a>
+            <a href="/">Faq</a>
 
-            <a href="#">Contact</a>
+            <a href="/">Contact</a>
           </p>
 
           <p className="footer-company-name">
@@ -71,16 +71,16 @@ export default function Footer() {
           </p>
 
           <div className="footer-icons">
-            <a href="#">
+            <a href="/">
               <i className="fa fa-facebook"></i>
             </a>
-            <a href="#">
+            <a href="/">
               <i className="fa fa-twitter"></i>
             </a>
-            <a href="#">
+            <a href="/">
               <i className="fa fa-linkedin"></i>
             </a>
-            <a href="#">
+            <a href="/">
               <i className="fa fa-github"></i>
             </a>
           </div>

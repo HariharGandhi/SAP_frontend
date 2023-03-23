@@ -1,7 +1,7 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
-//import { useHistory } from 'react-router-dom';
+import "./AddNotification.css"
+import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
 const Addnotification = () => {
   //const history = useHistory();
   const [nme, setnme] = useState("");
@@ -27,22 +27,10 @@ const Addnotification = () => {
       uid !== 0 &&
       id !== 0
     ) {
-      await axios
-        .post("http://localhost:9190/addNotification", {
-          body: bd,
-          code: cd,
-          createdDateTime: cdtm,
-          file: file,
-          id: id,
-          name: nme,
-          notificationmodule: nm,
-          status: stat,
-          title: title,
-          userId: uid,
-        })
+      NotificationPlacementapi.addnotification(bd,cd,cdtm,file,id,nme,nm,stat,title,uid)
         .then((res) => {
           alert("Notification added");
-          window.location.href = "/adminlogin";
+          window.location.href = "/admindashboard";
           //history.push('/adminlogin')
         })
         .catch((err) => {
@@ -86,7 +74,7 @@ const Addnotification = () => {
   return (
     <div>
       <div
-        className="container"
+        className="container notify"
         style={{ display: "flex", justifyContent: "center" }}
       >
         <form>

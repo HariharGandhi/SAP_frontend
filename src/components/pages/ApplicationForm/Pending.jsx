@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
+import React, {  } from 'react'
 import "./Application.css"
 
-import axios from "axios";
 
 export default function Pending() {
-  const [UserId, setUserId] = useState();
+  
 
   // GET /api/getapplicationformStatus/{UserId}
   // useEffect(() => {
@@ -27,7 +25,6 @@ export default function Pending() {
     
   return (
     <div>
-        
         <h3>Pending</h3>
         <h5>if you have any query weite here</h5>
         <input className='Pending' type="text" />

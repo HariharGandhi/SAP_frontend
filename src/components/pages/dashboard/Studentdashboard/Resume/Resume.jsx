@@ -1,7 +1,5 @@
 import React from 'react'
-import Navbar from '../../../Home/Navbarforhome'
 import "./Resume.css"
-import { Link } from "react-router-dom";
 import Footer from '../../../Footer/Footer';
 
 function Resume() {

@@ -9,28 +9,42 @@ const Seemoreplacements = () => {
      const [users, setUsers] = useState([]);
 const [loading , setLoading] =useState(false);
 
-   const getUsers= async ()=>{
+//    const getUsers= async ()=>{
+//     const res = await fetch('https://ecombackend.sonarpratik.repl.co/api/product');
+//     setLoading(true)
+//     setUsers(await res.json());
+//     // const rrrr=res.json();
+//     console.log(await users.body)
+// setTimeout(() => {
+//   setLoading(false)
+// }, 3000);
+
+// // if(users===null){
+// //   setLoading(true)
+// // }
+
+//     // const data =await res.json();
+//     // console.log(data);
+    
+//    }
+//     useEffect(() => {
+//         getUsers();
+        
+//     }, []);
+useEffect(() => {
+  const getUsers = async () => {
     const res = await fetch('https://ecombackend.sonarpratik.repl.co/api/product');
     setLoading(true)
     setUsers(await res.json());
-    // const rrrr=res.json();
     console.log(await users.body)
-setTimeout(() => {
-  setLoading(false)
-}, 3000);
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000);
+  };
+  
+  getUsers();
+}, [users]);
 
-// if(users===null){
-//   setLoading(true)
-// }
-
-    // const data =await res.json();
-    // console.log(data);
-    
-   }
-    useEffect(() => {
-        getUsers();
-        
-    }, [getUsers]);
 
   return (
     <div>

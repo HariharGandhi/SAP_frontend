@@ -4,9 +4,9 @@ import './../../../App.css';
 import ViewDomain from "./ViewDomain";
 import Placment from "./ViewPlacment";
 import NewBody from "./NewBody";
-import Navbar from "./Navbarforhome";
 import Footer from "../Footer/Footer";
 import SAPvideo from "./../SAPvideo/SAPvideo";
+import Navbarforhome from "./Navbarforhome";
 
 export default class Home extends Component {
   constructor(props) {
@@ -21,10 +21,10 @@ export default class Home extends Component {
   render() {
 
 
-
     return (
       <div>
-        <Navbar/>
+        
+        <Navbarforhome/>
 
         <div className="row">
             <div className="col-6">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import NotificationPlacementapi from "../../../../services/NotificationPlacementapi"
+import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
+import "./AddPlacement.css"
 
 const Postplace = () =>{
   const [mod,setmod] = useState("");
@@ -7,7 +8,7 @@ const [nme,setnme] = useState("");
 const [cnme,setcnme] = useState("");
 const [pack,setpack] = useState("");
 const [year,setyear] = useState("");
-const [img,setimg] = useState("");
+const [img,setimg] = useState(null);
 const handlename = async (e) =>{
     setnme(e.target.value)
 }
@@ -23,21 +24,24 @@ const handleyear = async (e) =>{
 const handleimg = async (e) =>{
     setimg(e.target.value)
 }
+const handlemod = async (e) => {
+    setmod(e.target.value)
+}
 
 const Addplacement = () => {
   NotificationPlacementapi.signup(cnme,img,mod,nme,year,pack).then(response => {
         alert(response.message);
-        window.location.href = "/"
+        window.location.href = "/getplacement"
     })
 }
     return (
         <>
         <div>
         <div
-          className="container"
+          className="placementcontainer"
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <form>
+          <form className='Placementform'>
             <h1>Enter Placement Details: </h1>
             <br />
             <label>
@@ -50,7 +54,18 @@ const Addplacement = () => {
                 onChange={(e) => handlename(e)}
               />
             </label>
-            <br />
+            
+            <label>
+              {" "}
+              Enter Name of Module:
+              <input
+                type="string"
+                value={mod}
+                name="Name of Module"
+                onChange={(e) => handlemod(e)}
+              />
+            </label>
+            {/* <br />
             <label>
               {" "}
               Enter Module :
@@ -63,19 +78,8 @@ const Addplacement = () => {
                 <option value="FICO">FICO</option>
                 <option value="SD">SD</option>
               </select>
-            </label>
-            <br />
-            <label>
-              {" "}
-              Image :
-              <input
-                type="string"
-                value={img}
-                name="URL of Image"
-                onChange={(e) => handleimg(e)}
-              />
-            </label>
-            <br />
+            </label> */}
+            
             <label>
               {" "}
               Enter Company Name:
@@ -109,12 +113,18 @@ const Addplacement = () => {
               />
             </label>
             <br />
+            <label>
+              {" "}
+              Image :
+              <input type="file" onChange={handleimg} />
+            </label>
+            <br />
           </form>
         </div>
         <button
           type="submit"
           onClick={() => Addplacement()}
-          className="btn btn-outline-white"
+          className="btn-place btn-outline-white"
           style={{
             display: "flex",
             justifyContent: "center",

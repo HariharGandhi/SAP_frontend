@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./NewNav.css";
 import cross from "./cross.png";
 import menu from "./menu.png";
-import Table from "../pages/dashboard/table/Table";
 import { Link, Route } from "react-router-dom";
 import Create from "../pages/dashboard/table/Create";
 import PostPlace from "../pages/dashboard/table/PostPlace";
@@ -11,10 +10,10 @@ import Modal from "../pages/dashboard/Modal";
 import BellIcon from "react-bell-icon";
 import VerifyForm from "../pages/dashboard/adminpages/ApplicationForms/Verifyform";
 import AuthService from "../../services/auth.service";
+import Viewform from "../pages/dashboard/adminpages/ApplicationForms/Viewform/Viewform";
 
 const NewNav = (props) => {
   const a = localStorage.getItem('role');
-  const statuS = "notVerified";
   //const b = "true";
   const Onlogout = () => {
     AuthService.logout()
@@ -60,9 +59,10 @@ const NewNav = (props) => {
               src={picimg}
               width="10px"
               height="10px"
+              style={{marginLeft:'25px'}}
               alt=""
             />
-          <h2>
+          <h2 style={{marginLeft:'50px'}}>
             Sanjivani
             <span className="color-teal">SAP</span>{" "}
           </h2>
@@ -204,7 +204,7 @@ const NewNav = (props) => {
             ) : (
               // <Table path="/newnav" />
               
-              <Route exact path="/newnav" component={Table} />
+              <Route exact path="/newnav" component={Viewform} />
             )}
             <Route exact path="/newnav/create" component={Create} />
             <Route exact path="/newnav/place" component={PostPlace} />

@@ -53,10 +53,11 @@ export default class Login extends Component {
 
     this.form.validateAll();
    
-    const StatuS = "Verified";
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.email, this.state.password).then(
         () => {
+          const Role = localStorage.getItem('role')
+          if(Role==="ROLE_STUDENT"){
           let userId= localStorage.getItem('id');
           AuthService.getApplicationStatus(userId).then(
             (response) => {
@@ -67,11 +68,15 @@ export default class Login extends Component {
               if(response==="initial"){
                 this.props.history.push("/Pending");
              }
-             if(response==="Verified"){
-               this.props.history.push("/newnav");
+             if(response==="verified"){
+               //this.props.history.push("/newnav");
+               this.props.history.push("/logindone");
             }
               window.location.reload();
-            });
+            });}
+            if(Role==="ROLE_ADMIN" || Role==="ROLE_SUPER"){
+              this.props.history.push("/admindashboard");
+            }
         //  StatuS === "Verifiedd"
         //    ? this.props.history.push("/newnav")
         //    : this.props.history.push("/Application");

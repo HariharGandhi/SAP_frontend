@@ -1,0 +1,25 @@
+.upadmin {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.upadmin form {
+  display: inline-block;
+  text-align: left;
+}
+
+ .upadmin form label {
+  margin-right: 10px;
+}
+
+.upadmin form input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+

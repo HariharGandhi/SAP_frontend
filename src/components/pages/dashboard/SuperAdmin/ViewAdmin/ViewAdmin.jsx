@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Modal from "../Modal";
-import Adminservice from "../../../../services/admin.service";
-const Alluser = (right, a) => {
-  const [did, setdid] = useState(0);
+import Modal from "../../Modal";
+import Adminservice from "../../../../../services/admin.service";
+//import "./ViewAdmin.css"
+const AllAdmin = (right, a) => {
+  //const [did, setdid] = useState(0);
   const [stat, setstat] = useState("active");
   const [nme, setnme] = useState("");
   const [ctc, setctc] = useState("");
@@ -12,7 +13,7 @@ const Alluser = (right, a) => {
   const [dept, setdept] = useState("");
   const [statt, setstatt] = useState("");
   const [pos, setpos] = useState("");
-  const [pass, setpass] = useState(0);
+  const [pass, setpass] = useState("");
   const [DeleteModal, setDeleteModal] = useState(false);
   const [QueryModal, setQueryModal] = useState(false);
   const handleCancel = () => {
@@ -23,20 +24,24 @@ const Alluser = (right, a) => {
 
   const handleConfirm = () => {
         const st = "inactive"
-        Adminservice.delete(st,did).then((res)=>{
+        const Did = parseInt(sessionStorage.getItem('did'),10)
+        Adminservice.delete(st,Did).then((res)=>{
           setDeleteModal(false);
+          sessionStorage.removeItem('did')
           window.location.reload();
         })
   };
   const Modalview = (ele) => {
-    setdid(ele.id);
+    let did = ele.id;
+    sessionStorage.setItem('did',did)
     setDeleteModal(true);
   };
 
   const Updatedetails = () => {
+    const Upid = parseInt(sessionStorage.getItem('did'),10)
     axios
       .post(
-        `http://localhost:9190/admin/auth/updateAdminUser/${did}`,
+        `http://localhost:9190/admin/auth/updateAdminUser`,
         {
             department: dept,
             email: mail,
@@ -45,21 +50,28 @@ const Alluser = (right, a) => {
             password: pass,
             position: pos,
             status: statt
+        },
+        {
+          params : {
+            UserId : Upid
+          }
         }
       )
       .then((res) => {
         setQueryModal(false);
+        sessionStorage.removeItem('did')
+        alert("Upadte successfull")
         window.location.reload();
       });
   };
   const viewQueryModal = (ele) => {
-    setdid(ele.id);
-    setstat(ele.status);
+    let did = ele.id;
+    sessionStorage.setItem('did',did)
+    console.log(sessionStorage.getItem('did'))
     setdept(ele.department)
     setmail(ele.email)
     setctc(ele.mobileNumber)
     setnme(ele.name)
-    setpass(ele.password)
     setpos(ele.position)
     setQueryModal(true);
   };
@@ -220,10 +232,11 @@ const Alluser = (right, a) => {
         )}
         {QueryModal && (
           <Modal>
-            <div>
+            <div className="upadmin">
               <h2>Edit details to update :</h2>
+              <h6>Rewrite the Password and Status if unchanged</h6>
               <form>
-                <label>
+                <label style={{marginRight:"10px"}}>
                   {" "}
                   Name: 
                   <input
@@ -233,19 +246,18 @@ const Alluser = (right, a) => {
                     onChange={(e) => handlenme(e)}
                   />
                 </label>
-                <br />
                 <label>
                   {" "}
                   Password: 
                   <input
-                    type="string"
+                    type="password"
                     value={pass}
                     name="Password"
                     onChange={(e) => handlepass(e)}
                   />
                 </label>
                 <br />
-                <label>
+                <label style={{marginRight:"10px"}}>
                   {" "}
                   Department: 
                   <input
@@ -255,8 +267,7 @@ const Alluser = (right, a) => {
                     onChange={(e) => handledept(e)}
                   />
                 </label>
-                <br />
-                <label>
+                <label style={{marginRight:"10px"}}>
                   {" "}
                   Mobile No.: 
                   <input
@@ -267,7 +278,7 @@ const Alluser = (right, a) => {
                   />
                 </label>
                 <br />
-                <label>
+                <label style={{marginRight:"10px"}}>
                   {" "}
                   Email
                   <input
@@ -278,7 +289,7 @@ const Alluser = (right, a) => {
                   />
                 </label>
                 <br />
-                <label>
+                <label style={{marginRight:"10px"}}>
                   {" "}
                   Position: 
                   <input
@@ -300,10 +311,12 @@ const Alluser = (right, a) => {
                   />
                 </label>
                 <br />
+                
+                <div>
                 <button
                   type="submit"
                   onClick={() => Updatedetails()}
-                  className="btn btn-outline-white"
+                  className=""
                   style={{
                     margin: "auto",
                     cursor: "pointer",
@@ -313,18 +326,20 @@ const Alluser = (right, a) => {
                   Update details{" "}
                 </button>
                 <button
-                  className="btn btn-outline-white"
+                  className=""
                   onClick={handleCancel}
                   style={{ marginLeft: "10px", cursor: "pointer" }}
                 >
-                  cancel
+                  Cancel
                 </button>
-              </form>
-            </div>
+                </div>
+                </form>
+                </div>
+            
           </Modal>
         )}
       </div>
     </div>
   );
 };
-export default Alluser;
+export default AllAdmin;

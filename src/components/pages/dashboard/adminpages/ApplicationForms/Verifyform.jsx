@@ -41,7 +41,7 @@ const VerifyForm = () => {
                 console.log(error);
               }
             })();
-          },[]);
+          },[Uid]);
 
   return (
     <>
@@ -49,49 +49,49 @@ const VerifyForm = () => {
       <table>
       {data.map(item => (
       <tbody >
-          <tr key={item.key}>
+          <tr key={item.id}>
             <td> Photo</td>
             <td>{item.uploadImage}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.email}>
             <td> Email</td>
             <td>{item.email}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.name}>
             <td> Name</td>
             <td>{item.name}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.sapModule}>
             <td> SAP Module</td>
             <td>{item.sapModule}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.branch}>
             <td> Branch</td>
             <td>{item.branch}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.contactNumber}>
             <td> Contact Number</td>
             <td>{item.contactNumber}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.passoutYear}>
             <td> Year of Passout</td>
             <td>{item.passoutYear}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.studentType}>
             <td>Type of student</td>
             <td>{item.studentType}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.adhaarCard}>
             <td> Adhar Card Number</td>
             <td>{item.adhaarCard}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.applicationFromStatus}>
             <td> Application Form Status</td>
             <td>{item.applicationFromStatus}</td>
           </tr>
-          <tr key={item.key}>
+          <tr key={item.isQueryInApplication}>
             <td>Is Query present in application</td>
-            <td>{item.isQueryInApplication}</td>
+            <td>{item.isQueryInApplication?"Yes":"No"}</td>
           </tr>
       </tbody>))}
     </table>

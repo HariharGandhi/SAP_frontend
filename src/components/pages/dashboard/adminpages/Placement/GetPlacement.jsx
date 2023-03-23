@@ -7,10 +7,9 @@ const Getplace = () => {
     (async () => {
       try {
         NotificationPlacementapi.getplacement().then((response)=>{
-          setData(response);
-          console.log(response);
+          setData(response.data);
+          console.log(response.data);
         })
-        
       } catch (error) {
         console.log("Error");
       }
@@ -18,7 +17,7 @@ const Getplace = () => {
   },[]);
 
   return (
-    <>
+    <div className="container">
       <div className="table-nav">
         {/* <input
           className="table-search"
@@ -69,7 +68,7 @@ const Getplace = () => {
                       {ele.module}
                     </td>
                     <td style={{ width: "50px", padding: "2px" }}>
-                      {ele.placementyear}
+                      {ele.placementYear}
                     </td>
                   </tr>
                 );
@@ -77,7 +76,7 @@ const Getplace = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };
 export default Getplace;

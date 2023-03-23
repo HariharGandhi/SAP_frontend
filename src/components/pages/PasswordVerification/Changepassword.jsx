@@ -4,10 +4,11 @@ import { useState } from "react";
 const Changepassword = () => {
   const [pass, setpass] = useState("");
   const [passn, setpassn] = useState("");
+  const mail = sessionStorage.getItem("EMAIL");
   const Setpassword = async () => {
     if (pass === passn) {
       await axios.post("http://localhost:9190/api/auth/forgotpassword/setnewpassword", {
-          email: sessionStorage.getItem("EMAIL"),
+          email: mail,
           password: passn,
         })
         .then((res) => {
