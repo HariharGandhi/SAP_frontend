@@ -33,6 +33,9 @@ import withAuth from "./services/WithAuth";
 import NewNav from "./components/Navbar/NewNav";
 import Resume from "./components/pages/dashboard/Studentdashboard/Resume/Resume";
 import Pending from "./components/pages/ApplicationForm/Pending";
+import ContactForm from "./components/pages/Home/ContactForm/ContactForm";
+import contact_form_data from "./components/pages/dashboard/adminpages/Contact_Form_Data/contact_form_data";
+
 //import VerifyForm from "./components/pages/dashboard/adminpages/ApplicationForms/VerifyForm/Verifyform";
 // const app = require("express");
 // const cors = require("cors")
@@ -134,6 +137,8 @@ class App extends Component {
               <Route path="/newnav" component={NewNav} />
               <Route exact path="/resume" component={Resume} />
               <Route exact path="/pending" component={Pending} />
+              <Route exact path="/contactform" component={ContactForm} />
+              <Route exact path="/contact_form_data" component={contact_form_data} />
 
               {/*<Route  path="/VerifyForm" component={VerifyForm} />*/}
             </Switch>
