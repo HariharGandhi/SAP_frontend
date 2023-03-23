@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:9190/api/auth/";
-
 class AuthService {
   login(email, password) {
     return axios
@@ -56,12 +55,10 @@ class AuthService {
     return JSON.parse(localStorage.getItem('user'));;
   }
 
-  getNotification(){
-    return axios.get(API_URL + "/getALLNotifications");
-}
+  
 
-  forgotpassword(){
-    return axios.post(API_URL + "/forgotpassword")
+  forgotpassword(email){
+    return axios.post(API_URL + "forgotpassword/"+email)
   }
 }
 
