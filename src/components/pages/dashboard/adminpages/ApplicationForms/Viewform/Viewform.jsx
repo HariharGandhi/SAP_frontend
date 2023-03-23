@@ -69,6 +69,7 @@ const Viewform = (right, a) => {
         setquery(false)
         setstat("")
         setUpdateModal(false);
+        localStorage.removeItem('Userid')
         window.location.reload();
       });
   }

@@ -37,6 +37,8 @@ class AuthService {
       localStorage.removeItem('role');
       localStorage.removeItem("user");
       localStorage.removeItem("username");
+      localStorage.removeItem('email');
+      localStorage.removeItem('id');
       window.location.href = "/home";
     })
   }
@@ -59,6 +61,13 @@ class AuthService {
 
   forgotpassword(email){
     return axios.post(API_URL + "forgotpassword/"+email)
+  }
+
+  setpassword(email,password){
+    return axios.post(API_URL + "forgotpassword/setnewpassword",{
+      email,
+      password
+    });
   }
 }
 

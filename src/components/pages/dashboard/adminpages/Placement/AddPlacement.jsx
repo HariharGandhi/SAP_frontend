@@ -8,7 +8,7 @@ const [nme,setnme] = useState("");
 const [cnme,setcnme] = useState("");
 const [pack,setpack] = useState("");
 const [year,setyear] = useState("");
-const [img,setimg] = useState(null);
+const [img,setimg] = useState("");
 const handlename = async (e) =>{
     setnme(e.target.value)
 }
@@ -29,9 +29,11 @@ const handlemod = async (e) => {
 }
 
 const Addplacement = () => {
-  NotificationPlacementapi.signup(cnme,img,mod,nme,year,pack).then(response => {
-        alert(response.message);
-        window.location.href = "/getplacement"
+  NotificationPlacementapi.addplace(cnme,img,mod,nme,year,pack).then(response => {
+        alert(response.data.message);
+        window.location.href = "/admindashboard"
+    }).catch((err)=>{
+      console.log(err)
     })
 }
     return (
@@ -115,8 +117,8 @@ const Addplacement = () => {
             <br />
             <label>
               {" "}
-              Image :
-              <input type="file" onChange={handleimg} />
+              Image URL:
+              <input type="string" onChange={(e) => handleimg(e)} placeholder="Paste Image drive URL"/>
             </label>
             <br />
           </form>

@@ -14,12 +14,22 @@ class Adminservice {
             status
         })
     }
-    delete(status,Uid){
-        return axios.post(Admin_URL + "/updateAdminUser/{userid}"+Uid,{
+    update(department,email,mobileNumber,name,password,position,status,Uid){
+        return axios.post(Admin_URL + "/updateAdminUser",{
+            department,
+            email,
+            mobileNumber,
+            name,
+            password,
+            position,
             status
-        })
+        },{params:{
+            Uid
+        }})
     }
-    
+    // getadmin(status){
+    //     return axios.get(`${Admin_URL}/getAdminUsers/{status}?status=${encodeURI(status)}`)
+    // }
 }
 
 export default new Adminservice();

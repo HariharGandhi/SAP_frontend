@@ -10,8 +10,7 @@ class NotificationPlacementapi {
         })
     }
     getplacement(){
-        return axios.get(base_url + "getAllPlacement").then((res)=>{
-        })
+        return axios.get(base_url + "getAllPlacement")
     }
     addplace(companyname,imageUrl,module,name,placementYear,placementpackage){
         return axios.post(base_url + "addNewPlacement" ,{

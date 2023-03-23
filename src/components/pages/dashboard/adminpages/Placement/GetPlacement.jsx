@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi";
+import "./GetPlacement.css"
 const Getplace = () => {
   
   const [Data, setData] = useState([]);
@@ -7,8 +8,9 @@ const Getplace = () => {
     (async () => {
       try {
         NotificationPlacementapi.getplacement().then((response)=>{
-          setData(response.data);
           console.log(response.data);
+          setData(response.data);
+          
         })
       } catch (error) {
         console.log("Error");
@@ -17,20 +19,8 @@ const Getplace = () => {
   },[]);
 
   return (
-    <div className="container">
-      <div className="table-nav">
-        {/* <input
-          className="table-search"
-          type="text"
-          placeholder="Search Your Name"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <select className="table-drop" name="cars" id="cars" onChange={(e) => setmod(e.target.value)}>
-          <option value="">Select Status </option>
-          <option value="active">active</option>
-          <option value="inactive">inactive</option>
-        </select>
-        <button onClick={()=> setSearch("")}>Clear</button> */}
+    <div className="getplace" style={{display:'flex',justifyContent:'center'}}>
+      <div className="table-nav" style={{marginTop:'10px'}}>
         <table>
           <thead>
             <tr className="main-table top-col-table">

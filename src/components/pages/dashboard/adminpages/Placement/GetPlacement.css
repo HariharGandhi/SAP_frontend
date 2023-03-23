@@ -1,0 +1,34 @@
+.getplace table-nav{
+    transition: all 0.4s ease;
+
+}
+.getplace main-table{
+    /* display: flex; */
+    /* justify-content: space-between; */
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 0px 7px;
+    /* width: 100%; */
+    /* width: 100vw; */
+    margin-right: 30px;
+}
+.getplace top-col-table{
+    background-color: #322d45;
+    color: white;
+    padding: 20px 7px;
+    /* width: 100%; */
+ 
+    
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+}
+.getplace th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.getplace td,th{
+    padding: 20px;
+}

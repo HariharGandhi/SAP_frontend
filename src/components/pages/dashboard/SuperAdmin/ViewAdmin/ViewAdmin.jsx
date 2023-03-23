@@ -25,7 +25,7 @@ const AllAdmin = (right, a) => {
   const handleConfirm = () => {
         const st = "inactive"
         const Did = parseInt(sessionStorage.getItem('did'),10)
-        Adminservice.delete(st,Did).then((res)=>{
+        Adminservice.update(dept,mail,ctc,nme,pass,pos,st,Did).then((res)=>{
           setDeleteModal(false);
           sessionStorage.removeItem('did')
           window.location.reload();
@@ -98,10 +98,10 @@ const AllAdmin = (right, a) => {
   };
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
-  // const OnDelete = (e) => {
-  //   axios.post(`http://localhost:9190/api/deleteapplicationform/${e}`)
-  //   .then()
-  // }
+  const clearsearch =() => {
+    setSearch("");
+    setstat("");
+  }
   useEffect(() => {
     (async () => {
       try {
@@ -135,7 +135,7 @@ const AllAdmin = (right, a) => {
           <option value="active">active</option>
           <option value="inactive">inactive</option>
         </select>{" "}
-        <button onClick={()=> setSearch("")}>Clear</button>
+        <button onClick={()=> clearsearch()}>Clear</button>
         <table>
           <thead>
             <tr className="main-table top-col-table">

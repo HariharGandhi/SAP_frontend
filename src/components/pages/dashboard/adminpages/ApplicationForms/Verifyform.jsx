@@ -16,6 +16,7 @@ const VerifyForm = () => {
       .then((res)=>{
         console.log(res)
         setVerifyformModal(false);
+        localStorage.removeItem('Userid')
         window.location.reload();
       })
     }

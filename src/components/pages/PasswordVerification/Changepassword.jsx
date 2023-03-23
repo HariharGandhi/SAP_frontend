@@ -1,16 +1,13 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import AuthService from "../../../services/auth.service";
 const Changepassword = () => {
   const [pass, setpass] = useState("");
   const [passn, setpassn] = useState("");
   const mail = sessionStorage.getItem("EMAIL");
   const Setpassword = async () => {
     if (pass === passn) {
-      await axios.post("http://localhost:9190/api/auth/forgotpassword/setnewpassword", {
-          email: mail,
-          password: passn,
-        })
+      AuthService.setpassword(mail,passn)
         .then((res) => {
           alert("New password set succesfully");
           sessionStorage.removeItem("EMAIL");
