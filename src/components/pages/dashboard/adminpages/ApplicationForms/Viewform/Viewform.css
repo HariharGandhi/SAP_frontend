@@ -1,30 +1,31 @@
 /* Flexbox styles for responsive layout */
 
-#tab .container {
+/* #tab .container {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     flex-direction: row;
+    margin :auto
   }
   
-  /* Label and input styles */
+  /* Label and input styles 
 #tab .label {
     display: inline-block;
     width: 150px; /* adjust as needed */
     /*margin-right: 10px; /* add some space between labels */
-    /*margin-bottom: 10px; /* add some space below each row */
-    font-weight: bold; /* make label text bold */
+    /*margin-bottom: 10px; /* add some space below each row 
+    font-weight: bold; /* make label text bold 
   }
   
   #tab .table-search {
-    /*width: calc(100% - 170px); /* calculate width of input field based on label width */
+    /*width: calc(100% - 170px); /* calculate width of input field based on label width 
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
   
-  /* Dropdown and clear button styles */
+  /* Dropdown and clear button styles 
   #tab .table-drop {
     width: 100%;
     padding: 8px;
@@ -45,23 +46,56 @@
     margin-bottom: 10px;
   }
   
-  /* Media query for responsiveness */
+  /* Media query for responsiveness 
   @media screen and (max-width: 768px) {
     #tab .label {
-      width: 100%; /* make label take up full width on smaller screens */
+      width: 100%; /* make label take up full width on smaller screens 
       margin-right: 0;
     }
     
     #tab .table-search {
-      width: 100%; /* make input field take up full width on smaller screens */
+      width: 100%; /* make input field take up full width on smaller screens 
       margin-bottom: 10px;
     }
     
     #tab .select {
-      margin-bottom: 10px; /* add space below dropdown on smaller screens */
+      margin-bottom: 10px; /* add space below dropdown on smaller screens 
     }
     
     #tab .button {
-      width: 100%; /* make clear button take up full width on smaller screens */
+      width: 100%; /* make clear button take up full width on smaller screens 
     }
-  }
+  } */
+
+  #tab .main-table{
+    /* display: flex; */
+    /* justify-content: space-between; */
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 0px 7px;
+    /* width: 100%; */
+    /* width: 100vw; */
+    margin-right: 30px;
+}
+#tab .top-col-table{
+  background-color: #322d45;
+  color: white;
+  padding: 2px 7px;
+  /* width: 100%; */
+
+  
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+
+}
+#tab  th,td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 1px;
+}
+.tab input{
+  border: 1px solid #0b0b0b;
+  border-radius: 4px;
+  width: 500px;
+}

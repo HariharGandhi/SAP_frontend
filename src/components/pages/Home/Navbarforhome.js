@@ -1,5 +1,5 @@
 import React, {  } from "react"; 
-
+import "./Homenavbar.css"
 export default function Navbarforhome() {
   return (
     <nav className="nav" data-aos="fade-down" data-aos-delay="300" data-aos-offset="00">

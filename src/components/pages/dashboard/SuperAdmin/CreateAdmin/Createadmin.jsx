@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Adminservice from '../../../../../services/admin.service';
+import NewSidebar from '../../../../Navbar/Navbar';
 
 const Createadmin = () =>{
   const [dept,setdept] = useState("");
@@ -28,11 +29,12 @@ const Addadmin = () => {
     const Status = "active"
     Adminservice.Register(dept,email,mb,nme,pass,pos,Status).then(response => {
         alert("Admin added Successfully");
-        window.location.href = "/admindashboard"
+        window.location.href = "/alladmins"
     })
 }
     return (
         <>
+        <NewSidebar />
         <div>
         <div
           className="container"

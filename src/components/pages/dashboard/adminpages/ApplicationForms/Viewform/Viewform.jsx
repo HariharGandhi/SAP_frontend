@@ -154,15 +154,17 @@ const Viewform = (right, a) => {
   }, []);
   return (
     <>
-      <div className="table-nav">
-        <div className="container form-group" id="tab">
+      <div className="table-nav" id="tab">
+        <div className="container form-group " id="tab">
         <label>
           Student Name :
           <input
           className="table-search"
           type="text"
           value={search}
+          placeholder="Enter Name to search"
           onChange={(e) => setSearch(e.target.value)}
+          style={{border: '1px'}}
         /></label>
         <label>
           Module :
@@ -170,7 +172,9 @@ const Viewform = (right, a) => {
           className="table-search"
           type="text"
           value={searchmod}
-          onChange={(e) => setsearchmod(e.target.value)}
+          placeholder="Enter module to search"
+          onChange={(e) => setsearchmod(e.target.value)} 
+          style={{border: '1px'}}
         /></label></div>
         
         <select className="table-drop" value={searchdept} onChange={(e) => setsearchdept(e.target.value)}>
@@ -184,7 +188,7 @@ const Viewform = (right, a) => {
         <button onClick={()=> clearsearch()}>Clear</button>
         <table>
           <thead>
-            <tr className="main-table top-col-table">
+            <tr className="main-table top-col-table" id="tab">
               {/*<th>Student_id</th>*/}
               <th>Adhar card</th>
               <th>Application status</th>

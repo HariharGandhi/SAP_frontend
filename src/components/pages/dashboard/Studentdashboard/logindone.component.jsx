@@ -82,11 +82,11 @@
 // }
 //--------------------------------------------------------------------------------------------------------------
 import React, {  } from "react";
-import Navbar from "../../../Navigationbar/Navbar";
+import NewSidebar from "../../../Navbar/Navbar";
  const Logindone = () => {
   return (
     <>
-      <Navbar />
+        <NewSidebar />
     </>
   )
  }

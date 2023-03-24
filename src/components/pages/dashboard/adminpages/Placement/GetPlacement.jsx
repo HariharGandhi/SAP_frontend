@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi";
+import NewSidebar from "../../../../Navbar/Navbar";
 import "./GetPlacement.css"
 const Getplace = () => {
   
@@ -19,6 +20,8 @@ const Getplace = () => {
   },[]);
 
   return (
+    <>
+    <NewSidebar />
     <div className="getplace" style={{display:'flex',justifyContent:'center'}}>
       <div className="table-nav" style={{marginTop:'10px'}}>
         <table>
@@ -66,7 +69,7 @@ const Getplace = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </div> </>
   );
 };
 export default Getplace;

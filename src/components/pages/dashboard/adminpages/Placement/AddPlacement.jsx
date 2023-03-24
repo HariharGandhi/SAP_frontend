@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
+import NewSidebar from '../../../../Navbar/Navbar';
 import "./AddPlacement.css"
 
 const Postplace = () =>{
@@ -38,6 +39,7 @@ const Addplacement = () => {
 }
     return (
         <>
+        <NewSidebar />
         <div>
         <div
           className="placementcontainer"

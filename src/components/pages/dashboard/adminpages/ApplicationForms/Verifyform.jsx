@@ -3,6 +3,7 @@ import axios from "axios";
 import Modal from "../../Modal";
 //import "./NewNav.css"
 import "./Verifyform.css"
+import NewSidebar from "../../../../Navbar/Navbar";
 
 
 const VerifyForm = () => {
@@ -46,6 +47,7 @@ const VerifyForm = () => {
 
   return (
     <>
+      <NewSidebar />
       <div className="container">
       <table>
       {data.map(item => (

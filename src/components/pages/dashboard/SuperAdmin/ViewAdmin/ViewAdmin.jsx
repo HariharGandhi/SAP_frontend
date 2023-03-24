@@ -3,7 +3,7 @@ import axios from "axios";
 import Modal from "../../Modal";
 import Adminservice from "../../../../../services/admin.service";
 //import "./ViewAdmin.css"
-const AllAdmin = (right, a) => {
+const AllAdmin = () => {
   //const [did, setdid] = useState(0);
   const [stat, setstat] = useState("active");
   const [nme, setnme] = useState("");
