@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./AddNotification.css"
 import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
+import NewSidebar from "../../../../../Navbar/Navbar";
 const Addnotification = () => {
   //const history = useHistory();
   const [nme, setnme] = useState("");
@@ -73,6 +74,7 @@ const Addnotification = () => {
 
   return (
     <div>
+      <NewSidebar />
       <div
         className="container notify"
         style={{ display: "flex", justifyContent: "center" }}

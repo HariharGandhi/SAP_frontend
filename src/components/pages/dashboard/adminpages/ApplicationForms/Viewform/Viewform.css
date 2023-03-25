@@ -94,7 +94,7 @@
   text-align: center;
   padding: 1px;
 }
-.tab input{
+#tab input{
   border: 1px solid #0b0b0b;
   border-radius: 4px;
   width: 500px;

@@ -41,12 +41,13 @@ useEffect(() => {
       console.log("Error");
     }
   })();
+  return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
 }, []);
 
 return (
   <>
     <NewSidebar />
-    <div className="table-nav" id="del">
+    <div className={sessionStorage.getItem('sidebar')==="true"?"table-nav vform":"table-nav"} id="del">
       <input
         className="table-search"
         type="text"

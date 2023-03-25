@@ -1,4 +1,5 @@
 import React, {  } from 'react'
+import NewSidebar from '../../Navbar/Navbar'
 import "./Application.css"
 
 
@@ -25,8 +26,9 @@ export default function Pending() {
     
   return (
     <div>
+        <NewSidebar />
         <h3>Pending</h3>
-        <h5>if you have any query weite here</h5>
+        <h5>if you have any query write here</h5>
         <input className='Pending' type="text" />
     </div>
     

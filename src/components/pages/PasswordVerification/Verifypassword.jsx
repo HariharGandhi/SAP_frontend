@@ -19,7 +19,7 @@ const Verifypassword = () => {
     setOTP(event.target.value);
   };
 
-  return (
+  return (<>
     <div>
       <div
         className="container"
@@ -54,7 +54,7 @@ const Verifypassword = () => {
       >
         Verify OTP{" "}
       </button>
-    </div>
+    </div></>
   );
 };
 

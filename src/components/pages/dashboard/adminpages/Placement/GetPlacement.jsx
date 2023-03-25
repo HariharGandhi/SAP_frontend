@@ -17,6 +17,7 @@ const Getplace = () => {
         console.log("Error");
       }
     })();
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
   },[]);
 
   return (

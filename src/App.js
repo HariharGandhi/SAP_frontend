@@ -9,14 +9,10 @@ import RoleAuth from "./services/RoleAuth";
 import Login from "./components/pages/Login/login.component";
 import Register from "./components/pages/Register/register.component";
 import Home from "./components/pages/Home/home.component";
-// import Domain from "./components/Domain";
-// import Footer from "./components/pages/Footer";
-// import AcademicCard from "./components/pages/AcademicCard";
 
 import Application from "./components/pages/ApplicationForm/Application";
 
 //import SuperAuth from "./services/SuperAuth";
-// import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
 import ForgotPassword from "./components/pages/PasswordVerification/ForgotPassword";
 import Verify from "./components/pages/PasswordVerification/Verifypassword";
@@ -26,19 +22,26 @@ import Changepassword from "./components/pages/PasswordVerification/Changepasswo
 import Addnotification from "./components/pages/dashboard/adminpages/Notifications/AddNotification/AddNotification";
 import UpdateNotification from "./components/pages/dashboard/adminpages/Notifications/UpdateNotification/UpdateNotification";
 import DeleteNotification from "./components/pages/dashboard/adminpages/Notifications/DeleteNotification/DeleteNotification";
-import DeleteFormbyId from "./components/pages/dashboard/adminpages/ApplicationForms/DeleteForm";
+import DeleteFormbyId from "./components/pages/dashboard/adminpages/ApplicationForms/DeleteForm/DeleteForm";
 import SearchbyStudentId from "./components/pages/dashboard/adminpages/ApplicationForms/SearchForm/SearchbyStudentId";
 import GetbyFilter from "./components/pages/dashboard/adminpages/ApplicationForms/GetByFilter/GetbyFilter";
 import SearchbyUserId from "./components/pages/dashboard/adminpages/ApplicationForms/SearchForm/SearchbyUserId";
 import withAuth from "./services/WithAuth";
-import NewNav from "./components/Navbar/NewNav";
+import NewNav from "./components/Navbar/Navbar";
 import Resume from "./components/pages/dashboard/Studentdashboard/Resume/Resume";
 import Pending from "./components/pages/ApplicationForm/Pending";
 import Logindone from "./components/pages/dashboard/Studentdashboard/logindone.component";
 import Getplace from "./components/pages/dashboard/adminpages/Placement/GetPlacement";
 import Adminnotification from "./components/pages/dashboard/adminpages/Notifications/GetNotification/AdminNotification";
+import Deleteform from "./components/pages/dashboard/adminpages/ApplicationForms/DeleteForm/DeleteForm";
 import AdminDashboard from "./components/pages/dashboard/adminpages/Admin Dashboard/AdminDashboard";
-//import VerifyForm from "./components/pages/dashboard/adminpages/ApplicationForms/VerifyForm/Verifyform";
+import Postplace from "./components/pages/dashboard/adminpages/Placement/AddPlacement";
+import AllAdmin from "./components/pages/dashboard/SuperAdmin/ViewAdmin/ViewAdmin";
+import Createadmin from "./components/pages/dashboard/SuperAdmin/CreateAdmin/Createadmin";
+import Viewform from "./components/pages/dashboard/adminpages/ApplicationForms/Viewform/Viewform";
+import VerifyForm from "./components/pages/dashboard/adminpages/ApplicationForms/Verifyform";
+import Payment from "./components/pages/Payment/Payment";
+import ContactForm from "./components/pages/Home/ContactForm/ContactForm";
 // const app = require("express");
 // const cors = require("cors")
 // app.use(cors());
@@ -87,7 +90,9 @@ class App extends Component {
   render() {
     // const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
-    return (<div>
+    return (
+    
+    <div>
       <div>
        
        
@@ -103,7 +108,7 @@ class App extends Component {
             <Route exact path="/application" component={Application} />
             <Route exact path="/ForgotPassword" component={ForgotPassword} />
             <Route exact path="/verify" component={Verify} />
-             <Route exact path="/changepassword" component={Changepassword} /> 
+            <Route exact path="/changepassword" component={Changepassword} /> 
             <Route exact path="/addnotice" component={withAuth(RoleAuth(Addnotification))}/>
             <Route exact path="/updatenotice" component={withAuth(RoleAuth(UpdateNotification))}/>
             <Route exact path="/deletenotice" component={withAuth(RoleAuth(DeleteNotification))}/>
@@ -114,15 +119,19 @@ class App extends Component {
             <Route  path="/newnav" component={NewNav} />
             <Route exact path ="/resume" component={Resume}/>
             <Route exact path ="/pending" component={Pending}/>
-            <Route exact path ="/getplacement" component={Getplace}/>
-            <Route exact path ="/getnotification" component={Adminnotification}/>
-            <Route exact path = "/admindashboard" component={AdminDashboard} />
-            {/*<Route  path="/VerifyForm" component={VerifyForm} />*/}
-
+            <Route exact path ="/getplacement" component={withAuth(RoleAuth(Getplace))}/>
+            <Route exact path ="/getnotification" component={withAuth(RoleAuth(Adminnotification))}/>
+            <Route exact path = "/admindashboard" component={withAuth(RoleAuth(AdminDashboard))} />
+            <Route exact path = "/deleteform" component={withAuth(RoleAuth(Deleteform))}/>
+            <Route exact path="/Viewform" component={withAuth(RoleAuth(Viewform))} />
+            <Route exact path="/postplacement" component={withAuth(RoleAuth(Postplace))}/>
+            <Route exact path="/alladmins" component={withAuth(RoleAuth(AllAdmin))}/>
+            <Route exact path="/addadmin" component={withAuth(RoleAuth(Createadmin))}/>
+            <Route exact path="/verifyform" component={withAuth(RoleAuth(VerifyForm))}/>
+            <Route exact path="/payment" component={Payment}/>
+            <Route exact path="/contactus" component={ContactForm}/>
           </Switch>
         </div>
-        
-        {/* <AcademicCard /> */}
         </div>
         </div>
        

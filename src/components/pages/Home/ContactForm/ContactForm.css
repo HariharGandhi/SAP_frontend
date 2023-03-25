@@ -1,6 +1,6 @@
 
 
-form {
+#contactform form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,13 +8,13 @@ form {
     margin: 20px;
   }
   
-  label {
+  #contactform  label {
     margin: 10px;
     display: flex;
     flex-direction: column;
   }
   
-  input, select {
+  #contactform  input, select {
     padding: 10px;
     margin: 10px;
     border: none;
@@ -24,11 +24,11 @@ form {
     font-size: 16px;
   }
   
-  select {
+  #contactform  select {
     width: 320px;
   }
   
-  button[type="submit"] {
+  #contactform  button[type="submit"] {
     padding: 10px;
     margin: 10px;
     border: none;
@@ -39,11 +39,11 @@ form {
     cursor: pointer;
   }
   
-  button[type="submit"]:hover {
+  #contactform  button[type="submit"]:hover {
     background-color: #0062cc;
   }
   
-  input:focus, select:focus {
+  #contactform  input:focus, select:focus {
     outline: none;
     box-shadow: 0 0 5px #007bff;
   }
