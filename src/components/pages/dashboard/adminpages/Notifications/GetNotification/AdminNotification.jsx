@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
+import NewSidebar from "../../../../../Navbar/Navbar";
 import Modal from "../../../Modal";
 
 const Adminnotification = () => {
@@ -31,10 +32,12 @@ const Adminnotification = () => {
             console.log("Error");
           }
         })();
+        return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
       }, []);
 
         return (
             <>
+            <NewSidebar />
             <div className="container">
             <label>
           Module :

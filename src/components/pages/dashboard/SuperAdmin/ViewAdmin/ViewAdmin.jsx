@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../Modal";
 import Adminservice from "../../../../../services/admin.service";
+import NewSidebar from "../../../../Navbar/Navbar";
 //import "./ViewAdmin.css"
 const AllAdmin = () => {
   //const [did, setdid] = useState(0);
@@ -121,9 +122,10 @@ const AllAdmin = () => {
     })();
   },[stat]);
 
-  return (
+  return (<>
+    <NewSidebar />
     <div className="box">
-      <div className="table-nav" style={{ display: "block" }}>
+      <div className={sessionStorage.getItem('sidebar')==="true"?"table-nav vform":"table-nav"} style={{ display: "block" }}>
         <input
           className="table-search"
           type="text"
@@ -339,7 +341,7 @@ const AllAdmin = () => {
           </Modal>
         )}
       </div>
-    </div>
+    </div></>
   );
 };
 export default AllAdmin;

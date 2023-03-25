@@ -33,12 +33,13 @@ class AuthService {
 
   logout() {
     return axios.post(API_URL + "signout").then((res)=>{
-    localStorage.removeItem('token');
-      localStorage.removeItem('role');
-      localStorage.removeItem("user");
-      localStorage.removeItem("username");
-      localStorage.removeItem('email');
-      localStorage.removeItem('id');
+    // localStorage.removeItem('token');
+    //   localStorage.removeItem('role');
+    //   localStorage.removeItem("user");
+    //   localStorage.removeItem("username");
+    //   localStorage.removeItem('email');
+    //   localStorage.removeItem('id');
+    localStorage.clear()
       window.location.href = "/home";
     })
   }

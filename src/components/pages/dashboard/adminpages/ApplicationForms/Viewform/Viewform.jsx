@@ -4,7 +4,7 @@ import Modal from "../../../Modal";
 import VerifyForm from "../Verifyform";
 import "./Viewform.css"
 
-const Viewform = (right, a) => {
+const Viewform = () => {
   const [did, setdid] = useState(0);
   const [stat, setstat] = useState("");
   const [title, settitle] = useState("");
@@ -151,10 +151,11 @@ const Viewform = (right, a) => {
         console.log("Error");
       }
     })();
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
   }, []);
   return (
     <>
-      <div className="table-nav" id="tab">
+      <div className={sessionStorage.getItem('sidebar')==="true"?"table-nav vform":"table-nav"} id="tab" >
         <div className="container form-group " id="tab">
         <label>
           Student Name :

@@ -32,12 +32,15 @@ export default function Navbarforhome() {
           </li>*/}
         </div> 
 
-        <div className="right-nav" style={{marginLeft : "800px"}}>
+        <div className="right-nav" style={{marginLeft : "700px"}}>
           <li>
             <a href="/login">Login</a>
           </li>
           <li>
             <a href="/register">Register</a>
+          </li>
+          <li>
+            <a href="/contactus">ContactUs</a>
           </li>
 
           <input className="nav-input" type="text" placeholder="Search" />

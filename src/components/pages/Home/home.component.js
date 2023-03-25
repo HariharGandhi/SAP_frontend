@@ -26,26 +26,26 @@ export default class Home extends Component {
         
         <Navbarforhome/>
 
-        <div className="row">
+        {/* <div className="row">
             <div className="col-6">
                 
             </div>
-        </div>
+        </div> */}
 
 
       <div className="container">
-        <header className="jumbotron">
+        {/* <header className="jumbotron">
          
         </header>
       
-        {/* <Body /> */}
+        <Body /> */}
         <NewBody/>
-        <hr data-aos="fade-right" data-aos-delay="300" data-aos-offset="120"/>
+        <hr data-aos="fade-right" data-aos-delay="120" data-aos-offset="120"/>
         <SAPvideo/>
-        <hr data-aos="fade-right" data-aos-delay="300" data-aos-offset="120"/>
+        <hr data-aos="fade-right" data-aos-delay="120" data-aos-offset="120"/>
 
         <ViewDomain />
-        <hr data-aos="fade-right" data-aos-delay="300" data-aos-offset="120"/>
+        <hr data-aos="fade-right" data-aos-delay="120" data-aos-offset="120"/>
       </div>
       <Placment/>
 

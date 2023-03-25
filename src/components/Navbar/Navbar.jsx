@@ -50,7 +50,14 @@ const SidebarWrap = styled.div`
 const NewSidebar = () => {
   const [sidebar, setSidebar] = useState(false);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const showSidebar = () => {
+    setSidebar(!sidebar);
+    // if(sidebar ? sessionStorage.setItem('sidebar',JSON.stringify(false)):(
+    //   sessionStorage.clear(),
+    //   sessionStorage.setItem('sidebar',JSON.stringify(true))
+    //   ));
+    sessionStorage.setItem('sidebar',JSON.stringify(!sidebar))
+    }
   const [not, setnot] = useState(false);
   function Onlogout() {
     AuthService.logout();
