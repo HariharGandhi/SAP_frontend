@@ -74,7 +74,7 @@ export default class Register extends Component {
       mobile:"",
       password: "",
       confirm_password: "",
-      status:"inactive",
+      status:"active",
       successful: false,
       message: ""
     };

@@ -10,6 +10,7 @@ import {Link } from "react-router-dom";
 
 
 const Application = () => {
+  let userId= localStorage.getItem('id');
   const submitHandler = (event) => {
     event.preventDefault();
         
@@ -22,7 +23,10 @@ const Application = () => {
             passoutYear : event.target.passoutYear.value,
             sapModule : event.target.sapModule.value,
             specialization : event.target.specialization.value,
-            studentType : event.target.studentType.value}
+            studentType : event.target.studentType.value,
+            applicationFromStatus:"initial",
+            isQueryInApplication:false,
+            userId: userId }
 
         if(attributes.adhaarCard !== "" && 
         attributes.branch !== "" &&
@@ -127,7 +131,7 @@ const Application = () => {
             </div>
 
             <button className="btn-app" >
-              <Link to={"/pending"}>Submit</Link>
+              <Link >Submit</Link>
             </button>
           </div>
         </div>
