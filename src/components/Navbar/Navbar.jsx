@@ -5,6 +5,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarAdminData } from "./SidebarAdminData";
 import { SidebarStudentData } from "./SidebarStudentData";
+import { SidebarSuperAdminData } from "./SidebarSuperAdminData";
 import SubMenu from "./SubMenu";
 import Modal from "../pages/dashboard/Modal";
 import { IconContext } from "react-icons/lib";
@@ -138,6 +139,13 @@ const NewSidebar = () => {
             <NavIcon to="#">
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
+            {localStorage.getItem("role") === "ROLE_SUPER" && (
+              <>
+                {SidebarSuperAdminData.map((item, index) => {
+                  return <SubMenu item={item} key={index} />;
+                })}
+              </>
+            )}
             {localStorage.getItem("role") === "ROLE_ADMIN" && (
               <>
                 {SidebarAdminData.map((item, index) => {

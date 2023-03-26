@@ -108,7 +108,7 @@ return (
                   {ele.email}
                 </td>
                 <td style={{ width: "50px", padding: "2px" }}>
-                  {ele.isQueryInApplication}
+                  {ele.isQueryInApplication?"Yes":"No"}
                 </td>
                 <td style={{ width: "100px", padding: "2px" }}>{ele.name}</td>
                 <td style={{ width: "50px", padding: "2px" }}>

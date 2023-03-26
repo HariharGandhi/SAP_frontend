@@ -165,19 +165,7 @@ const Viewform = () => {
           value={search}
           placeholder="Enter Name to search"
           onChange={(e) => setSearch(e.target.value)}
-          style={{border: '1px'}}
-        /></label>
-        <label>
-          Module :
-        <input
-          className="table-search"
-          type="text"
-          value={searchmod}
-          placeholder="Enter module to search"
-          onChange={(e) => setsearchmod(e.target.value)} 
-          style={{border: '1px'}}
-        /></label></div>
-        
+        />
         <select className="table-drop" value={searchdept} onChange={(e) => setsearchdept(e.target.value)}>
           <option value="">Department</option>
           <option value="comp">Computer</option>
@@ -186,7 +174,20 @@ const Viewform = () => {
           <option value="ece">ECE</option>
           <option value="civil">Civil</option>
         </select>
-        <button onClick={()=> clearsearch()}>Clear</button>
+        </label>
+        <label>
+          Module :
+        <input
+          className="table-search"
+          type="text"
+          value={searchmod}
+          placeholder="Enter module to search"
+          onChange={(e) => setsearchmod(e.target.value)} 
+          style={{marginLeft:'60px'}}
+        />
+        <button onClick={()=> clearsearch()} style={{width:'90px',marginLeft:'100px'}}>Clear</button>
+        </label>
+        </div>
         <table>
           <thead>
             <tr className="main-table top-col-table" id="tab">

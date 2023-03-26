@@ -65,4 +65,9 @@ export const SidebarAdminData = [
 	},
 	],
 },
+{
+	title: "Contact Forms",
+	path:"/contactformdata",
+
+},
 ];
