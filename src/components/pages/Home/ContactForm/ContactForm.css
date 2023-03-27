@@ -1,6 +1,4 @@
-
-
-#contactform form {
+/* #contactform form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,5 +44,84 @@
   #contactform  input:focus, select:focus {
     outline: none;
     box-shadow: 0 0 5px #007bff;
+  }
+  .image-container, .form-container{
+    width: 50%;
+  }
+
+.ctcform-container{
+  display: flex;
+}
+
+
+   */
+
+   #contactform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  #contactform form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin: 20px; */
+    width: 100%;
+  }
+  
+  #contactform label {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #contactform input,
+  #contactform select {
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+  }
+  
+  #contactform select {
+    max-width: 320px;
+  }
+  
+  #contactform button[type="submit"] {
+    padding: 5px 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #contactform button[type="submit"]:hover {
+    background-color: #0062cc;
+  }
+  
+  #contactform input:focus,
+  #contactform select:focus {
+    outline: none;
+    box-shadow: 0 0 5px #007bff;
+  }
+  
+  .image-container,
+  .form-container {
+    flex: 1;
+  }
+  
+  .ctcform-container {
+    display: flex;
+    flex-wrap: wrap;
   }
   

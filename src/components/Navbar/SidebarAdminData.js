@@ -46,7 +46,7 @@ export const SidebarAdminData = [
 },
 {
 	title: "Notifications",
-	path:"/admindashboard",
+	path:"/getnotification",
 	iconClosed: <RiIcons.RiArrowDownSFill />,
 	iconOpened: <RiIcons.RiArrowUpSFill />,
 
