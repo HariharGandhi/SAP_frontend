@@ -39,7 +39,7 @@ const Application = () => {
         Axios.post("http://localhost:9190/api/applicationForm" ,attributes )
         .then(response =>{
             console.log(response);
-            window.location.href="/logindone"
+            window.location.href="/pending"
            
         })
         .catch((error) => {
@@ -126,8 +126,8 @@ const Application = () => {
               />
             </div>
 
-            <button className="btn-app" >
-              <Link to={"/pending"}>Submit</Link>
+            <button className="btn-app" onClick={()=> submitHandler()} >
+              Submit
             </button>
           </div>
         </div>

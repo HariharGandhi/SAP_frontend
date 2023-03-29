@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import NewSidebar from "../../../../../Navbar/Navbar";
 import "./UpdateNotification.css"
@@ -84,6 +84,11 @@ const UpdateNotification = () => {
     setnm(event.target.value);
   };
 
+
+  useEffect(() => {
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+  });
+
   return (
     <div >
       <NewSidebar />
@@ -104,7 +109,8 @@ const UpdateNotification = () => {
               onChange={(e) => handleid(e)}
             />
           </label>
-          
+          <br />
+          <br /><br />
           <label>
             {" "}
             Enter Name
@@ -170,7 +176,7 @@ const UpdateNotification = () => {
               onChange={(e) => handlefile(e)}
             />
           </label>
-          <br />
+          <br /><br /><br />
           <label>
             {" "}
             Enter Title
@@ -181,7 +187,7 @@ const UpdateNotification = () => {
               onChange={(e) => handletitle(e)}
             />
           </label>
-          <br />
+          <br /><br />
           <label>
             {" "}
             Enter Status
