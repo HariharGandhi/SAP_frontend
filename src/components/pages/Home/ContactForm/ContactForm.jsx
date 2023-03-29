@@ -9,12 +9,14 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setFormStatus('Submitting...')
-    const { name, email, mobileNumber, module } = e.target.elements
+    const StatuS = 'active'
+    const { name, email, mobileNumber, module, } = e.target.elements
     let contactForm = {
       name: name.value,
       email: email.value,
       mobileNumber: mobileNumber.value,
       module: module.value,
+      status: StatuS
     }
 
     fetch('http://localhost:9190/api/auth/postcontactus', {

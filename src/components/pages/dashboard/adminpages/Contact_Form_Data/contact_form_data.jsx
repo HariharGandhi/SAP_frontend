@@ -18,15 +18,14 @@ function ContactUsTable() {
     <>
       <NewSidebar />
       <div
-        // className={
-        //   sessionStorage.getItem("sidebar") === "true"
-        //     ? "table-nav vform"
-        //     : "table-nav"
-        // }
-        style={{display:'flex',justifyContent:'center',marginTop:'20px'}}
+        className={
+          sessionStorage.getItem("sidebar") === "true"
+            ? "table-nav vform"
+            : "table-nav"
+        }
         id="contactus"
       >
-        <table>
+        <table style={{width:'100%',marginTop:'25px'}}>
           <thead>
             <tr className="main-table top-col-table">
               {/*<th>Student_id</th>*/}
@@ -42,19 +41,19 @@ function ContactUsTable() {
             {contactUsData.map((ele) => {
                 return (
                   <tr key={ele.id} className="main-table">
-                    <td style={{ width: "100px", padding: "2px" }}>
+                    <td >
                       {ele.name}
                     </td>
-                    <td style={{ width: "120px", padding: "2px" }}>
+                    <td >
                       {ele.email}
                     </td>
-                    <td style={{ width: "100px", padding: "2px" }}>
+                    <td >
                       {ele.mobileNumber}
                     </td>
-                    <td style={{ width: "70px", padding: "2px" }}>
+                    <td >
                       {ele.module}
                     </td>
-                    <td style={{ width: "70px", padding: "2px" }}>
+                    <td >
                       {ele.status}
                     </td>
                   </tr>

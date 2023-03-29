@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../../Modal";
 import VerifyForm from "../Verifyform";
-import "./Viewform.css"
+import "./Viewform.css";
 
 const Viewform = () => {
   const [did, setdid] = useState(0);
@@ -15,10 +15,10 @@ const Viewform = () => {
   const [rname, setrname] = useState("");
   const [rdet, setrdet] = useState("");
   const [uid, setuid] = useState(0);
-  const [query,setquery] = useState(false);
+  const [query, setquery] = useState(false);
   const [DeleteModal, setDeleteModal] = useState(false);
   const [VerifyModal, setVerifyModal] = useState(false);
-  const [UpdateModal,setUpdateModal] = useState(false)
+  const [UpdateModal, setUpdateModal] = useState(false);
   const handleCancel = () => {
     // hide confirmation modal
     setDeleteModal(false);
@@ -27,8 +27,8 @@ const Viewform = () => {
   };
   const Query = () => {
     setquery(true);
-    Addquery()
-  }
+    Addquery();
+  };
   const handleConfirm = () => {
     axios
       .delete(`http://localhost:9190/api/deleteapplicationform/${did}`)
@@ -41,43 +41,42 @@ const Viewform = () => {
   const handleVerify = () => {
     setVerifyModal(false);
     setUpdateModal(true);
-    
   };
-  const handleUpdate = () =>{
-    const Uid = localStorage.getItem('Userid')
-    console.log(query)
+  const handleUpdate = () => {
+    const Uid = localStorage.getItem("Userid");
+    console.log(query);
     axios
       .put(
         `http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}/${query}`
       )
       .then((res) => {
-        console.log(query,"new")
-        setquery(false)
-        setstat("")
+        console.log(query, "new");
+        setquery(false);
+        setstat("");
         setUpdateModal(false);
         window.location.reload();
       });
-  }
-  const handleUpdatequery = (q) =>{
-    const Uid = localStorage.getItem('Userid')
+  };
+  const handleUpdatequery = (q) => {
+    const Uid = localStorage.getItem("Userid");
     //const q = true
     axios
       .put(
         `http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}/${q}`
       )
       .then((res) => {
-        setquery(false)
-        setstat("")
+        setquery(false);
+        setstat("");
         setUpdateModal(false);
-        localStorage.removeItem('Userid')
+        localStorage.removeItem("Userid");
         window.location.reload();
       });
-  }
+  };
   const clearsearch = () => {
     setSearch("");
     setsearchdept("");
-    setsearchmod("")
-  }
+    setsearchmod("");
+  };
   const Modalview = (ele) => {
     setdid(ele.id);
     setDeleteModal(true);
@@ -85,7 +84,7 @@ const Viewform = () => {
   const viewModal = (ele) => {
     const d = ele.id;
     setdid(d);
-    localStorage.setItem('Userid',d)
+    localStorage.setItem("Userid", d);
     setstat(ele.applicationFromStatus);
     setmail(ele.email);
     setnum(ele.contactNumber);
@@ -111,7 +110,7 @@ const Viewform = () => {
         }
       )
       .then((res) => {
-        setquery(true)
+        setquery(true);
         handleUpdatequery(true);
       });
   };
@@ -132,8 +131,8 @@ const Viewform = () => {
   };
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
-  const [searchmod,setsearchmod] = useState("")
-  const [searchdept,setsearchdept] = useState("")
+  const [searchmod, setsearchmod] = useState("");
+  const [searchdept, setsearchdept] = useState("");
   // const OnDelete = (e) => {
   //   axios.post(`http://localhost:9190/api/deleteapplicationform/${e}`)
   //   .then()
@@ -151,44 +150,60 @@ const Viewform = () => {
         console.log("Error");
       }
     })();
-    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+    return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
   }, []);
   return (
     <>
-      <div className={sessionStorage.getItem('sidebar')==="true"?"table-nav vform":"table-nav"} id="tab" >
+      <div
+        className={
+          sessionStorage.getItem("sidebar") === "true"
+            ? "table-nav vform"
+            : "table-nav"
+        }
+        id="tab"
+      >
         <div className="container form-group " id="tab">
-        <label>
-          Student Name :
-          <input
-          className="table-search"
-          type="text"
-          value={search}
-          placeholder="Enter Name to search"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <select className="table-drop" value={searchdept} onChange={(e) => setsearchdept(e.target.value)}>
-          <option value="">Department</option>
-          <option value="comp">Computer</option>
-          <option value="it">IT</option>
-          <option value="mech">Mechanical</option>
-          <option value="ece">ECE</option>
-          <option value="civil">Civil</option>
-        </select>
-        </label>
-        <label>
-          Module :
-        <input
-          className="table-search"
-          type="text"
-          value={searchmod}
-          placeholder="Enter module to search"
-          onChange={(e) => setsearchmod(e.target.value)} 
-          style={{marginLeft:'60px'}}
-        />
-        <button onClick={()=> clearsearch()} style={{width:'90px',marginLeft:'100px'}}>Clear</button>
-        </label>
+          <label>
+            Student Name :
+            <input
+              className="table-search"
+              type="text"
+              value={search}
+              placeholder="Enter Name to search"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <select
+              className="table-drop"
+              value={searchdept}
+              onChange={(e) => setsearchdept(e.target.value)}
+            >
+              <option value="">Department</option>
+              <option value="comp">Computer</option>
+              <option value="it">IT</option>
+              <option value="mech">Mechanical</option>
+              <option value="ece">ECE</option>
+              <option value="civil">Civil</option>
+            </select>
+          </label>
+          <label>
+            Module :
+            <input
+              className="table-search"
+              type="text"
+              value={searchmod}
+              placeholder="Enter module to search"
+              onChange={(e) => setsearchmod(e.target.value)}
+              style={{ marginLeft: "60px" }}
+            />
+            <button
+              onClick={() => clearsearch()}
+              style={{ width: "90px", marginLeft: "20px" }}
+            >
+              Clear
+            </button>
+          </label>
         </div>
-        <table>
+        <table style={{ width: "100%", marginTop: "25px" }}>
           <thead>
             <tr className="main-table top-col-table" id="tab">
               {/*<th>Student_id</th>*/}
@@ -214,66 +229,48 @@ const Viewform = () => {
               .filter((item) => {
                 return search.toLowerCase() === ""
                   ? item
-                  : item.name.toLowerCase().includes(search)
-              }).filter((item) => {
+                  : item.name.toLowerCase().includes(search);
+              })
+              .filter((item) => {
                 return searchmod.toLowerCase() === ""
                   ? item
-                  : item.sapModule.toLowerCase().includes(searchmod)
-                }).filter((item) => {
-                  return searchdept.toLowerCase() === ""
-                    ? item
-                    : item.branch.toLowerCase().includes(searchdept)
-                  }).map((ele) => {
+                  : item.sapModule.toLowerCase().includes(searchmod);
+              })
+              .filter((item) => {
+                return searchdept.toLowerCase() === ""
+                  ? item
+                  : item.branch.toLowerCase().includes(searchdept);
+              })
+              .map((ele) => {
                 return (
                   <tr key={ele.id} className="main-table">
-                    <td style={{ width: "100px", padding: "2px" }}>
-                      {ele.adhaarCard}
-                    </td>
-                    <td style={{ width: "60px", padding: "2px" }}>
-                      {ele.applicationFromStatus}
-                    </td>
-                    <td style={{ width: "60px", padding: "2px" }}>
-                      {ele.branch}
-                    </td>
-                    <td style={{ width: "120px", padding: "2px" }}>
-                      {ele.collegeEmail}
-                    </td>
-                    <td style={{ width: "100px", padding: "2px" }}>
-                      {ele.contactNumber}
-                    </td>
-                    <td style={{ width: "120px", padding: "2px" }}>
-                      {ele.email}
-                    </td>
-                    <td style={{ width: "50px", padding: "2px" }}>
-                      {ele.isQueryInApplication?"Yes":"No"}
-                    </td>
-                    <td style={{ width: "100px", padding: "2px" }}>
-                      {ele.name}
-                    </td>
-                    <td style={{ width: "50px", padding: "2px" }}>
-                      {ele.passoutYear}
-                    </td>
-                    <td style={{ width: "50px", padding: "2px" }}>
-                      {ele.sapModule}
-                    </td>
-                    <td style={{ width: "100px", padding: "2px" }}>
-                      {ele.specialization}
-                    </td>
-                    <td style={{ width: "100px", padding: "2px" }}>
-                      {ele.studentType}
-                    </td>
-                    <td style={{ width: "100px", padding: "2px" }}>
-                      {ele.uploadImage}
-                    </td>
-                    <td style={{ width: "100px", padding: "2px" }}>
+                    <td>{ele.adhaarCard}</td>
+                    <td>{ele.applicationFromStatus}</td>
+                    <td>{ele.branch}</td>
+                    <td>{ele.collegeEmail}</td>
+                    <td>{ele.contactNumber}</td>
+                    <td>{ele.email}</td>
+                    <td>{ele.isQueryInApplication ? "Yes" : "No"}</td>
+                    <td>{ele.name}</td>
+                    <td>{ele.passoutYear}</td>
+                    <td>{ele.sapModule}</td>
+                    <td>{ele.specialization}</td>
+                    <td>{ele.studentType}</td>
+                    <td>{ele.uploadImage}</td>
+                    <td>
                       <button
-                        style={{ marginRight: "5px" }}
+                        style={{ marginRight: "5px", cursor: "pointer" }}
                         onClick={() => viewModal(ele)}
+                        title="Verify Form"
                       >
                         <i className="far fa-edit"></i>
                       </button>
                       {"    "}
-                      <button onClick={() => Modalview(ele)}>
+                      <button
+                        onClick={() => Modalview(ele)}
+                        title="Delete Form"
+                        style={{ marginRight: "5px", cursor: "pointer" }}
+                      >
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
                     </td>
@@ -306,132 +303,153 @@ const Viewform = () => {
           </Modal>
         )}
         {VerifyModal && (
-          <Modal style={{justifyContent:'center',display:'flex'}}>
-            <VerifyForm />
-            <div>
-            <button className="btn-md" onClick={handleVerify} style={{marginRight:"50px",cursor:"pointer",width:"100px",height:"25px"}}>Verify</button>
-            <button className="btn-md" onClick={handleCancel} style={{cursor:"pointer",width:"100px",height:"25px"}}>Cancel</button>
+          <Modal style={{ justifyContent: "center", display: "flex",alignItems:"center" }}>
+            <VerifyForm style={{justifyContent: "center", display: "flex",alignItems:"center",margin:"auto"}}/>
+            <div style={{justifyContent: "center", display: "flex",alignItems:"center"}}>
+              <button
+                className="btn-md"
+                onClick={handleVerify}
+                style={{
+                  marginRight: "20px",
+                  cursor: "pointer",
+                  width: "100px",
+                  height: "25px",
+                }}
+              >
+                Verify
+              </button>
+              <button
+                className="btn-md"
+                onClick={handleCancel}
+                style={{ cursor: "pointer", width: "100px", height: "25px" }}
+              >
+                Cancel
+              </button>
             </div>
-            
           </Modal>
         )}
         {UpdateModal && (
           <Modal>
             <div>
-      <div>
-              <h2>Change the status of this application to :</h2>
-              <dropdown>
-                <select name="" id="" onChange={(e) => setstat(e.target.value)}>
-                <option value="">Select status</option>
-                <option value="verified">Verified</option>
-                <option value="notverified">Not Verified</option>
-                <option value="inquery">In Query</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-                </select>
-              </dropdown>
-              {stat==="inquery" && 
-              <>
               <div>
-              <h2>Enter Query details: </h2>
-              <form>
-                <label>
-                  {" "}
-                  Enter Query Title
-                  <input
-                    type="string"
-                    value={title}
-                    name="Title"
-                    onChange={(e) => handletitle(e)}
-                  />
-                </label>
-                <br />
-                <label>
-                  {" "}
-                  Enter Query Description
-                  <input
-                    type="string"
-                    value={desc}
-                    name="Description"
-                    onChange={(e) => handledesc(e)}
-                  />
-                </label>
-                <br />
-                <label>
-                  {" "}
-                  Enter Name of faculty to Reachout:
-                  <input
-                    type="string"
-                    value={rname}
-                    name="Name of faculty"
-                    onChange={(e) => handlername(e)}
-                  />
-                </label>
-                <br />
-                <label>
-                  {" "}
-                  Enter Faculty details:
-                  <input
-                    type="string"
-                    value={rdet}
-                    name="Faculty designation"
-                    onChange={(e) => handlerdet(e)}
-                  />
-                </label>
-                <br />
-                <label>
-                  {" "}
-                  Enter Contact no. of Faculty:
-                  <input
-                    type="string"
-                    value={ctc}
-                    name="Contact"
-                    onChange={(e) => handlectc(e)}
-                  />
-                </label>
-                <br />
-                <button
-                  type="submit"
-                  onClick={() => Query()}
-                  className="btn btn-outline-white"
-                  style={{
-                    margin: "auto",
-                    cursor: "pointer",
-                  }}
-                >
-                  {" "}
-                  Post Query{" "}
-                </button>
-                <button
-                  className="btn btn-outline-white"
-                  onClick={handleCancel}
-                  style={{ marginLeft: "10px", cursor: "pointer" }}
-                >
-                  cancel
-                </button>
-              </form>
+                <h2>Change the status of this application to :</h2>
+                <dropdown>
+                  <select
+                    name=""
+                    id=""
+                    onChange={(e) => setstat(e.target.value)}
+                  >
+                    <option value="">Select status</option>
+                    <option value="verified">Verified</option>
+                    <option value="notverified">Not Verified</option>
+                    <option value="inquery">In Query</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                  </select>
+                </dropdown>
+                {stat === "inquery" && (
+                  <>
+                    <div>
+                      <h2>Enter Query details: </h2>
+                      <form>
+                        <label>
+                          {" "}
+                          Enter Query Title
+                          <input
+                            type="string"
+                            value={title}
+                            name="Title"
+                            onChange={(e) => handletitle(e)}
+                          />
+                        </label>
+                        <br />
+                        <label>
+                          {" "}
+                          Enter Query Description
+                          <input
+                            type="string"
+                            value={desc}
+                            name="Description"
+                            onChange={(e) => handledesc(e)}
+                          />
+                        </label>
+                        <br />
+                        <label>
+                          {" "}
+                          Enter Name of faculty to Reachout:
+                          <input
+                            type="string"
+                            value={rname}
+                            name="Name of faculty"
+                            onChange={(e) => handlername(e)}
+                          />
+                        </label>
+                        <br />
+                        <label>
+                          {" "}
+                          Enter Faculty details:
+                          <input
+                            type="string"
+                            value={rdet}
+                            name="Faculty designation"
+                            onChange={(e) => handlerdet(e)}
+                          />
+                        </label>
+                        <br />
+                        <label>
+                          {" "}
+                          Enter Contact no. of Faculty:
+                          <input
+                            type="string"
+                            value={ctc}
+                            name="Contact"
+                            onChange={(e) => handlectc(e)}
+                          />
+                        </label>
+                        <br />
+                        <button
+                          type="submit"
+                          onClick={() => Query()}
+                          className="btn btn-outline-white"
+                          style={{
+                            margin: "auto",
+                            cursor: "pointer",
+                          }}
+                        >
+                          {" "}
+                          Post Query{" "}
+                        </button>
+                        <button
+                          className="btn btn-outline-white"
+                          onClick={handleCancel}
+                          style={{ marginLeft: "10px", cursor: "pointer" }}
+                        >
+                          cancel
+                        </button>
+                      </form>
+                    </div>
+                  </>
+                )}
+                {stat !== "inquery" && (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "right",
+                      alignItems: "right",
+                    }}
+                  >
+                    <button
+                      className="btn-md"
+                      onClick={handleUpdate}
+                      style={{ marginRight: "10px" }}
+                    >
+                      Update
+                    </button>
+                    <button onClick={handleCancel}>Cancel</button>
+                  </div>
+                )}
+              </div>
             </div>
-              </>}
-              {stat!=="inquery" && 
-              <div
-              style={{
-                display: "flex",
-                justifyContent: "right",
-                alignItems: "right",
-              }}
-            >
-              <button
-                className="btn-md"
-                onClick={handleUpdate}
-                style={{ marginRight: "10px" }}
-              >
-                Update
-              </button>
-              <button onClick={handleCancel}>Cancel</button>
-            </div>}
-              
-            </div>
-      </div>
           </Modal>
         )}
       </div>

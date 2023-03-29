@@ -1,7 +1,4 @@
-.notify label{
-    margin-bottom: 10px;
-}
-#ADDNotice .container {
+#UpdateNotice .container {
     margin: 0 auto;
     max-width: 600px;
     padding: 20px;
@@ -10,26 +7,26 @@
     border-radius: 5px;
   }
   
-#ADDNotice  form {
+#UpdateNotice  form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
   
-#ADDNotice  input{
+#UpdateNotice  input{
     border: 1px solid #0b0b0b;
     border-radius: 4px;
     width: 600px;
   }
   
-#ADDNotice  label {
+#UpdateNotice  label {
     display: block;
     font-weight: bold;
     margin-left: 20px;
   }
   
-#ADDNotice  button {
+#UpdateNotice  button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -43,7 +40,7 @@
     border-radius: 5px;
   }
   
-#ADDNotice  button:hover {
+#UpdateNotice  button:hover {
     background-color: #3e8e41;
   }
   

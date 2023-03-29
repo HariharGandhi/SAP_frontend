@@ -12,6 +12,7 @@ import { IconContext } from "react-icons/lib";
 import AuthService from "../../services/auth.service";
 import ReactBellIcon from "react-bell-icon";
 import "./Navbar.css"
+import Notification from "../pages/dashboard/Studentdashboard/notifications";
 
 const Nav = styled.div`
   background: #15171c;
@@ -20,6 +21,9 @@ const Nav = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  @media screen and (max-width: 960px) {
+    justify-content: space-between;
+  }
 `;
 
 const NavIcon = styled(Link)`
@@ -29,6 +33,10 @@ const NavIcon = styled(Link)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  @media screen and (max-width: 960px) {
+    margin-left: 1rem;
+  }
 `;
 
 const SidebarNav = styled.nav`
@@ -42,6 +50,12 @@ const SidebarNav = styled.nav`
   left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
+
+  @media screen and (max-width: 960px) {
+    width: 80%;
+    left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
+    transition: 350ms;
+  }
 `;
 
 const SidebarWrap = styled.div`
@@ -68,6 +82,7 @@ const NewSidebar = () => {
     setnot(false);
   };
   //const Title = localStorage.getItem("role").slice(5);
+  
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -113,8 +128,9 @@ const NewSidebar = () => {
             </h2>
           )}
 
-          <div className="nav-btns"style={{ marginLeft: "650px" }}><ul>
-            {localStorage.getItem("role") === "ROLE_STUDENT" && (
+          <div className="nav-btns"style={{ marginLeft: "650px" }}>
+            <ul>
+            
               <li>
                 <button className="nav-button" onClick={() => setnot(true)}>
                   <ReactBellIcon
@@ -125,7 +141,7 @@ const NewSidebar = () => {
                   />
                 </button>
               </li>
-            )}
+            
             <li>
               <button className="nav-button" onClick={() => Onlogout()}>
                 {" "}
@@ -167,7 +183,7 @@ const NewSidebar = () => {
         <>
           <Modal>
             <div>
-              <h2>Notification</h2>
+              <Notification />
               <button onClick={handleCancel}>Close</button>
             </div>
           </Modal>

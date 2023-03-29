@@ -1,6 +1,8 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import NewSidebar from "../../../../../Navbar/Navbar";
+import "./UpdateNotification.css"
 //import { useHistory } from 'react-router-dom';
 const UpdateNotification = () => {
   //const history = useHistory();
@@ -83,14 +85,14 @@ const UpdateNotification = () => {
   };
 
   return (
-    <div>
+    <div >
+      <NewSidebar />
       <div
-        className="container"
-        style={{ display: "flex", justifyContent: "center" }}
+        className="container" id="UpdateNotice"
+        style={{ display: "flex", justifyContent: "center" }} 
       >
-        <form>
+        <form >
           <h1>Enter the details to update</h1>
-          <br />
           <br />
           <label>
             {" "}
@@ -102,7 +104,7 @@ const UpdateNotification = () => {
               onChange={(e) => handleid(e)}
             />
           </label>
-          <br />
+          
           <label>
             {" "}
             Enter Name
@@ -208,7 +210,8 @@ const UpdateNotification = () => {
         type="submit"
         onClick={() => updatenotice()}
         className="btn btn-outline-white"
-        style={{ display: "flex", justifyContent: "center", margin: "auto" }}
+        style={{ display: "flex", justifyContent: "center", margin: "auto", marginBottom:'10px' }}
+        id="UpdateNotice"
       >
         {" "}
         Update notification{" "}

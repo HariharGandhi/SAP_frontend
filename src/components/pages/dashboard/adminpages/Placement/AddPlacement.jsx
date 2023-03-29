@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
 import NewSidebar from '../../../../Navbar/Navbar';
 import "./AddPlacement.css"
@@ -37,6 +37,9 @@ const Addplacement = () => {
       console.log(err)
     })
 }
+useEffect(() => {
+  return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+});
     return (
         <>
         <NewSidebar />

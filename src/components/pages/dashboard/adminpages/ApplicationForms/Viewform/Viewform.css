@@ -46,26 +46,26 @@
     margin-bottom: 10px;
   }
   
-  /* Media query for responsiveness 
+  /* Media query for responsiveness */
   @media screen and (max-width: 768px) {
     #tab .label {
-      width: 100%; /* make label take up full width on smaller screens 
+      width: 100%; /* make label take up full width on smaller screens */
       margin-right: 0;
     }
     
     #tab .table-search {
-      width: 100%; /* make input field take up full width on smaller screens 
+      width: 100%; /* make input field take up full width on smaller screens */
       margin-bottom: 10px;
     }
     
     #tab .select {
-      margin-bottom: 10px; /* add space below dropdown on smaller screens 
+      margin-bottom: 10px; /* add space below dropdown on smaller screens */
     }
     
     #tab .button {
-      width: 100%; /* make clear button take up full width on smaller screens 
+      width: 100%; /* make clear button take up full width on smaller screens */
     }
-  } */
+  } 
 
   #tab .main-table{
     /* display: flex; */

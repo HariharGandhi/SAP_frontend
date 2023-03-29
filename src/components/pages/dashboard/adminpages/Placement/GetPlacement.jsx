@@ -24,8 +24,8 @@ const Getplace = () => {
     <>
     <NewSidebar />
     <div className="getplace" style={{display:'flex',justifyContent:'center'}}>
-      <div className="table-nav" style={{marginTop:'10px'}}>
-        <table>
+      <div className={sessionStorage.getItem('sidebar')==="true"?"table-nav vform":"table-nav"} style={{marginTop:'20px'}}>
+        <table style={{width:'100%'}}>
           <thead>
             <tr className="main-table top-col-table">
               {/*<th>Student_id</th>*/}
@@ -43,25 +43,25 @@ const Getplace = () => {
             {Data.map((ele) => {
                 return (
                   <tr key={ele.id} className="main-table">
-                    <td style={{ width: "60px", padding: "2px" }}>
+                    <td >
                       {ele.id}
                     </td>
-                    <td style={{ width: "60px", padding: "2px" }}>
+                    <td >
                       {ele.placementpackage}
                     </td>
-                    <td style={{ width: "60px", padding: "2px" }}>
+                    <td >
                       {ele.imageUrl}
                     </td>
-                    <td style={{ width: "120px", padding: "2px" }}>
+                    <td >
                       {ele.name}
                     </td>
-                    <td style={{ width: "120px", padding: "2px" }}>
+                    <td >
                       {ele.companyname}
                     </td>
-                    <td style={{ width: "80px", padding: "2px" }}>
+                    <td >
                       {ele.module}
                     </td>
-                    <td style={{ width: "50px", padding: "2px" }}>
+                    <td >
                       {ele.placementYear}
                     </td>
                   </tr>
