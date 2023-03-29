@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import NewSidebar from "../../../../../Navbar/Navbar";
 import "./UpdateNotification.css"
 //import { useHistory } from 'react-router-dom';
 const UpdateNotification = () => {
@@ -83,6 +82,9 @@ const UpdateNotification = () => {
   const handlenotifymodule = async (event) => {
     setnm(event.target.value);
   };
+  useEffect(() => {
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+  });
 
 
   useEffect(() => {
@@ -91,14 +93,13 @@ const UpdateNotification = () => {
 
   return (
     <div >
-      <NewSidebar />
       <div
         className="container" id="UpdateNotice"
         style={{ display: "flex", justifyContent: "center" }} 
       >
         <form >
-          <h1>Enter the details to update</h1>
-          <br />
+          <h6>Enter the details to update</h6>
+          
           <label>
             {" "}
             Enter id

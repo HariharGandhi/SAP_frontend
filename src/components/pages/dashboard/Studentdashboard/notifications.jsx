@@ -24,8 +24,7 @@ const Notification = () => {
         return (
           <div className="box" key={ele.id}>
             <label>
-              {ele.title}:
-              <p>{ele.body}</p>
+              <h3>{ele.title} : {ele.body}</h3>
             </label>
             <hr />
           </div>

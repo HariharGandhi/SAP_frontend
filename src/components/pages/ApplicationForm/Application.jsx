@@ -3,8 +3,8 @@ import "./Application.css";
 import Footer from "../Footer/Footer";
 //import Navbarforapp from "../Home/Navbarforapp";
 import Axios from "axios";
-import {Link } from "react-router-dom";
-
+//import {Link } from "react-router-dom";
+import Navbarforapp from "../Home/Navbarforapp";
 
     
 
@@ -55,7 +55,7 @@ const Application = () => {
 
   return (
     <div>
-      {/* <Navbarforapp /> */}
+      <Navbarforapp />
       <form
         name="sendApplication"
         id="applicationFrom"

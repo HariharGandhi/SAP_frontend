@@ -2,24 +2,18 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
 import NewSidebar from "../../../../../Navbar/Navbar";
-import Modal from "../../../Modal";
 
 const Adminnotification = () => {
   const [Data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [searchmod, setsearchmod] = useState("");
-  const [UpdateModal, setUpdateModal] = useState(false);
+  
 
   const clearsearch = () => {
     setSearch("");
     setsearchmod("");
   };
-  const viewModal = (ele) => {
-    sessionStorage.setItem("userId", ele.userId);
-    sessionStorage.setItem("eid", ele.eid);
-    setUpdateModal(true);
-  };
-
+  
   useEffect(() => {
     (async () => {
       try {
@@ -107,14 +101,6 @@ const Adminnotification = () => {
 
                   <td style={{ width: "100px", padding: "2px" }}>
                     <button
-                      style={{ marginRight: "5px", cursor: "pointer" }}
-                      title="Edit Notice"
-                      onClick={() => viewModal(ele)}
-                    >
-                      <i className="far fa-edit"></i>
-                    </button>
-                    {"    "}
-                    <button
                       /*onClick={() => Modalview(ele)}*/ title="Delete Notice"
                       style={{ marginRight: "5px", cursor: "pointer" }}
                     >
@@ -127,11 +113,6 @@ const Adminnotification = () => {
           </tbody>
         </table>
       </div>
-      {UpdateModal && (
-        <>
-          <Modal></Modal>
-        </>
-      )}
     </>
   );
 };
