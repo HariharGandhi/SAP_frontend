@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React ,{ useEffect, useState} from "react";
 import axios from "axios";
 import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
-import "./Viewform.css";
 import Applicationformservice from "../../../../../../services/applicationformservice";
-import NewSidebar from "../../../../../Navbar/Navbar";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
-
-const Viewform = () => {
-  const [did, setdid] = useState(0);
+const VerifyForm = () => {
+    const [data, setData] = useState([]);
+    const [did, setdid] = useState(0);
   const [stat, setstat] = useState("");
   const [title, settitle] = useState("");
   const [ctc, setctc] = useState("");
@@ -23,6 +21,9 @@ const Viewform = () => {
   const [VerifyModal, setVerifyModal] = useState(false);
   const [UpdateModal, setUpdateModal] = useState(false);
   const [filtered, setfiltered] = useState(false);
+  const [search, setSearch] = useState("");
+  const [searchmod, setsearchmod] = useState("");
+  const [searchdept, setsearchdept] = useState("");
   const [filterData, setfilterData] = useState([])
   const handleCancel = () => {
     // hide confirmation modal
@@ -34,7 +35,6 @@ const Viewform = () => {
     setquery(true);
     Addquery();
   };
-
   const handleConfirm = () => {
     axios
       .delete(`http://localhost:9190/api/deleteapplicationform/${did}`)
@@ -78,28 +78,13 @@ const Viewform = () => {
         window.location.reload();
       });
   };
-  const handleSearch = () => {
-    setfiltered(true)
-    const status = ""
-    Applicationformservice.getfiltered(search,searchmod,searchdept,status)
-    .then((res)=> {
-      setfilterData(res.data.records);
-      return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-    })
-  }
-  const clearsearch = () => {
-    setSearch("");
-    setsearchdept("");
-    setsearchmod("");
-    setfiltered(false)
-  };
   const Modalview = (ele) => {
     setdid(ele.id);
     setDeleteModal(true);
   };
   const viewModal = (ele) => {
     const d = ele.userId;
-    setdid(d);
+    setdid(ele.id);
     localStorage.setItem("Userid", d);
     setstat(ele.applicationFromStatus);
     setmail(ele.email);
@@ -130,6 +115,22 @@ const Viewform = () => {
         handleUpdatequery(true);
       });
   };
+  const handleSearch = () => {
+    setfiltered(true)
+    const status = "initial"
+    Applicationformservice.getfiltered(search,searchmod,searchdept,status)
+    .then((res)=> {
+      setfilterData(res.data.records);
+    })
+  }
+  const clearsearch = () => {
+    setSearch("");
+    setsearchdept("");
+    setsearchmod("");
+    setfiltered(false)
+  };
+
+
   const handletitle = async (event) => {
     settitle(event.target.value);
   };
@@ -145,29 +146,43 @@ const Viewform = () => {
   const handledesc = async (event) => {
     setdesc(event.target.value);
   };
-  const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
-  const [searchmod, setsearchmod] = useState("");
-  const [searchdept, setsearchdept] = useState("");
-  // const OnDelete = (e) => {
-  //   axios.post(`http://localhost:9190/api/deleteapplicationform/${e}`)
-  //   .then()
-  // }
-  useEffect(() => {
-    (async () => {
-      try {
-         const { data } = await Applicationformservice.getallforms();
-        setData(data);
-        console.log(data);
-      } catch (error) {
-        console.log("Error");
-      }
-    })();
-    return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-  }, []);
-  return (
-    <>
-      <NewSidebar />
+
+    useEffect(() => {
+        (async () => {
+          try {
+            const { data } = await axios.get("http://localhost:9190/api/fetchlistofApplicationFormbyfilter",{
+                params: {
+                    pagenum : 0,
+                    pagesize : 20,
+                    email: "",
+                    studentId: "",
+                    name: "",
+                    collegeEmail: "",
+                    sapModule: "",
+                    contactNumber: "",
+                    passoutYear: "",
+                    branch: "",
+                    specialization: "",
+                    studentType: "",
+                    adhaarCard: "",
+                    applicationFromStatus: "initial",
+                    uploadImage: "",
+                    userId: ""
+      
+                }
+            });
+            
+            setData(data.records);
+            console.log(data);
+          } catch (error) {
+            console.log(error);
+          }
+        })();
+        return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
+      }, [search,searchmod,searchdept]);
+
+    return (
+        <>
       <div
         className={
           sessionStorage.getItem("sidebar") === "true"
@@ -349,19 +364,26 @@ const Viewform = () => {
         )}
         {VerifyModal && (
           <Modal style={{ justifyContent: "center", display: "flex",alignItems:"center" }}>
-            <VerifyFormmodal style={{justifyContent: "center", display: "flex",alignItems:"center",margin:"auto"}}/>
-            <div style={{justifyContent: "center", display: "flex",alignItems:"center"}}>
+            <VerifyFormmodal />
+             <div  > 
               <button
                 className="btn-md"
                 onClick={handleVerify}
                 style={{
-                  marginRight: "20px",
+                  marginRight: "25px",
                   cursor: "pointer",
                   width: "100px",
                   height: "25px",
                 }}
               >
-                Verify
+                Verify Form
+              </button>
+              <button
+                className="btn-md"
+                onClick={handleCancel}
+                style={{ cursor: "pointer", width: "100px", height: "25px", marginRight: "25px", }}
+              >
+                Edit Form
               </button>
               <button
                 className="btn-md"
@@ -492,7 +514,7 @@ const Viewform = () => {
                   </div>
                 )}
                 {stat === "verified" && <>
-                  <PostInstallment />
+                  <PostInstallment id={did} />
                   </>}
               </div>
             </div>
@@ -500,6 +522,7 @@ const Viewform = () => {
         )}
       </div>
     </>
-  );
-};
-export default Viewform;
+    )
+
+}
+export default VerifyForm;

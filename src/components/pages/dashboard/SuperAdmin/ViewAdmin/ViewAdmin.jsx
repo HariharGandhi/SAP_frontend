@@ -9,7 +9,7 @@ const AllAdmin = () => {
   const [stat, setstat] = useState("active");
   const [nme, setnme] = useState("");
   const [ctc, setctc] = useState("");
-  //const [num, setnum] = useState("");
+  
   const [mail, setmail] = useState("");
   const [dept, setdept] = useState("");
   const [statt, setstatt] = useState("");
@@ -22,6 +22,9 @@ const AllAdmin = () => {
     setDeleteModal(false);
     setQueryModal(false);
   };
+  
+  
+  
 
   const handleConfirm = () => {
         const st = "inactive"
@@ -40,24 +43,11 @@ const AllAdmin = () => {
 
   const Updatedetails = () => {
     const Upid = parseInt(sessionStorage.getItem('did'),10)
-    axios
-      .post(
-        `http://localhost:9190/admin/auth/updateAdminUser`,
-        {
-            department: dept,
-            email: mail,
-            mobileNumber: ctc,
-            name: nme,
-            password: pass,
-            position: pos,
-            status: statt
-        },
-        {
-          params : {
-            UserId : Upid
-          }
-        }
-      )
+    Adminservice.update(dept,mail,ctc,nme,pass,pos,statt,Upid).then((res)=>{
+      setDeleteModal(false);
+      sessionStorage.removeItem('Upid')
+      window.location.reload();
+    })
       .then((res) => {
         setQueryModal(false);
         sessionStorage.removeItem('did')

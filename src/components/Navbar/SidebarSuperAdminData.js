@@ -10,47 +10,69 @@ export const SidebarSuperAdminData = [
 {
 	title: "Payment",
 	path: "/payment",
-
-},
-{
-	title: "Application Forms",
-	path: "/Viewform",
 	iconClosed: <RiIcons.RiArrowDownSFill />,
 	iconOpened: <RiIcons.RiArrowUpSFill />,
 
 	subNav: [
-	{
-		title: "Verify Forms",
-		path: "/Viewform",
-		cName: "sub-nav",
-	},
-	{
-		title: "Delete Forms",
-		path: "/deleteform",
-		cName: "sub-nav",
-	},
+		{
+			title: "Verify Forms",
+			path: "/admindashboard",
+			cName: "sub-nav",
+		},
+		{
+			title: "All Forms",
+			path: "/allform",
+			cName: "sub-nav",
+		},
+	],
+},
+{
+	title: "Application Forms",
+	path: "#",
+	iconClosed: <RiIcons.RiArrowDownSFill />,
+	iconOpened: <RiIcons.RiArrowUpSFill />,
+
+	subNav: [
+		{
+			title: "Verify Forms",
+			path: "/admindashboard",
+			cName: "sub-nav",
+		},
+		{
+			title: "All Forms",
+			path: "/allform",
+			cName: "sub-nav",
+		},
 	],
 },
 {
 	title: "Placement",
-	path: "/getplacement",
+	path: "#",
+	iconClosed: <RiIcons.RiArrowDownSFill />,
+	iconOpened: <RiIcons.RiArrowUpSFill />,
+
+	subNav: [
+		{
+			title: "All Placements",
+			path: "/getplacement",
+		},
+		{
+			title: "Add Placement",
+			path: "/postplacement",
+		},
+	],
+},
+{
+	title: "Notifications",
+	path: "#",
 	iconClosed: <RiIcons.RiArrowDownSFill />,
 	iconOpened: <RiIcons.RiArrowUpSFill />,
 
 	subNav: [
 	{
-		title: "Add Placement",
-		path: "/postplacement",
+		title: "All Notifications",
+		path: "/getnotification",
 	},
-	],
-},
-{
-	title: "Notifications",
-
-	iconClosed: <RiIcons.RiArrowDownSFill />,
-	iconOpened: <RiIcons.RiArrowUpSFill />,
-
-	subNav: [
 	{
 		title: "Add Notification",
 		path: "/addnotice",
@@ -59,10 +81,10 @@ export const SidebarSuperAdminData = [
 	// 	title: "Update Notification",
 	// 	path: "/updatenotice",
 	// },
-	{
-		title: "Delete Notification",
-		path: "/deletenotice",
-	},
+	// {
+	// 	title: "Delete Notification",
+	// 	path: "/deletenotice",
+	// },
 	],
 },
 {
@@ -83,4 +105,5 @@ export const SidebarSuperAdminData = [
 	},
 	],
 },
+
 ];

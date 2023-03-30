@@ -39,11 +39,6 @@ export default function Navbarforhome() {
           <li>
             <a href="/register">Register</a>
           </li>
-          <li>
-            <a href="/contactus">ContactUs</a>
-          </li>
-
-          <input className="nav-input" type="text" placeholder="Search" />
         </div>
       </ul>
     </nav>

@@ -30,8 +30,8 @@ export const SidebarAdminData = [
 		cName: "sub-nav",
 	},
 	{
-		title: "Delete Forms",
-		path: "/deleteform",
+		title: "All Forms",
+		path: "/allform",
 		cName: "sub-nav",
 	},
 	],
@@ -72,10 +72,10 @@ export const SidebarAdminData = [
 	// 	title: "Update Notification",
 	// 	path: "/updatenotice",
 	// },
-	{
-		title: "Delete Notification",
-		path: "/deletenotice",
-	},
+	// {
+	// 	title: "Delete Notification",
+	// 	path: "/deletenotice",
+	// },
 	],
 },
 {
