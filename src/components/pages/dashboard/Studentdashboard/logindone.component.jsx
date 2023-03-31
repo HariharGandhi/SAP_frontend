@@ -83,7 +83,7 @@
 //--------------------------------------------------------------------------------------------------------------
 import React, {  } from "react";
 import NewSidebar from "../../../Navbar/Navbar";
-import studenthome from "./SidebarForStudent/Home/studenthome";
+//import studenthome from "./SidebarForStudent/Home/studenthome";
 
 
  const Logindone = () => {

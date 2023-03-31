@@ -85,6 +85,8 @@ const VerifyForm = () => {
   const viewModal = (ele) => {
     const d = ele.userId;
     setdid(ele.id);
+    const Aid = ele.id;
+    localStorage.setItem("Aid",Aid)
     localStorage.setItem("Userid", d);
     setstat(ele.applicationFromStatus);
     setmail(ele.email);
@@ -514,7 +516,7 @@ const VerifyForm = () => {
                   </div>
                 )}
                 {stat === "verified" && <>
-                  <PostInstallment id={did} />
+                  <PostInstallment />
                   </>}
               </div>
             </div>

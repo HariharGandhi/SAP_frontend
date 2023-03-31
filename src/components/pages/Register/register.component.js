@@ -5,6 +5,7 @@ import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
 import AuthService from "../../../services/auth.service";
+import Navbarforhome from "../Home/Navbarforhome";
 
 const required = value => {
   if (!value) {
@@ -74,7 +75,7 @@ export default class Register extends Component {
       mobile:"",
       password: "",
       confirm_password: "",
-      status:"inactive",
+      status:"active",
       successful: false,
       message: ""
     };
@@ -159,7 +160,8 @@ export default class Register extends Component {
   
 
   render() {
-    return (
+    return ( <>
+      <Navbarforhome />
       <div className="col-md-12">
         <div className="card card-container">
           <img
@@ -271,7 +273,7 @@ export default class Register extends Component {
             />
           </Form>
         </div>
-      </div>
+      </div> </>
     );
   }
 }

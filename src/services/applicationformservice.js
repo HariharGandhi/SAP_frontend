@@ -30,7 +30,7 @@ class Applicationformservice {
 
     getformbystid(stId){
         const Stid = parseInt(stId,10);
-        return axios.get(Application_URL + `getapplicationformbyid/` + Stid)
+        return axios.get(Application_URL + `getapplicationformbyid/${Stid}`)
     }
 }
 

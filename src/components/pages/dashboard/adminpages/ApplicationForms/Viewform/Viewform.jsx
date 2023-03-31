@@ -49,7 +49,7 @@ const Viewform = () => {
     setUpdateModal(true);
   };
   const handleUpdate = () => {
-    const Uid = localStorage.getItem("Userid");
+    const Uid = parseInt(localStorage.getItem("Userid"),10);
     console.log(query);
     axios
       .put(
@@ -64,7 +64,7 @@ const Viewform = () => {
       });
   };
   const handleUpdatequery = (q) => {
-    const Uid = localStorage.getItem("Userid");
+    const Uid = parseInt(localStorage.getItem("Userid"));
     //const q = true
     axios
       .put(
@@ -386,7 +386,7 @@ const Viewform = () => {
                   >
                     <option value="">Select status</option>
                     <option value="verified">Verified</option>
-                    <option value="not verified">Not Verified</option>
+                    <option value="notverified">Not Verified</option>
                     <option value="inquery">In Query</option>
                   </select>
                 </dropdown>
@@ -473,7 +473,7 @@ const Viewform = () => {
                     </div>
                   </>
                 )}
-                {stat === "not verified" && (
+                {stat === "notverified" && (
                   <div
                     style={{
                       display: "flex",
