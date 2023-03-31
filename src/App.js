@@ -44,6 +44,11 @@ import Payment from "./components/pages/Payment/Payment";
 import ContactForm from "./components/pages/Home/ContactForm/ContactForm";
 import ContactUsTable from "./components/pages/dashboard/adminpages/Contact_Form_Data/contact_form_data";
 import SuperAdminDashboard from "./components/pages/dashboard/SuperAdmin/SuperAdminDashboard/SuperAdminDashboard";
+// import studenthomedashbord from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/studenthomedashbord";
+import Isquerytrue from "./components/pages/ApplicationForm/Isquerytrue";
+import ApplicationAfterQuery from "./components/pages/ApplicationForm/ApplicationAfterQuery"
+import studenthome from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/studenthome";
+import profile from "./components/pages/dashboard/Studentdashboard/Profile/profile";
 // const app = require("express");
 // const cors = require("cors")
 // app.use(cors());
@@ -134,6 +139,20 @@ class App extends Component {
             <Route exact path="/contactus" component={ContactForm}/>
             <Route exact path="/contactformdata" component={ContactUsTable}/>
             <Route exact path = "/superadmindashboard" component={withAuth(SuperAuth(SuperAdminDashboard))} />
+            <Route exact path="/isquerytrue" component={Isquerytrue}/>
+            <Route exact path="/applicationafterquery" component={ApplicationAfterQuery}/>
+            <Route exact path="/studenthome" component={studenthome}/>
+            <Route exact path="/profile" component={profile}/>
+
+
+
+
+            
+            
+          
+
+
+
           </Switch>
         </div>
         </div>
