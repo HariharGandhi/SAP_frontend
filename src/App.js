@@ -44,6 +44,8 @@ import Payment from "./components/pages/Payment/Payment";
 import ContactForm from "./components/pages/Home/ContactForm/ContactForm";
 import ContactUsTable from "./components/pages/dashboard/adminpages/Contact_Form_Data/contact_form_data";
 import SuperAdminDashboard from "./components/pages/dashboard/SuperAdmin/SuperAdminDashboard/SuperAdminDashboard";
+import PostInstallment from "./components/pages/Payment/Fee installments/PostInstallment";
+import Getinstallments from "./components/pages/Payment/Fee installments/Getinstallments";
 // const app = require("express");
 // const cors = require("cors")
 // app.use(cors());
@@ -132,8 +134,10 @@ class App extends Component {
             <Route exact path="/verifyform" component={withAuth(RoleAuth(VerifyFormmodal))}/>
             <Route exact path="/payment" component={Payment}/>
             <Route exact path="/contactus" component={ContactForm}/>
-            <Route exact path="/contactformdata" component={ContactUsTable}/>
+            <Route exact path="/contactformdata" component={withAuth(RoleAuth(ContactUsTable))}/>
             <Route exact path = "/superadmindashboard" component={withAuth(SuperAuth(SuperAdminDashboard))} />
+            <Route exact path = "/postinstallment" component={withAuth(RoleAuth(PostInstallment))} />
+            {/* <Route exact path = "/getinstallment" component={Getinstallments} /> */}
           </Switch>
         </div>
         </div>
