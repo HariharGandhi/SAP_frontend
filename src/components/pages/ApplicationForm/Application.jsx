@@ -11,8 +11,9 @@ import Navbarforapp from "../Home/Navbarforapp";
 
 const Application = () => {
   const submitHandler = (event) => {
-    event.preventDefault();
-        
+    // event.preventDefault();
+    let userId= localStorage.getItem('id');
+ 
         var attributes ={ adhaarCard : event.target.adhaarCard.value,
             branch : event.target.branch.value,
             collegeEmail : event.target.collegeEmail.value,
@@ -22,7 +23,10 @@ const Application = () => {
             passoutYear : event.target.passoutYear.value,
             sapModule : event.target.sapModule.value,
             specialization : event.target.specialization.value,
-            studentType : event.target.studentType.value}
+            studentType : event.target.studentType.value,
+            applicationFromStatus: "initial",
+            userId : userId
+          }
 
         if(attributes.adhaarCard !== "" && 
         attributes.branch !== "" &&
@@ -39,7 +43,7 @@ const Application = () => {
         Axios.post("http://localhost:9190/api/applicationForm" ,attributes )
         .then(response =>{
             console.log(response);
-            window.location.href="/pending"
+            // window.location.href="/pending"
            
         })
         .catch((error) => {
