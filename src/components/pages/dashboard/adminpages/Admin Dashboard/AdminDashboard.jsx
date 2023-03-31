@@ -1,6 +1,7 @@
 import React from 'react';
 import NewSidebar from '../../../../Navbar/Navbar';
-import Viewform from '../ApplicationForms/Viewform/Viewform';
+import Verifyform from '../ApplicationForms/Verify Forms/Verifyform';
+//import Viewform from '../ApplicationForms/Viewform/Viewform';
 
 
 const AdminDashboard = () => {
@@ -8,7 +9,7 @@ const AdminDashboard = () => {
     return (
         <>
         <NewSidebar />
-        <Viewform />
+        <Verifyform />
         </>
     )
 

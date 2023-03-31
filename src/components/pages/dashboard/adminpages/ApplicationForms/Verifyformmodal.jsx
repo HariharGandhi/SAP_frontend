@@ -1,30 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Modal from "../../Modal";
-//import "./NewNav.css"
-import "./Verifyform.css"
+import "./Verifyformmodal.css"
 
 
-const VerifyForm = () => {
+const VerifyFormmodal = () => {
     const Uid = Number(localStorage.getItem('Userid'))
-    const [stat, setstat] = useState("")
-    const [VerifyformModal, setVerifyformModal] = useState(false)
     
-  
-    const handleVerify = () => {
-      axios.put(`http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}`)
-      .then((res)=>{
-        console.log(res)
-        setVerifyformModal(false);
-        localStorage.removeItem('Userid')
-        window.location.reload();
-      })
-    }
-    const handleCancel = () => {
-        // hide confirmation modal
-        setVerifyformModal(false)
-      }
-
    
   const [data, setData] = useState([]);
   //const [search, setSearch] = useState('')
@@ -37,6 +18,7 @@ const VerifyForm = () => {
                   }
                 });
                 setData(data);
+                console.log(Uid)
                 //setSid(data.records.student_id);
               } catch (error) {
                 console.log(error);
@@ -97,44 +79,8 @@ const VerifyForm = () => {
       </tbody>))}
     </table>
 
-        
-        {VerifyformModal && 
-          <Modal>
-      <div>
-      <div>
-              <h2>Change the status of this application to :</h2>
-              <dropdown>
-                <select name="" id="" onChange={(e) => setstat(e.target.value)}>Select status
-                <option value="verified">Verified</option>
-                <option value="notverified">Not Verified</option>
-                <option value="inquery">In Query</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-                </select>
-              </dropdown>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "right",
-                  alignItems: "right",
-                }}
-              >
-                <button
-                  className="btn-md"
-                  onClick={handleVerify}
-                  style={{ marginRight: "10px" }}
-                >
-                  Yes
-                </button>
-                <button onClick={handleCancel}>No</button>
-              </div>
-            </div>
-      </div>
-
-          </Modal>
-        }
       </div>
     </>
   );
 };
-export default VerifyForm;
+export default VerifyFormmodal;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
 import NewSidebar from '../../../../Navbar/Navbar';
 import "./AddPlacement.css"
@@ -32,7 +33,7 @@ const handlemod = async (e) => {
 const Addplacement = () => {
   NotificationPlacementapi.addplace(cnme,img,mod,nme,year,pack).then(response => {
         alert(response.data.message);
-        window.location.href = "/admindashboard"
+        window.location.href = "/getplacement"
     }).catch((err)=>{
       console.log(err)
     })
@@ -43,6 +44,9 @@ useEffect(() => {
     return (
         <>
         <NewSidebar />
+        <button className="btn-place-up">
+          <Link to="/admindashboard"> Back to Home </Link>
+        </button>
         <div>
         <div
           className="placementcontainer"
@@ -102,7 +106,7 @@ useEffect(() => {
               {" "}
               Enter Package recieved:
               <input
-                type="string"
+                type="number"
                 value={pack}
                 name="Package in LPA"
                 onChange={(e) => handlepackage(e)}
@@ -141,7 +145,8 @@ useEffect(() => {
         >
           {" "}
           Add Placement{" "}
-        </button>
+        </button>{" "}
+        
         </div>
         </>
     )

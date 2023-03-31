@@ -39,7 +39,7 @@ import Postplace from "./components/pages/dashboard/adminpages/Placement/AddPlac
 import AllAdmin from "./components/pages/dashboard/SuperAdmin/ViewAdmin/ViewAdmin";
 import Createadmin from "./components/pages/dashboard/SuperAdmin/CreateAdmin/Createadmin";
 import Viewform from "./components/pages/dashboard/adminpages/ApplicationForms/Viewform/Viewform";
-import VerifyForm from "./components/pages/dashboard/adminpages/ApplicationForms/Verifyform";
+import VerifyFormmodal from "./components/pages/dashboard/adminpages/ApplicationForms/Verifyformmodal";
 import Payment from "./components/pages/Payment/Payment";
 import ContactForm from "./components/pages/Home/ContactForm/ContactForm";
 import ContactUsTable from "./components/pages/dashboard/adminpages/Contact_Form_Data/contact_form_data";
@@ -130,11 +130,11 @@ class App extends Component {
             <Route exact path ="/getnotification" component={withAuth(RoleAuth(Adminnotification))}/>
             <Route exact path = "/admindashboard" component={withAuth(RoleAuth(AdminDashboard))} />
             <Route exact path = "/deleteform" component={withAuth(RoleAuth(Deleteform))}/>
-            <Route exact path="/Viewform" component={withAuth(RoleAuth(Viewform))} />
+            <Route exact path="/allform" component={withAuth(RoleAuth(Viewform))} />
             <Route exact path="/postplacement" component={withAuth(RoleAuth(Postplace))}/>
             <Route exact path="/alladmins" component={withAuth(RoleAuth(AllAdmin))}/>
             <Route exact path="/addadmin" component={withAuth(RoleAuth(Createadmin))}/>
-            <Route exact path="/verifyform" component={withAuth(RoleAuth(VerifyForm))}/>
+            <Route exact path="/verifyform" component={withAuth(RoleAuth(VerifyFormmodal))}/>
             <Route exact path="/payment" component={Payment}/>
             <Route exact path="/contactus" component={ContactForm}/>
             <Route exact path="/contactformdata" component={ContactUsTable}/>
