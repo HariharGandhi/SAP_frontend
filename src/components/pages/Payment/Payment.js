@@ -1,4 +1,5 @@
 import React from 'react';
+import NewSidebar from '../../Navbar/Navbar';
 //import { useState } from 'react';
 const Payment = (Fee) => {
   const fee = parseInt(Fee,10)
@@ -56,6 +57,7 @@ async function displayRazorpay() {
 }
       return (
         <>
+            <NewSidebar />
             <div className='container' style={{display:'flex',justifyContent:'center'}}>
               <form>
                     <label>
