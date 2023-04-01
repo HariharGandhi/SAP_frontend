@@ -33,6 +33,22 @@ class NotificationPlacementapi {
             userId
         })
     }
+
+    getmodules(status){
+        // const stat = JSON.stringify(status)
+        return axios.get(base_url + "getallmodule",{
+            params: {
+                status : status
+            }
+            })
+    }
+    addmodules(moduleName,moduleShortName,status){
+        return axios.post(base_url + "addnewmodule",{
+            moduleName,
+            moduleShortName,
+            status
+        })
+    }
 }
 
 export default new NotificationPlacementapi();
