@@ -118,7 +118,9 @@ const PostInstallment = () => {
     // console.log("new",installmentData);
     sendData(installmentData)
   }
-
+  const handlecancel = () => {
+    window.location.href ="/allform"
+  }
   useEffect(() => {
     (async () => {
       try {
@@ -133,6 +135,7 @@ const PostInstallment = () => {
   }, [Stid]);
   return (
     <>
+      
       <div>
         <h2>Select number of installments : </h2>
         <dropdown>
@@ -144,41 +147,38 @@ const PostInstallment = () => {
           </select>
         </dropdown>
       </div>
+      <button onClick={handlecancel} style={{width:'100px',marginTop:'10px'}}>Cancel</button>
       {install === "1" && (
         <>
-        <form>
           <label>Enter total fees :
           <input value={total_fee} onChange={handletotalfee}/></label>
-          <button onClick={Submitdata}> Submit</button>
-        </form>
+        <button onClick={Submitdata}style={{width:'100px',marginTop:'10px'}}> Post Fees</button>
         </>
       )}
       {install === "2" && (
         <>
-          <form>
+        <div className="container">
           <label>Enter total fees :
           <input value={total_fee} onChange={handletotalfee}/></label>
-          <label>Enter 1st installment : 
+          <label style={{marginTop:'10px'}}>Enter 1st installment : 
           <input value={first} onChange={handlefirst}/></label>
-          <label>Enter 2nd installment : 
+          <label style={{marginTop:'10px'}}>Enter 2nd installment : 
           <input value={second} onChange={handlesecond}/></label>
-          <button onClick={Submitdata}> Submit</button>
-          </form>
+          <button onClick={Submitdata} style={{width:'100px',marginTop:'10px'}}> Post Fees</button>
+          </div>
         </>
       )}
       {install === "3" && (
         <>
-          <form>
           <label>Enter total fees :
           <input value={total_fee} onChange={handletotalfee}/></label>
-          <label>Enter 1st installment : 
+          <label style={{marginTop:'10px'}}>Enter 1st installment : 
           <input value={first} onChange={handlefirst}/></label>
-          <label>Enter 2nd installment : 
+          <label style={{marginTop:'10px'}}>Enter 2nd installment : 
           <input value={second} onChange={handlesecond}/></label>
-          <label>Enter 3rd installment : 
+          <label style={{marginTop:'10px'}}>Enter 3rd installment : 
           <input value={third} onChange={handlethird}/></label>
-          <button onClick={Submitdata}> Submit</button>
-          </form>
+          <button onClick={Submitdata} style={{width:'100px',marginTop:'10px'}}> Post Fees</button>
         </>
       )}
     </>

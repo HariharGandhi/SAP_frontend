@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
-//import "./AddPlacement.css"
+import "./AddModule.css"
 
 const AddModule = () =>{
 const [mod,setmod] = useState("");
@@ -15,7 +15,7 @@ const handlemod = async (e) => {
 }
 const Stat = "active"
 const Addmodule = () => {
-  NotificationPlacementapi.addmodules(mod,nme,Stat).then(response => {
+  NotificationPlacementapi.addmodules(nme,mod,Stat).then(response => {
         alert(response.data.message);
         window.location.href = "/getmodules"
     }).catch((err)=>{
@@ -27,9 +27,6 @@ useEffect(() => {
 });
     return (
         <>
-        <button className="btn-place-up">
-          <Link to="/admindashboard"> Back to Home </Link>
-        </button>
         <div>
         <div
           className="modulecontainer"
@@ -60,7 +57,7 @@ useEffect(() => {
               />
             </label>
           </form>
-        </div>
+        </div><div>
         <button
           type="submit"
           onClick={() => Addmodule()}
@@ -75,6 +72,9 @@ useEffect(() => {
           {" "}
           Add Module{" "}
         </button>{" "}
+        <button className="btn-up">
+          <Link to="/admindashboard"> Back to Home </Link>
+        </button></div>
         
         </div>
         </>

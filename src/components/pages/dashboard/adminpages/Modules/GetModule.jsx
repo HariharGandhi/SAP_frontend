@@ -17,7 +17,7 @@ const GetModule = () => {
                 NotificationPlacementapi.getmodules(stat)
                 .then((res)=> {
                   console.log(res)
-                  setData(res)
+                  setData(res.data)
                 })
                 
                 
@@ -32,7 +32,7 @@ const GetModule = () => {
     return (
         <>
         <NewSidebar />
-        <button className="place-button" onClick={() => Addmodal()}>Add Module</button>
+        
         <div
         className={
           sessionStorage.getItem("sidebar") === "true"
@@ -41,6 +41,7 @@ const GetModule = () => {
         }
         // id="contactus"
       >
+        <button className="place-button" onClick={() => Addmodal()}>Add Module</button>
         <table style={{width:'100%',marginTop:'25px'}}>
           <thead>
             <tr className="main-table top-col-table">

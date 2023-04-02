@@ -6,6 +6,7 @@ import "./Viewform.css";
 import Applicationformservice from "../../../../../../services/applicationformservice";
 import NewSidebar from "../../../../../Navbar/Navbar";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
+import BASE_URL from "../../../../../../services/Baseurl";
 
 const Viewform = () => {
   const [did, setdid] = useState(0);
@@ -37,7 +38,7 @@ const Viewform = () => {
 
   const handleConfirm = () => {
     axios
-      .delete(`http://localhost:9190/api/deleteapplicationform/${did}`)
+      .delete(BASE_URL + `api/deleteapplicationform/${did}`)
       .then((res) => {
         console.log(res);
         setDeleteModal(false);
@@ -49,11 +50,11 @@ const Viewform = () => {
     setUpdateModal(true);
   };
   const handleUpdate = () => {
-    const Uid = parseInt(localStorage.getItem("Userid"),10);
+    const AId = parseInt(localStorage.getItem("Aid"),10);
     console.log(query);
     axios
       .put(
-        `http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}/${query}`
+        BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${query}`
       )
       .then((res) => {
         console.log(query, "new");
@@ -64,11 +65,11 @@ const Viewform = () => {
       });
   };
   const handleUpdatequery = (q) => {
-    const Uid = parseInt(localStorage.getItem("Userid"));
+    const AId = parseInt(localStorage.getItem("Aid"),10);
     //const q = true
     axios
       .put(
-        `http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}/${q}`
+        BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${q}`
       )
       .then((res) => {
         setquery(false);
@@ -100,6 +101,8 @@ const Viewform = () => {
   const viewModal = (ele) => {
     const d = ele.userId;
     setdid(d);
+    const Aid = ele.id;
+    localStorage.setItem("Aid",Aid)
     localStorage.setItem("Userid", d);
     setstat(ele.applicationFromStatus);
     setmail(ele.email);
@@ -111,7 +114,7 @@ const Viewform = () => {
   const Addquery = () => {
     axios
       .post(
-        `http://localhost:9190/applicationFrom/postapplicationformbyapplicationId/${did}`,
+        BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${did}`,
         {
           applicationId: did,
           contactDetails: `Contact no.: ${num}, Email: ${mail}`,

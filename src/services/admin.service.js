@@ -1,6 +1,7 @@
 import axios from "axios";
+import BASE_URL from "./Baseurl";
 
-const Admin_URL = "http://localhost:9190/admin/auth";
+const Admin_URL = BASE_URL + "admin/auth";
 
 class Adminservice {
     Register(department,email,mobileNumber,name,password,position,status){
@@ -27,9 +28,12 @@ class Adminservice {
             Uid
         }})
     }
-    // getadmin(status){
-    //     return axios.get(`${Admin_URL}/getAdminUsers/{status}?status=${encodeURI(status)}`)
-    // }
+    getadmin(status){
+        
+        return axios.get(Admin_URL + `/getAdminUsers/{status}`,{params:{
+            status
+        }})
+    }
 }
 
 export default new Adminservice();

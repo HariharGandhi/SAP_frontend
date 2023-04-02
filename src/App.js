@@ -49,6 +49,7 @@ import studenthome from "./components/pages/dashboard/Studentdashboard/SidebarFo
 // import Profile from "./components/pages/dashboard/Studentdashboard/Profile/profile";
 import GetModule from "./components/pages/dashboard/adminpages/Modules/GetModule";
 import profile from "./components/pages/dashboard/Studentdashboard/Profile/profile";
+import Getinstallments from "./components/pages/Payment/Fee installments/Getinstallments";
 // const app = require("express");
 // const cors = require("cors")
 // app.use(cors());
@@ -222,6 +223,7 @@ class App extends Component {
               {/* <Route exact path="/profile" component={Profile}/> */}
               <Route exact path="/getmodules" component={GetModule} />
               <Route exact path="/profile" component={profile} />
+              <Route exact path="/getinstallment" component={Getinstallments}/>
             </Switch>
           </div>
         </div>

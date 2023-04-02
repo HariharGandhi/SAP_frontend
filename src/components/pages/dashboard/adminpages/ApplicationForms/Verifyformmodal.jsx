@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Verifyformmodal.css"
+import BASE_URL from "../../../../../services/Baseurl";
 
 
 const VerifyFormmodal = () => {
@@ -12,7 +13,7 @@ const VerifyFormmodal = () => {
   useEffect(() => {
             (async () => {
               try {
-                const { data } = await axios.get("http://localhost:9190/api/getDetailsByUserid/{UserId}",{
+                const { data } = await axios.get(BASE_URL + "api/getDetailsByUserid/{UserId}",{
                   params : {
                     UserId : Uid
                   }

@@ -1,6 +1,7 @@
 import axios from "axios";
+import BASE_URL from "./Baseurl";
 
-const Application_URL = "http://localhost:9190/api/";
+const Application_URL = BASE_URL + "api/";
 class Applicationformservice {
     getallforms(){
         return axios.get(Application_URL + "getapplicationform")
@@ -31,6 +32,9 @@ class Applicationformservice {
     getformbystid(stId){
         const Stid = parseInt(stId,10);
         return axios.get(Application_URL + `getapplicationformbyid/${Stid}`)
+    }
+    updateform(){
+        return axios.post()
     }
 }
 

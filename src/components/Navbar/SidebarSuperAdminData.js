@@ -94,11 +94,15 @@ export const SidebarSuperAdminData = [
 },
 {
 	title: "Admin",
-	path: "/alladmins",
+	path: "#",
 	iconClosed: <RiIcons.RiArrowDownSFill />,
 	iconOpened: <RiIcons.RiArrowUpSFill />,
 
 	subNav: [
+		{
+			title: "All Admins",
+			path: "/alladmins",
+		},
 	{
 		title: "Add Admin",
 		path: "/addadmin",

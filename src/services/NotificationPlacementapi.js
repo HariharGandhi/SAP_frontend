@@ -1,16 +1,15 @@
 import axios from "axios";
-
-const base_url = "http://localhost:9190/"
+import BASE_URL from "./Baseurl";
 
 class NotificationPlacementapi {
     getall(){
-        return axios.get(base_url + "getNotification")
+        return axios.get(BASE_URL + "getNotification")
     }
     getplacement(){
-        return axios.get(base_url + "getAllPlacement")
+        return axios.get(BASE_URL + "getAllPlacement")
     }
     addplace(companyname,imageUrl,module,name,placementYear,packages){
-        return axios.post(base_url + "addNewPlacement" ,{
+        return axios.post(BASE_URL + "addNewPlacement" ,{
             companyname,
             imageUrl,
             module,
@@ -20,7 +19,7 @@ class NotificationPlacementapi {
         })
     }
     addnotification(body,code,createdDateTime,file,id,name,notificationmodule,status,title,userId){
-        return axios.post(base_url + "addNotification",{
+        return axios.post(BASE_URL + "addNotification",{
             body,
             code,
             createdDateTime,
@@ -36,14 +35,14 @@ class NotificationPlacementapi {
 
     getmodules(status){
         // const stat = JSON.stringify(status)
-        return axios.get(base_url + "getallmodule",{
+        return axios.get(BASE_URL + "getallmodule",{
             params: {
                 status : status
             }
             })
     }
     addmodules(moduleName,moduleShortName,status){
-        return axios.post(base_url + "addnewmodule",{
+        return axios.post(BASE_URL + "addnewmodule",{
             moduleName,
             moduleShortName,
             status

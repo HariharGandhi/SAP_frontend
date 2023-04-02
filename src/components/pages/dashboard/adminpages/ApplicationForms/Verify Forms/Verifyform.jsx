@@ -4,6 +4,7 @@ import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
 import Applicationformservice from "../../../../../../services/applicationformservice";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
+import BASE_URL from "../../../../../../services/Baseurl";
 const VerifyForm = () => {
     const [data, setData] = useState([]);
     const [did, setdid] = useState(0);
@@ -37,7 +38,7 @@ const VerifyForm = () => {
   };
   const handleConfirm = () => {
     axios
-      .delete(`http://localhost:9190/api/deleteapplicationform/${did}`)
+      .delete(BASE_URL + `api/deleteapplicationform/${did}`)
       .then((res) => {
         console.log(res);
         setDeleteModal(false);
@@ -49,11 +50,11 @@ const VerifyForm = () => {
     setUpdateModal(true);
   };
   const handleUpdate = () => {
-    const Uid = localStorage.getItem("Userid");
+    const AId = parseInt(localStorage.getItem("Aid"),10);
     console.log(query);
     axios
       .put(
-        `http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}/${query}`
+        BASE_URL + `applicationFormStatusUpdate/${AId}/${stat}/${query}`
       )
       .then((res) => {
         console.log(query, "new");
@@ -64,11 +65,11 @@ const VerifyForm = () => {
       });
   };
   const handleUpdatequery = (q) => {
-    const Uid = localStorage.getItem("Userid");
+    const AId = parseInt(localStorage.getItem("Aid"),10);
     //const q = true
     axios
       .put(
-        `http://localhost:9190/api/applicationFormStatusUpdate/${Uid}/${stat}/${q}`
+        BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${q}`
       )
       .then((res) => {
         setquery(false);

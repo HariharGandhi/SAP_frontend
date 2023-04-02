@@ -17,6 +17,11 @@ export const SidebarStudentData = [
 
 },
 {
+	title: "Get Payment",
+	path: "/getinstallment",
+
+},
+{
 	title: "Course Details",
     path: "/studentdashboard"
 },

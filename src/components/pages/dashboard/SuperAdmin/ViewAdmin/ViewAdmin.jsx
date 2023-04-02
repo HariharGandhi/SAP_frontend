@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../Modal";
+import BASE_URL from "../../../../../services/Baseurl";
 import Adminservice from "../../../../../services/admin.service";
 import NewSidebar from "../../../../Navbar/Navbar";
+//import AdminService from "../../../../../services/admin.service";
 //import "./ViewAdmin.css"
 const AllAdmin = () => {
   //const [did, setdid] = useState(0);
@@ -91,18 +93,18 @@ const AllAdmin = () => {
   const [search, setSearch] = useState("");
   const clearsearch =() => {
     setSearch("");
-    setstat("");
   }
   useEffect(() => {
     (async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:9190/admin/auth/getAdminUsers/{status}`,{
+          BASE_URL + `admin/auth/getAdminUsers/{status}`,{
             params: {
                 status: stat
             }
           }
         );
+        // const { data } = AdminService.getadmin(stat)
         setData(data);
         //setSid(data.records.student_id);
         console.log(data);
@@ -120,16 +122,17 @@ const AllAdmin = () => {
         <input
           className="table-search"
           type="text"
-          placeholder="Search Your Name"
+          placeholder="Search Admin Name"
           onChange={(e) => setSearch(e.target.value)}
+          style={{border:"1px solid"}}
         />
-        <select className="table-drop" name="cars" id="cars" onChange={(e) => setstat(e.target.value)}>
-          <option value="">Select Status </option>
+        {/* <select className="table-drop" name="cars" id="cars" onChange={(e) => setstat(e.target.value)}>
+          <option value="">Search by Status </option>
           <option value="active">active</option>
           <option value="inactive">inactive</option>
-        </select>{" "}
-        <button onClick={()=> clearsearch()}>Clear</button>
-        <table>
+        </select>{" "} */}
+        <button onClick={()=> clearsearch()} style={{marginLeft:'10px',width:'50px'}}>Clear</button>
+        <table style={{width:"100%", marginTop:'20px'}}>
           <thead>
             <tr className="main-table top-col-table">
               {/*<th>Student_id</th>*/}
@@ -149,40 +152,33 @@ const AllAdmin = () => {
               .filter((item) => {
                 return search.toLowerCase() === ""
                   ? item
-                  : item.name.toLowerCase().includes(search) ||
-                      item.department.toLowerCase().includes(search) ||
-                      item.status.toLowerCase().includes(search) ||
-                      item.mobileNumber
-                        .toLowerCase()
-                        .includes(search) ||
-                      item.id.toLowerCase().includes(search) ||
-                      item.position.toLowerCase().includes(search);
+                  : item.name.toLowerCase().includes(search) 
               })
               .map((ele) => {
                 return (
                   <tr key={ele.id} className="main-table">
-                    <td style={{ width: "100px", padding: "2px" }}>
+                    <td >
                       {ele.id}
                     </td>
-                    <td style={{ width: "60px", padding: "2px" }}>
+                    <td >
                       {ele.department}
                     </td>
-                    <td style={{ width: "60px", padding: "2px" }}>
+                    <td >
                       {ele.email}
                     </td>
-                    <td style={{ width: "120px", padding: "2px" }}>
+                    <td >
                       {ele.mobileNumber}
                     </td>
-                    <td style={{ width: "100px", padding: "2px" }}>
+                    <td >
                       {ele.name}
                     </td>
-                    <td style={{ width: "120px", padding: "2px" }}>
+                    <td >
                       {ele.position}
                     </td>
-                    <td style={{ width: "50px", padding: "2px" }}>
+                    <td >
                       {ele.status}
                     </td>
-                    <td style={{ width: "100px", padding: "2px" }}>
+                    <td >
                       <button
                         style={{ marginRight: "5px" }}
                         onClick={() => viewQueryModal(ele)}

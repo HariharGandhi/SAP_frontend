@@ -1,13 +1,13 @@
 import axios from "axios";
-
-const Base_url = "http://localhost:9190/"
+import BASE_URL from "./Baseurl";
 
 class Paymentapi {
     postinstallment(data){
-        return axios.post(Base_url + "addNewPayentInstallment",data)
+        return axios.post(BASE_URL + "addNewPayentInstallment",data)
     }
     getinstallment(userid){
-        return axios.get(Base_url + `getPayentInstallmentAmount`,{
+        
+        return axios.get(BASE_URL + `getPayentInstallment`,{
             params:{
                 userId : userid
             }

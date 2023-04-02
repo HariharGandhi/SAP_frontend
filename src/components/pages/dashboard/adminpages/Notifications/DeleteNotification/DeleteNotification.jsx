@@ -175,7 +175,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../../Modal";
-
+import BASE_URL from "../../../../../../services/Baseurl";
 
 const DeleteNotification = () => {
     const [did,setdid] = useState(0)
@@ -183,7 +183,7 @@ const DeleteNotification = () => {
     const [VerifyModal, setVerifyModal] = useState(false)
   
     const handleVerify = () => {
-      axios.put(`http://localhost:9190/api/applicationFormStatusUpdate/${did}/${stat}`)
+      axios.put(BASE_URL + `api/applicationFormStatusUpdate/${did}/${stat}`)
       .then((res)=>{
         console.log(res)
         setVerifyModal(false);
@@ -210,7 +210,7 @@ const DeleteNotification = () => {
   useEffect(() => {
             (async () => {
               try {
-                const { data } = await axios.get("http://localhost:9190/api/fetchlistofApplicationFormbyfilter",{
+                const { data } = await axios.get(BASE_URL + "api/fetchlistofApplicationFormbyfilter",{
                     params: {
                         pagesize : 20,
                         pagenum : 0,

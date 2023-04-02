@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import NewSidebar from "../../../../Navbar/Navbar";
 import "./ContactUsData.css"
+import BASE_URL from "../../../../../services/Baseurl";
 
 function ContactUsTable() {
   const [contactUsData, setContactUsData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9190/api/auth/getcontactus")
+    fetch(BASE_URL + "api/auth/getcontactus")
       .then((response) => response.json())
       .then((data) => setContactUsData(data))
       .catch((error) => console.error(error));
