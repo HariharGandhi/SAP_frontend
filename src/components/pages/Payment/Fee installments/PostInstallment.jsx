@@ -6,21 +6,19 @@ import applicationformservice from "../../../../services/applicationformservice"
 import Paymentapi from "../../../../services/Paymentapi";
 
 const PostInstallment = () => {
-  const [Data,setData] = useState("")
+  //const [Data,setData] = useState("")
   const UserID = parseInt(localStorage.getItem('Userid'),10)
   console.log(UserID)
-  const [installmentdata,setinstallmentdata] = useState([])
-  const [install, setinstall] = useState(0);
+  const [install, setinstall] = useState("");
   const [first, setfirst] = useState(0);
   const [second,setsecond] = useState(0);
   const [third,setthird] = useState(0);
   const [total_fee, settotal_fee] = useState(0);
   async function sendData(installmentdata) {
     
-        const response = await Paymentapi.postinstallment(installmentdata);
-        console.log(response);
+    await Paymentapi.postinstallment(installmentdata);
+    console.log("installment",installmentdata);
       
-    
     const stat="verified";
     const q = false
     await axios
@@ -29,6 +27,7 @@ const PostInstallment = () => {
     )
     .then((res) => {
       localStorage.removeItem("Userid");
+      localStorage.removeItem("Aid");
       window.location.reload();
     });
   }
@@ -46,9 +45,11 @@ const PostInstallment = () => {
   const handlethird = (event) => {
     setthird(event.target.value)
   }
-  const Submitdata = () => {
+  const Submitdata = (event) => {
+    event.preventDefault();
+    let installmentData = []
     if(install === "1"){
-      setinstallmentdata([
+      installmentData = [
         {
           userId : UserID,
           installment: 1,
@@ -58,10 +59,10 @@ const PostInstallment = () => {
           noOfInstallment : 1,
 
         }
-      ])
+      ]
     }
     if(install === "2"){
-      setinstallmentdata([
+      installmentData = [
         {
           userId : UserID,
           installment: 1,
@@ -80,10 +81,10 @@ const PostInstallment = () => {
           noOfInstallment : 2,
           
         }
-      ])
+      ]
     }
     if(install === "3"){
-      setinstallmentdata([
+      installmentData = [
         {
           userId : UserID,
           installment: 1,
@@ -111,10 +112,10 @@ const PostInstallment = () => {
           noOfInstallment : 3,
           
         }
-      ])
+      ]
     }
-
-    sendData(installmentdata)
+    // console.log("new",installmentData);
+    sendData(installmentData)
   }
 
   useEffect(() => {
@@ -122,7 +123,7 @@ const PostInstallment = () => {
       try {
         const { data } = await applicationformservice.getformbystid(Stid);
         //setData(data);
-        console.log(data);
+        console.log(data.studentType);
       } catch (error) {
         console.log(error);
       }
@@ -147,7 +148,7 @@ const PostInstallment = () => {
         <form>
           <label>Enter total fees :
           <input value={total_fee} onChange={handletotalfee}/></label>
-          <button onClick={() => Submitdata()}> Submit</button>
+          <button onClick={Submitdata}> Submit</button>
         </form>
         </>
       )}
@@ -160,7 +161,7 @@ const PostInstallment = () => {
           <input value={first} onChange={handlefirst}/></label>
           <label>Enter 2nd installment : 
           <input value={second} onChange={handlesecond}/></label>
-          <button onClick={() => Submitdata()}> Submit</button>
+          <button onClick={Submitdata}> Submit</button>
           </form>
         </>
       )}
@@ -175,7 +176,7 @@ const PostInstallment = () => {
           <input value={second} onChange={handlesecond}/></label>
           <label>Enter 3rd installment : 
           <input value={third} onChange={handlethird}/></label>
-          <button onClick={() => Submitdata()}> Submit</button>
+          <button onClick={Submitdata}> Submit</button>
           </form>
         </>
       )}
