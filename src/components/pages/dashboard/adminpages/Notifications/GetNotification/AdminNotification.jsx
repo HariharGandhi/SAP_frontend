@@ -7,7 +7,7 @@ const Adminnotification = () => {
   const [Data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [searchmod, setsearchmod] = useState("");
-  
+
 
   const clearsearch = () => {
     setSearch("");
@@ -19,7 +19,9 @@ const Adminnotification = () => {
       try {
         NotificationPlacementapi.getall().then((res) => {
           console.log(res.data);
-          setData(res.data);
+          const filtered = res.data.filter(item => item.status === "active")
+          setData(filtered);
+          console.log(filtered)
         });
       } catch (error) {
         console.log("Error");

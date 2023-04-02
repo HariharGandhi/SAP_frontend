@@ -73,6 +73,10 @@ export default class Login extends Component {
                //this.props.history.push("/newnav");
                this.props.history.push("/logindone");
             }
+            if(response==="isquery"){
+              //this.props.history.push("/newnav");
+              this.props.history.push("/isquerytrue");
+           }
               window.location.reload();
             });}
             if(Role==="ROLE_ADMIN" || Role==="ROLE_SUPER"){
@@ -91,6 +95,7 @@ export default class Login extends Component {
           //   window.location.reload();
           // }
         },
+        
         (error) => {
           const resMessage =
             (error.response &&

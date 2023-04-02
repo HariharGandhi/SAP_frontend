@@ -177,7 +177,7 @@ import axios from "axios";
 import Modal from "../../../Modal";
 
 
-const VerifyForm = () => {
+const DeleteNotification = () => {
     const [did,setdid] = useState(0)
     const [stat, setstat] = useState("")
     const [VerifyModal, setVerifyModal] = useState(false)
@@ -339,5 +339,5 @@ const VerifyForm = () => {
     </>
   );
 };
-export default VerifyForm;
+export default DeleteNotification;
 

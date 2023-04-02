@@ -44,6 +44,18 @@
     cursor: pointer;
     margin-top: 20px;
   }
+  .btn-place-up {
+    background-color: #134b2498;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 90%;
+  }
   
   .btn-place:hover {
     background-color: #0062cc;

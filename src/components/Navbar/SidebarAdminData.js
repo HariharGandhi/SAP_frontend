@@ -30,8 +30,8 @@ export const SidebarAdminData = [
 		cName: "sub-nav",
 	},
 	{
-		title: "Delete Forms",
-		path: "/deleteform",
+		title: "All Forms",
+		path: "/allform",
 		cName: "sub-nav",
 	},
 	],
@@ -72,9 +72,26 @@ export const SidebarAdminData = [
 	// 	title: "Update Notification",
 	// 	path: "/updatenotice",
 	// },
+	// {
+	// 	title: "Delete Notification",
+	// 	path: "/deletenotice",
+	// },
+	],
+},
+{
+	title: "Modules",
+	path: "#",
+	iconClosed: <RiIcons.RiArrowDownSFill />,
+	iconOpened: <RiIcons.RiArrowUpSFill />,
+
+	subNav: [
 	{
-		title: "Delete Notification",
-		path: "/deletenotice",
+		title: "All Modules",
+		path: "/getmodules",
+	},
+	{
+		title: "Add Module",
+		path: "#",
 	},
 	],
 },
