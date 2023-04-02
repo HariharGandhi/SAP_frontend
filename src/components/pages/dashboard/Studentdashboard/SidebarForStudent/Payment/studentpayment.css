@@ -1,0 +1,33 @@
+.payment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .payment h2 {
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .payment button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 16px;
+    cursor: pointer;
+    background-color :chartreuse;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .payment {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .payment button {
+      margin: 10px 20px;
+    }
+  }
+  

@@ -6,7 +6,7 @@ import applicationformservice from "../../../../services/applicationformservice"
 import Paymentapi from "../../../../services/Paymentapi";
 
 const PostInstallment = () => {
-  const [Data,setData] = useState("")
+  const [] = useState("")
   const UserID = parseInt(localStorage.getItem('Userid'),10)
   console.log(UserID)
   const [installmentdata,setinstallmentdata] = useState([])

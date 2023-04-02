@@ -2,14 +2,24 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import "./isquerytrue.css";
 import Navbarforapp from '../Home/Navbarforapp';
+import Axios from "axios";
 
 function Isquerytrue() {
   const history = useHistory();
 
-  const handleEditClick = () => {
-    // redirect to the edit page
-    history.push('/application');
-  };
+
+  const handleEditClick = async () => {
+    try {
+      const response = await Axios.get("http://localhost:9190/api/getDetailsByUserid/?UserId=15");
+      console.log(response.data);
+      history.push({
+        pathname: '/application',
+          state: response.data // your data array of objects
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
