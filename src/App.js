@@ -50,8 +50,11 @@ import PostInstallment from "./components/pages/Payment/Fee installments/PostIns
 import Isquerytrue from "./components/pages/ApplicationForm/Isquerytrue";
 import ApplicationAfterQuery from "./components/pages/ApplicationForm/ApplicationAfterQuery"
 import studenthome from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/studenthome";
-import Profile from "./components/pages/dashboard/Studentdashboard/Profile/profile";
+// import Profile from "./components/pages/dashboard/Studentdashboard/Profile/profile";
 import GetModule from "./components/pages/dashboard/adminpages/Modules/GetModule";
+import profile from "./components/pages/dashboard/Studentdashboard/Profile/profile";
+import studentpayment from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Payment/studentpayment";
+import paypayment from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Payment/paypayment";
 // const app = require("express");
 // const cors = require("cors")
 // app.use(cors());
@@ -147,8 +150,13 @@ class App extends Component {
             <Route exact path="/isquerytrue" component={Isquerytrue}/>
             <Route exact path="/applicationafterquery" component={ApplicationAfterQuery}/>
             <Route exact path="/studenthome" component={studenthome}/>
-            <Route exact path="/profile" component={Profile}/>
+            {/* <Route exact path="/profile" component={Profile}/> */}
             <Route exact path="/getmodules" component={GetModule} />
+            <Route exact path="/profile" component={profile}/>
+            
+            <Route exact path="/studentpayment" component={studentpayment}/>
+            <Route exact path="/paypayment" component={paypayment}/>
+
 
 
 
