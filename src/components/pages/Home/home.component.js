@@ -7,6 +7,7 @@ import NewBody from "./NewBody";
 import Footer from "../Footer/Footer";
 import SAPvideo from "./../SAPvideo/SAPvideo";
 import Navbarforhome from "./Navbarforhome";
+import ContactForm from "./ContactForm/ContactForm";
 
 export default class Home extends Component {
   constructor(props) {
@@ -46,8 +47,11 @@ export default class Home extends Component {
 
         <ViewDomain />
         <hr data-aos="fade-right" data-aos-delay="120" data-aos-offset="120"/>
+        <ContactForm />
+        <hr data-aos="fade-right" data-aos-delay="120" data-aos-offset="120"/>
       </div>
       <Placment/>
+
 
       <Footer/>
 

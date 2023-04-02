@@ -12,7 +12,7 @@ import Home from "./components/pages/Home/home.component";
 
 import Application from "./components/pages/ApplicationForm/Application";
 
-//import SuperAuth from "./services/SuperAuth";
+import SuperAuth from "./services/SuperAuth";
 import EventBus from "./common/EventBus";
 import ForgotPassword from "./components/pages/PasswordVerification/ForgotPassword";
 import Verify from "./components/pages/PasswordVerification/Verifypassword";
@@ -42,6 +42,8 @@ import Viewform from "./components/pages/dashboard/adminpages/ApplicationForms/V
 import VerifyForm from "./components/pages/dashboard/adminpages/ApplicationForms/Verifyform";
 import Payment from "./components/pages/Payment/Payment";
 import ContactForm from "./components/pages/Home/ContactForm/ContactForm";
+import ContactUsTable from "./components/pages/dashboard/adminpages/Contact_Form_Data/contact_form_data";
+import SuperAdminDashboard from "./components/pages/dashboard/SuperAdmin/SuperAdminDashboard/SuperAdminDashboard";
 // const app = require("express");
 // const cors = require("cors")
 // app.use(cors());
@@ -130,6 +132,8 @@ class App extends Component {
             <Route exact path="/verifyform" component={withAuth(RoleAuth(VerifyForm))}/>
             <Route exact path="/payment" component={Payment}/>
             <Route exact path="/contactus" component={ContactForm}/>
+            <Route exact path="/contactformdata" component={ContactUsTable}/>
+            <Route exact path = "/superadmindashboard" component={withAuth(SuperAuth(SuperAdminDashboard))} />
           </Switch>
         </div>
         </div>

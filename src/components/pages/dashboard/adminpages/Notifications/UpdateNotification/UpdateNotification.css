@@ -1,39 +1,36 @@
-.notify label{
-    margin-bottom: 10px;
-}
-#ADDNotice .container {
+#UpdateNotice .container {
     margin: 0 auto;
     max-width: 600px;
-    padding: 20px;
+    padding: 2px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
   }
   
-#ADDNotice  form {
+#UpdateNotice  form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
   
-#ADDNotice  input{
+#UpdateNotice  input{
     border: 1px solid #0b0b0b;
     border-radius: 4px;
-    width: 600px;
+    width: 500px;
   }
   
-#ADDNotice  label {
+#UpdateNotice  label {
     display: block;
     font-weight: bold;
     margin-left: 20px;
   }
   
-#ADDNotice  button {
+#UpdateNotice  button {
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 16px 32px;
+    /* padding: 16px 32px; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -43,7 +40,7 @@
     border-radius: 5px;
   }
   
-#ADDNotice  button:hover {
+#UpdateNotice  button:hover {
     background-color: #3e8e41;
   }
   

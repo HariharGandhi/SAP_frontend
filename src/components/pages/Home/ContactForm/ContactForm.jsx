@@ -9,12 +9,14 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setFormStatus('Submitting...')
-    const { name, email, mobileNumber, module } = e.target.elements
+    const StatuS = 'active'
+    const { name, email, mobileNumber, module, } = e.target.elements
     let contactForm = {
       name: name.value,
       email: email.value,
       mobileNumber: mobileNumber.value,
       module: module.value,
+      status: StatuS
     }
 
     fetch('http://localhost:9190/api/auth/postcontactus', {
@@ -36,30 +38,37 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} id="contactform">
+    <div >
+      <h1 className='center-p'>Contact Us</h1>
+      <div className='ctcform-container'>
+      <div className='image-container' style={{alignContent:'center'}}>
+        <img src={process.env.PUBLIC_URL + '/images/PP.jpeg'} alt="#" style={{marginLeft:'20px'}} />
+      </div>
+    <form onSubmit={handleSubmit} id="contactform" className='form-container'>
       <label>
         Name:
         <input type="text" name="name" />
       </label>
-      
       <label>
         Email:
         <input type="email" name="email" />
       </label>
       <label>
-      mobileNumber
+      Contact Number: 
         <input type="text" name="mobileNumber" />
       </label>
       <label>
         Module:
-        <select name="module">
+        <select name="module" style={{cursor:'pointer'}}>
           <option value="Module 1">Module 1</option>
           <option value="Module 2">Module 2</option>
           <option value="Module 3">Module 3</option>
         </select>
+        <button type="submit">{formStatus}</button>
       </label>
-      <button type="submit">{formStatus}</button>
-    </form>
+      
+    </form></div>
+    </div>
   )
 }
 

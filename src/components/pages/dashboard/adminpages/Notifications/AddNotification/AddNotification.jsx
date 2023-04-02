@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "./AddNotification.css"
 import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
@@ -71,12 +71,14 @@ const Addnotification = () => {
   const handlenotifymodule = async (event) => {
     setnm(event.target.value);
   };
-
+  useEffect(() => {
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+  });
   return (
     <div>
       <NewSidebar />
       <div
-        className="container notify"
+        className="container notify" id="ADDNotice"
         style={{ display: "flex", justifyContent: "center" }}
       >
         <form>
@@ -88,18 +90,18 @@ const Addnotification = () => {
             <input
               type="long"
               value={id}
-              name="Id"
+              placeholder="Id"
               onChange={(e) => handleid(e)}
             />
           </label>
-          <br />
+          
           <label>
             {" "}
             Enter Name
             <input
               type="string"
               value={nme}
-              name="Name"
+              placeholder="Name"
               onChange={(e) => handlename(e)}
             />
           </label>
@@ -110,7 +112,7 @@ const Addnotification = () => {
             <input
               type="string"
               value={nm}
-              name="notificationmodule"
+              placeholder="notificationmodule"
               onChange={(e) => handlenotifymodule(e)}
             />
           </label>
@@ -121,19 +123,8 @@ const Addnotification = () => {
             <input
               type="string"
               value={bd}
-              name="body"
+              placeholder="body"
               onChange={(e) => handlebody(e)}
-            />
-          </label>
-          <br />
-          <label>
-            {" "}
-            Enter Code
-            <input
-              type="string"
-              value={cd}
-              name="Code"
-              onChange={(e) => handlecode(e)}
             />
           </label>
           <br />
@@ -143,21 +134,32 @@ const Addnotification = () => {
             <input
               type="string"
               value={cdtm}
-              name="DDMMYYYY-HHMM"
+              placeholder="DDMMYYYY-HHMM"
               onChange={(e) => handledatetime(e)}
             />
           </label>
           <br />
           <label>
             {" "}
+            Enter Code
+            <input
+              type="string"
+              value={cd}
+              placeholder="Code"
+              onChange={(e) => handlecode(e)}
+            />
+          </label>
+          <label>
+            {" "}
             Enter File
             <input
               type="string"
               value={file}
-              name="File link (if any)"
+              placeholder="File link (if any)"
               onChange={(e) => handlefile(e)}
             />
           </label>
+          
           <br />
           <label>
             {" "}
@@ -165,7 +167,7 @@ const Addnotification = () => {
             <input
               type="string"
               value={title}
-              name="Title"
+              placeholder="Title"
               onChange={(e) => handletitle(e)}
             />
           </label>
@@ -176,7 +178,7 @@ const Addnotification = () => {
             <input
               type="string"
               value={stat}
-              name="Status"
+              placeholder="Status"
               onChange={(e) => handlestatus(e)}
             />
           </label>
@@ -187,7 +189,7 @@ const Addnotification = () => {
             <input
               type="long"
               value={uid}
-              name="User Id"
+              placeholder="User Id"
               onChange={(e) => handleuid(e)}
             />
           </label>

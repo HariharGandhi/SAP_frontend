@@ -48,20 +48,20 @@ return (
   <>
     <NewSidebar />
     <div className={sessionStorage.getItem('sidebar')==="true"?"table-nav vform":"table-nav"} id="del">
-      <input
+      <label>Search Name<input
         className="table-search"
         type="text"
-        placeholder="Search Your Name"
+        placeholder="Search Name of Applicant"
         onChange={(e)=> setSearch(e.target.value)}
       />
       <select className="table-drop" name="cars" id="cars">
-        <option value="volvo">Department</option>
+        <option value="volvo">Search Department</option>
+        <option value="saab">Computer</option>
+        <option value="saab">Mechanical</option>
+        <option value="saab">Civil</option>
         <option value="saab">Computer</option>
         <option value="saab">Computer</option>
-        <option value="saab">Computer</option>
-        <option value="saab">Computer</option>
-        <option value="saab">Computer</option>
-      </select>
+      </select></label>
       <table>
         <thead>
           <tr className="main-table top-col-table">
@@ -108,7 +108,7 @@ return (
                   {ele.email}
                 </td>
                 <td style={{ width: "50px", padding: "2px" }}>
-                  {ele.isQueryInApplication}
+                  {ele.isQueryInApplication?"Yes":"No"}
                 </td>
                 <td style={{ width: "100px", padding: "2px" }}>{ele.name}</td>
                 <td style={{ width: "50px", padding: "2px" }}>
@@ -127,7 +127,7 @@ return (
                   {ele.uploadImage}
                 </td>
                 <td style={{ width: "100px", padding: "2px" }}>
-                  <button   onClick={() => Modalview(ele)}>
+                  <button   onClick={() => Modalview(ele)} title="Delete Form">
                     <i className="fa fa-trash" aria-hidden="true"></i>
                   </button>
                   

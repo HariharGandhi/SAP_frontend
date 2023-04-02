@@ -3,7 +3,7 @@ import authService from "../../../services/auth.service";
 // import { Switch, Route, Link } from "react-router-dom";
 
 export default function Navbarforapp() {
-  const User = localStorage.getItem('username')
+  const User = localStorage.getItem('role').slice(5)
   const Onlogout = () => {
     authService.logout()
   }
@@ -18,7 +18,7 @@ export default function Navbarforapp() {
         <div className="left-nav">
           <li>
             <a href="/" className="site-title">
-              SRES
+              <h1> Sanjivani </h1>
             </a>
           </li>
         </div>
@@ -29,16 +29,6 @@ export default function Navbarforapp() {
           <li>
             <a href="/" onClick={Onlogout}>
               Logout
-            </a>
-          </li>
-          <li>
-            <a href="/" className="site-title">
-              <i class="fa fa-user"></i>
-            </a>
-          </li>
-          <li>
-            <a href="/" className="site-title">
-            <i class="fa fa-user"></i>
             </a>
           </li>
         </div>

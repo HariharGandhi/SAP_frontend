@@ -1,39 +1,69 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import NewSidebar from "../../../../Navbar/Navbar";
+import "./ContactUsData.css"
 
 function ContactUsTable() {
   const [contactUsData, setContactUsData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:9190/api/auth/getcontactus')
-      .then(response => response.json())
-      .then(data => setContactUsData(data))
-      .catch(error => console.error(error));
+    fetch("http://localhost:9190/api/auth/getcontactus")
+      .then((response) => response.json())
+      .then((data) => setContactUsData(data))
+      .catch((error) => console.error(error));
+
+      return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
   }, []);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>mobileNumber</th>
-          <th>Module</th>
-        </tr>
-      </thead>
-      <tbody>
-        {contactUsData.map((row, index) => (
-          <tr key={index}>
-            <td>{row.name}</td>
-            <td>{row.email}</td>
-            <td>{row.mobileNumber}</td>
-            <td>{row.module}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <>
+      <NewSidebar />
+      <div
+        className={
+          sessionStorage.getItem("sidebar") === "true"
+            ? "table-nav vform"
+            : "table-nav"
+        }
+        id="contactus"
+      >
+        <table style={{width:'100%',marginTop:'25px'}}>
+          <thead>
+            <tr className="main-table top-col-table">
+              {/*<th>Student_id</th>*/}
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mobile Number</th>
+              <th>Module</th>
+              <th>Status</th>
+              {/*<th>User_id</th>*/}
+            </tr>
+          </thead>
+          <tbody>
+            {contactUsData.map((ele) => {
+                return (
+                  <tr key={ele.id} className="main-table">
+                    <td >
+                      {ele.name}
+                    </td>
+                    <td >
+                      {ele.email}
+                    </td>
+                    <td >
+                      {ele.mobileNumber}
+                    </td>
+                    <td >
+                      {ele.module}
+                    </td>
+                    <td >
+                      {ele.status}
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>{" "}
+      </div>
+    </>
   );
 }
 
 export default ContactUsTable;
-

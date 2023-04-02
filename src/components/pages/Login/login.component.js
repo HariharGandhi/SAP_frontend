@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 import AuthService from "../../../services/auth.service";
 import "../../../root.css";
+import Navbarforhome from "../Home/Navbarforhome";
 const required = (value) => {
   if (!value) {
     return (
@@ -112,7 +113,8 @@ export default class Login extends Component {
   }
 
   render() {
-    return (
+    return ( <>
+      <Navbarforhome />
       <div className="col-md-12">
         <div className="card card-container">
           <img
@@ -194,7 +196,7 @@ export default class Login extends Component {
             />
           </Form>
         </div>
-      </div>
+      </div></>
     );
   }
 }

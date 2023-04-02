@@ -3,10 +3,8 @@ import "./Application.css";
 import Footer from "../Footer/Footer";
 //import Navbarforapp from "../Home/Navbarforapp";
 import Axios from "axios";
-import {Link } from "react-router-dom";
-
-
-    
+//import {Link } from "react-router-dom";
+import Navbarforapp from "../Home/Navbarforapp";
 
 
 const Application = () => {
@@ -43,7 +41,7 @@ const Application = () => {
         Axios.post("http://localhost:9190/api/applicationForm" ,attributes )
         .then(response =>{
             console.log(response);
-            window.location.href="/logindone"
+            window.location.href="/pending"
            
         })
         .catch((error) => {
@@ -59,7 +57,7 @@ const Application = () => {
 
   return (
     <div>
-      {/* <Navbarforapp /> */}
+      <Navbarforapp />
       <form
         name="sendApplication"
         id="applicationFrom"
@@ -130,8 +128,8 @@ const Application = () => {
               />
             </div>
 
-            <button className="btn-app" >
-              <Link >Submit</Link>
+            <button className="btn-app" onClick={()=> submitHandler()} >
+              Submit
             </button>
           </div>
         </div>

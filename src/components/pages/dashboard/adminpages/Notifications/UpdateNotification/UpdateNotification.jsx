@@ -1,6 +1,7 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import "./UpdateNotification.css"
 //import { useHistory } from 'react-router-dom';
 const UpdateNotification = () => {
   //const history = useHistory();
@@ -81,17 +82,24 @@ const UpdateNotification = () => {
   const handlenotifymodule = async (event) => {
     setnm(event.target.value);
   };
+  useEffect(() => {
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+  });
+
+
+  useEffect(() => {
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+  });
 
   return (
-    <div>
+    <div >
       <div
-        className="container"
-        style={{ display: "flex", justifyContent: "center" }}
+        className="container" id="UpdateNotice"
+        style={{ display: "flex", justifyContent: "center" }} 
       >
-        <form>
-          <h1>Enter the details to update</h1>
-          <br />
-          <br />
+        <form >
+          <h6>Enter the details to update</h6>
+          
           <label>
             {" "}
             Enter id
@@ -103,6 +111,7 @@ const UpdateNotification = () => {
             />
           </label>
           <br />
+          <br /><br />
           <label>
             {" "}
             Enter Name
@@ -168,7 +177,7 @@ const UpdateNotification = () => {
               onChange={(e) => handlefile(e)}
             />
           </label>
-          <br />
+          <br /><br /><br />
           <label>
             {" "}
             Enter Title
@@ -179,7 +188,7 @@ const UpdateNotification = () => {
               onChange={(e) => handletitle(e)}
             />
           </label>
-          <br />
+          <br /><br />
           <label>
             {" "}
             Enter Status
@@ -208,7 +217,8 @@ const UpdateNotification = () => {
         type="submit"
         onClick={() => updatenotice()}
         className="btn btn-outline-white"
-        style={{ display: "flex", justifyContent: "center", margin: "auto" }}
+        style={{ display: "flex", justifyContent: "center", margin: "auto", marginBottom:'10px' }}
+        id="UpdateNotice"
       >
         {" "}
         Update notification{" "}

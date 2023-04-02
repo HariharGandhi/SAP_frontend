@@ -1,7 +1,7 @@
 import React from "react";
 import * as RiIcons from "react-icons/ri";
 
-export const SidebarAdminData = [
+export const SidebarSuperAdminData = [
 {
 	title: "Home",
 	path: "/admindashboard",
@@ -55,15 +55,20 @@ export const SidebarAdminData = [
 		title: "Add Notification",
 		path: "/addnotice",
 	},
-	{
-		title: "Update Notification",
-		path: "/updatenotice",
-	},
+	// {
+	// 	title: "Update Notification",
+	// 	path: "/updatenotice",
+	// },
 	{
 		title: "Delete Notification",
 		path: "/deletenotice",
 	},
 	],
+},
+{
+	title: "Contact Forms",
+	path:"/contactformdata",
+
 },
 {
 	title: "Admin",

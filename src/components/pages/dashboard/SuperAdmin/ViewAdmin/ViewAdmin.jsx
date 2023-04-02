@@ -120,6 +120,7 @@ const AllAdmin = () => {
         console.log("Error");
       }
     })();
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
   },[stat]);
 
   return (<>

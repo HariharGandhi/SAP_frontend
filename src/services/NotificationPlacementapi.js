@@ -5,9 +5,6 @@ const base_url = "http://localhost:9190/"
 class NotificationPlacementapi {
     getall(){
         return axios.get(base_url + "getNotification")
-        .then((res)=>{
-            console.log(res.notificationmodule)
-        })
     }
     getplacement(){
         return axios.get(base_url + "getAllPlacement")

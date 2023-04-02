@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from "react";
-//import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import NotificationPlacementapi from "../../../../services/NotificationPlacementapi";
 
 const Notification = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const res = await axios.get(
-      "http://localhost:9190/api/auth/getALLNotifications"
-    );
+    NotificationPlacementapi.getall().then((res)=> {
+      console.log(res.data);
+      setData(res.data);
+    });
 
-    console.log(res.data.data);
-    setData(res.data.data);
+    
   };
 
   useEffect(() => {
     getData();
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
   }, []);
 
   return (
     <div>
       {data.map((ele) => {
         return (
-          <div className="box">
-            <img
-              src={ele.image}
-              alt="ffy"
-              style={{ width: "200px", height: "200px" }}
-            />
-            <p>{ele.text}</p>
+          <div className="box" key={ele.id}>
+            <label>
+              <h3>{ele.title} : {ele.body}</h3>
+            </label>
+            <hr />
           </div>
         );
       })}

@@ -27,9 +27,11 @@ export default function Pending() {
   return (
     <div>
         <NewSidebar />
-        <h3>Pending</h3>
-        <h5>if you have any query write here</h5>
-        <input className='Pending' type="text" />
+        <h3> Pending ...</h3>
+        <h4>Your Form Is Under Verification </h4>
+        <h4>Please </h4>
+
+        
     </div>
     
   )
