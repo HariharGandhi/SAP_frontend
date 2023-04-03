@@ -13,7 +13,7 @@ export const SidebarStudentData = [
 },
 {
 	title: "Payment",
-	path: "/studentpayment",
+	path: "/payment",
 
 },
 {

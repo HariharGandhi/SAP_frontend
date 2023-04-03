@@ -45,12 +45,16 @@ import SuperAdminDashboard from "./components/pages/dashboard/SuperAdmin/SuperAd
 import PostInstallment from "./components/pages/Payment/Fee installments/PostInstallment";
 import Isquerytrue from "./components/pages/ApplicationForm/Isquerytrue";
 import ApplicationAfterQuery from "./components/pages/ApplicationForm/ApplicationAfterQuery";
-import studenthome from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/studenthome";
+// import studenthome from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/studenthome";
+// import studenthome from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/studenthome";
 // import Profile from "./components/pages/dashboard/Studentdashboard/Profile/profile";
 import GetModule from "./components/pages/dashboard/adminpages/Modules/GetModule";
 import profile from "./components/pages/dashboard/Studentdashboard/Profile/profile";
 import Getinstallments from "./components/pages/Payment/Fee installments/Getinstallments";
-// const app = require("express");
+import admindetails from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/adminDetails";
+import application from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/application";
+import contactToAdmin from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/contactToAdmin";
+import courseDetails from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/courseDetails";
 // const cors = require("cors")
 // app.use(cors());
 
@@ -219,11 +223,18 @@ class App extends Component {
                 path="/applicationafterquery"
                 component={ApplicationAfterQuery}
               />
-              <Route exact path="/studenthome" component={studenthome} />
+              {/* <Route exact path="/studenthome" component={studenthome} /> */}
               {/* <Route exact path="/profile" component={Profile}/> */}
               <Route exact path="/getmodules" component={GetModule} />
               <Route exact path="/profile" component={profile} />
               <Route exact path="/getinstallment" component={Getinstallments}/>
+              <Route exact path="/admindetails" component={admindetails}/>
+              <Route exact path="/application" component={application}/>
+              <Route exact path="/contactToAdmin" component={contactToAdmin}/>
+              <Route exact path="/courseDetails" component={courseDetails}/>
+
+
+
             </Switch>
           </div>
         </div>

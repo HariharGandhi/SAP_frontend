@@ -1,109 +1,124 @@
-// import axios from "axios";
-
-
-// import "./done.css";
-
-// export default class Logindone extends Component {
-//   render() {
-
-    
-//     const Onlogout = () => {
-//       axios.post("http://localhost:9190/api/auth/signout")
-//       .then((res)=> {
-//         localStorage.removeItem('token');
-//         localStorage.removeItem('role');
-//         localStorage.removeItem("user");
-//       })
-//     }
-//     console.log(sessionStorage.getItem("rest"));
-//     return (
-//       <div className="ld-main">
-//         <div className="ld-left">
-//           <div className="ld-left-item  lr-pd">
-//             <a href="/" className="site-title ld-center">
-//               <h2>
-//                 Sanjivani<span className="color-change">SAP</span>
-//               </h2>
-//             </a>
-//           </div>
-//           <div className="ld-down">
-//             <div className="ld-d-item">Profile</div>
-//             <div className="ld-d-item"><a href="/application">Application Form</a></div>
-//             <div className="ld-d-item">Payment</div>
-//             <div className="ld-d-item">Course Details</div>
-//             <div className="ld-d-item">Extra</div>
-//             <div className="ld-d-item">Extra</div>
-//           </div>
-//         </div>
-//         <div className="ld-right">
-//           <div
-//             className="lr-color"
-//             style={{ display: "flex", justifyContent: "center" }}
-//           >
-//             <h2 className=" lr-pd ld-center">Welcome Student</h2>
-//             <div
-//               className="lr"
-//               style={{
-//                 display: "flex",
-//                 justifyContent: "center",
-//                 alignItems: "center",
-//                 marginLeft: "120px",
-//               }}
-//             >
-//               <div
-//                 className="btn btn-outline-white btn-rounded "
-//                 style={{
-//                   display: "flex",
-//                   justifyContent: "center",
-//                   cursor: "pointer",
-//                   height: "35px",
-//                 }}
-//               >
-//                 <a href="/" onClick={Onlogout}>Logout</a>
-//               </div>
-//               <div
-//                 className="btn btn-outline-white rounded-btn"
-//                 style={{
-//                   display: "flex",
-//                   justifyContent: "center",
-//                   height: "35px",
-//                 }}
-//               >
-//                 <span className="material-symbols-outlined">notifications</span>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="lr-wrapper"></div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-//--------------------------------------------------------------------------------------------------------------
-import React, {  } from "react";
+import React, { } from "react";
 import NewSidebar from "../../../Navbar/Navbar";
-//import studenthome from "./SidebarForStudent/Home/studenthome";
+import { useHistory } from "react-router-dom";
 
 
- const Logindone = () => {
+
+const Logindone = () => {
+  const history = useHistory();
+
+  const NevigatePayment = () =>{ 
+    history.push('/payment')
+  }
+  const NevigateResume = () =>{ 
+    history.push('/resume')
+  }
+
+  const NevigateApplicationform = () =>{ 
+    history.push('/application')
+  }
+
+  const NevigateCourseDetails = () =>{ 
+    history.push('/courseDetails')
+  }
+  const NevigateTwoWayCommunication = () =>{ 
+    history.push('/contactToAdmin')
+  }
+  const NevigateAdminDetails = () =>{ 
+    history.push('/admindetailst')
+  }
+  
+
+  
+
+
   return (
     <>
-        <NewSidebar />
-        <div>
-    
-    <h1>Welcome to the Student Home Page</h1>
-    <p>This is where you can access your courses, assignments, and grades.</p>
-    <ul>
-      <li><a href="#">Syllus</a></li>
-      <li><a href="#">Assignments</a></li>
-      <li><a href="#">Grades</a></li>
-    </ul>
-  </div>
-        <studenthome />
-        
-    </>
-  )
- }
+      <NewSidebar />
+      <section className="services" id="services">
+        <div className="content">
+          <div className="title">
 
- export default Logindone;
+          </div>
+          <div className="boxes" >
+            <div
+              className="box"
+              data-aos="fade-down-right"
+              data-aos-duration="2000"
+              data-aos-delay="1000"
+            >
+              <div className="icon">
+                <i className="fas fa-desktop"></i>
+              </div>
+              <div onClick={() => NevigatePayment()} className="topic">ABAP</div>
+              <p>
+                this is your payment card
+              </p>
+            </div>
+            <div className="box" data-aos="fade-down-right" data-aos-delay="300">
+              <div className="icon">
+                <i className="fas fa-brush"></i>
+              </div>
+              <div onClick={() => NevigateResume()} className="topic">MM</div>
+              <p>
+                tgis is your resume card
+              </p>
+            </div>
+            <div className="box" data-aos="fade-down-right" data-aos-delay="500">
+              <div className="icon">
+                <i className="fas fa-chart-line"></i>
+              </div>
+              <div onClick={() => NevigateApplicationform()} className="topic">PP</div>
+              <p>
+                this is your application form card
+              </p>
+            </div>
+            <div
+              className="box"
+              data-aos="fade-down-right"
+              data-aos-delay="100"
+              data-aos-offset="120"
+            >
+              <div className="icon">
+                <i className="fab fa-wordpress"></i>
+              </div>
+              <div onClick={() => NevigateCourseDetails()} className="topic">SD</div>
+              <p>
+                this is your Course Details card
+              </p>
+            </div>
+            <div
+              className="box"
+              data-aos="fade-down-right"
+              data-aos-delay="300"
+              data-aos-offset="120"
+            >
+              <div className="icon">
+                <i className="fas fa-cloud"></i>
+              </div>
+              <div onClick={() => NevigateTwoWayCommunication()} className="topic">FICO</div>
+              <p>
+                2 way communication card
+              </p>
+            </div>
+            <div
+              className="box"
+              data-aos="fade-down-right"
+              data-aos-delay="500"
+              data-aos-offset="120"
+            >
+              <div className="icon">
+                <i className="fas fa-tablet-alt"></i>
+              </div>
+              <div onClick={() => NevigateAdminDetails()} className="topic">HR/HCM </div>
+              <p>
+                Admin datails card
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+export default Logindone;
