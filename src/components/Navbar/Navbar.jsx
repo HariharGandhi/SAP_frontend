@@ -21,7 +21,8 @@ const Nav = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  @media screen and (max-width: 960px) {
+
+  @media screen and (max-width: 768px) {
     justify-content: space-between;
   }
 `;
@@ -34,7 +35,7 @@ const NavIcon = styled(Link)`
   justify-content: flex-start;
   align-items: center;
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 768px) {
     margin-left: 1rem;
   }
 `;
@@ -51,7 +52,7 @@ const SidebarNav = styled.nav`
   transition: 350ms;
   z-index: 10;
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 768px) {
     width: 80%;
     left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
     transition: 350ms;

@@ -4,7 +4,7 @@ import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
 import Applicationformservice from "../../../../../../services/applicationformservice";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
-import BASE_URL from "../../../../../../services/Baseurl";
+import {BASE_URL} from "../../../../../../services/Globalvalues";
 const VerifyForm = () => {
     const [data, setData] = useState([]);
     const [did, setdid] = useState(0);

@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const Getinstallments = () => {
 
-  const ID = parseInt(localStorage.getItem('id'))
+  const ID = parseInt(localStorage.getItem('id'));
   const [Data,setData]= useState([])
     useEffect(() => {
         (async () => {
@@ -14,7 +14,7 @@ const Getinstallments = () => {
               setData(data);
               console.log(data);
             } catch (error) {
-              console.log("Error");
+              console.log(error);
             }
           })();
           return () => sessionStorage.setItem("sidebar", JSON.stringify(false));

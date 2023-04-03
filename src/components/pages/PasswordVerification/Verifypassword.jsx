@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Navbarforhome from "../Home/Navbarforhome";
 /*import './App.css';*/
 const Verifypassword = () => {
   console.log(sessionStorage.getItem("otp"));
@@ -21,6 +22,7 @@ const Verifypassword = () => {
 
   return (<>
     <div>
+      <Navbarforhome />
       <div
         className="container"
         style={{
@@ -50,6 +52,7 @@ const Verifypassword = () => {
           justifyContent: "center",
           margin: "auto",
           cursor: "pointer",
+          width:'150px'
         }}
       >
         Verify OTP{" "}

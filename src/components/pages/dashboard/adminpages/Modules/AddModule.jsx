@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
+import { ACTIVE } from '../../../../../services/Globalvalues';
 import "./AddModule.css"
 
 const AddModule = () =>{
@@ -13,9 +14,9 @@ const handlename = async (e) =>{
 const handlemod = async (e) => {
     setmod(e.target.value)
 }
-const Stat = "active"
+
 const Addmodule = () => {
-  NotificationPlacementapi.addmodules(nme,mod,Stat).then(response => {
+  NotificationPlacementapi.addmodules(nme,mod,ACTIVE).then(response => {
         alert(response.data.message);
         window.location.href = "/getmodules"
     }).catch((err)=>{

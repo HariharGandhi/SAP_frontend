@@ -1,6 +1,7 @@
 import React, { Component } from "react"; //, useState -removed
 import "./Forgotpassword.css";
 import AuthService from "../../../services/auth.service";
+import Navbarforhome from "../Home/Navbarforhome";
 
 class ForgotPassword extends Component {
   state = {
@@ -31,6 +32,7 @@ class ForgotPassword extends Component {
   render() {
     return (
       <div>
+      <Navbarforhome />
       <div
         className="container"
         style={{
@@ -39,15 +41,21 @@ class ForgotPassword extends Component {
           justifyContent: "center",
         }}
       >
-        <form>
-          <label>
+        <form style={{width:'400px'}}>
+          <label style={{
+          // display: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+          width:'325px'
+        }}>
             {" "}
-            Email
+            Enter registered Email:
             <input
               type="email"
               value={this.state.email}
               name="Email"
               onChange={(e) => this.handleChange(e)}
+              style={{border:'1px solid'}}
             />
           </label>
           
@@ -59,9 +67,11 @@ class ForgotPassword extends Component {
         justifyContent: "center",
         margin: "auto",
         cursor: "pointer",
+        width:'100px',
+        height:'25px'
       }}>
             {" "}
-            Send OTP{" "}
+            <h3>Send OTP</h3>{" "}
           </button>
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NewSidebar from "../../../../Navbar/Navbar";
 import "./ContactUsData.css"
-import BASE_URL from "../../../../../services/Baseurl";
+import {BASE_URL} from "../../../../../services/Globalvalues";
 
 function ContactUsTable() {
   const [contactUsData, setContactUsData] = useState([]);

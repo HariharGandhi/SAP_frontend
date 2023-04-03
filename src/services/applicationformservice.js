@@ -1,5 +1,5 @@
 import axios from "axios";
-import BASE_URL from "./Baseurl";
+import {BASE_URL} from "./Globalvalues";
 
 const Application_URL = BASE_URL + "api/";
 class Applicationformservice {

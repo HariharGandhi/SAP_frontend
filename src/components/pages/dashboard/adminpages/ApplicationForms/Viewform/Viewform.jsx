@@ -6,7 +6,7 @@ import "./Viewform.css";
 import Applicationformservice from "../../../../../../services/applicationformservice";
 import NewSidebar from "../../../../../Navbar/Navbar";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
-import BASE_URL from "../../../../../../services/Baseurl";
+import {BASE_URL} from "../../../../../../services/Globalvalues";
 
 const Viewform = () => {
   const [did, setdid] = useState(0);

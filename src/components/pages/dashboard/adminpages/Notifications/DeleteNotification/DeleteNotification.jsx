@@ -175,7 +175,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../../Modal";
-import BASE_URL from "../../../../../../services/Baseurl";
+import {BASE_URL }from "../../../../../../services/Globalvalues";
 
 const DeleteNotification = () => {
     const [did,setdid] = useState(0)

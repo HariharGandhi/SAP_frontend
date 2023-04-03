@@ -11,7 +11,7 @@ export default function Navbarforapp() {
     <nav
       className="nav"
       data-aos="fade-down"
-      data-aos-delay="300"
+      data-aos-delay="100"
       data-aos-offset="00"
     >
       <ul>

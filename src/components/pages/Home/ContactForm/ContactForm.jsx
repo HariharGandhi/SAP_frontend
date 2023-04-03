@@ -1,7 +1,7 @@
 
 import React from 'react'
 import './ContactForm.css'
-import BASE_URL from '../../../../services/Baseurl'
+import {BASE_URL} from '../../../../services/Globalvalues'
 
 
 const ContactForm = () => {
@@ -61,9 +61,13 @@ const ContactForm = () => {
       <label>
         Module:
         <select name="module" style={{cursor:'pointer'}}>
-          <option value="Module 1">Module 1</option>
-          <option value="Module 2">Module 2</option>
-          <option value="Module 3">Module 3</option>
+          <option value="">Select Module</option>
+          <option value="PP">PP</option>
+          <option value="SD">SD</option>
+          <option value="ABAP">ABAP</option>
+          <option value="MM">MM</option>
+          <option value="HR/HCM">HR/HCM</option>
+          <option value="HR/HCM">HR/HCM</option>
         </select>
         <button type="submit">{formStatus}</button>
       </label>

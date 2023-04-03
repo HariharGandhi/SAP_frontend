@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../Modal";
-import BASE_URL from "../../../../../services/Baseurl";
+import {BASE_URL , ACTIVE } from "../../../../../services/Globalvalues";
 import Adminservice from "../../../../../services/admin.service";
 import NewSidebar from "../../../../Navbar/Navbar";
 //import AdminService from "../../../../../services/admin.service";
 //import "./ViewAdmin.css"
 const AllAdmin = () => {
   //const [did, setdid] = useState(0);
-  const [stat, setstat] = useState("active");
   const [nme, setnme] = useState("");
   const [ctc, setctc] = useState("");
   
@@ -100,7 +99,7 @@ const AllAdmin = () => {
         const { data } = await axios.get(
           BASE_URL + `admin/auth/getAdminUsers/{status}`,{
             params: {
-                status: stat
+                status: ACTIVE
             }
           }
         );
@@ -113,7 +112,7 @@ const AllAdmin = () => {
       }
     })();
     return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
-  },[stat]);
+  });
 
   return (<>
     <NewSidebar />

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import AuthService from "../../../services/auth.service";
+import Navbarforhome from "../Home/Navbarforhome";
 const Changepassword = () => {
   const [pass, setpass] = useState("");
   const [passn, setpassn] = useState("");
@@ -30,6 +31,7 @@ const Changepassword = () => {
 
   return (
     <div>
+      <Navbarforhome />
       <div
         className="container"
         style={{
@@ -39,7 +41,7 @@ const Changepassword = () => {
         }}
       >
         <form style={{ display: "flex", alignContent: "center" }}>
-          <label>
+          <label style={{marginTop:'10px'}}>
             {" "}
             Set New Password
             <input
@@ -47,10 +49,11 @@ const Changepassword = () => {
               value={pass}
               name="Password"
               onChange={(e) => handlepassword(e)}
+              style={{border:'1px solid'}}
             />
           </label>
           <br />
-          <label>
+          <label style={{marginTop:'10px'}}>
             {" "}
             Confirm New Password
             <input
@@ -58,6 +61,7 @@ const Changepassword = () => {
               value={passn}
               name="Password"
               onChange={(e) => handlepassnew(e)}
+              style={{border:'1px solid'}}
             />
           </label>
           <br />
@@ -70,9 +74,11 @@ const Changepassword = () => {
           justifyContent: "center",
           margin: "auto",
           cursor: "pointer",
+          width:'120px',
+          height:'25px'
         }}>
             {" "}
-            Change Password{" "}
+            <h3>Change Password</h3>{" "}
           </button>
     </div>
   );

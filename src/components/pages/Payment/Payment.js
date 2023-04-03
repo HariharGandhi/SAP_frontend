@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { BASE_URL } from '../../../services/Globalvalues';
 
 const Payment = () => {
   
@@ -35,6 +36,38 @@ const Payment = () => {
     };
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+    paymentObject.on('payment.success', function(response) {
+      console.log('payment success:', response);
+      // Make API call to update payment status
+      fetch(BASE_URL + 'updatePayentInstallment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          //payment_id: response.razorpay_payment_id,
+          installmentAmount: amount,
+          installmentStatus:"PAID",
+          noOfInstallment:1,
+          id: 1,
+          totalFees:30000,
+          installment:1,
+          userId:1
+        })
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('API response:', data);
+          // Redirect to success page
+          window.location.href = "/getinstallment";
+        })
+        .catch((error) => {
+          console.error('API error:', error);
+          // Redirect to error page
+          window.location.href = '/payment';
+        });
+    });
+    
   }
 
  const handleamount = (e) => {

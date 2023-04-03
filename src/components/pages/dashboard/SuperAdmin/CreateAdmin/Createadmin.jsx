@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Adminservice from '../../../../../services/admin.service';
 import NewSidebar from '../../../../Navbar/Navbar';
+import { ACTIVE } from '../../../../../services/Globalvalues';
 
 const Createadmin = () =>{
   const [dept,setdept] = useState("");
@@ -26,8 +27,8 @@ const handleemail = async (e) =>{
 }
 
 const Addadmin = () => {
-    const Status = "active"
-    Adminservice.Register(dept,email,mb,nme,pass,pos,Status).then(response => {
+    
+    Adminservice.Register(dept,email,mb,nme,pass,pos,ACTIVE).then(response => {
         alert("Admin added Successfully");
         window.location.href = "/alladmins"
     })

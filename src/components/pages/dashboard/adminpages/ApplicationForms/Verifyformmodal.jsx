@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Verifyformmodal.css"
-import BASE_URL from "../../../../../services/Baseurl";
+import {BASE_URL} from "../../../../../services/Globalvalues";
 
 
 const VerifyFormmodal = () => {

@@ -2,7 +2,7 @@ import React, {  } from "react";
 import "./Homenavbar.css"
 export default function Navbarforhome() {
   return (
-    <nav className="nav" data-aos="fade-down" data-aos-delay="300" data-aos-offset="00">
+    <nav className="nav" data-aos="fade-down" data-aos-delay="100" data-aos-offset="00">
       <ul>
         <div className="left-nav" style={{backgroundColor:"black"}}>
           <li>
