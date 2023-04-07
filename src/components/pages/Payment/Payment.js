@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { BASE_URL } from '../../../services/Globalvalues';
+import axios from 'axios';
 
 const Payment = () => {
   
@@ -32,51 +33,52 @@ const Payment = () => {
       currency: 'INR',
       amount: amount * 100,
       name: 'Hari',
-      description: 'Transaction Completed'
+      description: 'Transaction Completed',
+      handler: function (response) {
+        const Amount = Number(localStorage.getItem('amount'))
+        const P_id = response.razorpay_payment_id;
+        let arr = [
+          {
+            id: 1,  
+            installment:1,
+            installmentAmount: Amount,
+            installmentStatus:"PAID",
+            noOfInstallment:1,
+            totalFees:30000,
+            userId:1
+        }
+        ]
+        if(P_id !== null){
+          console.log("inside success")
+          axios.post(BASE_URL + 'updatePayentInstallment',arr)
+          .then((res)=>{
+            console.log(res);
+            localStorage.removeItem('amount');
+              window.location.href = "/getinstallment";
+          })
+        }
+        if(P_id === null){ 
+          alert("Payment failed");
+          window.location.href ="/payment"
+        }
+
+      },
     };
+    
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
-    paymentObject.on('payment.success', function(response) {
-      console.log('payment success:', response);
-      // Make API call to update payment status
-      fetch(BASE_URL + 'updatePayentInstallment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          //payment_id: response.razorpay_payment_id,
-          installmentAmount: amount,
-          installmentStatus:"PAID",
-          noOfInstallment:1,
-          id: 1,
-          totalFees:30000,
-          installment:1,
-          userId:1
-        })
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log('API response:', data);
-          // Redirect to success page
-          window.location.href = "/getinstallment";
-        })
-        .catch((error) => {
-          console.error('API error:', error);
-          // Redirect to error page
-          window.location.href = '/payment';
-        });
-    });
     
   }
 
  const handleamount = (e) => {
    setamount(Number(e.target.value));
+   
  };
 
  const handlepay = (e) => {
   e.preventDefault();
   console.log(amount);
+  localStorage.setItem('amount',amount)
   displayRazorpay(amount);
     
  };
