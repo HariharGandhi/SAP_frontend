@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 
 
 
+
+
 const Logindone = () => {
   const history = useHistory();
 
@@ -15,17 +17,17 @@ const Logindone = () => {
   }
 
   const NevigateApplicationform = () =>{ 
-    history.push('/application')
+    history.push('/updateprofile')
   }
 
   const NevigateCourseDetails = () =>{ 
-    history.push('/courseDetails')
+    history.push('/coursedetails')
   }
   const NevigateTwoWayCommunication = () =>{ 
-    history.push('/contactToAdmin')
+    history.push('/contacttoadmin')
   }
   const NevigateAdminDetails = () =>{ 
-    history.push('/admindetailst')
+    history.push('/admindetails')
   }
   
 
