@@ -1,0 +1,58 @@
+.student {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  
+    /* set the width to 100% on mobile */
+    width: 100%;
+  }
+  
+  .student form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 80%;
+  
+    /* adjust the width on larger screens */
+    @media screen and (min-width: 768px) {
+      width: 60%;
+    }
+  }
+  
+  .student label {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  .student input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .student button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0077ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* adjust the button size on larger screens */
+  @media screen and (min-width: 768px) {
+    .student button[type="submit"] {
+      padding: 15px;
+      font-size: 18px;
+    }
+  }
+  

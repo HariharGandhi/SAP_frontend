@@ -9,7 +9,7 @@ export const SidebarStudentData = [
 },
 {
 	title :"Profile",
-	path :"./profile",
+	path :"./updateprofile",
 },
 {
 	title: "Payment",
