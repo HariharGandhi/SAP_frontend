@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import { BASE_URL } from '../../../services/Globalvalues';
-import axios from 'axios';
+// import { BASE_URL } from '../../../services/Globalvalues';
+// import axios from 'axios';
 
 const Payment = () => {
   
@@ -32,30 +32,41 @@ const Payment = () => {
       key: 'rzp_test_jJa0WloN5mKHtI',
       currency: 'INR',
       amount: amount * 100,
-      name: 'Hari',
+      name: 'Sanjivani SAP',
       description: 'Transaction Completed',
       handler: function (response) {
-        const Amount = Number(localStorage.getItem('amount'))
+        //const Amount = Number(localStorage.getItem('amount'))
         const P_id = response.razorpay_payment_id;
-        let arr = [
-          {
-            id: 1,  
-            installment:1,
-            installmentAmount: Amount,
-            installmentStatus:"PAID",
-            noOfInstallment:1,
-            totalFees:30000,
-            userId:1
-        }
-        ]
+        console.log("Card ",response.razorpay_card_id)
+        // let arr = [
+        //   {
+        //     id: 1,  
+        //     installment:1,
+        //     installmentAmount: Amount,
+        //     installmentStatus:"PAID",
+        //     noOfInstallment:1,
+        //     totalFees:30000,
+        //     userId:1
+        // }
+        // ]
         if(P_id !== null){
           console.log("inside success")
-          axios.post(BASE_URL + 'updatePayentInstallment',arr)
-          .then((res)=>{
-            console.log(res);
-            localStorage.removeItem('amount');
-              window.location.href = "/getinstallment";
-          })
+          let res = {
+            "Payment Id" : response.razorpay_payment_id,
+            "OrderId" : response.razorpay_order_id,
+            "CardId" : response.razorpay_card_id,
+            "Signature" : response.razorpay_signature,
+            "Payment_link": response.razorpay_payment_link_id
+          }
+          console.log(res)
+          alert("Payment Details : ",JSON.stringify(res))
+          window.location.href = "/getinstallment"
+          // axios.post(BASE_URL + 'updatePayentInstallment',arr)
+          // .then((res)=>{
+          //   console.log(res);
+          //   localStorage.removeItem('amount');
+          //     window.location.href = "/getinstallment";
+          // })
         }
         if(P_id === null){ 
           alert("Payment failed");
