@@ -5,12 +5,10 @@ class Paymentapi {
     postinstallment(data){
         return axios.post(BASE_URL + "addNewPayentInstallment",data)
     }
-    getinstallment(userid){
-        const USERID = parseInt(userid)
-        console.log("Type is: ", typeof(USERID)," & Id is", USERID)
+    getinstallment(UserId){
         return axios.get(BASE_URL + `getPayentInstallment`,{
             params:{
-                userId : USERID
+                UserId
             }
         })
     }
