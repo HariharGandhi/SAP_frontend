@@ -79,8 +79,11 @@ export default class Login extends Component {
            }
               window.location.reload();
             });}
-            if(Role==="ROLE_ADMIN" || Role==="ROLE_SUPER"){
+            if(Role==="ROLE_ADMIN"){
               this.props.history.push("/admindashboard");
+            }
+            if(Role==="ROLE_SUPERADMIN"){
+              this.props.history.push("/superadmindashboard");
             }
         //  StatuS === "Verifiedd"
         //    ? this.props.history.push("/newnav")

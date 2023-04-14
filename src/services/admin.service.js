@@ -26,7 +26,9 @@ class Adminservice {
             status
         },{params:{
             Uid
-        }})
+        }}).then(
+            console.log("inside api update")
+        )
     }
     getadmin(status){
         

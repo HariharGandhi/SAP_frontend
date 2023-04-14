@@ -4,7 +4,7 @@ import * as RiIcons from "react-icons/ri";
 export const SidebarSuperAdminData = [
 {
 	title: "Home",
-	path: "/admindashboard",
+	path: "/superadmindashboard",
 
 },
 {
@@ -12,19 +12,6 @@ export const SidebarSuperAdminData = [
 	path: "/payment",
 	iconClosed: <RiIcons.RiArrowDownSFill />,
 	iconOpened: <RiIcons.RiArrowUpSFill />,
-
-	subNav: [
-		{
-			title: "Verify Forms",
-			path: "/admindashboard",
-			cName: "sub-nav",
-		},
-		{
-			title: "All Forms",
-			path: "/allform",
-			cName: "sub-nav",
-		},
-	],
 },
 {
 	title: "Application Forms",

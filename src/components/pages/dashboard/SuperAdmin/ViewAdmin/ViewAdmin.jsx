@@ -44,13 +44,10 @@ const AllAdmin = () => {
 
   const Updatedetails = () => {
     const Upid = parseInt(sessionStorage.getItem('did'),10)
-    Adminservice.update(dept,mail,ctc,nme,pass,pos,statt,Upid).then((res)=>{
-      setDeleteModal(false);
-      sessionStorage.removeItem('Upid')
-      window.location.reload();
-    })
-      .then((res) => {
+    Adminservice.update(dept,mail,ctc,nme,pass,pos,statt,Upid).then((res) => {
         setQueryModal(false);
+        setDeleteModal(false);
+        sessionStorage.removeItem('Upid')
         sessionStorage.removeItem('did')
         alert("Upadte successfull")
         window.location.reload();
@@ -106,7 +103,7 @@ const AllAdmin = () => {
         // const { data } = AdminService.getadmin(stat)
         setData(data);
         //setSid(data.records.student_id);
-        console.log(data);
+        
       } catch (error) {
         console.log("Error");
       }

@@ -2,8 +2,11 @@ import React, { useEffect } from 'react';
 import Paymentapi from '../../../../services/Paymentapi';
 import NewSidebar from '../../../Navbar/Navbar';
 import { useState } from 'react';
+import axios from 'axios';
 
 const Getinstallments = () => {
+  const [paymentData, setPaymentData] = useState(null);
+
   const loadScript = (src) => {
     return new Promise((resolve) => {
       const script = document.createElement('script');
@@ -26,7 +29,6 @@ const Getinstallments = () => {
   console.log(amount)
   displayRazorpay(amount);
   
-
   async function displayRazorpay(amount) {
     const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
     console.log(res);
@@ -43,20 +45,30 @@ const Getinstallments = () => {
       handler: function (response) {
         //const Amount = Number(localStorage.getItem('amount'))
         const P_id = response.razorpay_payment_id;
-        const Card = response.razorpay_card_id;
-        console.log(Card)
+        
+        
         if(P_id !== null){
           console.log("inside success")
-          let res = {
-            "Payment Id" : response.razorpay_payment_id,
-            "OrderId" : response.razorpay_order_id,
-            "CardId" : response.razorpay_card_id,
-            "Signature" : response.razorpay_signature,
-            "Payment_link": response.razorpay_payment_link_id
+          try {
+            const response = axios.get(
+              `https://api.razorpay.com/v1/payments/${P_id}`,
+              {
+                auth: {
+                  username: "rzp_test_jJa0WloN5mKHtI",
+                  password: "WZ22YB7OWxGmKojSuk3gvOgL",
+                },
+              }
+            ).then((res)=> {
+              setPaymentData(response.data);
+              console.log(paymentData.card.type);
+              console.log("Payment Details : ",JSON.stringify(paymentData));
+              window.location.href = "/getinstallment";
+          });
+            
+          } catch (error) {
+            console.error(error);
           }
-          console.log(res)
-          alert("Payment Details : ",JSON.stringify(res))
-          window.location.href = "/getinstallment"
+          
         }
         if(P_id === null){ 
           alert("Payment failed");
@@ -81,27 +93,17 @@ const Getinstallments = () => {
 //  };
 }
     useEffect(() => {
-       const fetchdata = async () => {
-            try {
-               const { data } = await Paymentapi.getinstallment(ID);
-              setData(data);
-            } catch (error) {
-              console.log(error);
-            }
-          };
-          fetchdata(); // Fetch data initially
-
-          const intervalId = setInterval(() => {
-            fetchdata();
-          }, 50000);
-      
-          sessionStorage.setItem("sidebar", JSON.stringify(false));
-      
-          return () => {
-            clearInterval(intervalId);
-            sessionStorage.removeItem("sidebar");
-          };
-        },);
+      (async () => {
+             try {
+              const { data } = await Paymentapi.getinstallment(ID);
+               setData(data);
+              //  console.log(data);
+             } catch (error) {
+               console.log(error);
+             }
+           })();
+      return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+        },[ID]);
     return (<>
         <NewSidebar />
         <div

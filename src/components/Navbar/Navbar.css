@@ -4,10 +4,72 @@
     width: 100%
 
 }
-@media (min-width: 750px) {
+/* For screens smaller than 768px */
+@media screen and (max-width: 768px) {
+
+    /* Center the main heading */
+    .main-head {
+      margin-left: 0;
+      text-align: center;
+    }
+  
+    /* Hide the sidebar navigation by default */
+    .SIDE {
+      display: none;
+    }
+  
+    /* Show the sidebar navigation when the sidebar is active */
+    .SIDE.active {
+      display: block;
+    }
+  
+    /* Adjust the margin of the NavIcon to align with the heading */
+    .NAVICON {
+      margin-left: 0;
+      margin-right: auto;
+    }
+  
+    /* Reduce the font size of the heading to fit smaller screens */
+    .heading {
+      font-size: 1.5rem;
+    }
+  
+    /* Adjust the padding of the navigation buttons */
+    .nav-btns ul {
+      padding: 0;
+      margin-left: 0;
+    }
+  
+    /* Reduce the font size and padding of the navigation button */
+    .nav-button {
+      font-size: 0.8rem;
+      padding: 0.5rem;
+    }
+  }
+  
+@media (min-width: 500px) {
     .vform {
       width: calc(100% - 250px); /* Set the width to 100% minus the width of the sidebar */
     }
+    /* NAV {
+        justify-content: space-between;
+        width: calc(100% - 250px);
+        flex-direction: column;
+    }
+    .nav-btns {
+        margin-left: 0;
+    }
+    .nav-btns ul{
+        margin-left: 0;
+    }
+    .main-head{
+        margin-left: 0;
+    } */
+  }
+  .main-head {
+    text-align: center;
+    margin-left : 200px;
+    color: white;
   }
 .table-search{
     width: 50%!important;
@@ -78,6 +140,9 @@ align-items: center;
     border-radius: 8px;
     cursor: pointer;
 }
+.nav-btns {
+    margin-left: 650px;
+}
 .nav-btns ul{
     display: flex;
     align-items: center;
@@ -99,3 +164,16 @@ align-items: center;
     border-radius: 8px;
     cursor: pointer;
 }
+/* .NAV{
+  background: #15171c;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
+} */
+

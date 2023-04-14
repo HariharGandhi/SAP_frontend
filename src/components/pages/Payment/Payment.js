@@ -37,7 +37,8 @@ const Payment = () => {
       handler: function (response) {
         //const Amount = Number(localStorage.getItem('amount'))
         const P_id = response.razorpay_payment_id;
-        console.log("Card ",response.razorpay_card_id)
+        const Card = response.razorpay_card_id;
+        console.log(Card,P_id)
         // let arr = [
         //   {
         //     id: 1,  

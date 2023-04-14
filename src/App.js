@@ -187,12 +187,12 @@ class App extends Component {
               <Route
                 exact
                 path="/alladmins"
-                component={withAuth(RoleAuth(AllAdmin))}
+                component={withAuth(SuperAuth(AllAdmin))}
               />
               <Route
                 exact
                 path="/addadmin"
-                component={withAuth(RoleAuth(Createadmin))}
+                component={withAuth(SuperAuth(Createadmin))}
               />
               <Route
                 exact

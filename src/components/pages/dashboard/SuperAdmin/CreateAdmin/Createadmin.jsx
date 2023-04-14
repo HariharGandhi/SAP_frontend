@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Adminservice from '../../../../../services/admin.service';
 import NewSidebar from '../../../../Navbar/Navbar';
 import { ACTIVE } from '../../../../../services/Globalvalues';
@@ -33,6 +33,9 @@ const Addadmin = () => {
         window.location.href = "/alladmins"
     })
 }
+useEffect(() => {
+  return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+});
     return (
         <>
         <NewSidebar />

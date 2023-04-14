@@ -21,9 +21,13 @@ const Nav = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-
   @media screen and (max-width: 768px) {
+    background: #15171c;
+    height: 80px;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
   }
 `;
 
@@ -63,6 +67,9 @@ const SidebarWrap = styled.div`
   width: 100%;
 `;
 
+  
+
+
 const NewSidebar = () => {
   const [sidebar, setSidebar] = useState(false);
 
@@ -86,8 +93,8 @@ const NewSidebar = () => {
   
   return (
     <>
-      <IconContext.Provider value={{ color: "#fff" }}>
-        <Nav>
+      <IconContext.Provider value={{ color: "#fff" }} className="NAV">
+        <Nav >
           <NavIcon to="#" style={{marginRight:'10px'}}>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
@@ -96,40 +103,23 @@ const NewSidebar = () => {
             <span className="color-teal">SAP</span>{" "}
           </h2>
           {localStorage.getItem("role") === "ROLE_STUDENT" && (
-            <h2
-              style={{
-                textAlign: "center",
-                marginLeft: "200px",
-                color: "white",
-              }}
+            <h2 className="main-head"
             >
               Welcome Student
             </h2>
           )}
           {localStorage.getItem("role") === "ROLE_ADMIN" && (
-            <h2
-              style={{
-                textAlign: "center",
-                marginLeft: "200px",
-                color: "white",
-              }}
-            >
+            <h2 className="main-head">
               Welcome ADMIN
             </h2>
           )}
-          {localStorage.getItem("role") === "ROLE_SUPER" && (
-            <h2
-              style={{
-                textAlign: "center",
-                marginLeft: "200px",
-                color: "white",
-              }}
-            >
+          {localStorage.getItem("role") === "ROLE_SUPERADMIN" && (
+            <h2 className="main-head">
               Welcome SUPER ADMIN
             </h2>
           )}
 
-          <div className="nav-btns"style={{ marginLeft: "650px" }}>
+          <div className="nav-btns">
             <ul>
             
               <li>
@@ -151,12 +141,12 @@ const NewSidebar = () => {
             </li></ul>
           </div>
         </Nav>
-        <SidebarNav sidebar={sidebar}>
+        <SidebarNav sidebar={sidebar} className="SIDE">
           <SidebarWrap>
-            <NavIcon to="#">
+            <NavIcon to="#" className="NAVICON">
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
-            {localStorage.getItem("role") === "ROLE_SUPER" && (
+            {localStorage.getItem("role") === "ROLE_SUPERADMIN" && (
               <>
                 {SidebarSuperAdminData.map((item, index) => {
                   return <SubMenu item={item} key={index} />;
