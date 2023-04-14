@@ -1,5 +1,6 @@
 .notify label{
     margin-bottom: 10px;
+    width: 75%;
 }
 #ADDNotice .container {
     margin: 0 auto;

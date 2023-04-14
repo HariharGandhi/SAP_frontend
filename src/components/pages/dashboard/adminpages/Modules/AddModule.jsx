@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
 import { ACTIVE } from '../../../../../services/Globalvalues';
 import "./AddModule.css"
 
-const AddModule = () =>{
+const AddModule = ({closeModal}) =>{
 const [mod,setmod] = useState("");
 const [nme,setnme] = useState("");
 
@@ -44,6 +43,7 @@ useEffect(() => {
                 value={nme}
                 name="Name of Module"
                 onChange={(e) => handlename(e)}
+                style={{border:'1px solid'}}
               />
             </label>
             
@@ -55,27 +55,27 @@ useEffect(() => {
                 value={mod}
                 name="ShortName of Module"
                 onChange={(e) => handlemod(e)}
+                style={{border:'1px solid'}}
               />
             </label>
           </form>
-        </div><div>
-        <button
-          type="submit"
-          onClick={() => Addmodule()}
-          className="btn-place btn-outline-white"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            margin: "auto",
-            cursor: "pointer",
-          }}
-        >
-          {" "}
-          Add Module{" "}
-        </button>{" "}
-        <button className="btn-up">
-          <Link to="/admindashboard"> Back to Home </Link>
-        </button></div>
+        </div><div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+      <button
+        type="submit"
+        onClick={() => Addmodule()}
+        className="btn btn-outline-white"
+        style={{
+          cursor: "pointer",
+          marginRight: "200px",
+          width: "150px",
+          height:'50px',
+          borderRadius:'10px'
+        }}
+      >
+        {" "}
+        Add notification{" "}
+      </button >
+      <button className="btn btn-outline-white" style={{cursor: "pointer",width:'60px', borderRadius:'10px', height:'50px'}} onClick={closeModal}>{"  "} Back {"  "}</button></div>
         
         </div>
         </>

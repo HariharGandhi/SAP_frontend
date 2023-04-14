@@ -10,7 +10,7 @@ import Register from "./components/pages/Register/register.component";
 import Home from "./components/pages/Home/home.component";
 
 import Application from "./components/pages/ApplicationForm/Application";
-import Payment from "./components/pages/Payment/Payment";
+//import Payment from "./components/pages/Payment/Payment";
 import SuperAuth from "./services/SuperAuth";
 import EventBus from "./common/EventBus";
 import ForgotPassword from "./components/pages/PasswordVerification/ForgotPassword";
@@ -57,7 +57,8 @@ import UpdateProfile from "./components/pages/dashboard/Studentdashboard/Sidebar
 
 import courseDetails from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/courseDetails";
 import ContactToAdmin from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/contactToAdmin";
-import ApplicationProcces from "./components/pages/Home/ContactForm/ApplicationProcces";
+import SAPfee from "./components/pages/Payment/SAPfee";
+//import ApplicationProcces from "./components/pages/Home/ContactForm/ApplicationProcces";
 // const cors = require("cors")
 // app.use(cors());
 
@@ -202,7 +203,7 @@ class App extends Component {
                 path="/verifyform"
                 component={withAuth(RoleAuth(VerifyFormmodal))}
               />
-              <Route exact path="/payment" component={Payment} />
+              <Route exact path="/payment" component={SAPfee} />
               <Route exact path="/contactus" component={ContactForm} />
               <Route
                 exact
@@ -235,7 +236,7 @@ class App extends Component {
               <Route exact path="/contacttoadmin" component={ContactToAdmin}/>
               <Route exact path="/coursedetails" component={courseDetails}/>
               <Route exact path="/updateprofile" component={UpdateProfile}/>
-              <Route exact path="/applicationprocces" component={ApplicationProcces}/>
+              {/* <Route exact path="/applicationprocces" component={ApplicationProcces}/> */}
 
 
 

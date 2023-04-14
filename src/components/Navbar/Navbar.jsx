@@ -52,6 +52,7 @@ const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0;
+  overflow-y: auto;
   left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
@@ -156,7 +157,7 @@ const NewSidebar = () => {
             {localStorage.getItem("role") === "ROLE_ADMIN" && (
               <>
                 {SidebarAdminData.map((item, index) => {
-                  return <SubMenu item={item} key={index} />;
+                  return <SubMenu item={item} key={index} style={{marginBottom:'10px'}}/>;
                 })}
               </>
             )}

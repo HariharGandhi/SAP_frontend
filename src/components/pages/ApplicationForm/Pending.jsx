@@ -25,16 +25,17 @@ export default function Pending() {
   //   })();
   // },[]);
     
-  return (
+  return (<>
+    <NewSidebar />
     <div className='pending'>
-        <NewSidebar />
+        
         <h3> Pending ...</h3>
         <h4>Your Form Is Under Verification </h4>
         <h4>When Form Will verify from Admin Side You Will Able To Acces Dashbord</h4>
         <h1>Thank You...</h1>
 
         
-    </div>
+    </div></>
     
   )
 }

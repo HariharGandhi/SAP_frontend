@@ -79,9 +79,9 @@ const AllAdmin = () => {
   const handlemail = async (event) => {
     setmail(event.target.value);
   };
-  const handledept = async (event) => {
-    setdept(event.target.value);
-  };
+  // const handledept = async (event) => {
+  //   setdept(event.target.value);
+  // };
   const handlestatt = async (event) => {
     setstatt(event.target.value);
   };
@@ -109,7 +109,7 @@ const AllAdmin = () => {
       }
     })();
     return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
-  });
+  },[]);
 
   return (<>
     <NewSidebar />
@@ -242,16 +242,18 @@ const AllAdmin = () => {
                   />
                 </label>
                 <br />
-                <label style={{marginRight:"10px"}}>
-                  {" "}
-                  Department: 
-                  <input
-                    type="string"
-                    value={dept}
-                    name="Department"
-                    onChange={(e) => handledept(e)}
-                  />
-                </label>
+                <label style={{marginBottom:'10px'}}>
+              {" "}
+              Choose Department:
+              <select onChange={(e)=>setdept(e.target.value)} style={{marginLeft:'10px'}}>
+                <option value="">Choose department</option>
+                <option value="Computer">Computer</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="IT">IT</option>
+                <option value="Civil">Civil</option>
+              </select>
+            </label>
+            
                 <label style={{marginRight:"10px"}}>
                   {" "}
                   Mobile No.: 

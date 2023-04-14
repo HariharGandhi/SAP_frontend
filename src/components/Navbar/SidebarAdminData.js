@@ -80,24 +80,24 @@ export const SidebarAdminData = [
 },
 {
 	title: "Modules",
-	path: "#",
-	iconClosed: <RiIcons.RiArrowDownSFill />,
-	iconOpened: <RiIcons.RiArrowUpSFill />,
+	path: "/getmodules",
+	// iconClosed: <RiIcons.RiArrowDownSFill />,
+	// iconOpened: <RiIcons.RiArrowUpSFill />,
 
-	subNav: [
-	{
-		title: "All Modules",
-		path: "/getmodules",
-	},
-	{
-		title: "Add Module",
-		path: "#",
-	},
-	],
+	// subNav: [
+	// {
+	// 	title: "All Modules",
+	// 	path: "/getmodules",
+	// },
+	// {
+	// 	title: "Add Module",
+	// 	path: "#",
+	// },
+	// ],
 },
 {
 	title: "Contact Forms",
 	path:"/contactformdata",
-
+	
 },
 ];

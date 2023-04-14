@@ -75,6 +75,23 @@ export const SidebarSuperAdminData = [
 	],
 },
 {
+	title: "Modules",
+	path: "/getmodules",
+	// iconClosed: <RiIcons.RiArrowDownSFill />,
+	// iconOpened: <RiIcons.RiArrowUpSFill />,
+
+	// subNav: [
+	// {
+	// 	title: "All Modules",
+	// 	path: "/getmodules",
+	// },
+	// {
+	// 	title: "Add Module",
+	// 	path: "#",
+	// },
+	// ],
+},
+{
 	title: "Contact Forms",
 	path:"/contactformdata",
 

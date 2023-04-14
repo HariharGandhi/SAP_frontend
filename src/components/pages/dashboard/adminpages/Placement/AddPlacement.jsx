@@ -44,16 +44,14 @@ useEffect(() => {
     return (
         <>
         <NewSidebar />
-        <button className="btn-place-up">
-          <Link to="/admindashboard"> Back to Home </Link>
-        </button>
+        
         <div>
         <div
           className="placementcontainer"
           style={{ display: "flex", justifyContent: "center" }}
         >
           <form className='Placementform'>
-            <h1>Enter Placement Details: </h1>
+            <h2>Enter Placement Details: </h2>
             <br />
             <label>
               {" "}
@@ -66,7 +64,7 @@ useEffect(() => {
               />
             </label>
             
-            <label>
+            {/* <label>
               {" "}
               Enter Name of Module:
               <input
@@ -75,23 +73,36 @@ useEffect(() => {
                 name="Name of Module"
                 onChange={(e) => handlemod(e)}
               />
-            </label>
-            {/* <br />
-            <label>
-              {" "}
-              Enter Module :
-              <select onChange={(e)=>setmod(e.target.value)}>
-                <option value="">Select Module</option>
-                <option value="ABAP">ABAP</option>
-                <option value="MM">MM</option>
-                <option value="PP">PP</option>
-                <option value="HR/HCM">HR/HCM</option>
-                <option value="FICO">FICO</option>
-                <option value="SD">SD</option>
-              </select>
             </label> */}
+            {/* <br /> */}
+            
+            
+            
+            <label style={{marginRight:'50px'}}>
+              {" "}
+              Enter Package recieved:
+              <input
+                type="number"
+                value={pack}
+                name="Package in LPA"
+                onChange={(e) => handlepackage(e)}
+              />
+            </label>
+            <br />
+            
             
             <label>
+              {" "}
+              Enter Year of Placement
+              <input
+                type="string"
+                value={year}
+                name="Enter Year of Placement"
+                onChange={(e) => handleyear(e)}
+              />
+            </label>
+            <br />
+            <label style={{marginRight:'50px'}}>
               {" "}
               Enter Company Name:
               <input
@@ -104,48 +115,44 @@ useEffect(() => {
             <br />
             <label>
               {" "}
-              Enter Package recieved:
-              <input
-                type="number"
-                value={pack}
-                name="Package in LPA"
-                onChange={(e) => handlepackage(e)}
-              />
-            </label>
-            <br />
-            <label>
-              {" "}
-              Enter Year of Placement
-              <input
-                type="string"
-                value={year}
-                name="Enter Year of Placement"
-                onChange={(e) => handleyear(e)}
-              />
-            </label>
-            <br />
-            <label>
-              {" "}
               Image URL:
               <input type="string" onChange={(e) => handleimg(e)} placeholder="Paste Image drive URL"/>
             </label>
+            <label style={{marginRight:'50px'}}>
+              {" "}
+              Enter Module :
+              <select value={mod} onChange={(e)=>setmod(e.target.value)} style={{width:'100%'}}>
+                <option value="">Select Module</option>
+                <option value="ABAP">ABAP</option>
+                <option value="MM">MM</option>
+                <option value="PP">PP</option>
+                <option value="HR/HCM">HR/HCM</option>
+                <option value="FICO">FICO</option>
+                <option value="SD">SD</option>
+              </select>
+            </label> 
             <br />
           </form>
         </div>
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
         <button
           type="submit"
           onClick={() => Addplacement()}
           className="btn-place btn-outline-white"
           style={{
-            display: "flex",
-            justifyContent: "center",
-            margin: "auto",
             cursor: "pointer",
+          marginRight: "250px",
+          width: "150px",
+          height:'45px',
+          borderRadius:'10px'
           }}
         >
           {" "}
           Add Placement{" "}
-        </button>{" "}
+        </button>
+        <button className="btn-place-up" style={{width:'60px', borderRadius:'10px', height:'45px'}}>
+          <Link to="/admindashboard">{"  "} Back {"  "}</Link>
+        </button></div>
         
         </div>
         </>

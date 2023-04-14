@@ -412,10 +412,10 @@ const VerifyForm = () => {
                     <option value="">Select status</option>
                     <option value="verified">Verified</option>
                     <option value="not verified">Not Verified</option>
-                    <option value="inquery">In Query</option>
+                    <option value="isquery">In Query</option>
                   </select>
                 </dropdown>
-                {stat === "inquery" && (
+                {stat === "isquery" && (
                   <>
                     <div>
                       <h2>Enter Query details: </h2>

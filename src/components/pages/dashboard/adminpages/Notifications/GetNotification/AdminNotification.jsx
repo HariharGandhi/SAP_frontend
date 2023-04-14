@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
 import NewSidebar from "../../../../../Navbar/Navbar";
+import { Link } from "react-router-dom";
 
 const Adminnotification = () => {
   const [Data, setData] = useState([]);
-  const [search, setSearch] = useState("");
   const [searchmod, setsearchmod] = useState("");
 
 
   const clearsearch = () => {
-    setSearch("");
     setsearchmod("");
   };
   
@@ -42,31 +41,27 @@ const Adminnotification = () => {
       >
         <div className="container" style={{ margin: "20px" }}>
           <label>
-            Module :
-            <input
-              className="table-search"
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </label>
-
+          Search by  Module :
           <select
             className="table-drop"
             name="cars"
             id="cars"
+            value={searchmod}
             onChange={(e) => setsearchmod(e.target.value)}
+            style={{marginLeft:'10px'}}
           >
             <option value="">Select Module</option>
-            <option value="ABAP">ABAP</option>
-            <option value="MM">MM</option>
-            <option value="PP">PP</option>
-            <option value="HR">HR/HCM</option>
-            <option value="FICO">FICO</option>
+            <option value="abap">ABAP</option>
+            <option value="mm">MM</option>
+            <option value="pp">PP</option>
+            <option value="hr">HR/HCM</option>
+            <option value="fico">FICO</option>
           </select>
-          <button onClick={() => clearsearch()} style={{ marginLeft: "20px" }}>
+          
+          <button onClick={() => clearsearch()} style={{ marginLeft: "50px", width:'50px', height:'30px' }}>
             Clear
           </button>
+          <button className="place-button" style={{marginRight:'10px',marginLeft:'850px'}}><Link to="/addnotice">Add Notification </Link></button></label>
         </div>
         <table style={{ width: "100%" }}>
           <thead>
@@ -77,9 +72,8 @@ const Adminnotification = () => {
               <th>Title</th>
               <th>Module</th>
               <th>Body</th>
-              <th>Creation Date & Time</th>
+              <th>Creation Date</th>
               <th>Status</th>
-              <th>File </th>
               <th>Action</th>
               {/*<th>User_id</th>*/}
             </tr>
@@ -99,7 +93,7 @@ const Adminnotification = () => {
                   <td>{ele.body}</td>
                   <td>{ele.createdDateTime}</td>
                   <td>{ele.status}</td>
-                  <td>{ele.file}</td>
+                  
 
                   <td style={{ width: "100px", padding: "2px" }}>
                     <button

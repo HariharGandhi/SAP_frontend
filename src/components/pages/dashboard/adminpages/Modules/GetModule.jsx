@@ -41,7 +41,7 @@ const GetModule = () => {
         }
         // id="contactus"
       >
-        <button className="place-button" onClick={() => Addmodal()}>Add Module</button>
+        <button className="place-button" style={{marginTop:'20px', marginLeft:'10px'}} onClick={() => Addmodal() }>Add Module</button>
         <table style={{width:'100%',marginTop:'25px'}}>
           <thead>
             <tr className="main-table top-col-table">
@@ -77,7 +77,7 @@ const GetModule = () => {
       </div>
       {addmodal && <>
         <Modal >
-          <AddModule />
+          <AddModule closeModal={() => setaddmodal(false)}/>
         </Modal>
       </>}
         </>

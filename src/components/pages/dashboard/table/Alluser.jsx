@@ -78,9 +78,9 @@ const Alluser = (right, a) => {
   const handlemail = async (event) => {
     setmail(event.target.value);
   };
-  const handledept = async (event) => {
-    setdept(event.target.value);
-  };
+  // const handledept = async (event) => {
+  //   setdept(event.target.value);
+  // };
   const handlestatt = async (event) => {
     setstatt(event.target.value);
   };
@@ -245,17 +245,18 @@ const Alluser = (right, a) => {
                   />
                 </label>
                 <br />
-                <label>
-                  {" "}
-                  Department: 
-                  <input
-                    type="string"
-                    value={dept}
-                    name="Department"
-                    onChange={(e) => handledept(e)}
-                  />
-                </label>
-                <br />
+                <label style={{marginBottom:'10px'}}>
+              {" "}
+              Choose department:
+              <select value={dept}onChange={(e)=>setdept(e.target.value)} style={{marginLeft:'10px'}}>
+                <option value="">Choose department</option>
+                <option value="Computer">Computer</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="IT">IT</option>
+                <option value="Civil">Civil</option>
+              </select>
+            </label>
+            <br />
                 <label>
                   {" "}
                   Mobile No.: 

@@ -112,13 +112,13 @@ const Viewform = () => {
   };
 
   const Addquery = () => {
+    const AId = parseInt(localStorage.getItem("Aid"),10);
     axios
       .post(
-        BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${did}`,
+        BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${AId}`,
         {
-          applicationId: did,
+          applicationId: AId,
           contactDetails: `Contact no.: ${num}, Email: ${mail}`,
-          id: did,
           isActive: stat,
           queryDesc: desc,
           queryTitle: title,
@@ -390,10 +390,10 @@ const Viewform = () => {
                     <option value="">Select status</option>
                     <option value="verified">Verified</option>
                     <option value="notverified">Not Verified</option>
-                    <option value="inquery">In Query</option>
+                    <option value="isquery">In Query</option>
                   </select>
                 </dropdown>
-                {stat === "inquery" && (
+                {stat === "isquery" && (
                   <>
                     <div>
                       <h2>Enter Query details: </h2>

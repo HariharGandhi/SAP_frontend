@@ -61,7 +61,7 @@ useEffect(() => {
             <label style={{marginBottom:'10px'}}>
               {" "}
               Choose department:
-              <select onChange={(e)=>setdept(e.target.value)} style={{marginLeft:'10px'}}>
+              <select value={dept} onChange={(e)=>setdept(e.target.value)} style={{marginLeft:'10px'}}>
                 <option value="">Choose department</option>
                 <option value="Computer">Computer</option>
                 <option value="Mechanical">Mechanical</option>
