@@ -53,8 +53,11 @@ import profile from "./components/pages/dashboard/Studentdashboard/Profile/profi
 import Getinstallments from "./components/pages/Payment/Fee installments/Getinstallments";
 import admindetails from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/adminDetails";
 import UpdateProfile from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/UpdateProfile";
-import contactToAdmin from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/contactToAdmin";
+// import contactToAdmin from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/contactToAdmin";
+
 import courseDetails from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/courseDetails";
+import ContactToAdmin from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/contactToAdmin";
+import ApplicationProcces from "./components/pages/Home/ContactForm/ApplicationProcces";
 // const cors = require("cors")
 // app.use(cors());
 
@@ -229,9 +232,11 @@ class App extends Component {
               <Route exact path="/profile" component={profile} />
               <Route exact path="/getinstallment" component={Getinstallments}/>
               <Route exact path="/admindetails" component={admindetails}/>
-              <Route exact path="/contacttoadmin" component={contactToAdmin}/>
+              <Route exact path="/contacttoadmin" component={ContactToAdmin}/>
               <Route exact path="/coursedetails" component={courseDetails}/>
               <Route exact path="/updateprofile" component={UpdateProfile}/>
+              <Route exact path="/applicationprocces" component={ApplicationProcces}/>
+
 
 
 

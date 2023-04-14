@@ -58,7 +58,7 @@ const Logindone = () => {
               </div>
               <div onClick={() => NevigatePayment()} className="topic">Payment</div>
               <p>
-                this is your payment card
+                This is your payment Section
               </p>
             </div>
             <div className="box" data-aos="fade-down-right" data-aos-delay="300">
@@ -67,7 +67,7 @@ const Logindone = () => {
               </div>
               <div onClick={() => NevigateResume()} className="topic">Resume</div>
               <p>
-                tgis is your resume card
+                Create your resume
               </p>
             </div>
             <div className="box" data-aos="fade-down-right" data-aos-delay="500">
@@ -90,7 +90,7 @@ const Logindone = () => {
               </div>
               <div onClick={() => NevigateCourseDetails()} className="topic">Course Details</div>
               <p>
-                this is your Course Details card
+               Course Details card
               </p>
             </div>
             <div
@@ -102,7 +102,7 @@ const Logindone = () => {
               <div className="icon">
                 <i className="fas fa-cloud"></i>
               </div>
-              <div onClick={() => NevigateTwoWayCommunication()} className="topic">2 Way Communication</div>
+              <div onClick={() => NevigateTwoWayCommunication()} className="topic">Query Section</div>
               <p>
                 2 way communication card
               </p>
@@ -116,9 +116,9 @@ const Logindone = () => {
               <div className="icon">
                 <i className="fas fa-tablet-alt"></i>
               </div>
-              <div onClick={() => NevigateAdminDetails()} className="topic">Admin Details</div>
+              <div onClick={() => NevigateAdminDetails()} className="topic">Admin Details </div>
               <p>
-                Admin datails card
+                Admin datails For Contact
               </p>
             </div>
           </div>
