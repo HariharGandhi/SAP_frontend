@@ -1,13 +1,16 @@
 import React from 'react'
 import "./Resume.css"
 import Footer from '../../../Footer/Footer';
+import NewSidebar from '../../../../Navbar/Navbar';
 
 function Resume() {
-  return (
+  return (<>
+  <NewSidebar />
     <div>
-        <div className='resume-nav'>
-            <h3>SANJIVANI
-                <span className='color-change'>SAP</span>
+    
+        <div className=''>
+            <h3>
+                <span className='color-change'></span>
             </h3>
         </div>
     <div className="resume">
@@ -24,7 +27,7 @@ function Resume() {
 
     </div>
     <Footer/>
-    </div>
+    </div></>
   )
 }
 
