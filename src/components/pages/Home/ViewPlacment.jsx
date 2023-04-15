@@ -12,8 +12,8 @@ const Placment = () => {
       <div className="main-Placement">
         <div data-aos="fade-right"  data-aos-delay="100">
           <div className="con-p">
-            <img src="images/pimg.jpeg" className="my-pic" alt="" />
-            <h2>Sonar Pratik</h2>
+            <img src="images/Profilepic.png" className="my-pic" alt="" />
+            <h2>Vishal Gorde</h2>
             <h3>Google</h3>
             <p>Web Developer</p>
             <p>1200000 lpa</p>
@@ -21,29 +21,29 @@ const Placment = () => {
         </div>
         <div data-aos="fade-right" data-aos-delay="300">
           <div className="con-p">
-            <img src="images/pimg.jpeg" className="my-pic" alt="" />
+            <img src="images/Profilepic.png" className="my-pic" alt="" />
             <h2>Sonar Pratik</h2>
             <h3>Google</h3>
             <p>Web Developer</p>
-            <p>1200000 lpa</p>
+            <p>1000000 lpa</p>
           </div>
         </div>
         <div data-aos="fade-right" data-aos-delay="500">
           <div className="con-p">
-            <img src="images/pimg.jpeg" className="my-pic" alt="" />
-            <h2>Sonar Pratik</h2>
+            <img src="images/Profilepic.png" className="my-pic" alt="" />
+            <h2>Harihar Gandhi</h2>
             <h3>Google</h3>
             <p>Web Developer</p>
-            <p>1200000 lpa</p>
+            <p>500000 lpa</p>
           </div>
         </div>
         <div data-aos="fade-right" data-aos-delay="700">
           <div className="con-p">
-            <img src="images/pimg.jpeg" className="my-pic" alt="" />
-            <h2>Sonar Pratik</h2>
+            <img src="images/Profilepic.png" className="my-pic" alt="" />
+            <h2>Piyush Pagar</h2>
             <h3>Google</h3>
             <p>Web Developer</p>
-            <p>1200000 lpa</p>
+            <p>300000 lpa</p>
           </div>
         </div>
       </div>
