@@ -1,329 +1,146 @@
-import axios from "axios";
-// import React, { useState, useEffect } from 'react';
-// import { BASE_URL } from '../../../../../../../services/Globalvalues';
-// import NewSidebar from '../../../../../../Navbar/Navbar';
-
-
-
-// // let studentId = localStorage.getItem('id');
-// function  UpdateProfile ({ studentId }) {
-//   const [studentData, setStudentData] = useState({});
-  
-
-//   useEffect(() => {
-
-    
-//     let studentId = Number(localStorage.getItem('id'));
-//     async function fetchStudentData() {
-    
-//       const response = await fetch(BASE_URL + `api/getapplicationformbyid/${studentId}`);
-//       const data = await response.json();
-//       setStudentData(data);
-//     }
-//     console.log(studentId,"this is student id")
-//     fetchStudentData();
-//     return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
-//   }, [studentId]);
-
-//   return (<>
-//   <NewSidebar/>
-//     <div className={
-//           sessionStorage.getItem("sidebar") === "true"
-//             ? "student vform"
-//             : "student"
-//         }
-// >
-//       {Object.keys(studentData).length === 0 ? (
-//         <p>Loading...</p>
-//       ) : (
-//         <div>
-//           <p>Student ID: {studentData.userId}</p>
-//           <p>Name: {studentData.name}</p>
-//           <p>Adhaar Card: {studentData.adhaarCard}</p>
-//           <p>Contact Number: {studentData.contactNumber}</p>
-//           <p>Email: {studentData.email}</p>
-//           <p>Passout Year: {studentData.passoutYear}</p>
-//           <p>SAP Module: {studentData.sapModule}</p>
-//           <p>Specialization: {studentData.specialization}</p>
-//           <p>Student Type: {studentData.studentType}</p>
-//         </div>
-//       )}
-//     </div>
-//     </>
-//   );
-// }
-
-// export default UpdateProfile;
-
-
-
-// import React, { useState, useEffect } from 'react';
-// import { BASE_URL } from '../../../../../../../services/Globalvalues';
-// import NewSidebar from '../../../../../../Navbar/Navbar';
-
-// function UpdateProfile({ studentId }) {
-//   const [studentData, setStudentData] = useState({});
-//   const [formData, setFormData] = useState({});
-//   const [adhaarCard, setadhaarCard] = useState();
-//   const [applicationFromStatus, setapplicationFromStatus] = useState();
-//   const [branch, setbranch] = useState();
-//   const [collegeEmail, setcollegeEmail] = useState();
-//   const [contactNumber, setcontactNumber] = useState();
-
-
-//   const [email, setemail] = useState();
-//   const [isQueryInApplication, setisQueryInApplication] = useState();
-//   const [name, setname] = useState();
-//   const [passoutYear, setpassoutYear] = useState();
-//   const [sapModule, setsapModule] = useState();
-
-//   const [specialization, setspecialization] = useState();
-
-//   const [studentType, setstudentType] = useState();
-//   const [uploadImage, setuploadImage] = useState();
-
-  
-
-
-  
-
-
-//   useEffect(() => {
-//     let studentId = Number(localStorage.getItem('id'));
-//     async function fetchStudentData() {
-//       const response = await fetch(BASE_URL + `api/getapplicationformbyid/${studentId}`);
-//       const data = await response.json();
-//       setStudentData(data);
-//       setFormData(data);
-//       console.log(data);
-//     }
-
-//     fetchStudentData();
-//     sessionStorage.setItem('sidebar', JSON.stringify(false));
-//   }, [studentId]);
-
-//   const handleInputChange = (event) => {
-//     const { name, value } = event.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
-
-//   const handleSubmit = async (event) => {
-//     let userId = Number(localStorage.getItem('id'));
-//     event.preventDefault();
-//     try {
-
-//      await axios.put(BASE_URL + `api/updateapplicationForm/${studentData.userId}`, {
-//     formData
-//       })
-//       .then(function (response) {
-//         console.log(response);
-//       })
-//       .catch(function (error) {
-//         console.error("here"+error);
-//       });
-      
-
-
-//       // const response = await fetch(BASE_URL + `api/updateapplicationForm/${studentData.userId}`, {
-//       //   // mode:"no-cors",
-//       //   method: 'PUT',
-//       //   headers: {
-//       //     'Content-Type': 'application/json',
-//       //   },
-//       //   body: JSON.stringify(formData),
-//       // });
-      
-
-//       // const data = await response.json();
-//       // setStudentData(data);
-//       // setFormData(data);
-
-//       console.log("done");
-//     } catch (error) {
-//       console.log("here"+formData.userId)
-//       console.error(error);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <NewSidebar />
-//       <div className={sessionStorage.getItem('sidebar') === 'true' ? 'student vform' : 'student'}>
-//         {Object.keys(studentData).length === 0 ? (
-//           <p>Loading...</p>
-//         ) : (
-//           <form onSubmit={handleSubmit}>
-//             <label>
-//               adhaarCard:
-//               <input type="text" name="adhaarCard" value={formData.adhaarCard} onChange={handleInputChange} />
-//             </label>
-//             <label>
-//             applicationFromStatus:
-//               <input type="text" name="applicationFromStatus" value={formData.applicationFromStatus} onChange={handleInputChange} />
-//             </label>
-//             <label>
-//                branch:
-//               <input type="text" name="branch" value={formData.branch} onChange={handleInputChange} />
-//             </label>
-//             <label>
-//             collegeEmail :
-
-//               <input type="text" name="collegeEmail" value={formData.collegeEmail} onChange={handleInputChange} />
-//             </label>
-//             <label>
-//             contactNumber:
-
-//               <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleInputChange} />
-//             </label>
-//             <label>
-//             email:
-//               <input type="text" name="email" value={formData.email} onChange={handleInputChange} />
-//             </label>
-//             <label>
-//             isQueryInApplication :
-//               <input type="text" name="isQueryInApplication" value={formData.isQueryInApplication} onChange={handleInputChange} />
-//             </label>
-//             <label>
-//                name:
-//               <input type="text" name="name" value={formData.name} onChange={handleInputChange} />
-//             </label>
-//             <label>
-//             passoutYear:
-//               <input type="text" name="passoutYear" value={formData.passoutYear} onChange={handleInputChange} />
-//             </label>
-//             <label>
-//             sapModule :
-//               <input type="text" name="sapModule" value={formData.sapModule} onChange={handleInputChange} />
-              
-//             </label>
-//             <label>
-//             specialization :
-//               <input type="text" name="specialization" value={formData.specialization} onChange={handleInputChange} />
-              
-//             </label>
-//             <label>
-//             studentType :
-//               <input type="text" name="studentType" value={formData.studentType} onChange={handleInputChange} />
-              
-//             </label>
-//             <label>
-//             uploadImage :
-//               <input type="text" name="uploadImage" value={formData.uploadImage} onChange={handleInputChange} />
-              
-//             </label>
-//             <button type="submit">Update</button>
-//           </form>
-//         )}
-//       </div>
-//     </>
-//   );
-// }
-
-// export default UpdateProfile;
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
-
-import { BASE_URL } from '../../../../../../../services/Globalvalues';
+import axios from 'axios';
 import "./UpdateProfile.css"
+import { BASE_URL } from '../../../../../../../services/Globalvalues';
 import NewSidebar from '../../../../../../Navbar/Navbar';
 
-function UpdateProfile({ studentId }) {
-  const [studentData, setStudentData] = useState({});
+function UpdateProfile() {
   const [formData, setFormData] = useState({});
-
+  const [originalData, setOriginalData] = useState({});
+  const [extraData, setExtraData] = useState({});
+  const ID = Number(localStorage.getItem("id"));
   useEffect(() => {
-    let studentId = Number(localStorage.getItem('id'));
-    async function fetchStudentData() {
-      const response = await fetch(BASE_URL + `api/getapplicationformbyid/${studentId}`);
-      const data = await response.json();
-      setStudentData(data);
-      setFormData(data);
-    }
+    axios.get(BASE_URL + `api/getDetailsByUserid/{UserId}`,{params:{
+      UserId : ID
+    }})
+      .then((response) => {
+        setFormData(response.data[0]);
+        setOriginalData(response.data[0]);
+        setExtraData({
+          id: response.data[0].id,  
+          userId: response.data[0].userId,
+          uploadImage: response.data[0].uploadImage,
+          applicationFromStatus: response.data[0].applicationFromStatus
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, [ID]);
 
-    fetchStudentData();
-    sessionStorage.setItem('sidebar', JSON.stringify(false));
-  }, [studentId]);
-
-  const handleInputChange = (event) => {
+  const handleChange = event => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
-    try {
-      const response = await axios.put(BASE_URL + `api/updateapplicationForm/${formData.userId}`, formData);
-      console.log(response);
-      console.log("done");
-    } catch (error) {
-      console.error(error);
-    }
+    axios.post(BASE_URL + `api/updateapplicationForm/${ID}`, {...formData, ...extraData})
+      .then(response => {
+        setOriginalData(formData);
+        alert('Data updated Successfully. Wait for Admin to verify')
+        window.location.href = "/logindone"
+      })
+      .catch(error => {
+        console.error('Error saving data:', error);
+      });
   };
 
-  return (
-    <>
-      <NewSidebar />
-      <div className={sessionStorage.getItem('sidebar') === 'true' ? 'student vform' : 'student'}>
-        {Object.keys(studentData).length === 0 ? (
-          <p>Loading...</p>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <label>
-              Adhaar Card:
-              <input type="text" name="adhaarCard" value={formData.adhaarCard} onChange={handleInputChange} />
-            </label>
-            <label>
-              Application Form Status:
-              <input type="text" name="applicationFromStatus" value={formData.applicationFromStatus} onChange={handleInputChange} />
-            </label>
-            <label>
-              Branch:
-              <input type="text" name="branch" value={formData.branch} onChange={handleInputChange} />
-            </label>
-            <label>
-              College Email:
-              <input type="text" name="collegeEmail" value={formData.collegeEmail} onChange={handleInputChange} />
-            </label>
-            <label>
-              Contact Number:
-              <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleInputChange} />
-            </label>
-            <label>
-              Email:
-              <input type="text" name="email" value={formData.email} onChange={handleInputChange} />
-            </label>
-            <label>
-              Query in Application:
-              <input type="text" name="isQueryInApplication" value={formData.isQueryInApplication} onChange={handleInputChange} />
-            </label>
-            <label>
-              Name:
-              <input type="text" name="name" value={formData.name} onChange={handleInputChange} />
-            </label>
-            <label>
-              Passout Year:
-              <input type="text" name="passoutYear" value={formData.passoutYear} onChange={handleInputChange} />
-            </label>
-            <label>
-              SAP Module:
-              <input type="text" name="sapModule" value={formData.sapModule} onChange={handleInputChange} />
-            </label>
-            <label>
-              Specialization:
-              <input type="text" name="Specialization" value={formData.Specialization} onChange={handleInputChange} />
-              </label>
-            <button type="submit">Update</button>
-         </form>
-       )}
-</div>
+  const hasChanges = JSON.stringify(formData) !== JSON.stringify(originalData);
+
+  return (<>
+    <NewSidebar />
+    <h1 style={{marginLeft:'400px',marginTop:'25px'}}>Your Application Form:</h1>
+    <form onSubmit={handleSubmit} className='upd-form' >
+      <label htmlFor="name"><h3>Name:</h3>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value={formData.name || ''}
+        onChange={handleChange}
+      /></label>
+      <label htmlFor="adhaarCard"><h3>Adhar Card:</h3>
+      <input
+        type="text"
+        id="adhaarCard"
+        name="adhaarCard"
+        value={formData.adhaarCard || ''}
+        onChange={handleChange}
+      /></label>
+      <label htmlFor="collegeEmail"><h3>College Mail:</h3>
+      <input
+        type="text"
+        id="collegeEmail"
+        name="collegeEmail"
+        value={formData.collegeEmail || ''}
+        onChange={handleChange}
+      /></label>
+      <label htmlFor="email"><h3>Email:</h3>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        value={formData.email || ''}
+        onChange={handleChange}
+      /></label>
+      <label htmlFor="sapModule"><h3>SAP Module:</h3>
+      <input
+        type="text"
+        id="sapModule"
+        name="sapModule"
+        value={formData.sapModule || ''}
+        onChange={handleChange}
+      /></label>
+      <label htmlFor="contactNumber"><h3>Mobile Number:</h3>
+      <input
+        type="text"
+        id="contactNumber"
+        name="contactNumber"
+        value={formData.contactNumber || ''}
+        onChange={handleChange}
+      /></label>
+      <label htmlFor="passoutYear"><h3>Passout Year:</h3>
+      <input
+        type="text"
+        id="passoutYear"
+        name="passoutYear"
+        value={formData.passoutYear || ''}
+        onChange={handleChange}
+      /></label>
+      <label htmlFor="branch"><h3>Department:</h3>
+      <input
+        type="text"
+        id="branch"
+        name="branch"
+        value={formData.branch || ''}
+        onChange={handleChange}
+      /></label>
+      <label htmlFor="specialization"><h3>Specialization:</h3>
+      <input
+        type="text"
+        id="specialization"
+        name="specialization"
+        value={formData.specialization || ''}
+        onChange={handleChange}
+      /></label>
+      <label htmlFor="studentType"><h3>Type of student:</h3>
+      <input
+        type="text"
+        id="studentType"
+        name="studentType"
+        value={formData.studentType || ''}
+        onChange={handleChange}
+      /></label>
+      
+
+      <button type="submit" disabled={!hasChanges}>Save Changes</button>
+    </form>
     </>
-   );
- }
+  );
+}
 
- export default UpdateProfile;
-
+export default UpdateProfile;
