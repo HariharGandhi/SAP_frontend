@@ -243,7 +243,7 @@ const Viewform = () => {
               <th>Sap Module</th>
               <th>Specilization</th>
               <th>Student Type</th>
-              <th>Upload img</th>
+              {/* <th>Upload img</th> */}
               <th>Action</th>
               {/*<th>User_id</th>*/}
             </tr>
@@ -265,7 +265,7 @@ const Viewform = () => {
                     <td>{ele.sapModule}</td>
                     <td>{ele.specialization}</td>
                     <td>{ele.studentType}</td>
-                    <td>{ele.uploadImage}</td>
+                    {/* <td>{ele.uploadImage}</td> */}
                     <td>
                       <button
                         style={{ marginRight: "5px", cursor: "pointer" }}
@@ -304,10 +304,10 @@ const Viewform = () => {
                     <td>{ele.sapModule}</td>
                     <td>{ele.specialization}</td>
                     <td>{ele.studentType}</td>
-                    <td>{ele.uploadImage}</td>
+                    {/* <td>{ele.uploadImage}</td> */}
                     <td>
                       <button
-                        style={{ marginRight: "5px", cursor: "pointer" }}
+                        style={{ marginRight: "5px", cursor: "pointer", marginTop:'5px' }}
                         onClick={() => viewModal(ele)}
                         title="Verify Form"
                       >
@@ -317,7 +317,7 @@ const Viewform = () => {
                       <button
                         onClick={() => Modalview(ele)}
                         title="Delete Form"
-                        style={{ marginRight: "5px", cursor: "pointer" }}
+                        style={{ marginRight: "5px", cursor: "pointer" , marginTop:'5px'}}
                       >
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
@@ -361,7 +361,7 @@ const Viewform = () => {
                   marginRight: "20px",
                   cursor: "pointer",
                   width: "100px",
-                  height: "25px",
+                  height: "25px", marginTop:'10px'
                 }}
               >
                 Verify
@@ -369,7 +369,7 @@ const Viewform = () => {
               <button
                 className="btn-md"
                 onClick={handleCancel}
-                style={{ cursor: "pointer", width: "100px", height: "25px" }}
+                style={{ cursor: "pointer", width: "100px", height: "25px" , marginTop:'10px'}}
               >
                 Cancel
               </button>

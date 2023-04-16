@@ -26,9 +26,7 @@ const handleyear = async (e) =>{
 const handleimg = async (e) =>{
     setimg(e.target.value)
 }
-const handlemod = async (e) => {
-    setmod(e.target.value)
-}
+
 
 const Addplacement = () => {
   NotificationPlacementapi.addplace(cnme,img,mod,nme,year,pack).then(response => {

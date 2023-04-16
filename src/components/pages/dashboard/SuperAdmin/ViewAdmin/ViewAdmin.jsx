@@ -43,7 +43,7 @@ const AllAdmin = () => {
   };
 
   const Updatedetails = () => {
-    const Upid = parseInt(sessionStorage.getItem('did'),10)
+    const Upid = sessionStorage.getItem('did')
     Adminservice.update(dept,mail,ctc,nme,pass,pos,statt,Upid).then((res) => {
         setQueryModal(false);
         setDeleteModal(false);
@@ -176,14 +176,15 @@ const AllAdmin = () => {
                     </td>
                     <td >
                       <button
-                        style={{ marginRight: "5px" }}
+                        style={{ marginRight: "5px", cursor: "pointer" }}
                         onClick={() => viewQueryModal(ele)}
                       >
                         <i className="far fa-edit"></i>
                       </button>
                       {"    "}
                       {"    "}
-                      <button onClick={() => Modalview(ele)}>
+                      <button onClick={() => Modalview(ele)}
+                      style={{ marginRight: "15px", cursor: "pointer" }}>
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
                     </td>

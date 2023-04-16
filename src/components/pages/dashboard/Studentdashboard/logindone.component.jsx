@@ -1,6 +1,7 @@
 import React, { } from "react";
 import NewSidebar from "../../../Navbar/Navbar";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 
 
@@ -29,7 +30,9 @@ const Logindone = () => {
   const NevigateAdminDetails = () =>{ 
     history.push('/admindetails')
   }
-  
+  useEffect(() => {
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+  });
 
   
 

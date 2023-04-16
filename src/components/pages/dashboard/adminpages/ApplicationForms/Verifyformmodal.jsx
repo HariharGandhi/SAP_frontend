@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { Card, CardContent, CardHeader } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
 import "./Verifyformmodal.css"
 import {BASE_URL} from "../../../../../services/Globalvalues";
+const useStyles = makeStyles({
+  // your styles here
+  row: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  label: {
+    marginRight: '10px',
+  },
+});
 
 
 const VerifyFormmodal = () => {
     const Uid = Number(localStorage.getItem('Userid'))
-    
+    const classes = useStyles();
    
   const [data, setData] = useState([]);
   //const [search, setSearch] = useState('')
@@ -29,8 +41,49 @@ const VerifyFormmodal = () => {
 
   return (
     <>
+    
       <div className="container">
-      <table>
+      {data.map(item => (
+  <Card key={item.id}>
+    <CardHeader title={`Name: ${item.name}`} subheader={`SAP Module: ${item.sapModule}`} />
+    <CardContent>
+      <img src="images/Profilepic.png" alt="profilepic"></img><hr />
+      <div className={classes.row}>
+        <h4 className={classes.label}>Email:</h4>
+        <p>{item.email}</p>
+      </div><hr />
+      <div className={classes.row}>
+        <h4 className={classes.label}>Branch:</h4>
+        <p>{item.branch}</p>
+      </div><hr />
+      <div className={classes.row}>
+        <h4 className={classes.label}>Contact Number:</h4>
+        <p>{item.contactNumber}</p>
+      </div><hr />
+      <div className={classes.row}>
+        <h4 className={classes.label}>Year of Passout:</h4>
+        <p>{item.passoutYear}</p>
+      </div><hr />
+      <div className={classes.row}>
+        <h4 className={classes.label}>Type of student:</h4>
+        <p>{item.studentType}</p>
+      </div><hr />
+      <div className={classes.row}>
+        <h4 className={classes.label}>Adhar Card Number:</h4>
+        <p>{item.adhaarCard}</p>
+      </div><hr />
+      <div className={classes.row}>
+        <h4 className={classes.label}>Application Form Status:</h4>
+        <p>{item.applicationFromStatus}</p>
+      </div><hr />
+      <div className={classes.row}>
+        <h4 className={classes.label}>Is Query present in application:</h4>
+        <p>{item.isQueryInApplication ? "Yes" : "No"}</p>
+      </div><hr />
+    </CardContent>
+  </Card>
+))}
+      {/* <table>
       {data.map(item => (
       <tbody >
           <tr key={item.id}>
@@ -78,7 +131,7 @@ const VerifyFormmodal = () => {
             <td>{item.isQueryInApplication?"Yes":"No"}</td>
           </tr>
       </tbody>))}
-    </table>
+    </table> */}
 
       </div>
     </>

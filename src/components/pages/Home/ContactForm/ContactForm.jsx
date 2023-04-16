@@ -43,23 +43,24 @@ const ContactForm = () => {
       <h1 className='center-p'>Contact Us</h1>
       <div className='ctcform-container'>
       <div className='image-container' style={{alignContent:'center'}}>
-        <img src={process.env.PUBLIC_URL + '/images/PP.jpeg'} alt="#" style={{marginLeft:'20px'}} />
+        <img src={process.env.PUBLIC_URL + '/images/PP.jpeg'} alt="#" style={{marginLeft:'20px'}} className='image'/>
       </div>
     <form onSubmit={handleSubmit} id="contactform" className='form-container'>
+      <h3>Enter your Details</h3>
       <label>
-        Name:
+        <h3>Name:</h3>
         <input type="text" name="name" />
       </label>
       <label>
-        Email:
+      <h3>Email:</h3>
         <input type="email" name="email" />
       </label>
       <label>
-      Contact Number: 
+      <h3>Contact Number: </h3>
         <input type="text" name="mobileNumber" />
       </label>
       <label>
-        Module:
+      <h3> Module:</h3>
         <select name="module" style={{cursor:'pointer'}}>
           <option value="">Select Module</option>
           <option value="PP">PP</option>
@@ -69,9 +70,9 @@ const ContactForm = () => {
           <option value="HR/HCM">HR/HCM</option>
           <option value="HR/HCM">HR/HCM</option>
         </select>
-        <button type="submit">{formStatus}</button>
+        
       </label>
-      
+      <button type="submit" style={{width:'150px'}}>{formStatus}</button>
     </form></div>
     </div>
   )

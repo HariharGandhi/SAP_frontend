@@ -24,8 +24,8 @@ class Adminservice {
             password,
             position,
             status
-        },{params:{
-            Uid
+        },{params : {
+            UserId : Uid
         }}).then(
             console.log("inside api update")
         )

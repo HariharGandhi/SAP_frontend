@@ -3,7 +3,7 @@ import axios from "axios";
 import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
 import Applicationformservice from "../../../../../../services/applicationformservice";
-import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
+//import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
 import {BASE_URL} from "../../../../../../services/Globalvalues";
 const VerifyForm = () => {
     const [data, setData] = useState([]);
@@ -376,7 +376,7 @@ const VerifyForm = () => {
                   marginRight: "25px",
                   cursor: "pointer",
                   width: "100px",
-                  height: "25px",
+                  height: "25px", marginTop:'10px'
                 }}
               >
                 Verify Form
@@ -384,14 +384,14 @@ const VerifyForm = () => {
               <button
                 className="btn-md"
                 onClick={handleCancel}
-                style={{ cursor: "pointer", width: "100px", height: "25px", marginRight: "25px", }}
+                style={{ cursor: "pointer", width: "100px", height: "25px", marginRight: "25px", marginTop:'10px' }}
               >
                 Edit Form
               </button>
               <button
                 className="btn-md"
                 onClick={handleCancel}
-                style={{ cursor: "pointer", width: "100px", height: "25px" }}
+                style={{ cursor: "pointer", width: "100px", height: "25px", marginTop:'10px' }}
               >
                 Cancel
               </button>
@@ -481,7 +481,7 @@ const VerifyForm = () => {
                           className="btn btn-outline-white"
                           style={{
                             margin: "auto",
-                            cursor: "pointer",
+                            cursor: "pointer", marginTop:'10px'
                           }}
                         >
                           {" "}
@@ -490,7 +490,7 @@ const VerifyForm = () => {
                         <button
                           className="btn btn-outline-white"
                           onClick={handleCancel}
-                          style={{ marginLeft: "10px", cursor: "pointer" }}
+                          style={{ marginLeft: "10px", cursor: "pointer", marginTop:'10px' }}
                         >
                           cancel
                         </button>
@@ -498,7 +498,7 @@ const VerifyForm = () => {
                     </div>
                   </>
                 )}
-                {stat === "not verified" && (
+                {(stat === "not verified" ||stat === "verified") && (
                   <div
                     style={{
                       display: "flex",
@@ -509,16 +509,16 @@ const VerifyForm = () => {
                     <button
                       className="btn-md"
                       onClick={handleUpdate}
-                      style={{ marginRight: "10px" }}
+                      style={{ marginRight: "10px", marginTop:'10px' }}
                     >
                       Update
                     </button>
-                    <button onClick={handleCancel}>Cancel</button>
+                    <button onClick={handleCancel} style={{ marginTop:'10px'}}>Cancel</button>
                   </div>
                 )}
-                {stat === "verified" && <>
-                  <PostInstallment />
-                  </>}
+                {/* {stat === "verified" && <>
+                  <PostInstallment /> 
+                  </>}*/}
               </div>
             </div>
           </Modal>
