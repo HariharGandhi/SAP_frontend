@@ -498,7 +498,7 @@ const VerifyForm = () => {
                     </div>
                   </>
                 )}
-                {(stat === "not verified" ||stat === "verified") && (
+                {((stat === "not verified") ||(stat === "verified")) && (
                   <div
                     style={{
                       display: "flex",
