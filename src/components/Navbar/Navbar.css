@@ -46,7 +46,22 @@
       padding: 0.5rem;
     }
   }
-  
+  @media only screen and  (max-width:700px){
+    
+.heading{
+  margin-left: 0px!important;
+}
+    .main-head{
+      display: none;
+      margin-left: 10px!important;
+    } 
+    .nav-btns{
+      margin-left: 10px !important;
+    }
+    li{
+      padding: 0px 5px!important;
+    }
+  }
 @media (min-width: 500px) {
     .vform {
       width: calc(100% - 250px); /* Set the width to 100% minus the width of the sidebar */

@@ -14,7 +14,7 @@ const adminDetails = () => {
     // 
     >
     <div>
-    <img src="../../../../../../Images/College.jpg" alt="My Image" />
+    <img src="../../../../../../Images/College.jpg" alt="mam" />
       <h1>Dr.A.B.Pawar </h1>
       <h2>Dean Acadamics Of Computer Engineering Kopergoan</h2>
       <h3>Mobile no: 1234567890</h3>
@@ -23,7 +23,7 @@ const adminDetails = () => {
     <hr />
     <br/>
     <div>
-    <img src="../../../../../../Images/College.jpg" alt="My Image" />
+    <img src="../../../../../../Images/College.jpg" alt="mam" />
       <h1>Sayli salkar Mam</h1>
       <h2>from Computer Department(SAP cordinator)</h2>
       <h3>Mobile no. 1234567890</h3>
@@ -32,7 +32,7 @@ const adminDetails = () => {
       <hr />
       <br/>
     <div>
-    <img src="../../../../../../Images/College.jpg" alt="My Image" />
+    <img src="../../../../../../Images/College.jpg" alt="mam" />
       <h1>Patil mam</h1>
       <h2>from IT Department</h2>
       <h3>Mobile no. 1234567890</h3>
@@ -41,7 +41,7 @@ const adminDetails = () => {
       <hr />
       <br/>
     <div>
-    <img src="../../../../../../Images/College.jpg" alt="My Image" />
+    <img src="../../../../../../Images/College.jpg" alt="patil" />
       <h1>Patil mam</h1>
       <h2>from IT Department</h2>
       <h3>Mobile no. 1234567890</h3>
@@ -50,7 +50,7 @@ const adminDetails = () => {
       <hr />
       <br/>
     <div>
-    <img src="../../../../../../Images/College.jpg" alt="My Image" />
+    <img src="../../../../../../Images/College.jpg" alt="mam" />
       <h1>Patil mam</h1>
       <h2>from IT Department</h2>
       <h3>Mobile no. 1234567890</h3>
@@ -59,7 +59,7 @@ const adminDetails = () => {
       <br/>
      
     <div>
-     <img src="../../../../../../Images/College.jpg" alt="My Image" />
+     <img src="../../../../../../Images/College.jpg" alt="Mam" />
       <h1>Patil mam</h1>
       <h2>from IT Department</h2>
       <h3>Mobile no. 1234567890</h3>

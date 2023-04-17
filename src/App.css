@@ -202,3 +202,26 @@ form{
 .vform{
   margin-left: 250px;
 }
+.content{
+  position: relative;
+  margin-left: 50px;
+transform: scale(0.9);
+}
+.main-course{
+  margin: 100px;
+  background-color: red;
+  display: flex;
+
+}
+.item-course{
+  background-color: blue;
+  margin: 20px;
+}
+.item-box{
+  display: none;
+}
+ .item-box:hover,.item-course:hover {
+
+  display: block!important;
+  background-color: red!important;
+}

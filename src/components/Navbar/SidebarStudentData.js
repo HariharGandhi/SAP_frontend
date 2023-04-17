@@ -23,7 +23,7 @@ export const SidebarStudentData = [
 },
 {
 	title: "Course Details",
-    path: "/studentdashboard"
+    path: "/coursedetails"
 },
 {
 	title :"Resume",

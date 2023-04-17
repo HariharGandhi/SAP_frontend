@@ -248,7 +248,7 @@ const Application = () => {
             sapModule : event.target.sapModule.value,
             specialization : event.target.specialization.value,
             studentType : event.target.studentType.value,
-            applicationFromStatus : "Initial",
+            applicationFromStatus : "initial",
             userId: userId
           }
 

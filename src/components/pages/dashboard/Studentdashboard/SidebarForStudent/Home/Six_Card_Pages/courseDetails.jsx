@@ -4,9 +4,74 @@ import NewSidebar from '../../../../../../Navbar/Navbar';
 const courseDetails = () => {
   return (<>
   <NewSidebar />
-    <div>
-      <h1>This is courseDetails page</h1>
-      <h2>you will get alll your info abt course here</h2>
+    <div className={
+          sessionStorage.getItem("sidebar") === "true"
+            ? "table-nav vform"
+            : "table-nav"
+        }>
+
+    <div className=' content'>
+
+     
+    <div className='item-course'>
+          sachin
+          <div className='item-box'>
+            loresdfsdfdsgfdg
+
+            fdgdgfdfgfdg
+            dfg
+            fdgdgfdfgfdgfdg
+            fdgdgfdfgfdgfdggdf
+            gfg
+            dfgfdg
+            fdgdgfdfgfdgfdggdfgfdg
+            fdgdgfdfgfdgfdggdfgfdgdfg
+            dfggdf
+            gdfg
+            dfgfdg
+            dfgfdgfdg
+            dfg
+          </div>
+    </div><div className='item-course'>
+          sachin
+          <div className='item-box'>
+            loresdfsdfdsgfdg
+
+            fdgdgfdfgfdg
+            dfg
+            fdgdgfdfgfdgfdg
+            fdgdgfdfgfdgfdggdf
+            gfg
+            dfgfdg
+            fdgdgfdfgfdgfdggdfgfdg
+            fdgdgfdfgfdgfdggdfgfdgdfg
+            dfggdf
+            gdfg
+            dfgfdg
+            dfgfdgfdg
+            dfg
+          </div>
+    </div><div className='item-course'>
+          sachin
+          <div className='item-box'>
+            loresdfsdfdsgfdg
+
+            fdgdgfdfgfdg
+            dfg
+            fdgdgfdfgfdgfdg
+            fdgdgfdfgfdgfdggdf
+            gfg
+            dfgfdg
+            fdgdgfdfgfdgfdggdfgfdg
+            fdgdgfdfgfdgfdggdfgfdgdfg
+            dfggdf
+            gdfg
+            dfgfdg
+            dfgfdgfdg
+            dfg
+          </div>
+    </div>
+     </div>
     </div>
     </>
   );
