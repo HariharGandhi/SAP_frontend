@@ -3,7 +3,7 @@ import axios from "axios";
 import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
 import Applicationformservice from "../../../../../../services/applicationformservice";
-//import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
+import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
 import {BASE_URL} from "../../../../../../services/Globalvalues";
 const VerifyForm = () => {
     const [data, setData] = useState([]);
@@ -498,7 +498,7 @@ const VerifyForm = () => {
                     </div>
                   </>
                 )}
-                {((stat === "not verified") ||(stat === "verified")) && (
+                {(stat === "not verified") && (
                   <div
                     style={{
                       display: "flex",
@@ -516,9 +516,9 @@ const VerifyForm = () => {
                     <button onClick={handleCancel} style={{ marginTop:'10px'}}>Cancel</button>
                   </div>
                 )}
-                {/* {stat === "verified" && <>
+                {stat === "verified" && <>
                   <PostInstallment /> 
-                  </>}*/}
+                  </>}
               </div>
             </div>
           </Modal>

@@ -75,7 +75,7 @@ const Changepassword = () => {
           margin: "auto",
           cursor: "pointer",
           width:'120px',
-          height:'25px'
+          height:'50px'
         }}>
             {" "}
             <h3>Change Password</h3>{" "}

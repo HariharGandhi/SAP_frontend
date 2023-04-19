@@ -2,8 +2,12 @@ import React from 'react'
 import "./Resume.css"
 import Footer from '../../../Footer/Footer';
 import NewSidebar from '../../../../Navbar/Navbar';
+import { useEffect } from 'react';
 
 function Resume() {
+    useEffect(() => {
+        return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+});
   return (<>
   <NewSidebar />
     <div>

@@ -5,7 +5,7 @@ import VerifyFormmodal from "../Verifyformmodal";
 import "./Viewform.css";
 import Applicationformservice from "../../../../../../services/applicationformservice";
 import NewSidebar from "../../../../../Navbar/Navbar";
-//import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
+import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
 import {BASE_URL} from "../../../../../../services/Globalvalues";
 
 const Viewform = () => {
@@ -476,7 +476,7 @@ const Viewform = () => {
                     </div>
                   </>
                 )}
-                {((stat === "not verified") ||(stat === "verified")) && (
+                {(stat === "not verified") && (
                   <div
                     style={{
                       display: "flex",
@@ -494,9 +494,9 @@ const Viewform = () => {
                     <button onClick={handleCancel}>Cancel</button>
                   </div>
                 )}
-                {/* {stat === "verified" && <>
+                {stat === "verified" && <>
                   <PostInstallment />
-                  </>} */}
+                  </>}
               </div>
             </div>
           </Modal>

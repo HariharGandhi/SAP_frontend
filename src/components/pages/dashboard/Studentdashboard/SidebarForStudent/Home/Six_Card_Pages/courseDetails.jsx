@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NewSidebar from '../../../../../../Navbar/Navbar';
+import ViewDomain from '../../../../../Home/ViewDomain';
 
-const courseDetails = () => {
+const CourseDetails = () => {
+  useEffect(() => {
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+});
   return (<>
   <NewSidebar />
     <div className={
@@ -11,9 +15,9 @@ const courseDetails = () => {
         }>
 
     <div className=' content'>
-
+        <ViewDomain style={{marginTop:'20px'}}/>
      
-    <div className='item-course'>
+    {/* <div className='item-course'>
           sachin
           <div className='item-box'>
             loresdfsdfdsgfdg
@@ -70,11 +74,11 @@ const courseDetails = () => {
             dfgfdgfdg
             dfg
           </div>
-    </div>
+    </div> */}
      </div>
     </div>
     </>
   );
 }
 
-export default courseDetails;
+export default CourseDetails;
