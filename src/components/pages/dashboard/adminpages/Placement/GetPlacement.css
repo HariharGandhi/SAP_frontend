@@ -61,6 +61,15 @@
   margin-bottom: 25px; */
   cursor: pointer;
 }
+.xlsbutton{
+  cursor: pointer;
+  color: #322d45;
+  background-color: grey;
+}
+.xlsbutton:hover{
+  color: rgb(174, 179, 186);
+  background-color: #131010;
+}
 
 /* .getplace td,th{
     padding: 20px;

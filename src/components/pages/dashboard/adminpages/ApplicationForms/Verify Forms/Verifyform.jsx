@@ -4,7 +4,8 @@ import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
 import Applicationformservice from "../../../../../../services/applicationformservice";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
-import {BASE_URL} from "../../../../../../services/Globalvalues";
+import {BASE_URL, INITIAL} from "../../../../../../services/Globalvalues";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const VerifyForm = () => {
     const [data, setData] = useState([]);
     const [did, setdid] = useState(0);
@@ -57,7 +58,6 @@ const VerifyForm = () => {
         BASE_URL + `applicationFormStatusUpdate/${AId}/${stat}/${query}`
       )
       .then((res) => {
-        console.log(query, "new");
         setquery(false);
         setstat("");
         setUpdateModal(false);
@@ -120,7 +120,7 @@ const VerifyForm = () => {
   };
   const handleSearch = () => {
     setfiltered(true)
-    const status = "initial"
+    const status = INITIAL
     Applicationformservice.getfiltered(search,searchmod,searchdept,status)
     .then((res)=> {
       setfilterData(res.data.records);
@@ -168,7 +168,7 @@ const VerifyForm = () => {
                     specialization: "",
                     studentType: "",
                     adhaarCard: "",
-                    applicationFromStatus: "initial",
+                    applicationFromStatus: INITIAL,
                     uploadImage: "",
                     userId: ""
       
@@ -192,9 +192,9 @@ const VerifyForm = () => {
             ? "table-nav vform"
             : "table-nav"
         }
-        id="tab"
+        // id="tab"
       >
-        <div className="container form-group " id="tab">
+        <div className="container form-group " id="vfcont">
           <label>
             Student Name :
             <input
@@ -242,9 +242,9 @@ const VerifyForm = () => {
             </button>
           </label>
         </div>
-        <table style={{ width: "100%", marginTop: "25px" }}>
+        <table style={{ width: "100%", marginTop: "25px" }} id="tab">
           <thead>
-            <tr className="main-table top-col-table" id="tab">
+            <tr className="main-table top-col-table" >
               {/*<th>Student_id</th>*/}
               <th>Adhar card</th>
               <th>Application status</th>
@@ -342,6 +342,13 @@ const VerifyForm = () => {
               })}
           </tbody>}
         </table>
+        <ReactHTMLTableToExcel
+          className="btn xlsbutton"
+          table="tab"
+          filename="Application forms"
+          sheet="sheet 1"
+          buttonText="Download as XLS"
+        />
         {DeleteModal && (
           <Modal>
             <div>

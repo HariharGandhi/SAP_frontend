@@ -65,6 +65,24 @@
     #tab .button {
       width: 100%; /* make clear button take up full width on smaller screens */
     }
+
+    #vfcont .label {
+      width: 100%; /* make label take up full width on smaller screens */
+      margin-right: 0;
+    }
+    
+    #vfcont .table-search {
+      width: 100%; /* make input field take up full width on smaller screens */
+      margin-bottom: 10px;
+    }
+    
+    #vfcont .select {
+      margin-bottom: 10px; /* add space below dropdown on smaller screens */
+    }
+    
+    #vfcont .button {
+      width: 100%; /* make clear button take up full width on smaller screens */
+    }
   } 
 
   #tab .main-table{
@@ -98,4 +116,19 @@
   border: 1px solid #0b0b0b;
   border-radius: 4px;
   width: 500px;
+}
+#vfcont input{
+  border: 1px solid #0b0b0b;
+  border-radius: 4px;
+  width: 500px;
+}
+
+.xlsbutton{
+  cursor: pointer;
+  color: #322d45;
+  background-color: grey;
+}
+.xlsbutton:hover{
+  color: rgb(174, 179, 186);
+  background-color: #131010;
 }

@@ -7,6 +7,7 @@ import Applicationformservice from "../../../../../../services/applicationformse
 import NewSidebar from "../../../../../Navbar/Navbar";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
 import {BASE_URL} from "../../../../../../services/Globalvalues";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const Viewform = () => {
   const [did, setdid] = useState(0);
@@ -148,6 +149,7 @@ const Viewform = () => {
   const handledesc = async (event) => {
     setdesc(event.target.value);
   };
+
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [searchmod, setsearchmod] = useState("");
@@ -177,9 +179,9 @@ const Viewform = () => {
             ? "table-nav vform"
             : "table-nav"
         }
-        id="tab"
+        // id="tab"
       >
-        <div className="container form-group " id="tab">
+        <div className="container form-group " id="vfcont">
           <label>
             Student Name :
             <input
@@ -227,9 +229,9 @@ const Viewform = () => {
             </button>
           </label>
         </div>
-        <table style={{ width: "100%", marginTop: "25px" }}>
+        <table style={{ width: "100%", marginTop: "25px" }} id="tab">
           <thead>
-            <tr className="main-table top-col-table" id="tab">
+            <tr className="main-table top-col-table" >
               {/*<th>Student_id</th>*/}
               <th>Adhar card</th>
               <th>Application status</th>
@@ -327,6 +329,13 @@ const Viewform = () => {
               })}
           </tbody>}
         </table>
+        <ReactHTMLTableToExcel
+          className="btn xlsbutton"
+          table="tab"
+          filename="Application forms"
+          sheet="sheet 1"
+          buttonText="Download as XLS"
+        />
         {DeleteModal && (
           <Modal>
             <div>

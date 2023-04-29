@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi";
 import NewSidebar from "../../../../Navbar/Navbar";
 import "./GetPlacement.css";
+import { CSVLink } from "react-csv";
 const Getplace = () => {
   const [ispackaged, setIspackaged] = useState(false);
   const [isyear, setIsyear] = useState(false);
@@ -58,6 +59,14 @@ const Getplace = () => {
     setSearch("");
     setsearchmod("");
   };
+  const headers = [
+    {label : "Package", key  : "packages"},
+    {label:"Image", key:"imageUrl"},
+    {label:"Name", key:"name"},
+    {label:"Company", key:"companyname"},
+    {label:"Module", key:"module"},
+    {label:"Year of Placement", key:"placementYear"},
+  ]
   useEffect(() => {
     (async () => {
       try {
@@ -118,7 +127,7 @@ const Getplace = () => {
             
           </label>
         </div>
-          <table style={{ width: "100%" }}>
+          <table style={{ width: "100%" }} id="placetab">
             <thead>
               <tr className="main-table top-col-table">
                 {/*<th>Student_id</th>*/}
@@ -174,6 +183,9 @@ const Getplace = () => {
               })}
             </tbody>
           </table>
+          <CSVLink data={Data} headers={headers} filename={"placement Data.csv"} className="xlsbutton">
+        Download in csv
+      </CSVLink>
         </div>
       </div>{" "}
       
