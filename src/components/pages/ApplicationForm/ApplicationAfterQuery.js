@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer";
 import Axios from "axios";
 //import {Link } from "react-router-dom";
 import Navbarforapp from "../Home/Navbarforapp";
+import { INITIAL } from "../../../services/Globalvalues";
 
     
 
@@ -24,7 +25,7 @@ const Application = () => {
             sapModule : event.target.sapModule.value,
             specialization : event.target.specialization.value,
             studentType : event.target.studentType.value,
-            applicationFromStatus: "initial",
+            applicationFromStatus: INITIAL,
             userId : userId
           }
 

@@ -137,7 +137,7 @@ function UpdateProfile() {
       /></label>
       
 
-      <button type="submit" disabled={!hasChanges}>Save Changes</button>
+      <button type="submit" disabled={!hasChanges} style={{cursor:'pointer'}}>Save Changes</button>
     </form>
     </>
   );

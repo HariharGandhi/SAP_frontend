@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import AuthService from "../../../services/auth.service";
 import "../../../root.css";
 import Navbarforhome from "../Home/Navbarforhome";
+import { INITIAL } from "../../../services/Globalvalues";
 const required = (value) => {
   if (!value) {
     return (
@@ -68,7 +69,7 @@ export default class Login extends Component {
               if(response==="notfilled"){
                 this.props.history.push("/application");
              }
-              if(response==="initial"){
+              if(response===INITIAL){
                 this.props.history.push("/Pending");
              }
              if(response==="verified"){
@@ -188,13 +189,13 @@ export default class Login extends Component {
                 <span>Login</span>
               </button>
             </div>
-            <div>
+            {/* <div>
               <Link to="/home">
                 <label className="right-label" style={{ color: "blue" }}>
                   Back to home
                 </label>
               </Link>
-            </div>
+            </div> */}
 
             {this.state.message && (
               <div className="form-group">

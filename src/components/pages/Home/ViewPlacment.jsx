@@ -21,7 +21,7 @@ const Placment = () => {
       <div className="main-Placement">
       {top4Data.map((item) => {
       return (
-        <div data-aos="fade-right"  data-aos-delay="100">
+        <div data-aos="fade-right"  data-aos-delay="100" key={item.id}>
           <div className="con-p">
             <img src="images/Profilepic.png" className="my-pic" alt="" />
             <h2>{item.name}</h2>

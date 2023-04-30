@@ -1,12 +1,16 @@
 import React from 'react';
 import NewSidebar from '../../../../../../Navbar/Navbar';
 import "./adminDetails.css"
+import { useEffect } from 'react';
 
 
 
 
 
-const adminDetails = () => {
+const AdminDetails = () => {
+  useEffect(() => {
+    return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
+});
   return (<>
     {/* <admindetails /> */}
     <NewSidebar />
@@ -71,4 +75,4 @@ const adminDetails = () => {
   );
 }
 
-export default adminDetails;
+export default AdminDetails;

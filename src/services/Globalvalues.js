@@ -1,2 +1,3 @@
 export const BASE_URL = "http://localhost:9190/";
-export const ACTIVE = "active"
+export const ACTIVE = "active";
+export const INITIAL = "initial"

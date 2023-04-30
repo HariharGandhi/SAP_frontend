@@ -64,7 +64,7 @@ const GetModule = () => {
                       {ele.moduleName}
                     </td>
                     <td >
-                      {ele.moduleshortName}
+                      {ele.moduleShortName}
                     </td>
                     <td >
                       {ele.status}

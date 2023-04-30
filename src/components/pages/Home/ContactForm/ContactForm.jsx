@@ -1,11 +1,12 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import './ContactForm.css'
 import {BASE_URL} from '../../../../services/Globalvalues'
 
 
 const ContactForm = () => {
   const [formStatus, setFormStatus] = React.useState('Send')
+  const [formSent, setFormSent] = React.useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -31,19 +32,38 @@ const ContactForm = () => {
     .then(data => {
       console.log(data)
       setFormStatus('Sent')
+      setFormSent(true)
     })
     .catch(error => {
       console.error(error)
       setFormStatus('Error')
     })
   }
+  useEffect(() => {
+    if (formSent) {
+      const timerId = setTimeout(() => {
+        redirectToPage();
+      }, 3000);
+      return () => clearTimeout(timerId);
+    }
+  }, [formSent]);
+  const redirectToPage = () => {
+    window.location.href = "/applicationprocces"
+  }
 
   return (
+    <>
+    {formSent && <div className="w3-panel w3-green"><div className='subtext'>
+  <h1>Form submitted</h1>
+  <h2>Our coordinator will contact you soon.</h2>
+  <h2>Till that We'll guide you through the application process.</h2></div>
+</div> }
+    {!formSent && 
     <div >
       <h1 className='center-p'>Contact Us</h1>
       <div className='ctcform-container'>
       <div className='image-container' style={{alignContent:'center'}}>
-        <img src={process.env.PUBLIC_URL + '/images/PP.jpeg'} alt="#" style={{marginLeft:'20px'}} className='image'/>
+        <img src={process.env.PUBLIC_URL + '/Photo/SapSanjivani.jpeg'} alt="#" style={{marginLeft:'20px', height:'350px',border:'1px solid'}} className='image'/>
       </div>
     <form onSubmit={handleSubmit} id="contactform" className='form-container'>
       <h3>Enter your Details</h3>
@@ -74,7 +94,8 @@ const ContactForm = () => {
       </label>
       <button type="submit" style={{width:'150px'}}>{formStatus}</button>
     </form></div>
-    </div>
+    </div>}
+    </>
   )
 }
 
