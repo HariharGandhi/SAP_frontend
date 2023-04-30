@@ -11,7 +11,7 @@ padding: 20px;
 list-style: none;
 height: 60px;
 text-decoration: none;
-font-size: 18px;
+font-size: 15px;
 
 &:hover {
 	background: #252831;
@@ -32,7 +32,7 @@ display: flex;
 align-items: center;
 text-decoration: none;
 color: #f5f5f5;
-font-size: 18px;
+font-size: 15px;
 
 &:hover {
 	background: green;

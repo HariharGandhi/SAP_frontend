@@ -59,7 +59,7 @@ import SAPfee from "./components/pages/Payment/SAPfee";
 import CourseDetails from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/courseDetails";
 import AdminDetails from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/adminDetails";
 import Getfeerazorpay from "./components/pages/Payment/Fee installments/Getfeerazorpay";
-//import ApplicationProcces from "./components/pages/Home/ContactForm/ApplicationProcces";
+import ApplicationProcces from "./components/pages/Home/ContactForm/Applicationprocess";
 // const cors = require("cors")
 // app.use(cors());
 
@@ -237,7 +237,7 @@ class App extends Component {
               <Route exact path="/contacttoadmin" component={ContactToAdmin}/>
               <Route exact path="/coursedetails" component={CourseDetails}/>
               <Route exact path="/updateprofile" component={UpdateProfile}/>
-              {/* <Route exact path="/applicationprocces" component={ApplicationProcces}/> */}
+              <Route exact path="/applicationprocces" component={ApplicationProcces}/>
               <Route exact path="/collegefee" component={Getfeerazorpay} />
 
 

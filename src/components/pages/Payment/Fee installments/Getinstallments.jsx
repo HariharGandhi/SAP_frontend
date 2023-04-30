@@ -6,18 +6,29 @@ import { useState } from 'react';
 
 const Getinstallments = () => {
 
-  const [file, setFile] = useState(null);
+  const [image, setImage] = useState(null);
 
   const ID = parseInt(localStorage.getItem('id'));
   const [Data,setData]= useState([]);
 
   const handleFileUpload = (event) => {
-    setFile(event.target.files[0]);
+    const file = event.target.files[0];
+    const allowedTypes = ["image/jpeg", "image/png","image/jpg"];
+
+    if (file && allowedTypes.includes(file.type)) {
+      setImage(file);
+    } else {
+      alert("Please choose a valid image file (JPG or JPEG or PNG).");
+    }
   };
-  // const handleSubmit = () => {
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-  // };
+  const handleSubmitfee = (element) => {
+    const Sid = element.id;
+    const Sinstallment = element.installment;
+    const Sinstamount = element.installmentAmount;
+    const Snointall = element.noOfInstallment;
+    const Stotal = element.totalFees;
+    const Sstatus = element.installmentStatus;
+  }
   
     useEffect(() => {
       (async () => {
@@ -49,7 +60,8 @@ const Getinstallments = () => {
               <th>Total No.of Installment</th>
               <th>Total Fees</th>
               <th>Status of payment</th>
-              <th><i className="fas fa-upload" /> Upload</th>
+              <th><i className="fas fa-upload" /> Upload Fee Receipt Image</th>
+              <th>Submit</th>
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
@@ -76,11 +88,13 @@ const Getinstallments = () => {
                     <td >
                       <button
                         style={{ marginRight: "5px", marginBottom:'5px',marginTop:'5px',width:'max-content'}}
-                        
                       >
-                        <input type="file" className="d-none" onChange={handleFileUpload} />
+                        <input type="file" className="d-none" accept=".jpg,.jpeg,.png" onChange={handleFileUpload} />
                       </button>
                       {"    "}
+                    </td>
+                    <td>
+                      <button onclick={(e) => handleSubmitfee(ele)}>Submit</button>
                     </td>
                   </tr>
                 );
