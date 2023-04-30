@@ -165,7 +165,7 @@ export default class Register extends Component {
       <div className="col-md-12">
         <div className="card card-container">
           <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            src="../../../../../../Images/Clglogo.jpg"
             alt="profile-img"
             className="profile-img-card"
           />
@@ -242,7 +242,7 @@ export default class Register extends Component {
                 </div>
 
                 <div className="form-group and-align">
-                  <button className="btn btn-primary btn-block" style={{cursor : "pointer"}}>Sign Up</button>
+                  <button className="btn btn-primary btn-block" style={{cursor : "pointer",backgroundColor:"green"}}>Sign Up</button>
                 <a href="/">back to home</a>
                 </div>
               </div>

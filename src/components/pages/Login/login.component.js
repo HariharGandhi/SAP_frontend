@@ -4,6 +4,8 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { Link } from "react-router-dom";
 
+// import Clglogo from "../../../../public/Photo/Clglogo.jpg";
+// import pp from "../../../../public/images/PP.jpeg"
 import AuthService from "../../../services/auth.service";
 import "../../../root.css";
 import Navbarforhome from "../Home/Navbarforhome";
@@ -126,9 +128,15 @@ export default class Login extends Component {
       <div className="col-md-12">
         <div className="card card-container">
           <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            src="../../../../../../Images/Clglogo.jpg"
             alt="profile-img"
             className="profile-img-card"
+//             style={{
+//   width: "100px",
+//   height: "100px",
+//   objectFit: "cover",
+//   borderRadius: "50%",
+// }}
           />
 
           <Form
@@ -162,7 +170,7 @@ export default class Login extends Component {
                 placeholder="Enter Your Password"
               />
               <Link to="/Forgotpassword">
-                <label className="right-label" style={{ color: "black" }}>
+                <label className="right-label" style={{ color: "blue" }}>
                   Forget password?
                 </label>
               </Link>
@@ -172,7 +180,7 @@ export default class Login extends Component {
               <button
                 className="btn btn-primary btn-block"
                 disabled={this.state.loading}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer" ,backgroundColor:"green"}}
               >
                 {this.state.loading && (
                   <span className="spinner-border spinner-border-sm"></span>
@@ -182,7 +190,7 @@ export default class Login extends Component {
             </div>
             <div>
               <Link to="/home">
-                <label className="right-label" style={{ color: "black" }}>
+                <label className="right-label" style={{ color: "blue" }}>
                   Back to home
                 </label>
               </Link>
