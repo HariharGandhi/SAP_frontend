@@ -23,19 +23,11 @@ const Getplace = () => {
     setIspackaged((prev) => !prev);
     if (!ispackaged) {
       setData(
-        [...Data].sort(
-          (a, b) =>
-            Number(a.packages) -
-            Number(b.packages)
-        )
+        [...Data].sort((a, b) => Number(a.packages) - Number(b.packages))
       );
     } else {
       setData(
-        [...Data].sort(
-          (a, b) =>
-            Number(b.packages) -
-            Number(a.packages)
-        )
+        [...Data].sort((a, b) => Number(b.packages) - Number(a.packages))
       );
     }
   };
@@ -60,13 +52,13 @@ const Getplace = () => {
     setsearchmod("");
   };
   const headers = [
-    {label : "Package", key  : "packages"},
-    {label:"Image", key:"imageUrl"},
-    {label:"Name", key:"name"},
-    {label:"Company", key:"companyname"},
-    {label:"Module", key:"module"},
-    {label:"Year of Placement", key:"placementYear"},
-  ]
+    { label: "Package", key: "packages" },
+    { label: "Image", key: "imageUrl" },
+    { label: "Name", key: "name" },
+    { label: "Company", key: "companyname" },
+    { label: "Module", key: "module" },
+    { label: "Year of Placement", key: "placementYear" },
+  ];
   useEffect(() => {
     (async () => {
       try {
@@ -84,7 +76,6 @@ const Getplace = () => {
   return (
     <>
       <NewSidebar />
-      
       <div
         className="getplace"
         style={{ display: "flex", justifyContent: "center" }}
@@ -98,35 +89,34 @@ const Getplace = () => {
           style={{ marginTop: "10px" }}
         >
           <div className="container form-group " id="tab">
-          <label>
-            Student Name :
-            <input
-              className="table-search"
-              type="text"
-              value={search}
-              placeholder="Enter Name to search"
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </label>
-          <label>
-            Module :
-            <input
-              className="table-search"
-              type="text"
-              value={searchmod}
-              placeholder="Enter module to search"
-              onChange={(e) => setsearchmod(e.target.value)}
-              style={{ marginLeft: "60px" }}
-            />
-            <button
-              onClick={() => clearsearch()}
-              style={{ width: "90px", marginLeft: "20px" }}
-            >
-              Clear
-            </button>
-            
-          </label>
-        </div>
+            <label>
+              Student Name :
+              <input
+                className="table-search"
+                type="text"
+                value={search}
+                placeholder="Enter Name to search"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </label>
+            <label>
+              Module :
+              <input
+                className="table-search"
+                type="text"
+                value={searchmod}
+                placeholder="Enter module to search"
+                onChange={(e) => setsearchmod(e.target.value)}
+                style={{ marginLeft: "60px" }}
+              />
+              <button
+                onClick={() => clearsearch()}
+                style={{ width: "90px", marginLeft: "20px" }}
+              >
+                Clear
+              </button>
+            </label>
+          </div>
           <table style={{ width: "100%" }} id="placetab">
             <thead>
               <tr className="main-table top-col-table">
@@ -137,8 +127,24 @@ const Getplace = () => {
                   onClick={() => sortPackage(Data, setData)}
                 >
                   Package Recieved
-                  {ispackaged && <span role="img" aria-label="Up Arrow" style={{marginLeft:"5px"}}>⬆</span>}
-                  {!ispackaged && <span role="img" aria-label="Down Arrow" style={{marginLeft:"5px"}}>⬇</span>}
+                  {ispackaged && (
+                    <span
+                      role="img"
+                      aria-label="Up Arrow"
+                      style={{ marginLeft: "5px" }}
+                    >
+                      ⬆
+                    </span>
+                  )}
+                  {!ispackaged && (
+                    <span
+                      role="img"
+                      aria-label="Down Arrow"
+                      style={{ marginLeft: "5px" }}
+                    >
+                      ⬇
+                    </span>
+                  )}
                 </th>
                 <th>Image</th>
                 <th>Name</th>
@@ -149,8 +155,16 @@ const Getplace = () => {
                   onClick={() => sortyear(Data, setData)}
                 >
                   Year of Placement
-                  {isyear && <span role="img" aria-label="Up Arrow">⬆</span>}
-                  {!isyear && <span role="img" aria-label="Down Arrow">⬇</span>}
+                  {isyear && (
+                    <span role="img" aria-label="Up Arrow">
+                      ⬆
+                    </span>
+                  )}
+                  {!isyear && (
+                    <span role="img" aria-label="Down Arrow">
+                      ⬇
+                    </span>
+                  )}
                 </th>
                 {/*<th>User_id</th>*/}
               </tr>
@@ -161,40 +175,48 @@ const Getplace = () => {
                   ? item
                   : item.name.toLowerCase().includes(search);
               })
-              .filter((item) => {
-                return searchmod.toLowerCase() === ""
-                  ? item
-                  : item.module.toLowerCase().includes(searchmod);
-              }).slice(page * 15 - 15, page * 15).map((ele) => {
-                return (
-                  <tr key={ele.id} className="main-table">
-                    {/* <td>{ele.id}</td> */}
-                    <td>
-                      {ele.packages}
-                      {" lpa"}
-                    </td>
-                    <td>{ele.imageUrl}</td>
-                    <td>{ele.name}</td>
-                    <td>{ele.companyname}</td>
-                    <td>{ele.module}</td>
-                    <td>{ele.placementYear}</td>
-                  </tr>
-                );
-              })}
+                .filter((item) => {
+                  return searchmod.toLowerCase() === ""
+                    ? item
+                    : item.module.toLowerCase().includes(searchmod);
+                })
+                .slice(page * 15 - 15, page * 15)
+                .map((ele) => {
+                  return (
+                    <tr key={ele.id} className="main-table">
+                      {/* <td>{ele.id}</td> */}
+                      <td>
+                        {ele.packages}
+                        {" lpa"}
+                      </td>
+                      <td>{ele.imageUrl}</td>
+                      <td>{ele.name}</td>
+                      <td>{ele.companyname}</td>
+                      <td>{ele.module}</td>
+                      <td>{ele.placementYear}</td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
-          <CSVLink data={Data} headers={headers} filename={"placement Data.csv"} className="xlsbutton">
-        Download in csv
-      </CSVLink>
+          <CSVLink
+            data={Data}
+            headers={headers}
+            filename={"placement Data.csv"}
+            className="xlsbutton"
+            style={{ marginTop: "5", marginLeft: "5" }}
+          >
+           {" "} Download in csv
+          </CSVLink>
         </div>
       </div>{" "}
-      
       {Data.length > 0 && (
         <div className="pagination">
           <span
             className={page > 1 ? "" : "pagination__disable"}
             onClick={() => selectPageHandler(page - 1)}
-            role="img" aria-label="left arrow"
+            role="img"
+            aria-label="left arrow"
           >
             ◀
           </span>
@@ -214,12 +236,15 @@ const Getplace = () => {
           <span
             className={page < Data.length / 10 ? "" : "pagination__disable"}
             onClick={() => selectPageHandler(page + 1)}
-            role="img" aria-label="right Arrow" 
-            style={{marginRight:"150px"}}
+            role="img"
+            aria-label="right Arrow"
+            style={{ marginRight: "150px" }}
           >
             ▶
           </span>
-          <button className="place-button"><Link to="/postplacement">Add Placement </Link></button>
+          <button className="place-button">
+            <Link to="/postplacement">Add Placement </Link>
+          </button>
         </div>
       )}
       {/* <div >

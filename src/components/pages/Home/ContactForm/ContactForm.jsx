@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react'
 import './ContactForm.css'
-import {BASE_URL} from '../../../../services/Globalvalues'
+import {ACTIVE, BASE_URL} from '../../../../services/Globalvalues'
 
 
 const ContactForm = () => {
@@ -11,8 +11,12 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setFormStatus('Submitting...')
-    const StatuS = 'active'
+    const StatuS = ACTIVE;
     const { name, email, mobileNumber, module, } = e.target.elements
+    if (name.value === "" || email.value === "" || mobileNumber.value === "" || module.value === "") {
+      alert("Fill all details before submitting form")
+    }
+    else {
     let contactForm = {
       name: name.value,
       email: email.value,
@@ -37,7 +41,7 @@ const ContactForm = () => {
     .catch(error => {
       console.error(error)
       setFormStatus('Error')
-    })
+    })}
   }
   useEffect(() => {
     if (formSent) {
