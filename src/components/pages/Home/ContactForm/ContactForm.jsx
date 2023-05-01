@@ -63,7 +63,7 @@ const ContactForm = () => {
   <h2>Till that We'll guide you through the application process.</h2></div>
 </div> }
     {!formSent && 
-    <div >
+    <div className ='ctcform-container' >
       <h1 className='center-p'>Contact Us</h1>
       <div className='ctcform-container'>
       <div className='image-container' style={{alignContent:'center'}}>
