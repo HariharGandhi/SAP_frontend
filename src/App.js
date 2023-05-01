@@ -61,8 +61,7 @@ import AdminDetails from "./components/pages/dashboard/Studentdashboard/SidebarF
 import Getfeerazorpay from "./components/pages/Payment/Fee installments/Getfeerazorpay";
 import ApplicationProcces from "./components/pages/Home/ContactForm/Applicationprocess";
 
-import Header from "./components/pages/Resumebuilder/Header/Header";
-import Body from "./components/pages/Resumebuilder/Body/Body";
+
 
 
 // const cors = require("cors")
@@ -244,9 +243,7 @@ class App extends Component {
               <Route exact path="/updateprofile" component={withAuth(UpdateProfile)}/>
               <Route exact path="/applicationprocces" component={withAuth(ApplicationProcces)}/>
               <Route exact path="/collegefee" component={withAuth(Getfeerazorpay)} />
-              <Route exact path="/header" component={Header} />
-              <Route exact path="/body" component={Body} />
-
+             
 
 
 
