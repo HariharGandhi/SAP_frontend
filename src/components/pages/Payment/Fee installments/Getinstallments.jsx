@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import Paymentapi from '../../../../services/Paymentapi';
 import NewSidebar from '../../../Navbar/Navbar';
 import { useState } from 'react';
+import Axios from 'axios';
+import { BASE_URL } from '../../../../services/Globalvalues';
 //import axios from 'axios';
 
 const Getinstallments = () => {
 
   const [image, setImage] = useState(null);
-
   const ID = parseInt(localStorage.getItem('id'));
   const [Data,setData]= useState([]);
 
@@ -21,13 +22,21 @@ const Getinstallments = () => {
       alert("Please choose a valid image file (JPG or JPEG or PNG).");
     }
   };
-  const handleSubmitfee = (element) => {
-    const Sid = element.id;
-    const Sinstallment = element.installment;
-    const Sinstamount = element.installmentAmount;
-    const Snointall = element.noOfInstallment;
-    const Stotal = element.totalFees;
-    const Sstatus = element.installmentStatus;
+  const handleSubmitfee = (ele) => {
+    const Sid = ele.id;
+    const SUid = ele.userId;
+    const Image = image;
+    const formData = new FormData();
+    formData.append('image',Image)
+    Axios.post(BASE_URL + 'uploadfeesreceipt', formData ,{
+      params:{
+        paymantinstallmentIds	: Sid,
+        usersId: SUid
+      }
+    }).then((response)=>{
+      alert(response)
+
+    })
   }
   
     useEffect(() => {
@@ -94,7 +103,7 @@ const Getinstallments = () => {
                       {"    "}
                     </td>
                     <td>
-                      <button onclick={(e) => handleSubmitfee(ele)}>Submit</button>
+                      <button onClick={() => handleSubmitfee(ele)}>Submit</button>
                     </td>
                   </tr>
                 );
