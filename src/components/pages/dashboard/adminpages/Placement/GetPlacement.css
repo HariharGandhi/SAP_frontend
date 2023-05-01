@@ -1,6 +1,10 @@
-.getplace table-nav{
+/* .getplace table-nav{
     transition: all 0.4s ease;
 
+}*/
+.getplace{
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .getplace main-table{
     /* display: flex; */
@@ -11,12 +15,12 @@
     /* width: 100%; */
     /* width: 100vw; */
     margin-right: 30px;
-}
-.getplace top-col-table{
+} 
+/* .getplace top-col-table{
     background-color: #322d45;
     color: white;
     padding: 20px 7px;
-    /* width: 100%; */
+    /* width: 100%; 
  
     
     border-top-right-radius: 15px;
@@ -27,7 +31,47 @@
     border: 1px solid black;
     border-collapse: collapse;
     text-align: center;
+} */
+.getplace table {
+  border-collapse: collapse;
+  width: 95%;
+  margin: 5 auto;
+  margin-bottom: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.getplace th,
+td {
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.getplace th {
+  background-color: #967b7b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.getplace tr:hover {
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 767px) {
+  .getplace  th,
+  td {
+    display: block;
+  }
+
+  .getplace  th {
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
 .pagination {
     padding: 10px;
     margin: 5px 0;
@@ -65,6 +109,7 @@
   cursor: pointer;
   color: #322d45;
   background-color: grey;
+  border-radius: 5px;
 }
 .xlsbutton:hover{
   color: rgb(174, 179, 186);
