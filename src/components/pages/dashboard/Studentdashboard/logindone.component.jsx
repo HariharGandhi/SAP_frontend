@@ -109,8 +109,8 @@ const Logindone = () => {
               <div className="icon">
                 <i className="fas fa-cloud"></i>
               </div>
-              <div className="topic">Query Section</div>
-              <p>2 way communication card</p>
+              <div className="topic">SAP Credentials</div>
+              <p>Course credentials after payment verification</p>
             </div>
             <div
               className="box"
