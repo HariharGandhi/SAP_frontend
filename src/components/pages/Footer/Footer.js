@@ -58,7 +58,7 @@ export default function Footer() {
           <div>
             <i className="fa fa-envelope"></i>
             <p>
-              <a href="mailto:support@company.com">support@company.com</a>
+              <a href="mailto:contact@sanjivani.org.in">contact@sanjivani.org.in</a>
             </p>
           </div>
         </div>
@@ -66,23 +66,28 @@ export default function Footer() {
         <div className="footer-right">
           <p className="footer-company-about">
             <span>About the College</span>
-            Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-            euismod convallis velit, eu auctor lacus vehicula sit amet.
+            Sanjivani College of Engineering (An Autonomous Institute),
+            Kopargaon is one among the premier technical institutes in
+            Maharashtra state in the un-aided sector. Established in 1983 by the
+            Sanjivani Rural Educational Society under the charismatic leadership
+            of Shri. Shankarrao G. Kolhe, the Institute had its vision for
+            social transformation and , upliftment of rural masses through
+            education, training and research.
           </p>
 
           <div className="footer-icons">
             <a href="/">
-              <i className="fa fa-facebook"></i>
+              <i className="fab fa-facebook-square"></i>
             </a>
             <a href="/">
-              <i className="fa fa-twitter"></i>
+              <i className="fab fa-twitter"></i>
             </a>
             <a href="/">
-              <i className="fa fa-linkedin"></i>
+              <i className="fab fa-linkedin"></i>
             </a>
-            <a href="/">
-              <i className="fa fa-github"></i>
-            </a>
+            {/* <a href="/">
+              <i className="fab fa-github"></i>
+            </a> */}
           </div>
         </div>
       </footer>

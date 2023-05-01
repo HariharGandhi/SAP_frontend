@@ -23,8 +23,8 @@ const Getinstallments = () => {
     }
   };
   const handleSubmitfee = (ele) => {
-    const Sid = ele.id;
-    const SUid = ele.userId;
+    const Sid = parseInt(ele.id,10);
+    const SUid = parseInt(ele.userId,10);
     const Image = image;
     const formData = new FormData();
     formData.append('image',Image)

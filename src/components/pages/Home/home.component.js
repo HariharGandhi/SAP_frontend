@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 import SAPvideo from "./../SAPvideo/SAPvideo";
 import Navbarforhome from "./Navbarforhome";
 import ContactForm from "./ContactForm/ContactForm";
+//import MyCarousel from "./Carousel/Carousel";
 
 export default class Home extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ export default class Home extends Component {
       <div>
         
         <Navbarforhome/>
+        {/* <MyCarousel /> */}
 
         {/* <div className="row">
             <div className="col-6">

@@ -9,7 +9,7 @@ export const SidebarAdminData = [
 },
 {
 	title: "Payment",
-	path: "/payment",
+	path: "/getreceipt",
 
 },
 {

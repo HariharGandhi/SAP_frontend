@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import applicationformservice from "../../../../services/applicationformservice";
 import Paymentapi from "../../../../services/Paymentapi";
-
+import { NOTVERIFIED } from "../../../../services/Globalvalues";
 const PostInstallment = () => {
   //const [Data,setData] = useState("")
   // const [] = useState("")
@@ -56,7 +56,7 @@ const PostInstallment = () => {
           installment: 1,
           installmentAmount : total_fee,
           totalFees : total_fee,
-          installmentStatus: "unpaid",
+          installmentStatus: NOTVERIFIED,
           noOfInstallment : 1,
 
         }
@@ -69,7 +69,7 @@ const PostInstallment = () => {
           installment: 1,
           installmentAmount : first,
           totalFees : total_fee,
-          installmentStatus: "unpaid",
+          installmentStatus: NOTVERIFIED,
           noOfInstallment : 2,
           
         },
@@ -78,7 +78,7 @@ const PostInstallment = () => {
           installment: 2,
           installmentAmount : second,
           totalFees : total_fee,
-          installmentStatus: "unpaid",
+          installmentStatus: NOTVERIFIED,
           noOfInstallment : 2,
           
         }
@@ -91,7 +91,7 @@ const PostInstallment = () => {
           installment: 1,
           installmentAmount : first,
           totalFees : total_fee,
-          installmentStatus: "unpaid",
+          installmentStatus: NOTVERIFIED,
           noOfInstallment : 3,
           
         },
@@ -100,7 +100,7 @@ const PostInstallment = () => {
           installment: 2,
           installmentAmount : second,
           totalFees : total_fee,
-          installmentStatus: "unpaid",
+          installmentStatus: NOTVERIFIED,
           noOfInstallment : 3,
           
         },
@@ -109,7 +109,7 @@ const PostInstallment = () => {
           installment: 3,
           installmentAmount : third,
           totalFees : total_fee,
-          installmentStatus: "unpaid",
+          installmentStatus: NOTVERIFIED,
           noOfInstallment : 3,
           
         }
