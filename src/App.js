@@ -60,6 +60,11 @@ import CourseDetails from "./components/pages/dashboard/Studentdashboard/Sidebar
 import AdminDetails from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/adminDetails";
 import Getfeerazorpay from "./components/pages/Payment/Fee installments/Getfeerazorpay";
 import ApplicationProcces from "./components/pages/Home/ContactForm/Applicationprocess";
+
+import Header from "./components/pages/Resumebuilder/Header/Header";
+import Body from "./components/pages/Resumebuilder/Body/Body";
+
+
 // const cors = require("cors")
 // app.use(cors());
 
@@ -157,8 +162,8 @@ class App extends Component {
                 component={withAuth(GetbyFilter)}
               />
               <Route path="/newnav" component={NewNav} />
-              <Route exact path="/resume" component={Resume} />
-              <Route exact path="/pending" component={Pending} />
+              <Route exact path="/resume" component={withAuth(Resume)} />
+              <Route exact path="/pending" component={withAuth(Pending)} />
               <Route
                 exact
                 path="/getplacement"
@@ -204,8 +209,8 @@ class App extends Component {
                 path="/verifyform"
                 component={withAuth(RoleAuth(VerifyFormmodal))}
               />
-              <Route exact path="/payment" component={SAPfee} />
-              <Route exact path="/contactus" component={ContactForm} />
+              <Route exact path="/payment" component={withAuth(SAPfee)} />
+              <Route exact path="/contactus" component={withAuth(ContactForm)} />
               <Route
                 exact
                 path="/contactformdata"
@@ -222,23 +227,26 @@ class App extends Component {
                 component={withAuth(RoleAuth(PostInstallment))}
               />
               {/* <Route exact path = "/getinstallment" component={Getinstallments} /> */}
-              <Route exact path="/isquerytrue" component={Isquerytrue} />
+              <Route exact path="/isquerytrue" component={withAuth(Isquerytrue)} />
               <Route
                 exact
                 path="/applicationafterquery"
-                component={ApplicationAfterQuery}
+                component={withAuth(ApplicationAfterQuery)}
               />
               {/* <Route exact path="/studenthome" component={studenthome} /> */}
               {/* <Route exact path="/profile" component={Profile}/> */}
-              <Route exact path="/getmodules" component={GetModule} />
-              <Route exact path="/profile" component={profile} />
-              <Route exact path="/getinstallment" component={Getinstallments}/>
-              <Route exact path="/admindetails" component={AdminDetails}/>
-              <Route exact path="/contacttoadmin" component={ContactToAdmin}/>
-              <Route exact path="/coursedetails" component={CourseDetails}/>
-              <Route exact path="/updateprofile" component={UpdateProfile}/>
-              <Route exact path="/applicationprocces" component={ApplicationProcces}/>
-              <Route exact path="/collegefee" component={Getfeerazorpay} />
+              <Route exact path="/getmodules" component={withAuth(GetModule)} />
+              <Route exact path="/profile" component={withAuth(profile)} />
+              <Route exact path="/getinstallment" component={withAuth(Getinstallments)}/>
+              <Route exact path="/admindetails" component={withAuth(AdminDetails)}/>
+              <Route exact path="/contacttoadmin" component={withAuth(ContactToAdmin)}/>
+              <Route exact path="/coursedetails" component={withAuth(CourseDetails)}/>
+              <Route exact path="/updateprofile" component={withAuth(UpdateProfile)}/>
+              <Route exact path="/applicationprocces" component={withAuth(ApplicationProcces)}/>
+              <Route exact path="/collegefee" component={withAuth(Getfeerazorpay)} />
+              <Route exact path="/header" component={Header} />
+              <Route exact path="/body" component={Body} />
+
 
 
 
