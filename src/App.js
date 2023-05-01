@@ -60,6 +60,7 @@ import CourseDetails from "./components/pages/dashboard/Studentdashboard/Sidebar
 import AdminDetails from "./components/pages/dashboard/Studentdashboard/SidebarForStudent/Home/Six_Card_Pages/adminDetails";
 import Getfeerazorpay from "./components/pages/Payment/Fee installments/Getfeerazorpay";
 import ApplicationProcces from "./components/pages/Home/ContactForm/Applicationprocess";
+import Getreceipt from "./components/pages/dashboard/adminpages/PaymentVerification/Getreceipt";
 // const cors = require("cors")
 // app.use(cors());
 
@@ -210,6 +211,11 @@ class App extends Component {
                 exact
                 path="/contactformdata"
                 component={withAuth(RoleAuth(ContactUsTable))}
+              />
+              <Route
+                exact
+                path="/getreceipt"
+                component={withAuth(RoleAuth(Getreceipt))}
               />
               <Route
                 exact
