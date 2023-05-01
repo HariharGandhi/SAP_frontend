@@ -116,7 +116,7 @@ useEffect(() => {
               Image URL:
               <input type="string" onChange={(e) => handleimg(e)} placeholder="Paste Image drive URL"/>
             </label>
-            <label style={{marginRight:'50px'}}>
+            <label style={{marginRight:'90px'}}>
               {" "}
               Enter Module :
               <select value={mod} onChange={(e)=>setmod(e.target.value)} style={{width:'100%'}}>
@@ -139,8 +139,8 @@ useEffect(() => {
           className="btn-place btn-outline-white"
           style={{
             cursor: "pointer",
-          marginRight: "250px",
-          width: "150px",
+          marginRight: "150px",
+          width: "250px",
           height:'45px',
           borderRadius:'10px'
           }}
@@ -148,7 +148,7 @@ useEffect(() => {
           {" "}
           Add Placement{" "}
         </button>
-        <button className="btn-place-up" style={{width:'60px', borderRadius:'10px', height:'45px'}}>
+        <button className="btn-place-up" style={{width:'100px', borderRadius:'10px', height:'45px'}}>
           <Link to="/admindashboard">{"  "} Back {"  "}</Link>
         </button></div>
         

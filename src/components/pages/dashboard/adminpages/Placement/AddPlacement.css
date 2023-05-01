@@ -1,64 +1,87 @@
+/* Desktop styles */
 .placementcontainer {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-  }
-  
-  .Placementform {
-    display: flex;
+  display: flex;
+  justify-content: center;
+}
+
+.Placementform {
+  text-align: center;
+  margin: 20px;
+}
+
+.Placementform label {
+  display: block;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.Placementform input[type="string"],
+.Placementform input[type="number"],
+.Placementform select {
+  width: 250px;
+  height: 35px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Placementform select {
+  width: 270px;
+}
+
+.btn-place {
+  background-color: white;
+  color: #005086;
+  border: 2px solid #005086;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.btn-place:hover {
+  background-color: #005086;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-place-up {
+  background-color: #005086;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-right: 250px;
+}
+
+.btn-place-up a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px 20px;
+}
+
+.btn-place-up:hover {
+  background-color: white;
+  color: #005086;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 412px) {
+  .placementcontainer {
     flex-direction: column;
     align-items: center;
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 5px;
   }
-  
-  .Placementform label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    font-size: 15px;
-  }
-  
-  .Placementform input,
-  .Placementform select {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 5px;
-    font-size: 15px;
-  }
-  
+
+  .Placementform input[type="string"],
+  .Placementform input[type="number"],
   .Placementform select {
     width: 100%;
+    margin-bottom: 10px;
   }
-  
-  .btn-place {
-    background-color: #134b2498;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-right: 0px;
-  }
+
   .btn-place-up {
-    background-color: #134b2498;
-    color: #fff;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    margin-top: 20px;
-    /* margin-right: 10px; */
-    /* margin-left: 90%; */
+    margin-right: 0;
   }
-  
-  /* .btn-place:hover {
-    background-color: #0062cc;
-  } */
-  
+}
