@@ -1,0 +1,69 @@
+.getreceipt{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .getreceipt main-table{
+      /* display: flex; */
+      /* justify-content: space-between; */
+      margin-bottom: 20px;
+      margin-top: 20px;
+      padding: 0px 7px;
+      /* width: 100%; */
+      /* width: 100vw; */
+      margin-right: 30px;
+  } 
+  /* .getreceipt top-col-table{
+      background-color: #322d45;
+      color: white;
+      padding: 20px 7px;
+      /* width: 100%; 
+   
+      
+      border-top-right-radius: 15px;
+      border-top-left-radius: 15px;
+  
+  }
+  .getreceipt th,td{
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-align: center;
+  } */
+  .getreceipt table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 5 auto;
+    margin-bottom: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .getreceipt th,
+  td {
+    text-align: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .getreceipt th {
+    background-color: #967b7b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .getreceipt tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  @media (max-width: 767px) {
+    .getreceipt  th,
+    td {
+      display: block;
+    }
+  
+    .getreceipt  th {
+      text-align: center;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
