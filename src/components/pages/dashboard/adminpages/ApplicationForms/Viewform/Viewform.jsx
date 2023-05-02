@@ -229,7 +229,7 @@ const Viewform = () => {
             </button>
           </label>
         </div>
-        <table style={{ width: "100%", marginTop: "25px" }} id="tab">
+        <table style={{  marginTop: "25px" }} id="tab">
           <thead>
             <tr className="main-table top-col-table" >
               {/*<th>Student_id</th>*/}

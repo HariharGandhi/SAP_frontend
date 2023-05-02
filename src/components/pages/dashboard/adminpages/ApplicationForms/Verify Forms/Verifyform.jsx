@@ -258,7 +258,7 @@ const VerifyForm = () => {
               <th>Sap Module</th>
               <th>Specilization</th>
               <th>Student Type</th>
-              <th>Upload img</th>
+              {/* <th>Upload img</th> */}
               <th>Action</th>
               {/*<th>User_id</th>*/}
             </tr>
@@ -280,7 +280,7 @@ const VerifyForm = () => {
                     <td>{ele.sapModule}</td>
                     <td>{ele.specialization}</td>
                     <td>{ele.studentType}</td>
-                    <td>{ele.uploadImage}</td>
+                    {/* <td>{ele.uploadImage}</td> */}
                     <td>
                       <button
                         style={{ marginRight: "5px", cursor: "pointer" }}
@@ -319,7 +319,7 @@ const VerifyForm = () => {
                     <td>{ele.sapModule}</td>
                     <td>{ele.specialization}</td>
                     <td>{ele.studentType}</td>
-                    <td>{ele.uploadImage}</td>
+                    {/* <td>{ele.uploadImage}</td> */}
                     <td>
                       <button
                         style={{ marginRight: "5px", cursor: "pointer" }}
