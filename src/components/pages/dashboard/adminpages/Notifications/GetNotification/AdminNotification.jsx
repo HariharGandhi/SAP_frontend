@@ -3,6 +3,7 @@ import { useState } from "react";
 import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
 import NewSidebar from "../../../../../Navbar/Navbar";
 import { Link } from "react-router-dom";
+import "./AdminNotification.css"
 
 const Adminnotification = () => {
   const [Data, setData] = useState([]);
@@ -65,10 +66,10 @@ const Adminnotification = () => {
           <button onClick={() => clearsearch()} style={{ marginLeft: "50px", width:'50px', height:'30px' }}>
             Clear
           </button>
-          <button className="place-button" style={{marginRight:'10px',marginLeft:'850px'}}><Link to="/addnotice">Add Notification </Link></button></label>
+          <button className="place-button-up"><Link to="/addnotice">Add Notification </Link></button></label>
         </div>
-        <table style={{ width: "100%" }}>
-          <thead>
+        <table style={{ width: "100%" }} className="THead">
+          <thead >
             <tr className="main-table top-col-table">
               {/*<th>Student_id</th>*/}
               <th>Notification ID</th>

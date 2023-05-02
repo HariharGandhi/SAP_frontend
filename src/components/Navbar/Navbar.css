@@ -39,6 +39,10 @@
       padding: 0;
       margin-left: 0;
     }
+    .nav-btns li {
+      padding: 0;
+      margin-left: 0;
+    }
   
     /* Reduce the font size and padding of the navigation button */
     .nav-button {
@@ -64,7 +68,7 @@
   }
 @media (min-width: 500px) {
     .vform {
-      width: calc(100% - 250px); /* Set the width to 100% minus the width of the sidebar */
+      width: calc(100% - 215px); /* Set the width to 100% minus the width of the sidebar */
     }
     /* NAV {
         justify-content: space-between;
@@ -80,7 +84,12 @@
     .main-head{
         margin-left: 0;
     } */
+      thead th {
+        vertical-align: top;
+      }
+    
   }
+  
   .main-head {
     text-align: center;
     margin-left : 200px;

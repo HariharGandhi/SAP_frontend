@@ -11,13 +11,13 @@ export const SidebarStudentData = [
 	title :"Profile",
 	path :"./updateprofile",
 },
+// {
+// 	title: "Payment",
+// 	path: "/payment",
+
+// },
 {
 	title: "Payment",
-	path: "/payment",
-
-},
-{
-	title: "Get Payment",
 	path: "/getinstallment",
 
 },

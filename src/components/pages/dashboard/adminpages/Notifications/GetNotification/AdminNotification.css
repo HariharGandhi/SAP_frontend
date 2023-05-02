@@ -1,0 +1,43 @@
+.place-button-up {
+    border-radius: 5px;
+    background-color: rgb(252, 186, 88);
+    width: 200px;
+    height: 50px;
+    font-size: medium;
+    /* margin-top: 5px; */
+    /* margin-left: 35%; */
+    /* margin-right: 10px;
+    margin-bottom: 25px; */
+    cursor: pointer;
+    margin-right:10px;
+    margin-left:850px
+  }
+  .THead th {
+    vertical-align: middle;
+  }
+  @media screen and (max-width: 768px) {
+    .place-button-up {
+      margin-left: 10px;
+    }
+    .THead th {
+        vertical-align: middle;
+      }
+    .THead thead {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+    .THead tr {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+    .THead th {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      
