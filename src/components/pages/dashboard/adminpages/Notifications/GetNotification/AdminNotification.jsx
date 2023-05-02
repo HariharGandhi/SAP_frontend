@@ -12,6 +12,10 @@ const Adminnotification = () => {
   const clearsearch = () => {
     setsearchmod("");
   };
+  const Sendit = (ele) => {
+    localStorage.setItem('NoticeId',ele.id)
+    window.location.href ="/sendnotification"
+  }
   
   useEffect(() => {
     (async () => {
@@ -101,6 +105,12 @@ const Adminnotification = () => {
                       style={{ marginRight: "5px", cursor: "pointer" }}
                     >
                       <i className="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      onClick={() => Sendit(ele)} title="Send Notice"
+                      style={{ marginRight: "5px", cursor: "pointer" }}
+                    >
+                      <i className="fa fa-edit" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
