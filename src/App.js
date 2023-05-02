@@ -61,6 +61,7 @@ import AdminDetails from "./components/pages/dashboard/Studentdashboard/SidebarF
 import Getfeerazorpay from "./components/pages/Payment/Fee installments/Getfeerazorpay";
 import ApplicationProcces from "./components/pages/Home/ContactForm/Applicationprocess";
 import Getreceipt from "./components/pages/dashboard/adminpages/PaymentVerification/Getreceipt";
+import SendNotice from "./components/pages/dashboard/adminpages/Notifications/SendNotification/Sendnotice";
 
 
 
@@ -140,6 +141,11 @@ class App extends Component {
                 exact
                 path="/getreceipt"
                 component={withAuth(RoleAuth(Getreceipt))}
+              />
+              <Route
+                exact
+                path="/sendnotification"
+                component={withAuth(RoleAuth(SendNotice))}
               />
               <Route
                 exact

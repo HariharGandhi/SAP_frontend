@@ -9,7 +9,7 @@ export const SidebarSuperAdminData = [
 },
 {
 	title: "Payment",
-	path: "/payment",
+	path: "/getreceipt",
 	iconClosed: <RiIcons.RiArrowDownSFill />,
 	iconOpened: <RiIcons.RiArrowUpSFill />,
 },
