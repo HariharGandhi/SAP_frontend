@@ -14,19 +14,22 @@ function UpdateProfile() {
       UserId : ID
     }})
       .then((response) => {
-        setFormData(response.data[0]);
-        setOriginalData(response.data[0]);
+        setFormData(response.data);
+        setOriginalData(response.data);
         setExtraData({
-          id: response.data[0].id,  
-          userId: response.data[0].userId,
-          uploadImage: response.data[0].uploadImage,
-          applicationFromStatus: response.data[0].applicationFromStatus
+          id: response.data.id,  
+          userId: response.data.userId,
+          uploadImage: response.data.uploadImage,
+          applicationFromStatus: response.data.applicationFromStatus
         });
+        
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, [ID]);
+      // sessionStorage.setItem("sidebar", JSON.stringify(false));
+      return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
+  });
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -41,6 +44,7 @@ function UpdateProfile() {
     axios.post(BASE_URL + `api/updateapplicationForm/${ID}`, {...formData, ...extraData})
       .then(response => {
         setOriginalData(formData);
+        sessionStorage.setItem("sidebar", JSON.stringify(false));
         alert('Data updated Successfully. Wait for Admin to verify')
         window.location.href = "/logindone"
       })
