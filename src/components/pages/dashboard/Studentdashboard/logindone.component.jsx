@@ -10,7 +10,8 @@ const Logindone = () => {
     history.push("/payment");
   };
   const NevigateResume = () => {
-    history.push("/resume");
+    // history.push("/resume");
+     window.location.href = 'http://localhost:3000';
   };
 
   const NevigateApplicationform = () => {
