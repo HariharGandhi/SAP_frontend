@@ -6,7 +6,8 @@ import Navbarforhome from "../Home/Navbarforhome";
 class ForgotPassword extends Component {
   state = {
     email: "",
-    sent : false
+    sent : false,
+    OTP : ""
   };
   
   handleSubmit = (event) => {
@@ -28,10 +29,17 @@ class ForgotPassword extends Component {
       });
   };
   handlelast = () => {
-    window.location = "/verify"
+    if (sessionStorage.getItem("otp") === this.state.OTP) {
+      sessionStorage.removeItem("otp");
+      window.location = "/changepassword";
+    } else {
+      alert("OTP does not match");
+    }
+  }
+  handleChangeOTP = (event) => {
+    this.setState({OTP: event.target.value})
   }
   handleChange = (event) => {
-    console.log(event.target.value);
     this.setState({ email: event.target.value });
   };
   render() {
@@ -80,6 +88,27 @@ class ForgotPassword extends Component {
             <h3>Send OTP</h3>{" "}
           </button>}
           {this.state.sent && <>
+            <div
+        className="container"
+        style={{
+          display: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+        }}
+      >
+        <form>
+          <label>
+            {" "}
+            Enter OTP
+            <input
+              type="string"
+              value={this.state.OTP}
+              name="OTP"
+              onChange={(e) => this.handleChangeOTP(e)}
+            />
+          </label>
+        </form>
+      </div>
             <div
             style={{
               display: "flex",

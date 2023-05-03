@@ -8,7 +8,6 @@ const Verifypassword = () => {
   const history = useHistory();
   const Verifyotp = () => {
     if (sessionStorage.getItem("otp") === OTP) {
-      console.log("run");
       history.push("/changepassword");
       sessionStorage.removeItem("otp");
     } else {
