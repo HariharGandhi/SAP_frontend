@@ -47,6 +47,18 @@
   }
   
   /* Media query for responsiveness */
+  @media (max-width: 767px) {
+    .table-nav  th,
+    td {
+      display: block;
+    }
+  
+    .table-nav  th {
+      text-align: center;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
   @media screen and (max-width: 768px) {
     #tab .label {
       width: 100%; /* make label take up full width on smaller screens */
