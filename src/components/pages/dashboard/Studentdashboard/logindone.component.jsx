@@ -11,7 +11,8 @@ const Logindone = () => {
   };
   const NevigateResume = () => {
     // history.push("/resume");
-     window.location.href = 'http://localhost:3000';
+    // window.location.href = 'http://localhost:3005';
+    window.open('http://localhost:3005','_blank')
   };
 
   const NevigateApplicationform = () => {
