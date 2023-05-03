@@ -7,7 +7,7 @@ import Applicationformservice from "../../../../../../services/applicationformse
 import NewSidebar from "../../../../../Navbar/Navbar";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
 import {BASE_URL} from "../../../../../../services/Globalvalues";
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import { CSVLink } from "react-csv";
 
 const Viewform = () => {
   const [did, setdid] = useState(0);
@@ -36,6 +36,21 @@ const Viewform = () => {
     setquery(true);
     Addquery();
   };
+  const headers = [
+    { label: "Id", key: "id" },
+    { label: "Name", key: "name" },
+    { label: "AdhaarCard", key: "adhaarCard" },
+    { label: "Form Status", key: "applicationFromStatus" },
+    { label: "Branch", key: "branch" },
+    { label: "College Email", key: "collegeEmail" },
+    { label: "Contact", key: "contactNumber" },
+    { label: "Email", key: "email" },
+    { label: "Query in Application", key: "isQueryInApplication" },
+    { label: "Year of passout", key: "passoutYear" },
+    { label: "Module", key: "sapModule" },
+    { label: "Specialization", key: "specialization" },
+    { label: "StudentType", key: "studentType" },
+  ]
 
   const handleConfirm = () => {
     axios
@@ -329,13 +344,22 @@ const Viewform = () => {
               })}
           </tbody>}
         </table>
-        <ReactHTMLTableToExcel
+        <CSVLink
+            data={data}
+            headers={headers}
+            filename={"Application form.csv"}
+            className="xlsbutton"
+            style={{ marginTop: "5", marginLeft: "5" }}
+          >
+           {" "} Download in csv
+          </CSVLink>
+        {/* <ReactHTMLTableToExcel
           className="btn xlsbutton"
           table="tab"
           filename="Application forms"
           sheet="sheet 1"
           buttonText="Download as XLS"
-        />
+        /> */}
         {DeleteModal && (
           <Modal>
             <div>
