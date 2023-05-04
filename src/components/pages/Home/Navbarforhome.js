@@ -26,7 +26,7 @@ export default function Navbarforhome() {
     //   </ul>
     // </nav>
 
-    <nav className="nav" data-aos="fade-down" data-aos-delay="100" data-aos-offset="00">
+    <nav className="nav" data-aos="fade-down" data-aos-delay="50" data-aos-offset="00">
   <div className="nav-left">
     <a href="/" className="site-title">
       <h2>Sanjivani<span className="color-change">SAP</span></h2>
