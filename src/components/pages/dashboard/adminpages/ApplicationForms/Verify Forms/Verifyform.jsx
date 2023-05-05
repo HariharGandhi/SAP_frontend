@@ -414,13 +414,13 @@ const VerifyForm = () => {
               >
                 Verify Form
               </button>
-              <button
+              {/* <button
                 className="btn-md"
                 onClick={handleCancel}
                 style={{ cursor: "pointer", width: "100px", height: "25px", marginRight: "25px", marginTop:'10px' }}
               >
                 Edit Form
-              </button>
+              </button> */}
               <button
                 className="btn-md"
                 onClick={handleCancel}

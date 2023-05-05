@@ -40,7 +40,7 @@
   .getreceipt th,
   td {
     text-align: center;
-    padding: 12px;
+    padding: 5px;
     border-bottom: 1px solid #ddd;
   }
   
@@ -63,7 +63,7 @@
   
     .getreceipt  th {
       text-align: center;
-      padding-top: 12px;
+      padding-top: 5px;
       padding-bottom: 12px;
     }
   }

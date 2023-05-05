@@ -25,13 +25,13 @@ const VerifyFormmodal = () => {
   useEffect(() => {
             (async () => {
               try {
-                const { data } = await axios.get(BASE_URL + "api/getDetailsByUserid/{UserId}",{
+                const { data } = await axios.get(BASE_URL + `api/getDetailsByUserid/{UserId}`,{
                   params : {
                     UserId : Uid
                   }
                 });
                 setData(data);
-                console.log(Uid)
+                console.log(data.id)
                 //setSid(data.records.student_id);
               } catch (error) {
                 console.log(error);
@@ -43,46 +43,44 @@ const VerifyFormmodal = () => {
     <>
     
       <div className="container">
-      {data.map(item => (
-  <Card key={item.id}>
-    <CardHeader title={`Name: ${item.name}`} subheader={`SAP Module: ${item.sapModule}`} />
+  <Card key={data.id}>
+    <CardHeader title={`Name: ${data.name}`} subheader={`SAP Module: ${data.sapModule}`} />
     <CardContent>
       <img src="images/Profilepic.png" alt="profilepic"></img><hr />
       <div className={classes.row}>
         <h4 className={classes.label}>Email:</h4>
-        <p>{item.email}</p>
+        <p>{data.email}</p>
       </div><hr />
       <div className={classes.row}>
         <h4 className={classes.label}>Branch:</h4>
-        <p>{item.branch}</p>
+        <p>{data.branch}</p>
       </div><hr />
       <div className={classes.row}>
         <h4 className={classes.label}>Contact Number:</h4>
-        <p>{item.contactNumber}</p>
+        <p>{data.contactNumber}</p>
       </div><hr />
       <div className={classes.row}>
         <h4 className={classes.label}>Year of Passout:</h4>
-        <p>{item.passoutYear}</p>
+        <p>{data.passoutYear}</p>
       </div><hr />
       <div className={classes.row}>
         <h4 className={classes.label}>Type of student:</h4>
-        <p>{item.studentType}</p>
+        <p>{data.studentType}</p>
       </div><hr />
       <div className={classes.row}>
         <h4 className={classes.label}>Adhar Card Number:</h4>
-        <p>{item.adhaarCard}</p>
+        <p>{data.adhaarCard}</p>
       </div><hr />
       <div className={classes.row}>
         <h4 className={classes.label}>Application Form Status:</h4>
-        <p>{item.applicationFromStatus}</p>
+        <p>{data.applicationFromStatus}</p>
       </div><hr />
       <div className={classes.row}>
         <h4 className={classes.label}>Is Query present in application:</h4>
-        <p>{item.isQueryInApplication ? "Yes" : "No"}</p>
+        <p>{data.isQueryInApplication ? "Yes" : "No"}</p>
       </div><hr />
     </CardContent>
   </Card>
-))}
       {/* <table>
       {data.map(item => (
       <tbody >
