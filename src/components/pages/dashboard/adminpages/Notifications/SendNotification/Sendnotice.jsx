@@ -12,9 +12,8 @@ const SendNotice = () => {
   const NId = Number(localStorage.getItem('NoticeId'))
   //const [stype, setstype] = useState([])
   const SType = [
-    "Regular",
-    "Outsider",
-    "Passout"
+    "Course Pursuing",
+    "Course Completed",
   ]
   const [selectedOptions, setSelectedOptions] = useState([]);
   const options = [
