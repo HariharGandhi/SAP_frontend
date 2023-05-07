@@ -120,7 +120,7 @@ class App extends Component {
       <div>
         <div>
           <div className="container mt-3">
-            <Switch>
+            <Switch basename={'/SapFrontend'}>
               <Route exact path={["/", "/home"]} component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
