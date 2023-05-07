@@ -2,7 +2,7 @@
   "name": "react-jwt-auth",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://localhost:8081/SapFrontend",
+  "homepage": "https://localhost:9090/SapFrontend",
   "dependencies": {
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
