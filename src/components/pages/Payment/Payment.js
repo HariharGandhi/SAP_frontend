@@ -25,7 +25,7 @@ const Payment = () => {
     const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
     console.log(res);
     if (!res) {
-      alert('You are offline... Failed to load Razorpay SDK');
+      
       return;
     }
     const options = {
@@ -60,7 +60,7 @@ const Payment = () => {
             "Payment_link": response.razorpay_payment_link_id
           }
           console.log(res)
-          alert("Payment Details : ",JSON.stringify(res))
+          
           window.location.href = "/getinstallment"
           // axios.post(BASE_URL + 'updatePayentInstallment',arr)
           // .then((res)=>{
@@ -70,7 +70,7 @@ const Payment = () => {
           // })
         }
         if(P_id === null){ 
-          alert("Payment failed");
+          
           window.location.href ="/payment"
         }
 

@@ -57,8 +57,8 @@ const Application = () => {
     ) {
       Axios.post(BASE_URL + "api/applicationForm", attributes)
         .then((response) => {
-          console.log(response);
-          console.log("api is working");
+          //console.log(response);
+          //console.log("api is working");
           window.location.href = "/pending";
         })
         .catch((error) => {

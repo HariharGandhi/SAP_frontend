@@ -33,7 +33,7 @@ const Getfeerazorpay = () => {
     const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
     console.log(res);
     if (!res) {
-      alert('You are offline... Failed to load Razorpay SDK');
+      //('You are offline... Failed to load Razorpay SDK');
       return;
     }
     const options = {
@@ -71,7 +71,7 @@ const Getfeerazorpay = () => {
           
         }
         if(P_id === null){ 
-          alert("Payment failed");
+          //("Payment failed");
           window.location.href ="/payment"
         }
 

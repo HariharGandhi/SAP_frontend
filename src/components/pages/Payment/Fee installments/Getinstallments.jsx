@@ -36,7 +36,7 @@ const Getinstallments = () => {
         usersID: SUid
       }
     }).then((response)=>{
-      alert(response.body)
+      
 
     })
   }

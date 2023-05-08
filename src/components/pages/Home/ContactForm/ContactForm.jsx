@@ -7,16 +7,21 @@ import {ACTIVE, BASE_URL} from '../../../../services/Globalvalues'
 const ContactForm = () => {
   const [formStatus, setFormStatus] = React.useState('Send')
   const [formSent, setFormSent] = React.useState(false)
-
+  const [nfield,setnfield] = React.useState(false)
   const handleSubmit = (e) => {
     e.preventDefault()
     setFormStatus('Submitting...')
     const StatuS = ACTIVE;
     const { name, email, mobileNumber, module, } = e.target.elements
     if (name.value === "" || email.value === "" || mobileNumber.value === "" || module.value === "") {
-      alert("Fill all details before submitting form")
+      setnfield(true)
+      setTimeout(() => {
+        setnfield(false)
+      }, 2000);
+      setFormStatus('Send')
     }
     else {
+      setnfield(false)
     let contactForm = {
       name: name.value,
       email: email.value,
@@ -24,7 +29,7 @@ const ContactForm = () => {
       module: module.value,
       status: StatuS
     }
-
+    if (nfield === false){
     fetch(BASE_URL + 'api/auth/postcontactus', {
       method: 'POST',
       headers: {
@@ -41,7 +46,7 @@ const ContactForm = () => {
     .catch(error => {
       console.error(error)
       setFormStatus('Error')
-    })}
+    })}}
   }
   useEffect(() => {
     if (formSent) {
@@ -97,6 +102,7 @@ const ContactForm = () => {
         
       </label>
       <button type="submit" style={{width:'150px'}}>{formStatus}</button>
+      {nfield && <p>All fields are mandatory to fill</p>}
     </form></div>
     </div>}
     </>

@@ -11,7 +11,7 @@ const Verifypassword = () => {
       history.push("/changepassword");
       sessionStorage.removeItem("otp");
     } else {
-      alert("OTP does not match");
+      
     }
   };
   const handleChange = async (event) => {

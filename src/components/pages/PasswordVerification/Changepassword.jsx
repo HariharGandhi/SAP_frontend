@@ -2,24 +2,57 @@ import React from "react";
 import { useState } from "react";
 import AuthService from "../../../services/auth.service";
 import Navbarforhome from "../Home/Navbarforhome";
+import "./ChangePassword.css"
 const Changepassword = () => {
+  const SuccessMessage = ({ message }) => {
+    return (
+      <div
+        className="SuccessMessage"
+      >
+        {message}
+      </div>
+    );
+  };
+  const ErrorMessage = ({ message }) => {
+    return (
+      <div
+        className="ErrorMessage"
+      >
+        {message}
+      </div>
+    );
+  };
   const [pass, setpass] = useState("");
   const [passn, setpassn] = useState("");
   const mail = sessionStorage.getItem("EMAIL");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setisError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const Setpassword = async () => {
     if (pass === passn) {
+      setIsSuccess(true);
       AuthService.setpassword(mail,passn)
         .then((res) => {
-          alert("New password set succesfully");
+          
           sessionStorage.removeItem("EMAIL");
-          window.location.href = "/login"
+          setIsSuccess(true);
+          setTimeout(() => {
+            setLoading(false);
+            window.location.href = "/login";
+          }, 3000);
+          //window.location.href = "/login"
           //window.location = "/login";
         })
         .catch((err) => {
           console.log(err);
         });
     }else {
-      alert("Passwords do not match. Re-Enter");
+      setisError(true);
+      
+      setTimeout(() => {
+        setLoading(false);
+        setisError(false);
+      }, 2000);
     }
   };
   const handlepassnew = async (e) => {
@@ -32,8 +65,9 @@ const Changepassword = () => {
   return (
     <div>
       <Navbarforhome />
+      {!isSuccess && <>
       <div
-        className="container"
+        className={loading ? "container load":"container"}
         style={{
           display: "flex",
           alignContent: "center",
@@ -79,7 +113,9 @@ const Changepassword = () => {
         }}>
             {" "}
             <h3>Change Password</h3>{" "}
-          </button>
+          </button> </>}
+          {isSuccess && !isError && <SuccessMessage message="Password Set Successfully ! Redirecting to Login Page" />}
+          {isError && <ErrorMessage message="Passwords do not match. Re-Enter" />}
     </div>
   );
 };

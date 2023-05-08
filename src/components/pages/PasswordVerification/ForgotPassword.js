@@ -7,20 +7,34 @@ class ForgotPassword extends Component {
   state = {
     email: "",
     sent : false,
-    OTP : ""
+    OTP : "",
+    sending: false,
+    notsent:true,
+    otperr:false
   };
   
   handleSubmit = (event) => {
     event.preventDefault();
     const mail = this.state.email;
     sessionStorage.setItem("EMAIL", mail);
+    this.setState({
+      sending:true
+    })
     AuthService.forgotpassword(mail)
       .then((res) => {
-        //console.log(res.data.message);
-        alert("OTP sent successfully. Please check your Email")
         this.setState({
-          sent:true
+          notsent:false,
+          sending:false
         })
+        //console.log(res.data.message);
+        
+        setTimeout(() => {
+          this.setState({
+            sent:true,
+            notsent:true
+          })
+        }, 3000);
+        
         sessionStorage.setItem("otp", res.data.message);
         //window.location = "/verify"; //This line of code will redirect you once the submission is succeed
       })
@@ -33,7 +47,9 @@ class ForgotPassword extends Component {
       sessionStorage.removeItem("otp");
       window.location = "/changepassword";
     } else {
-      alert("OTP does not match");
+      this.setState({
+        otperr:true
+      })
     }
   }
   handleChangeOTP = (event) => {
@@ -46,6 +62,7 @@ class ForgotPassword extends Component {
     return (
       <div>
       <Navbarforhome />
+      {!this.state.sent && <>
       <div
         className="container"
         style={{
@@ -54,6 +71,7 @@ class ForgotPassword extends Component {
           justifyContent: "center",
         }}
       >
+        
         <form style={{width:'400px'}}>
           <label style={{
           // display: "flex",
@@ -74,7 +92,7 @@ class ForgotPassword extends Component {
           
         </form>
       </div>
-      {!this.state.sent && 
+       
       <button type="submit" onClick={(e) => this.handleSubmit(e)}
       style={{
         display: "flex",
@@ -86,7 +104,11 @@ class ForgotPassword extends Component {
       }}>
             {" "}
             <h3>Send OTP</h3>{" "}
-          </button>}
+          </button>
+          {this.state.sending && <p style={{color:'Blue',alignSelf:'center'}}>OTP is being sent. Please wait</p>}
+          {!this.state.notsent && <p style={{color:'Green',alignSelf:'center'}}>OTP sent to your Email. Please check</p>}
+           </>}
+          
           {this.state.sent && <>
             <div
         className="container"
@@ -107,6 +129,7 @@ class ForgotPassword extends Component {
               onChange={(e) => this.handleChangeOTP(e)}
             />
           </label>
+          {this.state.otperr && <p style={{color:'Red',alignSelf:'center'}}>OTP does not match. Please Re-enter</p>}
         </form>
       </div>
             <div

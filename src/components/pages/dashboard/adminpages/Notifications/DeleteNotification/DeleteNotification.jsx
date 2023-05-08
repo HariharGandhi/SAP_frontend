@@ -11,14 +11,12 @@
 //       await axios
 //         .post(`http://localhost:9190/deleteNotificationData/${did}`)
 //         .then((res) => {
-//           alert("The notification is deleted");
 //           window.location.href = "/adminlogin";
 //         })
 //         .catch((err) => {
 //           console.log(err);
 //         });
 //     } else {
-//       alert("Please fill all the details");
 //     }
 //   };
 //   return (

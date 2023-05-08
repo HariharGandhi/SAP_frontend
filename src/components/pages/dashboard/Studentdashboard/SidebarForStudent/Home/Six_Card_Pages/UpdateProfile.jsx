@@ -69,7 +69,7 @@ function UpdateProfile() {
           setLoading(false);
           window.location.href = "/logindone";
         }, 3000);
-        //alert('Data updated Successfully. Wait for Admin to verify')
+        
         //window.location.href = "/logindone"
       })
       .catch((error) => {
