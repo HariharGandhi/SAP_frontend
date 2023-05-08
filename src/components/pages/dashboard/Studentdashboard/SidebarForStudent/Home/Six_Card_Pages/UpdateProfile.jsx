@@ -9,6 +9,7 @@ function UpdateProfile() {
   const [originalData, setOriginalData] = useState({});
   const [extraData, setExtraData] = useState({});
   const ID = Number(localStorage.getItem("id"));
+  const [isSuccess, setIsSuccess] = useState(false);
   useEffect(() => {
     axios.get(BASE_URL + `api/getDetailsByUserid/{UserId}`,{params:{
       UserId : ID
@@ -29,7 +30,7 @@ function UpdateProfile() {
       });
       // sessionStorage.setItem("sidebar", JSON.stringify(false));
       return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-  });
+  },[ID]);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -45,8 +46,12 @@ function UpdateProfile() {
       .then(response => {
         setOriginalData(formData);
         sessionStorage.setItem("sidebar", JSON.stringify(false));
-        alert('Data updated Successfully. Wait for Admin to verify')
-        window.location.href = "/logindone"
+          setIsSuccess(true);
+          setTimeout(() => {
+            window.location.href = "/logindone"
+          }, 3000);
+        //alert('Data updated Successfully. Wait for Admin to verify')
+        //window.location.href = "/logindone"
       })
       .catch(error => {
         console.error('Error saving data:', error);
@@ -142,6 +147,7 @@ function UpdateProfile() {
       
 
       <button type="submit" disabled={!hasChanges} style={{cursor:'pointer'}}>Save Changes</button>
+      {isSuccess && <div style={{ backgroundColor: "green", color: "white", padding: "10px" }}>Form Updated Successfully</div>}
     </form>
     </>
   );

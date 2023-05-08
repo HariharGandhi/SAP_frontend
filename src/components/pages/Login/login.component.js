@@ -129,7 +129,7 @@ export default class Login extends Component {
       <div className="col-md-12">
         <div className="card card-container">
           <img
-            src="../../../../../../Photo/Clglogo.jpg"
+            src={process.env.PUBLIC_URL + "/Photo/Clglogo.jpg"}
             alt="profile-img"
             className="profile-img-card"
 //             style={{

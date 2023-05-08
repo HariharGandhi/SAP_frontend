@@ -1,14 +1,14 @@
-import React ,{ useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
 import Applicationformservice from "../../../../../../services/applicationformservice";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
-import {BASE_URL, INITIAL} from "../../../../../../services/Globalvalues";
+import { ACTIVE, BASE_URL, INITIAL } from "../../../../../../services/Globalvalues";
 import { CSVLink } from "react-csv";
 const VerifyForm = () => {
-    const [data, setData] = useState([]);
-    const [did, setdid] = useState(0);
+  const [data, setData] = useState([]);
+  const [did, setdid] = useState(0);
   const [stat, setstat] = useState("");
   const [title, settitle] = useState("");
   const [ctc, setctc] = useState("");
@@ -26,7 +26,7 @@ const VerifyForm = () => {
   const [search, setSearch] = useState("");
   const [searchmod, setsearchmod] = useState("");
   const [searchdept, setsearchdept] = useState("");
-  const [filterData, setfilterData] = useState([])
+  const [filterData, setfilterData] = useState([]);
   const handleCancel = () => {
     // hide confirmation modal
     setDeleteModal(false);
@@ -47,31 +47,27 @@ const VerifyForm = () => {
     { label: "Module", key: "sapModule" },
     { label: "Specialization", key: "specialization" },
     { label: "StudentType", key: "studentType" },
-  ]
+  ];
   const Query = () => {
     setquery(true);
     Addquery();
   };
   const handleConfirm = () => {
-    axios
-      .delete(BASE_URL + `api/deleteapplicationform/${did}`)
-      .then((res) => {
-        console.log(res);
-        setDeleteModal(false);
-        window.location.reload();
-      });
+    axios.delete(BASE_URL + `api/deleteapplicationform/${did}`).then((res) => {
+      console.log(res);
+      setDeleteModal(false);
+      window.location.reload();
+    });
   };
   const handleVerify = () => {
     setVerifyModal(false);
     setUpdateModal(true);
   };
   const handleUpdate = () => {
-    const AId = parseInt(localStorage.getItem("Aid"),10);
+    const AId = parseInt(localStorage.getItem("Aid"), 10);
     console.log(query);
     axios
-      .put(
-        BASE_URL + `applicationFormStatusUpdate/${AId}/${stat}/${query}`
-      )
+      .put(BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${query}`)
       .then((res) => {
         setquery(false);
         setstat("");
@@ -79,21 +75,22 @@ const VerifyForm = () => {
         window.location.reload();
       });
   };
-  const handleUpdatequery = (q) => {
-    const AId = parseInt(localStorage.getItem("Aid"),10);
-    //const q = true
-    axios
-      .put(
-        BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${q}`
-      )
-      .then((res) => {
-        setquery(false);
-        setstat("");
-        setUpdateModal(false);
-        localStorage.removeItem("Userid");
-        window.location.reload();
-      });
-  };
+  // const handleUpdatequery = async (q) => {
+  //   const AId = parseInt(localStorage.getItem("Aid"),10);
+  //   const Q = Boolean(q)
+  //   try {
+  //   await axios
+  //     .put(
+  //       BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${Q}`
+  //     )
+  //       setquery(false);
+  //       setstat("");
+  //       setUpdateModal(false);
+  //       localStorage.removeItem("Userid");
+  //       window.location.reload();
+  // }catch(err){
+  //   console.error(err);
+  // }};
   const Modalview = (ele) => {
     setdid(ele.id);
     setDeleteModal(true);
@@ -102,7 +99,7 @@ const VerifyForm = () => {
     const d = ele.userId;
     setdid(ele.id);
     const Aid = ele.id;
-    localStorage.setItem("Aid",Aid)
+    localStorage.setItem("Aid", Aid);
     localStorage.setItem("Userid", d);
     setstat(ele.applicationFromStatus);
     setmail(ele.email);
@@ -111,15 +108,24 @@ const VerifyForm = () => {
     setVerifyModal(true);
   };
 
-  const Addquery = () => {
-    axios
-      .post(
-        `http://localhost:9190/applicationFrom/postapplicationformbyapplicationId/${did}`,
+  const Addquery = async () => {
+    const AId = parseInt(localStorage.getItem("Aid"), 10);
+    const Q = true;
+    try {
+      await axios.put(
+        BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${Q}`
+      );
+      setquery(false);
+      setstat("");
+      setUpdateModal(false);
+      localStorage.removeItem("Userid");
+      await axios.post(
+        BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${did}`,
         {
           applicationId: did,
           contactDetails: `Contact no.: ${num}, Email: ${mail}`,
           id: did,
-          isActive: stat,
+          isActive: ACTIVE,
           queryDesc: desc,
           queryTitle: title,
           reachoutPersonContactNumber: ctc,
@@ -127,27 +133,37 @@ const VerifyForm = () => {
           reachoutPersonName: rname,
           userId: uid,
         }
-      )
-      .then((res) => {
-        setquery(true);
-        handleUpdatequery(true);
-      });
+      );
+      window.location.reload();
+      //   .then((response)=>{
+      //   console.log(response.status)
+      //   setquery(true);
+      //   handleUpdatequery(true);
+      // })
+    } catch (err) {
+      console.error(err);
+    }
   };
+  
+
   const handleSearch = () => {
-    setfiltered(true)
-    const status = INITIAL
-    Applicationformservice.getfiltered(search,searchmod,searchdept,status)
-    .then((res)=> {
+    setfiltered(true);
+    const status = INITIAL;
+    Applicationformservice.getfiltered(
+      search,
+      searchmod,
+      searchdept,
+      status
+    ).then((res) => {
       setfilterData(res.data.records);
-    })
-  }
+    });
+  };
   const clearsearch = () => {
     setSearch("");
     setsearchdept("");
     setsearchmod("");
-    setfiltered(false)
+    setfiltered(false);
   };
-
 
   const handletitle = async (event) => {
     settitle(event.target.value);
@@ -165,42 +181,44 @@ const VerifyForm = () => {
     setdesc(event.target.value);
   };
 
-    useEffect(() => {
-        (async () => {
-          try {
-            const { data } = await axios.get("http://localhost:9190/api/fetchlistofApplicationFormbyfilter",{
-                params: {
-                    pagenum : 0,
-                    pagesize : 20,
-                    email: "",
-                    studentId: "",
-                    name: "",
-                    collegeEmail: "",
-                    sapModule: "",
-                    contactNumber: "",
-                    passoutYear: "",
-                    branch: "",
-                    specialization: "",
-                    studentType: "",
-                    adhaarCard: "",
-                    applicationFromStatus: INITIAL,
-                    uploadImage: "",
-                    userId: ""
-      
-                }
-            });
-            
-            setData(data.records);
-            console.log(data);
-          } catch (error) {
-            console.log(error);
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get(
+          BASE_URL + "api/fetchlistofApplicationFormbyfilter",
+          {
+            params: {
+              pagenum: 0,
+              pagesize: 20,
+              email: "",
+              studentId: "",
+              name: "",
+              collegeEmail: "",
+              sapModule: "",
+              contactNumber: "",
+              passoutYear: "",
+              branch: "",
+              specialization: "",
+              studentType: "",
+              adhaarCard: "",
+              applicationFromStatus: INITIAL,
+              uploadImage: "",
+              userId: "",
+            },
           }
-        })();
-        return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-      }, [search,searchmod,searchdept]);
+        );
 
-    return (
-        <>
+        setData(data.records);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+    return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
+  }, [search, searchmod, searchdept]);
+
+  return (
+    <>
       <div
         className={
           sessionStorage.getItem("sidebar") === "true"
@@ -223,7 +241,7 @@ const VerifyForm = () => {
               className="table-drop"
               value={searchdept}
               onChange={(e) => setsearchdept(e.target.value)}
-              style={{width:'250px'}}
+              style={{ width: "250px" }}
             >
               <option value="">Department</option>
               <option value="comp">Computer</option>
@@ -259,7 +277,7 @@ const VerifyForm = () => {
         </div>
         <table style={{ width: "100%", marginTop: "25px" }} id="tab">
           <thead>
-            <tr className="main-table top-col-table" >
+            <tr className="main-table top-col-table">
               {/*<th>Student_id</th>*/}
               <th>Adhar card</th>
               <th>Application status</th>
@@ -278,9 +296,9 @@ const VerifyForm = () => {
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
-          {!filtered && 
-          <tbody>
-            {data.map((ele) => {
+          {!filtered && (
+            <tbody>
+              {data.map((ele) => {
                 return (
                   <tr key={ele.id} className="main-table">
                     <td>{ele.adhaarCard}</td>
@@ -316,10 +334,11 @@ const VerifyForm = () => {
                   </tr>
                 );
               })}
-          </tbody>}
-          {filtered && 
-          <tbody>
-            {filterData.map((ele) => {
+            </tbody>
+          )}
+          {filtered && (
+            <tbody>
+              {filterData.map((ele) => {
                 return (
                   <tr key={ele.id} className="main-table">
                     <td>{ele.adhaarCard}</td>
@@ -355,26 +374,33 @@ const VerifyForm = () => {
                   </tr>
                 );
               })}
-          </tbody>}
+            </tbody>
+          )}
         </table>
-        {filtered && <CSVLink
+        {filtered && (
+          <CSVLink
             data={filterData}
             headers={headers}
             filename={"Application form.csv"}
             className="xlsbutton"
             style={{ marginTop: "5", marginLeft: "5" }}
           >
-           {" "} Download in csv
-          </CSVLink>}
-          {!filtered && <CSVLink
+            {" "}
+            Download in csv
+          </CSVLink>
+        )}
+        {!filtered && (
+          <CSVLink
             data={data}
             headers={headers}
             filename={"Application form.csv"}
             className="xlsbutton"
             style={{ marginTop: "5", marginLeft: "5" }}
           >
-           {" "} Download in csv
-          </CSVLink>}
+            {" "}
+            Download in csv
+          </CSVLink>
+        )}
         {DeleteModal && (
           <Modal>
             <div>
@@ -399,9 +425,15 @@ const VerifyForm = () => {
           </Modal>
         )}
         {VerifyModal && (
-          <Modal style={{ justifyContent: "center", display: "flex",alignItems:"center" }}>
+          <Modal
+            style={{
+              justifyContent: "center",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <VerifyFormmodal />
-             <div  > 
+            <div>
               <button
                 className="btn-md"
                 onClick={handleVerify}
@@ -409,7 +441,8 @@ const VerifyForm = () => {
                   marginRight: "25px",
                   cursor: "pointer",
                   width: "100px",
-                  height: "25px", marginTop:'10px'
+                  height: "25px",
+                  marginTop: "10px",
                 }}
               >
                 Verify Form
@@ -424,7 +457,12 @@ const VerifyForm = () => {
               <button
                 className="btn-md"
                 onClick={handleCancel}
-                style={{ cursor: "pointer", width: "100px", height: "25px", marginTop:'10px' }}
+                style={{
+                  cursor: "pointer",
+                  width: "100px",
+                  height: "25px",
+                  marginTop: "10px",
+                }}
               >
                 Cancel
               </button>
@@ -436,18 +474,13 @@ const VerifyForm = () => {
             <div>
               <div>
                 <h2>Change the status of this application to :</h2>
-                <dropdown>
-                  <select
-                    name=""
-                    id=""
-                    onChange={(e) => setstat(e.target.value)}
-                  >
-                    <option value="">Select status</option>
-                    <option value="verified">Verified</option>
-                    <option value="not verified">Not Verified</option>
-                    <option value="isquery">In Query</option>
-                  </select>
-                </dropdown>
+                <select name="" id="" onChange={(e) => setstat(e.target.value)}>
+                  <option value="">Select status</option>
+                  <option value="verified">Verified</option>
+                  <option value="notverified">Not Verified</option>
+                  <option value="isquery">In Query</option>
+                </select>
+
                 {stat === "isquery" && (
                   <>
                     <div>
@@ -514,7 +547,8 @@ const VerifyForm = () => {
                           className="btn btn-outline-white"
                           style={{
                             margin: "auto",
-                            cursor: "pointer", marginTop:'10px'
+                            cursor: "pointer",
+                            marginTop: "10px",
                           }}
                         >
                           {" "}
@@ -523,7 +557,11 @@ const VerifyForm = () => {
                         <button
                           className="btn btn-outline-white"
                           onClick={handleCancel}
-                          style={{ marginLeft: "10px", cursor: "pointer", marginTop:'10px' }}
+                          style={{
+                            marginLeft: "10px",
+                            cursor: "pointer",
+                            marginTop: "10px",
+                          }}
                         >
                           cancel
                         </button>
@@ -531,7 +569,7 @@ const VerifyForm = () => {
                     </div>
                   </>
                 )}
-                {(stat === "not verified") && (
+                {stat === "notverified" && (
                   <div
                     style={{
                       display: "flex",
@@ -542,23 +580,29 @@ const VerifyForm = () => {
                     <button
                       className="btn-md"
                       onClick={handleUpdate}
-                      style={{ marginRight: "10px", marginTop:'10px' }}
+                      style={{ marginRight: "10px", marginTop: "10px" }}
                     >
                       Update
                     </button>
-                    <button onClick={handleCancel} style={{ marginTop:'10px'}}>Cancel</button>
+                    <button
+                      onClick={handleCancel}
+                      style={{ marginTop: "10px" }}
+                    >
+                      Cancel
+                    </button>
                   </div>
                 )}
-                {stat === "verified" && <>
-                  <PostInstallment /> 
-                  </>}
+                {stat === "verified" && (
+                  <>
+                    <PostInstallment />
+                  </>
+                )}
               </div>
             </div>
           </Modal>
         )}
       </div>
     </>
-    )
-
-}
+  );
+};
 export default VerifyForm;

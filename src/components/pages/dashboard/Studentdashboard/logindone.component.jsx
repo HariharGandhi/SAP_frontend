@@ -7,7 +7,7 @@ const Logindone = () => {
   const history = useHistory();
 
   const NevigatePayment = () => {
-    history.push("/payment");
+    history.push("/getinstallment");
   };
   const NevigateResume = () => {
     // history.push("/resume");
