@@ -1,52 +1,46 @@
-.isquery {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin: 20px;
-    text-align: center;
-  }
-  
-  .isquery h1 {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .isquery button {
-    background-color: #008CBA;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 18px;
-    margin-top: 20px;
-  }
-  
-  .isquery button:hover {
-    background-color: #005f7f;
-  }
-  
-  .isquery p {
-    font-size: 18px;
-    margin-top: 20px;
-  }
-  
-  .isquery div p {
-    margin-top: 10px;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
-  .isquery div p:first-child {
-    margin-top: 0;
-  }
-  
-  .isquery div p br {
-    display: none;
-  }
-  
-  .isquery div p::before {
-    content: attr(data-label) ": ";
-    font-weight: bold;
-  }
-  
+.upd-form {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+.load{
+  filter : blur(5px)
+}
+
+.upd-form label {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.upd-form label h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.upd-form input {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+
+.upd-form button {
+  margin-top: 20px;
+  padding: 10px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upd-form button:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
