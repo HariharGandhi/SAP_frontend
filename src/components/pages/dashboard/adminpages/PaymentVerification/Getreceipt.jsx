@@ -16,6 +16,7 @@ const Getreceipt = () => {
   const [SAPpass, setSAPpass] = useState("");
   const [Modalverify, setModalverify] = useState(false);
   const [receiptverify, setreceiptverify] = useState(false);
+  const [success,setsuccess]= useState(false);
   // const ID = parseInt(localStorage.getItem("id"));
   const [Data, setData] = useState([]);
   const handleverify = (ele) => {
@@ -36,15 +37,20 @@ const Getreceipt = () => {
     setreceiptverify(false);
   };
   const handleVerifyfee = () => {
-    setModalverify(false);
     if(inst === 1){
+      setModalverify(false);
       setreceiptverify(true);
     }
     else {
       Axios.post(BASE_URL + `updatefeesreceiptstatus/${Rid}/${VERIFIED}`).then((response)=>{
-        alert(response.message);
-        setreceiptverify(false);
-        window.location.reload()
+        setsuccess(true)
+    setTimeout(()=>{
+      setsuccess(false)
+      setreceiptverify(false);
+      setModalverify(false);
+      window.location.reload()
+    },3000)
+        
       })
     }
   };
@@ -61,10 +67,15 @@ const Getreceipt = () => {
       sapUsername : SAPname,
       userId : Ruid
     }).then(response => {
-        Axios.post(BASE_URL + `updatefeesreceiptstatus/${Rid}/${VERIFIED}`)
-        alert("SAP credentials submitted successfully");
-        setreceiptverify(false);
-        window.location.reload()
+        Axios.post(BASE_URL + `updatefeesreceiptstatus/${Rid}/${VERIFIED}`).then((res)=>{
+        setsuccess(true)
+    setTimeout(()=>{
+      setsuccess(false);
+      setreceiptverify(false);
+      window.location.reload()
+    },3000)
+        })
+        
     })
   }
 
@@ -127,7 +138,8 @@ const Getreceipt = () => {
 
       {Modalverify && (
         <Modal>
-          <div>
+          {success && <h3>Credentials Sent to User</h3>}
+          {!success && <div className="Receiptget">
             <img
               src={imgsrc}
               alt="Wrongpath"
@@ -159,13 +171,14 @@ const Getreceipt = () => {
                 Cancel
               </button>
             </div>
-          </div>
+          </div>}
         </Modal>
       )}
       {receiptverify && (
         <>
         <Modal>
-          <div className="container">
+        {success && <h3>Credentials Sent to User</h3>}
+        {!success && <div className="container">
             <form>
               <label style={{width:'40%', marginRight:'10px'}}>
                 Enter SAP Username:
@@ -214,7 +227,7 @@ const Getreceipt = () => {
                 Cancel
               </button>
             </div>
-          </div>
+          </div>}
           </Modal>
         </>
       )}

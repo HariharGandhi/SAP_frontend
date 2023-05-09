@@ -4,6 +4,7 @@ import Modal from "../../Modal";
 import {BASE_URL , ACTIVE } from "../../../../../services/Globalvalues";
 import Adminservice from "../../../../../services/admin.service";
 import NewSidebar from "../../../../Navbar/Navbar";
+import SuccessMessage from "../../Alerts/SuccessMessage";
 //import AdminService from "../../../../../services/admin.service";
 //import "./ViewAdmin.css"
 const AllAdmin = () => {
@@ -18,6 +19,7 @@ const AllAdmin = () => {
   const [pass, setpass] = useState("");
   const [DeleteModal, setDeleteModal] = useState(false);
   const [QueryModal, setQueryModal] = useState(false);
+  const [success,setsuccess]= useState(false)
   const handleCancel = () => {
     // hide confirmation modal
     setDeleteModal(false);
@@ -49,7 +51,10 @@ const AllAdmin = () => {
         setDeleteModal(false);
         sessionStorage.removeItem('Upid')
         sessionStorage.removeItem('did')
-        alert("Upadte successfull")
+        setsuccess(true)
+        setTimeout(()=>{
+          setsuccess(false)
+        },4000)
         window.location.reload();
       });
   };
@@ -113,7 +118,8 @@ const AllAdmin = () => {
 
   return (<>
     <NewSidebar />
-    <div className="box">
+    {success && <SuccessMessage message="Admin added Successfully"/>}
+    <div className={success ?"box load":"box"}>
       <div className={sessionStorage.getItem('sidebar')==="true"?"table-nav vform":"table-nav"} style={{ display: "block" }}>
         <input
           className="table-search"

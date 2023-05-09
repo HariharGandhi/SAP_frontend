@@ -9,7 +9,6 @@ import SuccessMessage from "../../../Alerts/SuccessMessage";
 const Addnotification = () => {
   //const history = useHistory();
   const [nme, setnme] = useState("");
-  const [id, setid] = useState(0);
   const [nm, setnm] = useState("");
   const [bd, setbd] = useState("");
   const [cd, setcd] = useState("");
@@ -29,15 +28,13 @@ const Addnotification = () => {
       cd !== "" &&
       cdtm !== "" &&
       title !== "" &&
-      uid !== 0 &&
-      id !== 0
+      uid !== 0
     ) {
       NotificationPlacementapi.addnotification(
         bd,
         cd,
         cdtm,
         file,
-        id,
         nme,
         nm,
         ACTIVE,
@@ -68,9 +65,6 @@ const Addnotification = () => {
 
   const handlebody = async (e) => {
     setbd(e.target.value);
-  };
-  const handleid = async (e) => {
-    setid(e.target.value);
     setuid(Number(localStorage.getItem("id")));
   };
   const handlecode = async (e) => {
@@ -115,17 +109,6 @@ const Addnotification = () => {
           <h1>Enter the Notification details</h1>
           {error && <p style={{color:'red',alignSelf:'center',alignContent:'center'}}>Fill all the details</p>}
           <br />
-          <label>
-            {" "}
-            Enter id
-            <input
-              type="long"
-              value={id}
-              placeholder="Id"
-              onChange={(e) => handleid(e)}
-            />
-          </label>
-
           <label>
             {" "}
             Enter Name

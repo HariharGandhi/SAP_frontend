@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Adminservice from '../../../../../services/admin.service';
 import NewSidebar from '../../../../Navbar/Navbar';
 import { ACTIVE } from '../../../../../services/Globalvalues';
+import SuccessMessage from '../../Alerts/SuccessMessage';
 
 const Createadmin = () =>{
   const [dept,setdept] = useState("");
@@ -9,6 +10,7 @@ const [nme,setnme] = useState("");
 const [pos,setpos] = useState("");
 const [pass,setpass] = useState("");
 const [mb,setmb] = useState("");
+const [success,setsuccess]= useState(false)
 const [email,setemail] = useState("");
 const handlename = async (e) =>{
     setnme(e.target.value)
@@ -29,7 +31,11 @@ const handleemail = async (e) =>{
 const Addadmin = () => {
     
     Adminservice.Register(dept,email,mb,nme,pass,pos,ACTIVE).then(response => {
-        alert("Admin added Successfully");
+      setsuccess(true)
+      setTimeout(()=>{
+        setsuccess(false)
+      },4000)
+        
         window.location.href = "/alladmins"
     })
 }
@@ -40,8 +46,9 @@ useEffect(() => {
         <>
         <NewSidebar />
         <div>
+        {success && <SuccessMessage message="Admin added Successfully"/>}
         <div
-          className="container"
+          className={success ? "container load":"container"}
           style={{ display: "flex", justifyContent: "center" }}
         >
           <form>
