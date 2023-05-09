@@ -115,7 +115,7 @@ function UpdateProfile() {
               type="text"
               id="collegeEmail"
               name="collegeEmail"
-              value={formData.collegeEmail || ""}
+              defaultValue={formData.collegeEmail}
               // onChange={handleChange}
             />
           </label>
@@ -125,7 +125,7 @@ function UpdateProfile() {
               type="text"
               id="email"
               name="email"
-              value={formData.email || ""}
+              defaultValue={formData.email}
               // onChange={handleChange}
             />
           </label>
@@ -135,7 +135,7 @@ function UpdateProfile() {
               type="text"
               id="sapModule"
               name="sapModule"
-              value={formData.sapModule || ""}
+              defaultValue={formData.sapModule}
               // onChange={handleChange}
             />
           </label>
@@ -165,7 +165,7 @@ function UpdateProfile() {
               type="text"
               id="branch"
               name="branch"
-              value={formData.branch || ""}
+              defaultValue={formData.branch}
               // onChange={handleChange}
             />
           </label>
@@ -175,7 +175,7 @@ function UpdateProfile() {
               type="text"
               id="specialization"
               name="specialization"
-              value={formData.specialization || ""}
+              defaultValue={formData.specialization}
               // onChange={handleChange}
             />
           </label>

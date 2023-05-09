@@ -509,7 +509,7 @@ const Viewform = () => {
                     </div>
                   </>
                 )}
-                {(stat === "not verified") && (
+                {(stat === "notverified") && (
                   <div
                     style={{
                       display: "flex",

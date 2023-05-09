@@ -4,7 +4,7 @@ import "./Navbarforapp.css";
 // import { Switch, Route, Link } from "react-router-dom";
 
 export default function Navbarforapp() {
-  const User = localStorage.getItem('role').slice(5)
+  // const User = localStorage.getItem('role').slice(5)
   const Onlogout = () => {
     authService.logout()
   }

@@ -18,14 +18,13 @@ class NotificationPlacementapi {
             packages
         })
     }
-    addnotification(body,code,createdDateTime,file,name,notificationmodule,status,title,userId){
+    addnotification(body,code,createdDateTime,file,name,status,title,userId){
         return axios.post(BASE_URL + "addNotification",{
             body,
             code,
             createdDateTime,
             file,
             name,
-            notificationmodule,
             status,
             title,
             userId

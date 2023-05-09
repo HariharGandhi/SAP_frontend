@@ -11,6 +11,8 @@ const [pos,setpos] = useState("");
 const [pass,setpass] = useState("");
 const [mb,setmb] = useState("");
 const [success,setsuccess]= useState(false)
+const [errors,seterrors]= useState(false)
+const [msg,setmsg] = useState("")
 const [email,setemail] = useState("");
 const handlename = async (e) =>{
     setnme(e.target.value)
@@ -35,8 +37,13 @@ const Addadmin = () => {
       setTimeout(()=>{
         setsuccess(false)
       },4000)
-        
         window.location.href = "/alladmins"
+    }).catch((err)=>{
+      seterrors(true)
+      setmsg(err.message)
+      setTimeout(()=> {
+        seterrors(false)
+      },2000)
     })
 }
 useEffect(() => {
@@ -122,6 +129,7 @@ useEffect(() => {
             </label>
             <br />
           </form>
+          {errors && <p style={{color:'red'}}>{msg}</p>}
         </div>
         <button
           type="submit"

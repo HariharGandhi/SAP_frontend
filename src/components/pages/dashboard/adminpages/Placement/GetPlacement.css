@@ -49,7 +49,7 @@ td {
 }
 
 .getplace th {
-  background-color: #967b7b;
+  background-color: #322d45;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -92,10 +92,12 @@ td {
   .pagination__selected{
     background-color: rgb(220, 220, 220);
   }
-
+.place-link{
+  color: black;
+}
 .place-button {
   border-radius: 5px;
-  background-color: rgb(252, 186, 88);
+  background-color: rgb(117, 250, 102);
   width: 200px;
   height: 50px;
   font-size: medium;

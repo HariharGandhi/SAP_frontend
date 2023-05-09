@@ -76,7 +76,6 @@ const Adminnotification = () => {
               <th>Notification ID</th>
               <th>Name </th>
               <th>Title</th>
-              <th>Module</th>
               <th>Body</th>
               <th>Creation Date</th>
               <th>Status</th>
@@ -95,7 +94,6 @@ const Adminnotification = () => {
                   <td>{ele.id}</td>
                   <td>{ele.name}</td>
                   <td>{ele.title}</td>
-                  <td>{ele.notificationmodule}</td>
                   <td>{ele.body}</td>
                   <td>{ele.createdDateTime}</td>
                   <td>{ele.status}</td>

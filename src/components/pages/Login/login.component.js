@@ -46,7 +46,6 @@ export default class Login extends Component {
       password: e.target.value,
     });
   }
-
   handleLogin(e) {
     e.preventDefault();
 

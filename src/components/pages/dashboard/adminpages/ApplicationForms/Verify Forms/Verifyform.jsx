@@ -267,6 +267,30 @@ const VerifyForm = () => {
             >
               Search
             </button>
+            {filtered && (
+          <CSVLink
+            data={filterData}
+            headers={headers}
+            filename={"Application form.csv"}
+            className="xlsbutton"
+            style={{ marginTop: "5", marginLeft: "5" }}
+          >
+            {" "}
+            Download in csv
+          </CSVLink>
+        )}
+        {!filtered && (
+          <CSVLink
+            data={data}
+            headers={headers}
+            filename={"Application form.csv"}
+            className="xlsbutton"
+            style={{ marginTop: "5", marginLeft: "5" }}
+          >
+            {" "}
+            Download in csv
+          </CSVLink>
+        )}
             <button
               onClick={() => clearsearch()}
               style={{ width: "90px", marginLeft: "20px" }}
@@ -370,6 +394,14 @@ const VerifyForm = () => {
                       >
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
+                      <button
+                        onClick={() => Modalview(ele)}
+                        title="Payment Details"
+                        style={{ marginRight: "5px", cursor: "pointer" }}
+                      >
+                       Receipts <i class='fas fa-receipt'></i>
+                      </button>
+                      
                     </td>
                   </tr>
                 );
@@ -377,30 +409,7 @@ const VerifyForm = () => {
             </tbody>
           )}
         </table>
-        {filtered && (
-          <CSVLink
-            data={filterData}
-            headers={headers}
-            filename={"Application form.csv"}
-            className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "5" }}
-          >
-            {" "}
-            Download in csv
-          </CSVLink>
-        )}
-        {!filtered && (
-          <CSVLink
-            data={data}
-            headers={headers}
-            filename={"Application form.csv"}
-            className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "5" }}
-          >
-            {" "}
-            Download in csv
-          </CSVLink>
-        )}
+        
         {DeleteModal && (
           <Modal>
             <div>

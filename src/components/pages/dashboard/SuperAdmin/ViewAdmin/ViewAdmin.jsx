@@ -83,13 +83,14 @@ const AllAdmin = () => {
   };
   const handlemail = async (event) => {
     setmail(event.target.value);
+    setstatt(ACTIVE)
   };
   // const handledept = async (event) => {
   //   setdept(event.target.value);
   // };
-  const handlestatt = async (event) => {
-    setstatt(event.target.value);
-  };
+  // const handlestatt = async (event) => {
+  //   setstatt(event.target.value);
+  // };
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const clearsearch =() => {
@@ -118,8 +119,8 @@ const AllAdmin = () => {
 
   return (<>
     <NewSidebar />
-    {success && <SuccessMessage message="Admin added Successfully"/>}
-    <div className={success ?"box load":"box"}>
+    {success && <SuccessMessage message="Admin details updated Successfully"/>}
+    <div className={success ?" load":""}>
       <div className={sessionStorage.getItem('sidebar')==="true"?"table-nav vform":"table-nav"} style={{ display: "block" }}>
         <input
           className="table-search"
@@ -294,7 +295,7 @@ const AllAdmin = () => {
                   />
                 </label>
                 <br />
-                <label>
+                {/* <label>
                   {" "}
                   Status: 
                   <input
@@ -304,7 +305,7 @@ const AllAdmin = () => {
                     onChange={(e) => handlestatt(e)}
                   />
                 </label>
-                <br />
+                <br /> */}
                 
                 <div>
                 <button

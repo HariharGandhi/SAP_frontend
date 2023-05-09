@@ -243,7 +243,7 @@ const Getplace = () => {
             ▶
           </span>
           <button className="place-button">
-            <Link to="/postplacement">Add Placement </Link>
+            <Link to="/postplacement" className="place-link">Add Placement </Link>
           </button>
         </div>
       )}
