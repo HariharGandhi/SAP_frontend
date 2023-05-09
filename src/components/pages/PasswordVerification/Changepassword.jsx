@@ -41,7 +41,7 @@ const Changepassword = () => {
       }, 2000);
     }
   }else{
-    setisError(true)
+    seterror(true)
   };}
   
   const handlepassnew = async (e) => {
@@ -88,7 +88,7 @@ const Changepassword = () => {
             />
           </label>
           <br />
-          <p style={{color:'red'}}>Both fields should not be empty</p>
+          {error && <p style={{color:'red'}}>Both fields should not be empty</p>}
         </form>
       </div>
       <button type="submit" onClick={() => Setpassword()} 
