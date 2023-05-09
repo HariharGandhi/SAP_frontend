@@ -1,0 +1,35 @@
+/* CSS for Navigation bar */
+.sachin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+  /* CSS for left side logo */
+  .hari {
+    text-decoration: none;
+    color: white;
+    font-size: 28px;
+  }
+  
+  /* CSS for center text */
+  .piyush {
+    text-align: center;
+  }
+  
+  /* CSS for right side logout link */
+  .piya {
+    text-align: right;
+    width: 100px ;
+  }
+  
+  /* Media query for responsive design */
+  @media only screen and (max-width: 600px) {
+    .sachin {
+      flex-direction: column;
+    }
+  }
+  

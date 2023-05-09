@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ApplicationAfterQuery.css";
-import { BASE_URL } from "../../../services/Globalvalues";
+import { BASE_URL, INITIAL } from "../../../services/Globalvalues";
 import Navbarforapp from "../Home/Navbarforapp";
 
 function ApplicationAfterQuery() {
@@ -25,7 +25,7 @@ function ApplicationAfterQuery() {
           id: response.data.id,
           userId: response.data.userId,
           uploadImage: response.data.uploadImage,
-          applicationFromStatus: response.data.applicationFromStatus,
+          applicationFromStatus: INITIAL,
         });
         setLoading(false);
       })
@@ -77,13 +77,14 @@ function ApplicationAfterQuery() {
         }
         style={{ position: "relative" }}
       >
-        <h1 style={{ marginLeft: "400px", marginTop: "25px" }}>
-          Your Application Form:
-        </h1>
+        
         <form
           onSubmit={handleSubmit}
           className={loading ? "upd-form load" : "upd-form"}
         >
+        <h4>
+          Your Application Form:
+        </h4>
           <label htmlFor="name">
             <h3>Name:</h3>
             <input
@@ -111,7 +112,7 @@ function ApplicationAfterQuery() {
               id="collegeEmail"
               name="collegeEmail"
               value={formData.collegeEmail || ""}
-              // onChange={handleChange}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="email">
@@ -121,7 +122,7 @@ function ApplicationAfterQuery() {
               id="email"
               name="email"
               value={formData.email || ""}
-              // onChange={handleChange}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="sapModule">
@@ -131,7 +132,7 @@ function ApplicationAfterQuery() {
               id="sapModule"
               name="sapModule"
               value={formData.sapModule || ""}
-              // onChange={handleChange}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="contactNumber">
@@ -161,7 +162,7 @@ function ApplicationAfterQuery() {
               id="branch"
               name="branch"
               value={formData.branch || ""}
-              // onChange={handleChange}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="specialization">
@@ -171,7 +172,7 @@ function ApplicationAfterQuery() {
               id="specialization"
               name="specialization"
               value={formData.specialization || ""}
-              // onChange={handleChange}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="studentType">

@@ -1,5 +1,6 @@
 import React from "react";
 import authService from "../../../services/auth.service";
+import "./Navbarforapp.css";
 // import { Switch, Route, Link } from "react-router-dom";
 
 export default function Navbarforapp() {
@@ -8,31 +9,23 @@ export default function Navbarforapp() {
     authService.logout()
   }
   return (
-    <nav
-      className="nav"
-      data-aos="fade-down"
-      data-aos-delay="100"
-      data-aos-offset="00"
-    >
+    <nav className="nav" data-aos="fade-down" data-aos-delay="50" data-aos-offset="00">
+    <div className="nav-left">
+      <a href="/" className="site-title">
+        <h2>Sanjivani<span className="color-change">SAP</span></h2>
+      </a>
+    </div>
+    <div className="nav-right">
       <ul>
-        <div className="left-nav">
-          <li>
-            <a href="/" className="site-title">
-              <h1> Sanjivani </h1>
-            </a>
-          </li>
-        </div>
-        <div className="center-nav">
-          <h4 style={{color:"white"}}>Welcome {User}</h4>
-        </div>
-        <div className="right-nav">
-          <li>
+       
+      <li>
             <a href="/" onClick={Onlogout}>
               Logout
             </a>
-          </li>
-        </div>
+            
+          </li>
       </ul>
-    </nav>
+    </div>
+  </nav>
   );
 }
