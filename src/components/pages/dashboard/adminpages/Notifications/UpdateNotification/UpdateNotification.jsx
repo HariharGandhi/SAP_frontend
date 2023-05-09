@@ -15,6 +15,7 @@ const UpdateNotification = () => {
   const [stat, setstat] = useState("");
   const [title, settitle] = useState("");
   const [uid, setuid] = useState(0);
+  
   const updatenotice = async () => {
     if (
       nme !== "" &&
@@ -42,14 +43,13 @@ const UpdateNotification = () => {
           userId: uid,
         })
         .then((res) => {
-          alert("Notification updated");
+          
           window.location.href = "/adminlogin";
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      alert("Please fill all the details");
     }
   };
   const handlename = async (e) => {

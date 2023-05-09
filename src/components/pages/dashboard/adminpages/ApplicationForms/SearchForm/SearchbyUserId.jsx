@@ -19,7 +19,6 @@ const SearchbyUserId = () => {
         console.log(err);
       });
     } else {
-      alert("Please fill the Student Id");
     }
   };
 

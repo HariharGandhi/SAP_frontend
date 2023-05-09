@@ -5,6 +5,7 @@ import NotificationPlacementapi from "../../../../../../services/NotificationPla
 import NewSidebar from "../../../../../Navbar/Navbar";
 import { ACTIVE } from "../../../../../../services/Globalvalues";
 import { Link } from "react-router-dom";
+import SuccessMessage from "../../../Alerts/SuccessMessage";
 const Addnotification = () => {
   //const history = useHistory();
   const [nme, setnme] = useState("");
@@ -14,6 +15,8 @@ const Addnotification = () => {
   const [cd, setcd] = useState("");
   const [cdtm, setcdtm] = useState("");
   const [Data, setData] = useState([]);
+  const [success,setsuccess]= useState(false)
+  const [error,seterror] = useState(false)
   // const [stat, setstat] = useState("");
   const [title, settitle] = useState("");
   const [uid, setuid] = useState(0);
@@ -42,7 +45,10 @@ const Addnotification = () => {
         uid
       )
         .then((res) => {
-          alert("Notification added");
+          setsuccess(true)
+    setTimeout(()=>{
+      setsuccess(false)
+    },4000)
           window.location.href = "/getnotification";
           //history.push('/adminlogin')
         })
@@ -50,7 +56,10 @@ const Addnotification = () => {
           console.log(err);
         });
     } else {
-      alert("Please fill all the details");
+      seterror(true)
+    setTimeout(()=>{
+      seterror(false)
+    },2000)
     }
   };
   const handlename = async (e) => {
@@ -96,13 +105,15 @@ const Addnotification = () => {
   return (
     <div>
       <NewSidebar />
+      {success && <SuccessMessage message="Notification Added Successfully"/>}
       <div
-        className="container notify"
+        className={success ?"container notify load":"container notify"}
         id="ADDNotice"
         style={{ display: "flex", justifyContent: "center" }}
       >
         <form>
           <h1>Enter the Notification details</h1>
+          {error && <p style={{color:'red',alignSelf:'center',alignContent:'center'}}>Fill all the details</p>}
           <br />
           <label>
             {" "}
@@ -179,8 +190,11 @@ const Addnotification = () => {
             </select>
           </label>
           <br />
+          
         </form>
+        
       </div>
+      
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
       >
@@ -208,6 +222,7 @@ const Addnotification = () => {
           </Link>
         </button>
       </div>
+      
     </div>
   );
 };

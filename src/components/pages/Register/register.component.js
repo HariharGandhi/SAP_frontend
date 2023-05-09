@@ -134,6 +134,9 @@ export default class Register extends Component {
               message: response.data.message,
               successful: true
             });
+            setTimeout(() => {
+              window.location = "/login"
+            }, 3000);
           },
           error => {
             const resMessage =
@@ -262,7 +265,7 @@ export default class Register extends Component {
                   {this.state.message}
                 </div>
               </div><br /><br /><br />
-              <a className="btn btn-primary btn-block" style={{cursor : "pointer"}} href="/login"> Go to login</a>
+              <p>Redirecting to Login Page</p>
               </div>
             )}
             <CheckButton
