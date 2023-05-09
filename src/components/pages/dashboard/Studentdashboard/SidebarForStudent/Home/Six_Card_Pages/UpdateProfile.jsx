@@ -3,17 +3,10 @@ import axios from "axios";
 import "./UpdateProfile.css";
 import { BASE_URL } from "../../../../../../../services/Globalvalues";
 import NewSidebar from "../../../../../../Navbar/Navbar";
+import SuccessMessage from "../../../../Alerts/SuccessMessage";
 
 function UpdateProfile() {
-  const SuccessMessage = ({ message }) => {
-    return (
-      <div
-        className="SuccessMessage"
-      >
-        {message}
-      </div>
-    );
-  };
+  
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({});
   const [originalData, setOriginalData] = useState({});

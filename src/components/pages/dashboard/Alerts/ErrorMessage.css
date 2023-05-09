@@ -1,7 +1,7 @@
 .ErrorMessage{
     position: fixed;
     top: 10%;
-    /*left: 50%;*/
+    left: 20%;
     width: 80%;
     transform: translateX(-50%);
     background-color: rgb(199, 4, 4);

@@ -2,26 +2,10 @@ import React from "react";
 import { useState } from "react";
 import AuthService from "../../../services/auth.service";
 import Navbarforhome from "../Home/Navbarforhome";
-import "./ChangePassword.css"
+import SuccessMessage from "../dashboard/Alerts/SuccessMessage";
+import ErrorMessage from "../dashboard/Alerts/ErrorMessage";
 const Changepassword = () => {
-  const SuccessMessage = ({ message }) => {
-    return (
-      <div
-        className="SuccessMessage"
-      >
-        {message}
-      </div>
-    );
-  };
-  const ErrorMessage = ({ message }) => {
-    return (
-      <div
-        className="ErrorMessage"
-      >
-        {message}
-      </div>
-    );
-  };
+  
   const [pass, setpass] = useState("");
   const [passn, setpassn] = useState("");
   const mail = sessionStorage.getItem("EMAIL");
