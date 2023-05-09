@@ -68,10 +68,6 @@ export const SidebarAdminData = [
 		title: "Add Notification",
 		path: "/addnotice",
 	},
-	{
-		title: "Send Notification",
-		path: "/sendnotification",
-	},
 	// {
 	// 	title: "Delete Notification",
 	// 	path: "/deletenotice",

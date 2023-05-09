@@ -7,7 +7,7 @@
     max-width: 600px;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(134, 131, 131, 0.3);
     border-radius: 5px;
   }
   
@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #a2a0a0;
+    background-color: #c5babae4;
   }
   
 /* #SENDNotice  input{

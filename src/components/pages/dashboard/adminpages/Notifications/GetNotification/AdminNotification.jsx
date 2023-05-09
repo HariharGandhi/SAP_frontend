@@ -112,7 +112,7 @@ const Adminnotification = () => {
                       onClick={() => Sendit(ele)} title="Send Notice"
                       style={{ marginRight: "5px", cursor: "pointer" }}
                     >
-                      <i className="fa fa-edit" aria-hidden="true"></i>
+                      Send
                     </button>
                   </td>
                 </tr>

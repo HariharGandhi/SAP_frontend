@@ -14,8 +14,9 @@ const SendNotice = () => {
   //const [stype, setstype] = useState([])
   const [success,setsuccess]= useState(false)
   const SType = [
-    "Course Pursuing",
-    "Course Completed",
+      "Regular",
+      "Outsider",
+      "Passout"
   ]
   const [selectedOptions, setSelectedOptions] = useState([]);
   const options = [
@@ -112,7 +113,7 @@ const SendNotice = () => {
         style={{ display: "flex", justifyContent: "center" }}
       >
         <form>
-          <h1>Choose the details</h1>
+          <h2>Choose the details</h2>
           <br />
           <h3 style={{marginBottom:'5px'}}>Choose departments to send :</h3>
           <div className="checkbox-group">
