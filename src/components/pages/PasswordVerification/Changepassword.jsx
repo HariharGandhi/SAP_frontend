@@ -10,9 +10,11 @@ const Changepassword = () => {
   const [passn, setpassn] = useState("");
   const mail = sessionStorage.getItem("EMAIL");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, seterror] = useState(false);
   const [isError, setisError] = useState(false);
   const [loading, setLoading] = useState(false);
   const Setpassword = async () => {
+    if(pass === "" || passn === ""){
     if (pass === passn) {
       setIsSuccess(true);
       AuthService.setpassword(mail,passn)
@@ -38,7 +40,10 @@ const Changepassword = () => {
         setisError(false);
       }, 2000);
     }
-  };
+  }else{
+    setisError(true)
+  };}
+  
   const handlepassnew = async (e) => {
     setpassn(e.target.value);
   };
@@ -83,7 +88,7 @@ const Changepassword = () => {
             />
           </label>
           <br />
-          
+          <p style={{color:'red'}}>Both fields should not be empty</p>
         </form>
       </div>
       <button type="submit" onClick={() => Setpassword()} 
