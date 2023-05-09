@@ -14,7 +14,7 @@ const Changepassword = () => {
   const [isError, setisError] = useState(false);
   const [loading, setLoading] = useState(false);
   const Setpassword = async () => {
-    if(pass === "" || passn === ""){
+    if(pass !== "" && passn !== ""){
     if (pass === passn) {
       setIsSuccess(true);
       AuthService.setpassword(mail,passn)
@@ -88,6 +88,8 @@ const Changepassword = () => {
             />
           </label>
           <br />
+          
+          {isError && <ErrorMessage message="Passwords do not match. Re-Enter" />}
           {error && <p style={{color:'red'}}>Both fields should not be empty</p>}
         </form>
       </div>
@@ -104,7 +106,7 @@ const Changepassword = () => {
             <h3>Change Password</h3>{" "}
           </button> </>}
           {isSuccess && !isError && <SuccessMessage message="Password Set Successfully ! Redirecting to Login Page" />}
-          {isError && <ErrorMessage message="Passwords do not match. Re-Enter" />}
+        
     </div>
   );
 };

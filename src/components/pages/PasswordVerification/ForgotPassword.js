@@ -89,6 +89,18 @@ class ForgotPassword extends Component {
               style={{border:'1px solid'}}
             />
           </label>
+          <div style={{ justifyContent: "center" }}>
+  {this.state.sending && (
+    <p style={{ color: "green", alignSelf: "center", display: "inline-block" }}>
+      OTP is being sent. Please wait
+    </p>
+  )}
+  {!this.state.notsent && (
+    <p style={{ color: "Green", alignSelf: "center", display: "inline-block" }}>
+      OTP sent to your Email. Please check
+    </p>
+  )}
+</div>
           
         </form>
       </div>
@@ -103,10 +115,9 @@ class ForgotPassword extends Component {
         height:'25px'
       }}>
             {" "}
+           
             <h3>Send OTP</h3>{" "}
           </button>
-          {this.state.sending && <p style={{color:'Blue',alignSelf:'center'}}>OTP is being sent. Please wait</p>}
-          {!this.state.notsent && <p style={{color:'Green',alignSelf:'center'}}>OTP sent to your Email. Please check</p>}
            </>}
           
           {this.state.sent && <>
