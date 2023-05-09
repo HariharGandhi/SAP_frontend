@@ -21,10 +21,6 @@ import Changepassword from "./components/pages/PasswordVerification/Changepasswo
 import Addnotification from "./components/pages/dashboard/adminpages/Notifications/AddNotification/AddNotification";
 import UpdateNotification from "./components/pages/dashboard/adminpages/Notifications/UpdateNotification/UpdateNotification";
 import DeleteNotification from "./components/pages/dashboard/adminpages/Notifications/DeleteNotification/DeleteNotification";
-import DeleteFormbyId from "./components/pages/dashboard/adminpages/ApplicationForms/DeleteForm/DeleteForm";
-import SearchbyStudentId from "./components/pages/dashboard/adminpages/ApplicationForms/SearchForm/SearchbyStudentId";
-import GetbyFilter from "./components/pages/dashboard/adminpages/ApplicationForms/GetByFilter/GetbyFilter";
-import SearchbyUserId from "./components/pages/dashboard/adminpages/ApplicationForms/SearchForm/SearchbyUserId";
 import withAuth from "./services/WithAuth";
 import NewNav from "./components/Navbar/Navbar";
 import Resume from "./components/pages/dashboard/Studentdashboard/Resume/Resume";
@@ -155,26 +151,7 @@ class App extends Component {
                 path="/deletenotice"
                 component={withAuth(RoleAuth(DeleteNotification))}
               />
-              <Route
-                exact
-                path="/deleteform"
-                component={withAuth(RoleAuth(DeleteFormbyId))}
-              />
-              <Route
-                exact
-                path="/searchformbyid"
-                component={withAuth(RoleAuth(SearchbyStudentId))}
-              />
-              <Route
-                exact
-                path="/searchformbyuid"
-                component={withAuth(SearchbyUserId)}
-              />
-              <Route
-                exact
-                path="/searchbyfilter"
-                component={withAuth(GetbyFilter)}
-              />
+              
               <Route path="/newnav" component={NewNav} />
               <Route exact path="/resume" component={withAuth(Resume)} />
               <Route exact path="/pending" component={withAuth(Pending)} />

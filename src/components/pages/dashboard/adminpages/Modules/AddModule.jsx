@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
 import { ACTIVE } from '../../../../../services/Globalvalues';
 import "./AddModule.css"
+import SuccessMessage from '../../Alerts/SuccessMessage';
 
 const AddModule = ({closeModal}) =>{
 const [mod,setmod] = useState("");
 const [nme,setnme] = useState("");
-
+const [success,setsuccess]= useState(false)
 const handlename = async (e) =>{
     setnme(e.target.value)
 }
@@ -16,7 +17,10 @@ const handlemod = async (e) => {
 
 const Addmodule = () => {
   NotificationPlacementapi.addmodules(nme,mod,ACTIVE).then(response => {
-        alert(response.data.message);
+    setsuccess(true)
+    setTimeout(()=>{
+      setsuccess(false)
+    },4000)
         window.location.href = "/getmodules"
     }).catch((err)=>{
       console.log(err)
@@ -28,8 +32,9 @@ useEffect(() => {
     return (
         <>
         <div>
+        {success && <SuccessMessage message="Module Added Successfully"/>}
         <div
-          className="modulecontainer"
+          className={success ? "modulecontainer load":"modulecontainer"}
           style={{ display: "flex", justifyContent: "center" }}
         >
           <form className='Placementform'>

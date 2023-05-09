@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
 import NewSidebar from '../../../../Navbar/Navbar';
 import "./AddPlacement.css"
+import SuccessMessage from '../../Alerts/SuccessMessage';
 
 const Postplace = () =>{
-  const [mod,setmod] = useState("");
+const [mod,setmod] = useState("");
 const [nme,setnme] = useState("");
 const [cnme,setcnme] = useState("");
 const [pack,setpack] = useState("");
 const [year,setyear] = useState("");
 const [img,setimg] = useState("");
+const [success,setsuccess]= useState(false)
 const handlename = async (e) =>{
     setnme(e.target.value)
 }
@@ -30,7 +32,10 @@ const handleimg = async (e) =>{
 
 const Addplacement = () => {
   NotificationPlacementapi.addplace(cnme,img,mod,nme,year,pack).then(response => {
-        alert(response.data.message);
+      setsuccess(true)
+        setTimeout(()=>{
+          setsuccess(false)
+        },4000)
         window.location.href = "/getplacement"
     }).catch((err)=>{
       console.log(err)
@@ -42,12 +47,13 @@ useEffect(() => {
     return (
         <>
         <NewSidebar />
-        
         <div>
+        {success && <SuccessMessage message="Placement Added Successfully"/>}
         <div
-          className="placementcontainer"
+          className={success ? "placementcontainer load":"placementcontainer"}
           style={{ display: "flex", justifyContent: "center" }}
         >
+          
           <form className='Placementform'>
             <h2>Enter Placement Details: </h2>
             <br />

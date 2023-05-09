@@ -7,10 +7,12 @@ import { Link } from "react-router-dom";
 import { ACTIVE, BASE_URL } from "../../../../../../services/Globalvalues";
 //import applicationformservice from "../../../../../../services/applicationformservice";
 import Axios from "axios";
+import SuccessMessage from "../../../Alerts/SuccessMessage";
 const SendNotice = () => {
   //const history = useHistory();
   const NId = Number(localStorage.getItem('NoticeId'))
   //const [stype, setstype] = useState([])
+  const [success,setsuccess]= useState(false)
   const SType = [
     "Course Pursuing",
     "Course Completed",
@@ -65,7 +67,10 @@ const SendNotice = () => {
       studentTypes : selectedstype,
       notificationId : NId
     }).then(res=>{
-      alert("Notification sent")
+      setsuccess(true)
+    setTimeout(()=>{
+      setsuccess(false)
+    },4000)
       window.location.href = "/getnotification"
     })
   }
@@ -100,8 +105,9 @@ const SendNotice = () => {
   return (
     <div>
       <NewSidebar />
+      {success && <SuccessMessage message="Notification Sent Successfully"/>}
       <div
-        className="container notify"
+        className={success ?"container notify load":"container notify"}
         id="SENDNotice"
         style={{ display: "flex", justifyContent: "center" }}
       >
