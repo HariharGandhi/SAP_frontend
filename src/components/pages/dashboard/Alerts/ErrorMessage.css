@@ -1,11 +1,10 @@
-.ErrorMessage{
+.SuccessMessage{
     position: fixed;
-    top: 10%;
+    top: 30%;
     left: 20%;
-    width: 80%;
-    transform: translateX(-50%);
-    background-color: rgb(199, 4, 4);
-    color:rgb(255, 255, 255);
+    width: fit-content;
+    background-color: #d10909;
+    color:white;
     padding: 1rem;
     border-radius: 10px;
     z-index: 1;
@@ -19,3 +18,11 @@ transform: translateY(-100%);
 transform: translateY(0);
 }
 }
+
+@media (max-width: 768px) {
+    .SuccessMessage {
+      top: 30%;
+      left: 10%;
+      width: 80%;
+    }
+  }

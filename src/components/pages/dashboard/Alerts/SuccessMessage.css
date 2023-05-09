@@ -1,9 +1,8 @@
 .SuccessMessage{
     position: fixed;
-    top: 10%;
+    top: 30%;
     left: 20%;
-    width: 80%;
-    transform: translateX(-50%);
+    width: fit-content;
     background-color: green;
     color:white;
     padding: 1rem;
@@ -19,3 +18,11 @@ transform: translateY(-100%);
 transform: translateY(0);
 }
 }
+
+@media (max-width: 768px) {
+    .SuccessMessage {
+      top: 30%;
+      left: 10%;
+      width: 80%;
+    }
+  }
