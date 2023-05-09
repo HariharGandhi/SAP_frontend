@@ -122,7 +122,7 @@ const NewSidebar = () => {
 
           <div className="nav-btns">
             <ul>
-            
+            {localStorage.getItem("role") === "ROLE_STUDENT" && (
               <li>
                 <button className="nav-button" onClick={() => setnot(true)}>
                   <ReactBellIcon
@@ -133,7 +133,7 @@ const NewSidebar = () => {
                   />
                 </button>
               </li>
-            
+            )}
             <li>
               <button className="nav-button" onClick={() => Onlogout()}>
                 {" "}
