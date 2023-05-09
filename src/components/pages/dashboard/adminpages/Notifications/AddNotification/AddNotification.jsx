@@ -9,11 +9,9 @@ import SuccessMessage from "../../../Alerts/SuccessMessage";
 const Addnotification = () => {
   //const history = useHistory();
   const [nme, setnme] = useState("");
-  const [nm, setnm] = useState("");
   const [bd, setbd] = useState("");
   const [cd, setcd] = useState("");
   const [cdtm, setcdtm] = useState("");
-  const [Data, setData] = useState([]);
   const [success,setsuccess]= useState(false)
   const [error,seterror] = useState(false)
   // const [stat, setstat] = useState("");
@@ -23,7 +21,6 @@ const Addnotification = () => {
     const file = "NA";
     if (
       nme !== "" &&
-      nm !== "" &&
       bd !== "" &&
       cd !== "" &&
       cdtm !== "" &&
@@ -36,7 +33,6 @@ const Addnotification = () => {
         cdtm,
         file,
         nme,
-        nm,
         ACTIVE,
         title,
         uid
@@ -78,22 +74,7 @@ const Addnotification = () => {
     const date = new Date();
     setcdtm(date.toLocaleString());
   };
-  const handlenotifymodule = async (event) => {
-    setnm(event.target.value);
-  };
   useEffect(() => {
-    (async () => {
-      const stat = "active";
-      try {
-        NotificationPlacementapi.getmodules(stat).then((res) => {
-          setData(res.data);
-        });
-
-        //console.log(Data)
-      } catch (error) {
-        console.log(error);
-      }
-    })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
   }, []);
   return (
@@ -152,25 +133,6 @@ const Addnotification = () => {
               placeholder="Title"
               onChange={(e) => handletitle(e)}
             />
-          </label>
-          <br />
-          <label>
-            Add Module :
-            <select
-              className="table-drop"
-              name="cars"
-              id="cars"
-              value={nm}
-              onChange={(e) => handlenotifymodule(e.target.value)}
-              style={{ marginLeft: "10px" }}
-            >
-              <option value="">Select Module</option>
-              {Data.map((option) => (
-                <option key={option.id} value={option.moduleName}>
-                  {option.moduleName}
-                </option>
-              ))}
-            </select>
           </label>
           <br />
           

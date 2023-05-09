@@ -4,6 +4,7 @@ import NotificationPlacementapi from "../../../../../../services/NotificationPla
 import NewSidebar from "../../../../../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import "./AdminNotification.css"
+import { ACTIVE } from "../../../../../../services/Globalvalues";
 
 const Adminnotification = () => {
   const [Data, setData] = useState([]);
@@ -23,7 +24,7 @@ const Adminnotification = () => {
       try {
         NotificationPlacementapi.getall().then((res) => {
           console.log(res.data);
-          const filtered = res.data.filter(item => item.status === "active")
+          const filtered = res.data.filter(item => item.status === ACTIVE)
           setData(filtered);
           console.log(filtered)
         });

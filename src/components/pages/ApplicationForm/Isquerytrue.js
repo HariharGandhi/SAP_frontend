@@ -15,7 +15,6 @@ function Isquerytrue() {
         const response = await Axios.get(`http://localhost:9190/applicationFrom/getapplicationformbyapplicationId/${ApplicationId}`);
     
         console.log(response.data);
-        console.log("sachin");
         setFormData(response.data);
       } catch (error) {
         console.log(error);
@@ -26,7 +25,7 @@ function Isquerytrue() {
 
   const handleEditClick = () => {
     history.push({
-      pathname: '/application',
+      pathname: '/applicationafterquery',
       state: formData // your data object
     })
   }

@@ -1,147 +1,202 @@
-import React from "react";
-import "./Application.css";
-import Footer from "../Footer/Footer";
-//import Navbarforapp from "../Home/Navbarforapp";
-import Axios from "axios";
-//import {Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./ApplicationAfterQuery.css";
+import { BASE_URL } from "../../../services/Globalvalues";
 import Navbarforapp from "../Home/Navbarforapp";
-import { INITIAL } from "../../../services/Globalvalues";
 
-    
-
-
-const Application = () => {
-  const submitHandler = (event) => {
-    // event.preventDefault();*
-    let userId= localStorage.getItem('id');
- 
-        var attributes ={ adhaarCard : event.target.adhaarCard.value,
-            branch : event.target.branch.value,
-            collegeEmail : event.target.collegeEmail.value,
-            contactNumber : event.target.contactNumber.value,
-            email : event.target.email.value,
-            name : event.target.name.value,
-            passoutYear : event.target.passoutYear.value,
-            sapModule : event.target.sapModule.value,
-            specialization : event.target.specialization.value,
-            studentType : event.target.studentType.value,
-            applicationFromStatus: INITIAL,
-            userId : userId
-          }
-
-        if(attributes.adhaarCard !== "" && 
-        attributes.branch !== "" &&
-        attributes.collegeEmail !== "" && 
-        attributes.contactNumber !== null &&
-        attributes.email !== "" &&
-        attributes.name !== "" && 
-        attributes.passoutYear !== 0 &&
-        attributes.sapModule !== "" &&
-        attributes.specialization !== "" &&
-        attributes.studentType !== "" ){
-
-            
-        Axios.post("http://localhost:9190/api/applicationForm" ,attributes )
-        .then(response =>{
-            console.log(response);
-            // window.location.href="/pending"
-           
-        })
-        .catch((error) => {
-          console.log(error);
+function ApplicationAfterQuery() {
+  
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [originalData, setOriginalData] = useState({});
+  const [extraData, setExtraData] = useState({});
+  const ID = Number(localStorage.getItem("id"));
+  useEffect(() => {
+    axios
+      .get(BASE_URL + `api/getDetailsByUserid/{UserId}`, {
+        params: {
+          UserId: ID,
+        },
+      })
+      .then((response) => {
+        setFormData(response.data);
+        setOriginalData(response.data);
+        setExtraData({
+          id: response.data.id,
+          userId: response.data.userId,
+          uploadImage: response.data.uploadImage,
+          applicationFromStatus: response.data.applicationFromStatus,
         });
-    } else {
-      
-    }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+    // sessionStorage.setItem("sidebar", JSON.stringify(false));
+    return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
+  }, [ID]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
-  // function submit(){
-  //   this.history.push("/pending")
-  // }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setLoading(true);
+    axios
+      .post(BASE_URL + `api/updateapplicationForm/${ID}`, {
+        ...formData,
+        ...extraData,
+      })
+      .then((response) => {
+        setOriginalData(formData);
+        sessionStorage.setItem("sidebar", JSON.stringify(false));
+        setTimeout(() => {
+          window.location.href = "/pending";
+        }, 3000);
+        
+        //window.location.href = "/logindone"
+      })
+      .catch((error) => {
+        console.error("Error saving data:", error);
+      });
+  };
+
+  const hasChanges = JSON.stringify(formData) !== JSON.stringify(originalData);
 
   return (
-    <div>
+    <>
       <Navbarforapp />
-      <form
-        name="sendApplication"
-        id="applicationFrom"
-        onSubmit={submitHandler}
+      <div
+        className={
+          sessionStorage.getItem("sidebar") === "true" ? "prof vform" : "prof"
+        }
+        style={{ position: "relative" }}
       >
-        <div className="app-con">
-          <div className="app-con-from">
-            <h1 className="center ">SAP APPLICATION</h1>
-            <div className="app-content">
-              <input
-                type="text"
-                placeholder="Enter Adhar Card"
-                id="adhaarCard"
-                required
-              />
-              <input type="text" placeholder="Enter branch" id="branch" />
-            </div>
-            <div className="app-content">
-              <input
-                type="text"
-                placeholder="College Email"
-                id="collegeEmail"
-                required
+        <h1 style={{ marginLeft: "400px", marginTop: "25px" }}>
+          Your Application Form:
+        </h1>
+        <form
+          onSubmit={handleSubmit}
+          className={loading ? "upd-form load" : "upd-form"}
+        >
+          <label htmlFor="name">
+            <h3>Name:</h3>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name || ""}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="adhaarCard">
+            <h3>Adhar Card:</h3>
+            <input
+              type="text"
+              id="adhaarCard"
+              name="adhaarCard"
+              value={formData.adhaarCard || ""}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="collegeEmail">
+            <h3>College Mail:</h3>
+            <input
+              type="text"
+              id="collegeEmail"
+              name="collegeEmail"
+              value={formData.collegeEmail || ""}
+              // onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="email">
+            <h3>Email:</h3>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={formData.email || ""}
+              // onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="sapModule">
+            <h3>SAP Module:</h3>
+            <input
+              type="text"
+              id="sapModule"
+              name="sapModule"
+              value={formData.sapModule || ""}
+              // onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="contactNumber">
+            <h3>Mobile Number:</h3>
+            <input
+              type="text"
+              id="contactNumber"
+              name="contactNumber"
+              value={formData.contactNumber || ""}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="passoutYear">
+            <h3>Passout Year:</h3>
+            <input
+              type="text"
+              id="passoutYear"
+              name="passoutYear"
+              value={formData.passoutYear || ""}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="branch">
+            <h3>Department:</h3>
+            <input
+              type="text"
+              id="branch"
+              name="branch"
+              value={formData.branch || ""}
+              // onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="specialization">
+            <h3>Specialization:</h3>
+            <input
+              type="text"
+              id="specialization"
+              name="specialization"
+              value={formData.specialization || ""}
+              // onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="studentType">
+            <h3>Type of student:</h3>
+            <input
+              type="text"
+              id="studentType"
+              name="studentType"
+              value={formData.studentType || ""}
+              onChange={handleChange}
+            />
+          </label>
 
-              />
-              <input
-                type="text"
-                placeholder="Enter contact Number"
-                id="contactNumber"
-                required
-
-              />
-            </div>
-            <div className="app-content">
-              <input type="text" placeholder="Enter your Email" id="email" />
-              <input type="text" placeholder="Enter your Name" id="name" />
-            </div>
-            <div className="app-content">
-              <input
-                type="text"
-                placeholder="Enter year of Passing out"
-                id="passoutYear"
-                required
-
-              />
-              <input
-                type="text"
-                placeholder="Enter SAP Module"
-                id="sapModule"
-                required
-
-              />
-            </div>
-            <div className="app-content">
-              <input
-                type="text"
-                placeholder="Enter your specialization"
-                id="specialization"
-                required
-
-              />
-              <input
-                type="text"
-                placeholder="Enter your Student type"
-                id="studentType"
-                required
-
-              />
-            </div>
-
-            <button className="btn-app" onClick={()=> submitHandler()} >
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
-      <Footer />
-    </div>
+          <button
+            type="submit"
+            disabled={!hasChanges}
+            style={{ cursor: "pointer" }}
+          >
+            {loading ? "Submitting..." : "Submit"}
+          </button>
+          {/* {isSuccess && <div style={{ backgroundColor: "green", color: "white", padding: "10px" }}>Form Updated Successfully</div>} */}
+        </form>
+      </div>
+    </>
   );
-};
+}
 
-export default Application;
-
-
+export default ApplicationAfterQuery;
