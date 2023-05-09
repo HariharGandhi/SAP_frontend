@@ -65,7 +65,7 @@
     position: absolute;
     bottom: -10px;
     left: 50%;
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); */
     width: 50px;
     height: 3px;
     background-color: #333;
