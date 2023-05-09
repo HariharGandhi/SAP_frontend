@@ -116,7 +116,7 @@ function UpdateProfile() {
               id="collegeEmail"
               name="collegeEmail"
               value={formData.collegeEmail || ""}
-              onChange={handleChange}
+              // onChange={handleChange}
             />
           </label>
           <label htmlFor="email">
@@ -126,7 +126,7 @@ function UpdateProfile() {
               id="email"
               name="email"
               value={formData.email || ""}
-              onChange={handleChange}
+              // onChange={handleChange}
             />
           </label>
           <label htmlFor="sapModule">
@@ -136,7 +136,7 @@ function UpdateProfile() {
               id="sapModule"
               name="sapModule"
               value={formData.sapModule || ""}
-              onChange={handleChange}
+              // onChange={handleChange}
             />
           </label>
           <label htmlFor="contactNumber">
@@ -166,7 +166,7 @@ function UpdateProfile() {
               id="branch"
               name="branch"
               value={formData.branch || ""}
-              onChange={handleChange}
+              // onChange={handleChange}
             />
           </label>
           <label htmlFor="specialization">
@@ -176,7 +176,7 @@ function UpdateProfile() {
               id="specialization"
               name="specialization"
               value={formData.specialization || ""}
-              onChange={handleChange}
+              // onChange={handleChange}
             />
           </label>
           <label htmlFor="studentType">
