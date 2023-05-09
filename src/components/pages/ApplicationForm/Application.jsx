@@ -5,10 +5,12 @@ import Axios from "axios";
 import Navbarforapp from "../Home/Navbarforapp";
 import { INITIAL, BASE_URL, ACTIVE } from "../../../services/Globalvalues";
 import NotificationPlacementapi from "../../../services/NotificationPlacementapi";
+import ErrorMessage from "../dashboard/Alerts/ErrorMessage"
 
 const Application = () => {
     const [Mod, setMod] = useState("")
     const [BrancH, setBrancH] = useState("")
+    const [time,settime] = useState(false)
     const [studenttype, setstudenttype] = useState("")
     const options = [
       "Computer",
@@ -65,7 +67,10 @@ const Application = () => {
           console.log(error);
         });
     } else {
-      alert("Invalid");
+      settime(true)
+      setTimeout(()=>{
+        settime(false)
+      },2000)
     }
   };
   useEffect(() => {
@@ -86,10 +91,12 @@ const Application = () => {
     <>
       <div>
         <Navbarforapp />
+        {time && <ErrorMessage message="Error. Invalid details. Please check again" />}
         <form
           name="sendApplication"
           id="applicationFrom"
           onSubmit={submitHandler}
+          className={time ? "load app-form": "app-form"}
         >
           <div className="app-con">
             <div className="app-con-from">

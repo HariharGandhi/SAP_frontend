@@ -6,10 +6,12 @@ import Axios from 'axios';
 import { BASE_URL } from '../../../../services/Globalvalues';
 import { Card, CardContent, CardHeader } from "@material-ui/core";
 import { Link } from 'react-router-dom';
+import SuccessMessage from '../../dashboard/Alerts/SuccessMessage';
 //import axios from 'axios';
 
 const Getinstallments = () => {
-
+  const [success,setsuccess] = useState(false)
+  const [itype,setitype] = useState(false)
   const [image, setImage] = useState(null);
   const ID = parseInt(localStorage.getItem('id'));
   const [Data,setData]= useState([]);
@@ -21,7 +23,10 @@ const Getinstallments = () => {
     if (file && allowedTypes.includes(file.type)) {
       setImage(file);
     } else {
-      alert("Please choose a valid image file (JPG or JPEG or PNG).");
+      setitype(true)
+      setTimeout(()=>{
+        setitype(false)
+      },3000)
     }
   };
   const handleSubmitfee = (ele) => {
@@ -36,8 +41,11 @@ const Getinstallments = () => {
         usersID: SUid
       }
     }).then((response)=>{
-      
-
+      setsuccess(true)
+      setTimeout(()=> {
+        setsuccess(false);
+        window.location.href ="/logindone"
+      },3000)
     })
   }
   
@@ -55,7 +63,7 @@ const Getinstallments = () => {
         },[ID]);
     return (<>
         <NewSidebar />
-        
+        {success && <SuccessMessage message="Receipt Submited Successfully! Redirecting to Homepage"/>}
         <div
         className={
           sessionStorage.getItem("sidebar") === "true"
@@ -63,6 +71,8 @@ const Getinstallments = () => {
             : "table-nav"
         }
         >
+          
+          {!success && <>
           <h1>College SAP Fee Payment </h1>
         <table style={{width:"100%", marginTop:'20px'}}>
           <thead>
@@ -104,6 +114,7 @@ const Getinstallments = () => {
                       >
                         <input type="file" className="d-none" accept=".jpg,.jpeg,.png" onChange={handleFileUpload} />
                       </button>
+                      {itype && <p style={{color:'red'}}>Only .jpg,.jpeg.png file</p>}
                       {"    "}
                     </td>
                     <td>
@@ -125,7 +136,7 @@ const Getinstallments = () => {
                 <a href='https://docs.google.com/forms/d/1aUcjAvH_puK9lz5fUzrvYZHc_tV23n5wtz0pSpNrJOI/viewform?ts=62975728&edit_requested=true ' target="_blank"rel="noopener noreferrer">Make Payment</a>
             </button>
             <button style={{marginLeft:'350px'}}> <Link to="/logindone">Cancel</Link></button></CardContent>
-            </Card>
+            </Card></>}
         </div>
         
     </>)

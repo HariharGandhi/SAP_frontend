@@ -19,7 +19,7 @@ const SearchbyStudentId = () => {
         console.log(err);
       });
     } else {
-      alert("Please fill the Student Id");
+     window.location.reload()
     }
   };
 

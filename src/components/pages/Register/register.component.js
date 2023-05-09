@@ -77,7 +77,8 @@ export default class Register extends Component {
       confirm_password: "",
       status:"active",
       successful: false,
-      message: ""
+      message: "",
+      passcheck:false
     };
   }
   
@@ -154,7 +155,11 @@ export default class Register extends Component {
         );
       }
       else{
-        alert("Password and Confirm Password do not match")
+      setTimeout(()=> {
+        this.setState({
+          passcheck:true
+        })
+      },3000)
       }
     };
   };
@@ -243,7 +248,7 @@ export default class Register extends Component {
                     placeholder="Re-enter Your Password"
                   />
                 </div>
-
+              {this.state.passcheck && <p style={{color:'red'}}>Password and Confirm Password do not match</p>}
                 <div className="form-group and-align">
                   <button className="btn btn-primary btn-block" style={{cursor : "pointer",backgroundColor:"green"}}>Sign Up</button>
                 <a href="/">back to home</a>
