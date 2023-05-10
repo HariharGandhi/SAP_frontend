@@ -17,64 +17,7 @@ const CourseDetails = () => {
     <div className=' content'>
         <ViewDomain style={{marginTop:'20px'}}/>
      
-    {/* <div className='item-course'>
-          sachin
-          <div className='item-box'>
-            loresdfsdfdsgfdg
-
-            fdgdgfdfgfdg
-            dfg
-            fdgdgfdfgfdgfdg
-            fdgdgfdfgfdgfdggdf
-            gfg
-            dfgfdg
-            fdgdgfdfgfdgfdggdfgfdg
-            fdgdgfdfgfdgfdggdfgfdgdfg
-            dfggdf
-            gdfg
-            dfgfdg
-            dfgfdgfdg
-            dfg
-          </div>
-    </div><div className='item-course'>
-          sachin
-          <div className='item-box'>
-            loresdfsdfdsgfdg
-
-            fdgdgfdfgfdg
-            dfg
-            fdgdgfdfgfdgfdg
-            fdgdgfdfgfdgfdggdf
-            gfg
-            dfgfdg
-            fdgdgfdfgfdgfdggdfgfdg
-            fdgdgfdfgfdgfdggdfgfdgdfg
-            dfggdf
-            gdfg
-            dfgfdg
-            dfgfdgfdg
-            dfg
-          </div>
-    </div><div className='item-course'>
-          sachin
-          <div className='item-box'>
-            loresdfsdfdsgfdg
-
-            fdgdgfdfgfdg
-            dfg
-            fdgdgfdfgfdgfdg
-            fdgdgfdfgfdgfdggdf
-            gfg
-            dfgfdg
-            fdgdgfdfgfdgfdggdfgfdg
-            fdgdgfdfgfdgfdggdfgfdgdfg
-            dfggdf
-            gdfg
-            dfgfdg
-            dfgfdgfdg
-            dfg
-          </div>
-    </div> */}
+   
      </div>
     </div>
     </>

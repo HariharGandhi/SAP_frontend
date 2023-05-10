@@ -35,19 +35,21 @@ const Getplace = () => {
       );
     }
   };
-  // const ViewImage = (ele) => {
-  //   setfname(ele)
-  //   Axios.get(BASE_URL + `getplacementimage/${fname}`, {
-  //     responseType: "blob",
-  //   }).then((response) => {
-  //     const imageUrl = URL.createObjectURL(response.data);
-  //     setsrc(imageUrl);
-  //   });
-  //   setplacementmodal(true)
-  // }
-  // const handleCancelModal = (
-  //   setplacementmodal(false)
-  // )
+  const ViewImage = (ele) => {
+    setfname(ele)
+    Axios.get(BASE_URL + `getplacementimage/${fname}`, {
+      responseType: "blob",
+    }).then((response) => {
+      const imageUrl = URL.createObjectURL(response.data);
+      setsrc(imageUrl);
+      setplacementmodal(true)
+    });
+  }
+  const handleCancelModal = ()=>{
+    setplacementmodal(false)
+
+  }
+  
   const sortyear = (Data, setData) => {
     setIsyear((prev) => !prev);
     if (!isyear) {
@@ -216,7 +218,7 @@ const Getplace = () => {
                         {" lpa"}
                       </td>
                       <td>
-                        <button >View Image</button>
+                        <button onClick={()=>ViewImage(ele.studentfilename)}>View Image</button>
                       </td>
                       <td>{ele.name}</td>
                       <td>{ele.companyname}</td>
@@ -251,8 +253,9 @@ const Getplace = () => {
               </span>
             );
           })}
-          {/* {placementmodal && 
-          <>
+          
+          {placementmodal && 
+        
           <Modal>
           <div className="Receiptget">
             <img
@@ -268,7 +271,7 @@ const Getplace = () => {
               }}
             >
               <button
-                onClick={handleCancelModal}
+                onClick={()=>handleCancelModal()}
                 style={{ marginTop: "10px", height: "25px", width: "50px" }}
               >
                 Cancel
@@ -276,7 +279,7 @@ const Getplace = () => {
             </div>
           </div>
           </Modal>
-          </>} */}
+          }
 
           <span
             className={page < Data.length / 10 ? "" : "pagination__disable"}
