@@ -8,16 +8,6 @@ class NotificationPlacementapi {
     getplacement(){
         return axios.get(BASE_URL + "getAllPlacement")
     }
-    addplace(companyname,imageUrl,module,name,placementYear,packages){
-        return axios.post(BASE_URL + "addNewPlacement" ,{
-            companyname,
-            imageUrl,
-            module,
-            name,
-            placementYear,
-            packages
-        })
-    }
     addnotification(body,code,createdDateTime,file,name,status,title,userId){
         return axios.post(BASE_URL + "addNotification",{
             body,

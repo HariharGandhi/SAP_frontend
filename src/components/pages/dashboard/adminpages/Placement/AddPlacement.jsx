@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
 import NewSidebar from '../../../../Navbar/Navbar';
 import "./AddPlacement.css"
 import SuccessMessage from '../../Alerts/SuccessMessage';
+import Axios from 'axios';
+import { BASE_URL } from '../../../../../services/Globalvalues';
 
 const Postplace = () =>{
 const [mod,setmod] = useState("");
 const [nme,setnme] = useState("");
 const [cnme,setcnme] = useState("");
-const [pack,setpack] = useState("");
+const [pack,setpack] = useState(0.0);
 const [year,setyear] = useState("");
-const [img,setimg] = useState("");
+const [itype,setitype] = useState(false)
+const [image, setImage] = useState(null);
 const [success,setsuccess]= useState(false)
 const handlename = async (e) =>{
     setnme(e.target.value)
@@ -25,13 +27,34 @@ const handlecname = async (e) =>{
 const handleyear = async (e) =>{
     setyear(e.target.value)
 }
-const handleimg = async (e) =>{
-    setimg(e.target.value)
-}
 
+const handleFileUpload = (event) => {
+  const file = event.target.files[0];
+  const allowedTypes = ["image/jpeg", "image/png","image/jpg"];
+
+  if (file && allowedTypes.includes(file.type)) {
+    setImage(file);
+  } else {
+    setitype(true)
+    setTimeout(()=>{
+      setitype(false)
+    },2000)
+  }
+};
 
 const Addplacement = () => {
-  NotificationPlacementapi.addplace(cnme,img,mod,nme,year,pack).then(response => {
+  const Image = image;
+    const formData = new FormData();
+    formData.append('image',Image)
+  Axios.post(BASE_URL + "addNewPlacement", formData,{
+    params:{
+      name : nme,
+    companyName : cnme,
+    packages : pack,
+    moduleName : mod,
+    year : year
+    }
+  }).then(response => {
       setsuccess(true)
         setTimeout(()=>{
           setsuccess(false)
@@ -119,8 +142,9 @@ useEffect(() => {
             <br />
             <label>
               {" "}
-              Image URL:
-              <input type="string" onChange={(e) => handleimg(e)} placeholder="Paste Image drive URL"/>
+              Image :
+              <input type="file" className="d-none" accept=".jpg,.jpeg,.png" onChange={handleFileUpload} />
+              {itype && <p style={{color:'red'}}>Only .jpg,.jpeg.png file</p>}
             </label>
             <label style={{marginRight:'90px'}}>
               {" "}

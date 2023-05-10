@@ -4,11 +4,17 @@ import NotificationPlacementapi from "../../../../../services/NotificationPlacem
 import NewSidebar from "../../../../Navbar/Navbar";
 import "./GetPlacement.css";
 import { CSVLink } from "react-csv";
+import { BASE_URL } from "../../../../../services/Globalvalues";
+import Axios from "axios";
+import Modal from "../../Modal";
 const Getplace = () => {
   const [ispackaged, setIspackaged] = useState(false);
   const [isyear, setIsyear] = useState(false);
   const [Data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  const [fname, setfname] = useState("")
+  const [src,setsrc] = useState("");
+  const [placementmodal, setplacementmodal]=useState(false);
   const [search, setSearch] = useState("");
   const [searchmod, setsearchmod] = useState("");
   const selectPageHandler = (selectedPage) => {
@@ -22,15 +28,26 @@ const Getplace = () => {
   const sortPackage = (Data, setData) => {
     setIspackaged((prev) => !prev);
     if (!ispackaged) {
-      setData(
-        [...Data].sort((a, b) => Number(a.packages) - Number(b.packages))
-      );
+      setData([...Data].sort((a, b) => a.packages - b.packages));
     } else {
       setData(
-        [...Data].sort((a, b) => Number(b.packages) - Number(a.packages))
+        [...Data].sort((a, b) => (b.packages) - (a.packages))
       );
     }
   };
+  // const ViewImage = (ele) => {
+  //   setfname(ele)
+  //   Axios.get(BASE_URL + `getplacementimage/${fname}`, {
+  //     responseType: "blob",
+  //   }).then((response) => {
+  //     const imageUrl = URL.createObjectURL(response.data);
+  //     setsrc(imageUrl);
+  //   });
+  //   setplacementmodal(true)
+  // }
+  // const handleCancelModal = (
+  //   setplacementmodal(false)
+  // )
   const sortyear = (Data, setData) => {
     setIsyear((prev) => !prev);
     if (!isyear) {
@@ -63,11 +80,10 @@ const Getplace = () => {
     (async () => {
       try {
         NotificationPlacementapi.getplacement().then((response) => {
-        
           setData(response.data);
         });
       } catch (error) {
-       // console.log("Error");
+        // console.log("Error");
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
@@ -98,7 +114,6 @@ const Getplace = () => {
                 placeholder="Enter Name to search"
                 onChange={(e) => setSearch(e.target.value)}
               />
-              
             </label>
             <label>
               Module :
@@ -117,14 +132,15 @@ const Getplace = () => {
                 Clear
               </button>
               <CSVLink
-            data={Data}
-            headers={headers}
-            filename={"placement Data.csv"}
-            className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "5" }}
-          >
-           {" "} Download in csv
-          </CSVLink>
+                data={Data}
+                headers={headers}
+                filename={"placement Data.csv"}
+                className="xlsbutton"
+                style={{ marginTop: "5", marginLeft: "5" }}
+              >
+                {" "}
+                Download in csv
+              </CSVLink>
             </label>
           </div>
           <table style={{ width: "100%" }} id="placetab">
@@ -199,7 +215,9 @@ const Getplace = () => {
                         {ele.packages}
                         {" lpa"}
                       </td>
-                      <td>{ele.imageUrl}</td>
+                      <td>
+                        <button >View Image</button>
+                      </td>
                       <td>{ele.name}</td>
                       <td>{ele.companyname}</td>
                       <td>{ele.module}</td>
@@ -209,7 +227,6 @@ const Getplace = () => {
                 })}
             </tbody>
           </table>
-          
         </div>
       </div>{" "}
       {Data.length > 0 && (
@@ -234,6 +251,32 @@ const Getplace = () => {
               </span>
             );
           })}
+          {/* {placementmodal && 
+          <>
+          <Modal>
+          <div className="Receiptget">
+            <img
+              src={src}
+              alt="Wrongpath"
+              style={{ height: "500px", width: "500px" }}
+            ></img>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <button
+                onClick={handleCancelModal}
+                style={{ marginTop: "10px", height: "25px", width: "50px" }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+          </Modal>
+          </>} */}
 
           <span
             className={page < Data.length / 10 ? "" : "pagination__disable"}
@@ -245,7 +288,9 @@ const Getplace = () => {
             ▶
           </span>
           <button className="place-button">
-            <Link to="/postplacement" className="place-link">Add Placement </Link>
+            <Link to="/postplacement" className="place-link">
+              Add Placement{" "}
+            </Link>
           </button>
         </div>
       )}
