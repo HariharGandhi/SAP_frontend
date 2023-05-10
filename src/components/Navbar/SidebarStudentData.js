@@ -25,10 +25,10 @@ export const SidebarStudentData = [
 	title: "Course Details",
     path: "/coursedetails"
 },
-{
-	title :"Resume",
-	path : "./resume"
-}
+// {
+// 	title :"Resume",
+// 	path :'http://localhost:3005'
+// }
 
 
 ];

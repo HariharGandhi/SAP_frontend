@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import applicationformservice from "../../../../services/applicationformservice";
 import Paymentapi from "../../../../services/Paymentapi";
-import { NOTVERIFIED } from "../../../../services/Globalvalues";
+import { BASE_URL, NOTVERIFIED, VERIFIED } from "../../../../services/Globalvalues";
 const PostInstallment = () => {
   //const [Data,setData] = useState("")
   // const [] = useState("")
@@ -15,22 +15,24 @@ const PostInstallment = () => {
   const [second,setsecond] = useState(0);
   const [third,setthird] = useState(0);
   const [total_fee, settotal_fee] = useState(0);
-  async function sendData(installmentdata) {
+ function sendData(installmentdata) {
     
-    await Paymentapi.postinstallment(installmentdata);
-   
-      
-    const stat="verified";
+   Paymentapi.postinstallment(installmentdata).then(()=>{
+    const stat=VERIFIED;
     const q = false
-    await axios
+ axios
     .put(
-      `http://localhost:9190/api/applicationFormStatusUpdate/${Stid}/${stat}/${q}`
-    )
-    .then((res) => {
+      BASE_URL + `api/applicationFormStatusUpdate/${Stid}/${stat}/${q}`
+    ).then((res)=>{
       localStorage.removeItem("Userid");
       localStorage.removeItem("Aid");
-      window.location.reload();
-    });
+      window.location.href = "/allform";
+    })
+  });
+   
+    
+      
+
   }
   const Stid = parseInt(localStorage.getItem("Aid"), 10);
   

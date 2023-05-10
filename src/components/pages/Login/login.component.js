@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import AuthService from "../../../services/auth.service";
 import "../../../root.css";
 import Navbarforhome from "../Home/Navbarforhome";
-import { INITIAL } from "../../../services/Globalvalues";
+import { INITIAL, ISQUERY, VERIFIED } from "../../../services/Globalvalues";
 const required = (value) => {
   if (!value) {
     return (
@@ -66,18 +66,18 @@ export default class Login extends Component {
               if (response === "notfilled") {
                 this.props.history.push("/application");
               }
-              if (response === INITIAL) {
+             else if (response === INITIAL) {
                 this.props.history.push("/Pending");
               }
-              if (response === "verified") {
+              else if (response === VERIFIED) {
                 //this.props.history.push("/newnav");
                 this.props.history.push("/logindone");
               }
-              if (response === "isquery") {
+              else if (response === ISQUERY) {
                 //this.props.history.push("/newnav");
                 this.props.history.push("/isquerytrue");
               }
-              this.props.history.push("/application");
+              else{this.props.history.push("/application");}
             });
           }
           if (Role === "ROLE_ADMIN") {

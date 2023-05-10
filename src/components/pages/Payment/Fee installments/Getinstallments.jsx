@@ -44,7 +44,7 @@ const Getinstallments = () => {
       setsuccess(true)
       setTimeout(()=> {
         setsuccess(false);
-        window.location.href ="/logindone"
+        window.location.href ="/getinstallment"
       },3000)
     })
   }

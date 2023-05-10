@@ -24,7 +24,7 @@ class AuthService {
 
   getApplicationStatus(userId) {
     return axios
-      .get("http://localhost:9190/api/getapplicationformStatus?UserId="+userId,)
+      .get(BASE_URL+"api/getapplicationformStatus?UserId="+userId,)
       .then(response => {
        
         return response.data.applicationformStatus;

@@ -84,7 +84,7 @@ const Application = () => {
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-  });
+  },[]);
 
   return (
     <>

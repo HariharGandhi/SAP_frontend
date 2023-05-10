@@ -98,6 +98,7 @@ const Getplace = () => {
                 placeholder="Enter Name to search"
                 onChange={(e) => setSearch(e.target.value)}
               />
+              
             </label>
             <label>
               Module :
@@ -115,6 +116,15 @@ const Getplace = () => {
               >
                 Clear
               </button>
+              <CSVLink
+            data={Data}
+            headers={headers}
+            filename={"placement Data.csv"}
+            className="xlsbutton"
+            style={{ marginTop: "5", marginLeft: "5" }}
+          >
+           {" "} Download in csv
+          </CSVLink>
             </label>
           </div>
           <table style={{ width: "100%" }} id="placetab">
@@ -199,15 +209,7 @@ const Getplace = () => {
                 })}
             </tbody>
           </table>
-          <CSVLink
-            data={Data}
-            headers={headers}
-            filename={"placement Data.csv"}
-            className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "5" }}
-          >
-           {" "} Download in csv
-          </CSVLink>
+          
         </div>
       </div>{" "}
       {Data.length > 0 && (
