@@ -19,11 +19,11 @@ const ContactToAdmin = () => {
         userIds : UId
       }
     }).then((response)=>{
-      console.log(response.data.sapUsername)
+    
       setSapUsername(response.data.sapUsername)
       setSapPassword(response.data.sapPassword)
     })} catch (error) {
-      console.log(error);
+    //  console.log(error);
     }})();
     return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
 },[UId]);
