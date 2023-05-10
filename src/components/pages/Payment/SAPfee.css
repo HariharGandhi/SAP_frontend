@@ -1,37 +1,36 @@
-#sapfee h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    }
-    
-#sapfee h4 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    }
-    
-#sapfee button {
+.sapcontainer {
+    margin: auto;
+    max-width: 600px;
+    padding: 20px;
+  }
+.makepayment {
     background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    }
+   
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+    /* other styles */
     
-#sapfee a {
-    color: #fff;
-    text-decoration: none;
+  }
+  button:hover {
+    background-color: #dadcdf;
+    color: black;
+  }
+  
+  
+  @media only screen and (max-width: 280px) {
+    .makepayment button {
+        margin-top: 20px;
+  }}
+  
+  @media only screen and (max-width: 400px) {
+    .makepayment {
+      max-width: 300px;
+      margin-top: 20px;
     }
-    
-#sapfee a:hover {
-    text-decoration: underline;
-    }
-.sapcontainer{
-    position: absolute;
-    top: 50%;
-  margin-top : 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-  /*left: 50%;*/
-}
+  }
+  

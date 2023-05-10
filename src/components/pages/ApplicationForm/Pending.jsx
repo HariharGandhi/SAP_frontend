@@ -1,6 +1,7 @@
 import React, {  } from 'react'
-import NewSidebar from '../../Navbar/Navbar'
+// import NewSidebar from '../../Navbar/Navbar'
 import "./pending.css"
+import Navbarforapp from '../Home/Navbarforapp'
 // import "./Application.css"
 
 
@@ -26,7 +27,8 @@ export default function Pending() {
   // },[]);
     
   return (<>
-    <NewSidebar />
+  <Navbarforapp/>
+    {/* <NewSidebar /> */}
     <div className='pending'>
         
         <h3> Pending ...</h3>
