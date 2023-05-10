@@ -28,7 +28,6 @@ import Pending from "./components/pages/ApplicationForm/Pending";
 import Logindone from "./components/pages/dashboard/Studentdashboard/logindone.component";
 import Getplace from "./components/pages/dashboard/adminpages/Placement/GetPlacement";
 import Adminnotification from "./components/pages/dashboard/adminpages/Notifications/GetNotification/AdminNotification";
-import Deleteform from "./components/pages/dashboard/adminpages/ApplicationForms/DeleteForm/DeleteForm";
 import AdminDashboard from "./components/pages/dashboard/adminpages/Admin Dashboard/AdminDashboard";
 import Postplace from "./components/pages/dashboard/adminpages/Placement/AddPlacement";
 import AllAdmin from "./components/pages/dashboard/SuperAdmin/ViewAdmin/ViewAdmin";
@@ -170,11 +169,7 @@ class App extends Component {
                 path="/admindashboard"
                 component={withAuth(RoleAuth(AdminDashboard))}
               />
-              <Route
-                exact
-                path="/deleteform"
-                component={withAuth(RoleAuth(Deleteform))}
-              />
+              
               <Route
                 exact
                 path="/allform"

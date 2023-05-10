@@ -23,7 +23,7 @@ const Payment = () => {
 
   async function displayRazorpay(amount) {
     const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
-    console.log(res);
+   
     if (!res) {
       
       return;
@@ -37,8 +37,8 @@ const Payment = () => {
       handler: function (response) {
         //const Amount = Number(localStorage.getItem('amount'))
         const P_id = response.razorpay_payment_id;
-        const Card = response.razorpay_card_id;
-        console.log(Card,P_id)
+        // const Card = response.razorpay_card_id;
+        // console.log(Card,P_id)
         // let arr = [
         //   {
         //     id: 1,  
@@ -51,15 +51,15 @@ const Payment = () => {
         // }
         // ]
         if(P_id !== null){
-          console.log("inside success")
-          let res = {
-            "Payment Id" : response.razorpay_payment_id,
-            "OrderId" : response.razorpay_order_id,
-            "CardId" : response.razorpay_card_id,
-            "Signature" : response.razorpay_signature,
-            "Payment_link": response.razorpay_payment_link_id
-          }
-          console.log(res)
+          
+          // let res = {
+          //   "Payment Id" : response.razorpay_payment_id,
+          //   "OrderId" : response.razorpay_order_id,
+          //   "CardId" : response.razorpay_card_id,
+          //   "Signature" : response.razorpay_signature,
+          //   "Payment_link": response.razorpay_payment_link_id
+          // }
+          // console.log(res)
           
           window.location.href = "/getinstallment"
           // axios.post(BASE_URL + 'updatePayentInstallment',arr)
@@ -89,7 +89,7 @@ const Payment = () => {
 
  const handlepay = (e) => {
   e.preventDefault();
-  console.log(amount);
+ // console.log(amount);
   localStorage.setItem('amount',amount)
   displayRazorpay(amount);
     

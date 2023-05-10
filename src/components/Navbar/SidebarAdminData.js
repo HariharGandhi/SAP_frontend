@@ -8,7 +8,7 @@ export const SidebarAdminData = [
 
 },
 {
-	title: "Payment",
+	title: "Payment Verification",
 	path: "/getreceipt",
 
 },

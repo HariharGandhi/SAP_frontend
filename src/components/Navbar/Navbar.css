@@ -68,7 +68,9 @@
   }
 @media (min-width: 500px) {
     .vform {
-      width: calc(100% - 215px); /* Set the width to 100% minus the width of the sidebar */
+      width: calc(100% - 215px); 
+      /*width: 70%;*/
+      margin-left: 215px; /* Set the width to 100% minus the width of the sidebar */
     }
     /* NAV {
         justify-content: space-between;

@@ -82,9 +82,9 @@ const SendNotice = () => {
         NotificationPlacementapi.getmodules(ACTIVE).then((res) => {
           setmodules(res.data);
         });
-        //console.log(Data)
+        
       } catch (error) {
-        console.log(error);
+      //  console.log(error);
       }
     })();
     // (async () => {

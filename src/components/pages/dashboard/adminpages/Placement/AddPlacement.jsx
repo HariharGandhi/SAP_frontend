@@ -38,7 +38,7 @@ const Addplacement = () => {
         },4000)
         window.location.href = "/getplacement"
     }).catch((err)=>{
-      console.log(err)
+    //  console.log(err)
     })
 }
 useEffect(() => {

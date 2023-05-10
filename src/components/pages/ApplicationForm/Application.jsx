@@ -64,7 +64,7 @@ const Application = () => {
           window.location.href = "/pending";
         })
         .catch((error) => {
-          console.log(error);
+          //console.log(error);
         });
     } else {
       settime(true)
@@ -77,11 +77,10 @@ const Application = () => {
     (async () => {
       try {
         NotificationPlacementapi.getmodules(ACTIVE).then((response) => {
-          console.log(response.data);
           setmodData(response.data);
         });
       } catch (error) {
-        console.log("Error");
+        //console.log("Error");
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));

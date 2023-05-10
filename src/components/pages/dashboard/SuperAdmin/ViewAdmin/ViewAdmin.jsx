@@ -61,7 +61,6 @@ const AllAdmin = () => {
   const viewQueryModal = (ele) => {
     let did = ele.id;
     sessionStorage.setItem('did',did)
-    console.log(sessionStorage.getItem('did'))
     setdept(ele.department)
     setmail(ele.email)
     setctc(ele.mobileNumber)
@@ -111,7 +110,7 @@ const AllAdmin = () => {
         //setSid(data.records.student_id);
         
       } catch (error) {
-        console.log("Error");
+      //  console.log("Error");
       }
     })();
     return () => sessionStorage.setItem('sidebar',JSON.stringify(false));

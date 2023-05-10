@@ -16,7 +16,7 @@ const GetModule = () => {
             try {
                 NotificationPlacementapi.getmodules(stat)
                 .then((res)=> {
-                  console.log(res)
+                 
                   setData(res.data)
                 })
                 
@@ -24,7 +24,7 @@ const GetModule = () => {
                 //console.log(Data)
             }
             catch (error) {
-                console.log(error)
+                //console.log(error)
             }
         })();
         return () => sessionStorage.setItem("sidebar", JSON.stringify(false));

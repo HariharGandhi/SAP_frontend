@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
+import "./Verifyform.css"
 import Applicationformservice from "../../../../../../services/applicationformservice";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
 import { ACTIVE, BASE_URL, INITIAL } from "../../../../../../services/Globalvalues";
@@ -48,13 +49,15 @@ const VerifyForm = () => {
     { label: "Specialization", key: "specialization" },
     { label: "StudentType", key: "studentType" },
   ];
-  const Query = () => {
+  const Query = (e) => {
+    e.preventDefault();
+    console.log("fghjk");
     setquery(true);
     Addquery();
   };
   const handleConfirm = () => {
     axios.delete(BASE_URL + `api/deleteapplicationform/${did}`).then((res) => {
-      console.log(res);
+    
       setDeleteModal(false);
       window.location.reload();
     });
@@ -65,7 +68,7 @@ const VerifyForm = () => {
   };
   const handleUpdate = () => {
     const AId = parseInt(localStorage.getItem("Aid"), 10);
-    console.log(query);
+   
     axios
       .put(BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${query}`)
       .then((res) => {
@@ -112,14 +115,15 @@ const VerifyForm = () => {
     const AId = parseInt(localStorage.getItem("Aid"), 10);
     const Q = true;
     try {
-      await axios.put(
+    const res=  await axios.put(
         BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${Q}`
       );
+      console.log(res);
       setquery(false);
       setstat("");
       setUpdateModal(false);
       localStorage.removeItem("Userid");
-      await axios.post(
+    const postRes=  await axios.post(
         BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${did}`,
         {
           applicationId: did,
@@ -134,7 +138,8 @@ const VerifyForm = () => {
           userId: uid,
         }
       );
-      window.location.reload();
+      console.log("post",postRes);
+      //window.location.reload();
       //   .then((response)=>{
       //   console.log(response.status)
       //   setquery(true);
@@ -209,9 +214,9 @@ const VerifyForm = () => {
         );
 
         setData(data.records);
-        console.log(data);
+      
       } catch (error) {
-        console.log(error);
+       // console.log(error);
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
@@ -263,20 +268,21 @@ const VerifyForm = () => {
             />
             <button
               onClick={() => handleSearch()}
-              style={{ width: "90px", marginLeft: "20px" }}
+              className="csvbutton"
+              // style={{ width: "90px", marginLeft: "20px" }}
             >
-              Search
+              {"  "}Search{"  "}
             </button>
             {filtered && (
           <CSVLink
             data={filterData}
             headers={headers}
             filename={"Application form.csv"}
-            className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "5" }}
+            className="csvbutton"
+            // style={{ marginTop: "5", marginLeft: "5" }}
           >
             {" "}
-            Download in csv
+            Download{" "}
           </CSVLink>
         )}
         {!filtered && (
@@ -284,18 +290,19 @@ const VerifyForm = () => {
             data={data}
             headers={headers}
             filename={"Application form.csv"}
-            className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "5" }}
+            className="csvbutton"
+            // style={{ marginTop: "5", marginLeft: "5" }}
           >
             {" "}
-            Download in csv
+            Download{" "}
           </CSVLink>
         )}
             <button
               onClick={() => clearsearch()}
-              style={{ width: "90px", marginLeft: "20px" }}
+              className="csvbutton"
+              // style={{ width: "90px", marginLeft: "20px" }}
             >
-              Clear
+              {" "}Clear{" "}
             </button>
           </label>
         </div>
@@ -306,7 +313,7 @@ const VerifyForm = () => {
               <th>Adhar card</th>
               <th>Application status</th>
               <th>Branch</th>
-              <th>College Email</th>
+              {/* <th>College Email</th> */}
               <th>Contact No.</th>
               <th>Email</th>
               <th>Query in Application</th>
@@ -317,6 +324,7 @@ const VerifyForm = () => {
               <th>Student Type</th>
               {/* <th>Upload img</th> */}
               <th>Action</th>
+              {/* <th>Payment Info</th> */}
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
@@ -328,7 +336,7 @@ const VerifyForm = () => {
                     <td>{ele.adhaarCard}</td>
                     <td>{ele.applicationFromStatus}</td>
                     <td>{ele.branch}</td>
-                    <td>{ele.collegeEmail}</td>
+                    {/* <td>{ele.collegeEmail}</td> */}
                     <td>{ele.contactNumber}</td>
                     <td>{ele.email}</td>
                     <td>{ele.isQueryInApplication ? "Yes" : "No"}</td>
@@ -355,6 +363,16 @@ const VerifyForm = () => {
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
                     </td>
+                    {/* <td>
+                      <button
+                        onClick={() => viewReceipt(ele)}
+                        title="Payment Details"
+                        style={{ marginRight: "5px", cursor: "pointer" }}
+                      >
+                       Receipts <i class='fas fa-receipt'></i>
+                      </button>
+                      
+                    </td> */}
                   </tr>
                 );
               })}
@@ -368,7 +386,7 @@ const VerifyForm = () => {
                     <td>{ele.adhaarCard}</td>
                     <td>{ele.applicationFromStatus}</td>
                     <td>{ele.branch}</td>
-                    <td>{ele.collegeEmail}</td>
+                    {/* <td>{ele.collegeEmail}</td> */}
                     <td>{ele.contactNumber}</td>
                     <td>{ele.email}</td>
                     <td>{ele.isQueryInApplication ? "Yes" : "No"}</td>
@@ -394,13 +412,15 @@ const VerifyForm = () => {
                       >
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
-                      <button
-                        onClick={() => Modalview(ele)}
+                      </td>
+                      <td>
+                      {/* <button
+                        onClick={() => viewReceipt(ele)}
                         title="Payment Details"
                         style={{ marginRight: "5px", cursor: "pointer" }}
                       >
                        Receipts <i class='fas fa-receipt'></i>
-                      </button>
+                      </button> */}
                       
                     </td>
                   </tr>
@@ -552,7 +572,7 @@ const VerifyForm = () => {
                         <br />
                         <button
                           type="submit"
-                          onClick={() => Query()}
+                          onClick={(e) => Query(e)}
                           className="btn btn-outline-white"
                           style={{
                             margin: "auto",

@@ -63,11 +63,11 @@ const Getplace = () => {
     (async () => {
       try {
         NotificationPlacementapi.getplacement().then((response) => {
-          console.log(response.data);
+        
           setData(response.data);
         });
       } catch (error) {
-        console.log("Error");
+       // console.log("Error");
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));

@@ -10,8 +10,7 @@ const Placment = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios.get(BASE_URL + "getAllPlacement")
-      .then(response => setData(response.data))
-      .catch(error => console.log(error));
+      .then(response => setData(response.data));
   }, []);
   const sortedData = data.sort((a, b) => b.packages - a.packages);
   const top4Data = sortedData.slice(0, 4);

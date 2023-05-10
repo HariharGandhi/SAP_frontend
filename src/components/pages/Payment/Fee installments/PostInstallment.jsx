@@ -9,7 +9,7 @@ const PostInstallment = () => {
   //const [Data,setData] = useState("")
   // const [] = useState("")
   const UserID = parseInt(localStorage.getItem('Userid'),10)
-  console.log(UserID)
+ 
   const [install, setinstall] = useState("");
   const [first, setfirst] = useState(0);
   const [second,setsecond] = useState(0);
@@ -18,7 +18,7 @@ const PostInstallment = () => {
   async function sendData(installmentdata) {
     
     await Paymentapi.postinstallment(installmentdata);
-    console.log("installment",installmentdata);
+   
       
     const stat="verified";
     const q = false
@@ -33,7 +33,7 @@ const PostInstallment = () => {
     });
   }
   const Stid = parseInt(localStorage.getItem("Aid"), 10);
-  console.log(Stid)
+  
   const handletotalfee = (event) => {
     settotal_fee(event.target.value)
   }
@@ -124,11 +124,11 @@ const PostInstallment = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await applicationformservice.getformbystid(Stid);
+         await applicationformservice.getformbystid(Stid);
         //setData(data);
-        console.log(data.studentType);
+        
       } catch (error) {
-        console.log(error);
+       // console.log(error);
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));

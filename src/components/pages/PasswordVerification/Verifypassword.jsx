@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Navbarforhome from "../Home/Navbarforhome";
 /*import './App.css';*/
 const Verifypassword = () => {
-  console.log(sessionStorage.getItem("otp"));
+//  console.log(sessionStorage.getItem("otp"));
   const [OTP, setOTP] = useState("");
   const history = useHistory();
   const Verifyotp = () => {
@@ -15,7 +15,7 @@ const Verifypassword = () => {
     }
   };
   const handleChange = async (event) => {
-    console.log(event.target.value);
+  
     setOTP(event.target.value);
   };
 

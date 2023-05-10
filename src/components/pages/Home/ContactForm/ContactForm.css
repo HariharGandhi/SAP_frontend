@@ -1,12 +1,12 @@
 .ctcform-container {
-  background: linear-gradient(to bottom, #feffe3, #edfed0 ); 
+  /* background: linear-gradient(to bottom, #feffe3, #edfed0 );  */
 }
 #contactform {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 20px;
-  background: linear-gradient(to bottom,#f18cac  , #6b75d6);
+  /* background: linear-gradient(to bottom,#f18cac  , #6b75d6); */
 }
 
 #contactform form {

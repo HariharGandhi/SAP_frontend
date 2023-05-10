@@ -39,7 +39,7 @@ const ContactForm = () => {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+     
       setFormStatus('Sent')
       setFormSent(true)
     })

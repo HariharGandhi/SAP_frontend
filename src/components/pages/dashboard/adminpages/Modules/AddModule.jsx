@@ -20,10 +20,10 @@ const Addmodule = () => {
     setsuccess(true)
     setTimeout(()=>{
       setsuccess(false)
-    },4000)
+    },3000)
         window.location.href = "/getmodules"
     }).catch((err)=>{
-      console.log(err)
+    //  console.log(err)
     })
 }
 useEffect(() => {

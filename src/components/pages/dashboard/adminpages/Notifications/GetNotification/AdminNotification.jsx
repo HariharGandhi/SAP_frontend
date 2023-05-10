@@ -23,13 +23,13 @@ const Adminnotification = () => {
     (async () => {
       try {
         NotificationPlacementapi.getall().then((res) => {
-          console.log(res.data);
+        
           const filtered = res.data.filter(item => item.status === ACTIVE)
           setData(filtered);
-          console.log(filtered)
+        
         });
       } catch (error) {
-        console.log("Error");
+      //  console.log("Error");
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));

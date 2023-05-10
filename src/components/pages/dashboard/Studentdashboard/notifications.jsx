@@ -6,7 +6,7 @@ const Notification = () => {
 
   const getData = async () => {
     NotificationPlacementapi.getall().then((res)=> {
-      console.log(res.data);
+    
       setData(res.data);
     });
 

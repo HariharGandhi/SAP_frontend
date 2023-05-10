@@ -31,10 +31,10 @@ const VerifyFormmodal = () => {
                   }
                 });
                 setData(data);
-                console.log(data.id)
+               
                 //setSid(data.records.student_id);
               } catch (error) {
-                console.log(error);
+               // console.log(error);
               }
             })();
           },[Uid]);

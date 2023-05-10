@@ -47,7 +47,7 @@ const UpdateNotification = () => {
           window.location.href = "/adminlogin";
         })
         .catch((err) => {
-          console.log(err);
+        //  console.log(err);
         });
     } else {
     }

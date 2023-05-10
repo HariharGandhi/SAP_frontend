@@ -10,7 +10,7 @@
     padding: 20px;
     border: 2px solid #333;
     border-radius: 10px;
-    background: linear-gradient(to right, #ff6e7f, #bfe9ff);
+    /* background: linear-gradient(to right, #ff6e7f, #bfe9ff); */
     position: relative;
   top: -100vh;
   animation: slideIn 1s forwards;
@@ -72,7 +72,7 @@
     color: #666;
   } */
   .applyback{
-    background: linear-gradient(to bottom, #79dcde, #ffffff);
+    /* background: linear-gradient(to bottom, #79dcde, #ffffff); */
   }
     
     .apply a {

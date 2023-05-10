@@ -1,5 +1,4 @@
 .getreceipt{
-    margin-left: 5px;
     margin-right: 5px;
   }
   .getreceipt main-table{
@@ -37,12 +36,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .getreceipt th,
-  td {
+  .getreceipt th{
     text-align: center;
     padding: 5px;
     border-bottom: 1px solid #ddd;
   }
+
+  .getreceipt td{
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+  } 
   
   .getreceipt th {
     background-color: #967b7b;

@@ -61,7 +61,7 @@ const Getreceipt = () => {
     setSAPpass(event.target.value);
   };
   const postcred = () => {
-    console.log(SAPname,SAPpass)
+   // console.log(SAPname,SAPpass)
     Axios.post(BASE_URL + "postsapcredentialsDetails",{
       sapPassword : SAPpass,
       sapUsername : SAPname,
@@ -84,9 +84,9 @@ const Getreceipt = () => {
       try {
         const { data } = await Axios.get(BASE_URL + "getReceiptverification");
         setData(data);
-        //  console.log(data);
+        
       } catch (error) {
-        console.log(error);
+      //  console.log(error);
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));

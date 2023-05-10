@@ -183,7 +183,6 @@ const DeleteNotification = () => {
     const handleVerify = () => {
       axios.put(BASE_URL + `api/applicationFormStatusUpdate/${did}/${stat}`)
       .then((res)=>{
-        console.log(res)
         setVerifyModal(false);
         window.location.reload();
       })
@@ -230,9 +229,9 @@ const DeleteNotification = () => {
                 });
                 setData(data.records);
                 //setSid(data.records.student_id);
-                console.log(data);
+               
               } catch (error) {
-                console.log("Error");
+              //  console.log("Error");
               }
             })();
           }, []);

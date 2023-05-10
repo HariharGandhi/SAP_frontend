@@ -8,6 +8,7 @@ import NewSidebar from "../../../../../Navbar/Navbar";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
 import {BASE_URL} from "../../../../../../services/Globalvalues";
 import { CSVLink } from "react-csv";
+import Axios from "axios";
 
 const Viewform = () => {
   const [did, setdid] = useState(0);
@@ -18,12 +19,16 @@ const Viewform = () => {
   const [mail, setmail] = useState("");
   const [desc, setdesc] = useState("");
   const [rname, setrname] = useState("");
+  const [imgsrc, setimgsrc] = useState("")
   const [rdet, setrdet] = useState("");
   const [uid, setuid] = useState(0);
   const [query, setquery] = useState(false);
   const [DeleteModal, setDeleteModal] = useState(false);
   const [VerifyModal, setVerifyModal] = useState(false);
   const [UpdateModal, setUpdateModal] = useState(false);
+  const [PaymentModal, setPaymentModal] = useState(false);
+  const [Modalverify, setModalverify] = useState(false);
+  const [Receiptdata, setReceiptdata] = useState([])
   const [filtered, setfiltered] = useState(false);
   const [filterData, setfilterData] = useState([])
   const handleCancel = () => {
@@ -31,11 +36,35 @@ const Viewform = () => {
     setDeleteModal(false);
     setVerifyModal(false);
     setUpdateModal(false);
+    setPaymentModal(false);
+  };
+  const handleCancelModal = () => {
+    // hide confirmation modal
+    setModalverify(false);
+    setPaymentModal(true);
   };
   const Query = () => {
     setquery(true);
     Addquery();
   };
+  const viewReceipt = (ele) => {
+    const ID = ele.userId;
+    Axios.get(BASE_URL + `getReceiptByuserId/${ID}`).then((res)=>{
+      setReceiptdata(res.data)
+    })
+    setPaymentModal(true)
+  }
+  const receiptImage = (ele) => {
+    const fname = ele.filename
+    Axios.get(BASE_URL + `getfeesreceipt/${fname}`, {
+      responseType: "blob",
+    }).then((response) => {
+      const imageUrl = URL.createObjectURL(response.data);
+      setimgsrc(imageUrl);
+    });
+    setPaymentModal(false)
+    setModalverify(true)
+  }
   const headers = [
     { label: "Id", key: "id" },
     { label: "Name", key: "name" },
@@ -56,7 +85,6 @@ const Viewform = () => {
     axios
       .delete(BASE_URL + `api/deleteapplicationform/${did}`)
       .then((res) => {
-        console.log(res);
         setDeleteModal(false);
         window.location.reload();
       });
@@ -67,13 +95,13 @@ const Viewform = () => {
   };
   const handleUpdate = () => {
     const AId = parseInt(localStorage.getItem("Aid"),10);
-    console.log(query);
+  
     axios
       .put(
         BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${query}`
       )
       .then((res) => {
-        console.log(query, "new");
+      
         setquery(false);
         setstat("");
         setUpdateModal(false);
@@ -169,18 +197,14 @@ const Viewform = () => {
   const [search, setSearch] = useState("");
   const [searchmod, setsearchmod] = useState("");
   const [searchdept, setsearchdept] = useState("");
-  // const OnDelete = (e) => {
-  //   axios.post(`http://localhost:9190/api/deleteapplicationform/${e}`)
-  //   .then()
-  // }
   useEffect(() => {
     (async () => {
       try {
          const { data } = await Applicationformservice.getallforms();
         setData(data);
-        console.log(data);
+      
       } catch (error) {
-        console.log("Error");
+       // console.log("Error");
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
@@ -232,13 +256,37 @@ const Viewform = () => {
             />
             <button
               onClick={() => handleSearch()}
-              style={{ width: "90px", marginLeft: "20px" }}
+              className="xlsbutton"
             >
               Search
             </button>
+            {filtered && (
+          <CSVLink
+            data={filterData}
+            headers={headers}
+            filename={"Application form.csv"}
+            className="xlsbutton"
+            // style={{ marginTop: "5", marginLeft: "5" }}
+          >
+            {" "}
+            Download{" "}
+          </CSVLink>
+        )}
+        {!filtered && (
+          <CSVLink
+            data={data}
+            headers={headers}
+            filename={"Application form.csv"}
+            className="xlsbutton"
+            // style={{ marginTop: "5", marginLeft: "5" }}
+          >
+            {" "}
+            Download{" "}
+          </CSVLink>
+        )}
             <button
               onClick={() => clearsearch()}
-              style={{ width: "90px", marginLeft: "20px" }}
+              className="xlsbutton"
             >
               Clear
             </button>
@@ -251,7 +299,7 @@ const Viewform = () => {
               <th>Adhar card</th>
               <th>Application status</th>
               <th>Branch</th>
-              <th>College Email</th>
+              {/* <th>College Email</th> */}
               <th>Contact No.</th>
               <th>Email</th>
               <th>Query in Application</th>
@@ -262,6 +310,7 @@ const Viewform = () => {
               <th>Student Type</th>
               {/* <th>Upload img</th> */}
               <th>Action</th>
+              <th>Payment Info</th>
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
@@ -273,7 +322,7 @@ const Viewform = () => {
                     <td>{ele.adhaarCard}</td>
                     <td>{ele.applicationFromStatus}</td>
                     <td>{ele.branch}</td>
-                    <td>{ele.collegeEmail}</td>
+                    {/* <td>{ele.collegeEmail}</td> */}
                     <td>{ele.contactNumber}</td>
                     <td>{ele.email}</td>
                     <td>{ele.isQueryInApplication ? "Yes" : "No"}</td>
@@ -300,6 +349,15 @@ const Viewform = () => {
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
                     </td>
+                    <td>
+                      <button
+                        onClick={() => viewReceipt(ele)}
+                        title="Payment Details"
+                        style={{ marginRight: "5px", cursor: "pointer" }}
+                      >
+                       Receipts
+                      </button>
+                    </td>
                   </tr>
                 );
               })}
@@ -312,7 +370,7 @@ const Viewform = () => {
                     <td>{ele.adhaarCard}</td>
                     <td>{ele.applicationFromStatus}</td>
                     <td>{ele.branch}</td>
-                    <td>{ele.collegeEmail}</td>
+                    {/* <td>{ele.collegeEmail}</td> */}
                     <td>{ele.contactNumber}</td>
                     <td>{ele.email}</td>
                     <td>{ele.isQueryInApplication ? "Yes" : "No"}</td>
@@ -339,27 +397,20 @@ const Viewform = () => {
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
                     </td>
+                    <td>
+                      <button
+                        onClick={() => viewReceipt(ele)}
+                        title="Payment Details"
+                        style={{ marginRight: "5px", cursor: "pointer" }}
+                      >
+                       Receipts
+                      </button>
+                    </td>
                   </tr>
                 );
               })}
           </tbody>}
         </table>
-        <CSVLink
-            data={data}
-            headers={headers}
-            filename={"Application form.csv"}
-            className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "5" }}
-          >
-           {" "} Download in csv
-          </CSVLink>
-        {/* <ReactHTMLTableToExcel
-          className="btn xlsbutton"
-          table="tab"
-          filename="Application forms"
-          sheet="sheet 1"
-          buttonText="Download as XLS"
-        /> */}
         {DeleteModal && (
           <Modal>
             <div>
@@ -534,6 +585,70 @@ const Viewform = () => {
             </div>
           </Modal>
         )}
+        {PaymentModal && <>
+        <Modal>
+          <table id='placetab' className="getplace">
+            <thead className="main-table top-col-table">
+            <tr>
+            <th>Payment Installment Id</th>
+            <th>Status of Payment</th>
+            <th>Uploaded Receipt</th>
+            </tr>
+            </thead>
+            <tbody>
+              {Receiptdata.map((ele) => {
+                return (
+                  <tr key={ele.id}>
+                    <td>{ele.paymentInstallmentId}</td>
+                    <td>{ele.recieptverifyStatus}</td>
+                    <td><button onClick={() => receiptImage(ele)}>
+                        View Receipt
+                      </button></td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+          <button onClick={handleCancel}>Cancel</button>
+        </Modal>
+        </>}
+        {Modalverify && (
+        <Modal>
+       <div className="Receiptget">
+            <img
+              src={imgsrc}
+              alt="Wrongpath"
+              style={{ height: "500px", width: "500px" }}
+            ></img>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {/* <button
+                className="btn-md"
+                onClick={handleVerifyfee}
+                style={{
+                  marginRight: "100px",
+                  marginTop: "10px",
+                  height: "25px",
+                  width: "50px",
+                }}
+              >
+                Verify
+              </button> */}
+              <button
+                onClick={handleCancelModal}
+                style={{ marginTop: "10px", height: "25px", width: "50px" }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </Modal>
+      )}
       </div>
     </>
   );

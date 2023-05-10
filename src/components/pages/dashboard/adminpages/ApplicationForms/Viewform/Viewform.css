@@ -137,10 +137,17 @@
 
 .xlsbutton{
   cursor: pointer;
-  color: #322d45;
-  background-color: grey;
+    color: #0e0535;
+    background-color: rgb(239, 239, 239);
+    border: 1px solid;
+    border-radius: 5px;
+    margin-left: 20px;
+    height: 25px;
+    width:max-content;
 }
 .xlsbutton:hover{
-  color: rgb(174, 179, 186);
-  background-color: #131010;
+  color: rgb(2, 32, 73);
+    background-color: #fefafa;
+    border: 1px solid;
+    border-radius: 5px;
 }

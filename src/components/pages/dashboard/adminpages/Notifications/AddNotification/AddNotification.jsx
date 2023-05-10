@@ -46,7 +46,7 @@ const Addnotification = () => {
           //history.push('/adminlogin')
         })
         .catch((err) => {
-          console.log(err);
+        //  console.log(err);
         });
     } else {
       seterror(true)
