@@ -116,7 +116,7 @@ function UpdateProfile() {
               id="collegeEmail"
               name="collegeEmail"
               defaultValue={formData.collegeEmail}
-              // onChange={handleChange}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="email">
@@ -186,7 +186,7 @@ function UpdateProfile() {
               id="studentType"
               name="studentType"
               value={formData.studentType || ""}
-              onChange={handleChange}
+              // onChange={handleChange}
             />
           </label>
 

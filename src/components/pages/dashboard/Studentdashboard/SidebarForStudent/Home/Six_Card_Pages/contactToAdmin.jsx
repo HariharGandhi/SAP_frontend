@@ -37,19 +37,20 @@ const handleUploadClick = () => {
 
 <>
   <NewSidebar />
-  <Card className="sapcontainer" id="sapfee" style={{ backgroundColor: '#f2f2f2', borderRadius: '10px', padding: '20px' }}>
-  <h2  style={{ color: '#666666', marginBottom: '10px' }}>
-    {SapUsername ? (
-      <>
-        This is your credentials
-      </>
-    ) : (
-      <>
-        Pay your fees else upload your payment receipt
-        <button onClick={handleUploadClick}  style={{ marginLeft: '10px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', padding: '5px 10px' }}>Upload Now</button>
-      </>
-    )}
-  </h2>
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' , }}>
+  <Card className="sapcontainer" id="sapfee" style={{ backgroundColor: '#f2f2f2',marginTop: '30px', borderRadius: '10px', padding: '10px' }}>
+    <h2 style={{ color: '#666666', marginBottom: '10px' }}>
+      {SapUsername ? (
+        <>
+          This is your credentials
+        </>
+      ) : (
+        <>
+          Pay your fees else upload your payment receipt
+          <button onClick={handleUploadClick}  style={{ marginLeft: '10px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', padding: '5px 10px' }}>Upload Now</button>
+        </>
+      )}
+    </h2>
     <CardHeader title={<h1 style={{ color: '#333333', fontWeight: 'bold' }}>Login credentials of SAP</h1>}>
     </CardHeader>
     <CardContent>
@@ -60,9 +61,9 @@ const handleUploadClick = () => {
       {/* <button style={{marginLeft:'350px'}}> <Link to="/logindone">Cancel</Link></button>*/}
     </CardContent> 
   </Card>
+</div>
+
 </>
-
-
 
 
   );
