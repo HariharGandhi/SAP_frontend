@@ -63,7 +63,7 @@ const Getinstallments = () => {
         },[ID]);
     return (<>
         <NewSidebar />
-        {success && <SuccessMessage message="Receipt Submited Successfully! Redirecting to Homepage"/>}
+        {success && <SuccessMessage message="Receipt Submited Successfully!"/>}
         <div
         className={
           sessionStorage.getItem("sidebar") === "true"
