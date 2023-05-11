@@ -155,6 +155,8 @@ useEffect(() => {
           onClick={() => Addplacement()}
           className="btn-place btn-outline-white"
           style={{
+            color:"white",
+            backgroundColor:"green",
             cursor: "pointer",
           marginRight: "150px",
           width: "250px",
