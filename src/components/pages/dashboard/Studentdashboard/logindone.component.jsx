@@ -12,7 +12,7 @@ const Logindone = () => {
   const NevigateResume = () => {
     // history.push("/resume");
     // window.location.href = 'http://localhost:3005';
-    window.open('http://localhost:3005','_blank')
+    window.open('https://sap-resume.pages.dev/','_blank')
   };
 
   const NevigateApplicationform = () => {
