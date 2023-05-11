@@ -13,5 +13,5 @@ class Paymentapi {
         })
     }
 }
-
-export default new Paymentapi();
+const Payapi = new Paymentapi()
+export default Payapi;

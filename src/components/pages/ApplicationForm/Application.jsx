@@ -3,8 +3,8 @@ import "./Application.css";
 
 import Axios from "axios";
 import Navbarforapp from "../Home/Navbarforapp";
-import { INITIAL, BASE_URL, ACTIVE } from "../../../services/Globalvalues";
-import NotificationPlacementapi from "../../../services/NotificationPlacementapi";
+import { INITIAL, BASE_URL, ACTIVE,DEPT } from "../../../services/Globalvalues";
+import NotificationPlacement from "../../../services/NotificationPlacementapi";
 import ErrorMessage from "../dashboard/Alerts/ErrorMessage"
 
 const Application = () => {
@@ -12,14 +12,7 @@ const Application = () => {
     const [BrancH, setBrancH] = useState("")
     const [time,settime] = useState(false)
     const [studenttype, setstudenttype] = useState("")
-    const options = [
-      "Computer",
-      "Civil",
-      "Mechanical",
-      "Electrical",
-      "Structural",
-      "Electronics",
-    ];
+    
     const type = [
       "Regular",
       "Outsider",
@@ -76,7 +69,7 @@ const Application = () => {
   useEffect(() => {
     (async () => {
       try {
-        NotificationPlacementapi.getmodules(ACTIVE).then((response) => {
+        NotificationPlacement.getmodules(ACTIVE).then((response) => {
           setmodData(response.data);
         });
       } catch (error) {
@@ -110,7 +103,7 @@ const Application = () => {
                   id="branch"
                   onChange={(e) => setBrancH(e.target.value)}>
                     <option value =""> Select Branch</option>
-                    {options.map(ele=>(
+                    {DEPT.map(ele=>(
                         <option value={ele} key={ele}>{ele}</option>
                     ))}
                   </select>

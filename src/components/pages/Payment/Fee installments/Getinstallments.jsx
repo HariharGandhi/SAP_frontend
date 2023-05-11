@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Paymentapi from '../../../../services/Paymentapi';
+import Payapi from '../../../../services/Paymentapi';
 import NewSidebar from '../../../Navbar/Navbar';
 import { useState } from 'react';
 import Axios from 'axios';
@@ -52,7 +52,7 @@ const Getinstallments = () => {
     useEffect(() => {
       (async () => {
              try {
-              const { data } = await Paymentapi.getinstallment(ID);
+              const { data } = await Payapi.getinstallment(ID);
                setData(data);
               //  console.log(data);
              } catch (error) {
@@ -63,7 +63,7 @@ const Getinstallments = () => {
         },[ID]);
     return (<>
         <NewSidebar />
-        {success && <SuccessMessage message="Receipt Submited Successfully! Redirecting to Homepage"/>}
+        {success && <SuccessMessage message="Receipt Submited Successfully!"/>}
         <div
         className={
           sessionStorage.getItem("sidebar") === "true"

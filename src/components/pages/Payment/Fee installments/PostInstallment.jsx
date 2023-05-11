@@ -2,8 +2,8 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import applicationformservice from "../../../../services/applicationformservice";
-import Paymentapi from "../../../../services/Paymentapi";
+import Applicationformapi from "../../../../services/applicationformservice";
+import Payapi from "../../../../services/Paymentapi";
 import { BASE_URL, NOTVERIFIED, VERIFIED } from "../../../../services/Globalvalues";
 const PostInstallment = () => {
   //const [Data,setData] = useState("")
@@ -17,7 +17,7 @@ const PostInstallment = () => {
   const [total_fee, settotal_fee] = useState(0);
  function sendData(installmentdata) {
     
-   Paymentapi.postinstallment(installmentdata).then(()=>{
+   Payapi.postinstallment(installmentdata).then(()=>{
     const stat=VERIFIED;
     const q = false
  axios
@@ -126,7 +126,7 @@ const PostInstallment = () => {
   useEffect(() => {
     (async () => {
       try {
-         await applicationformservice.getformbystid(Stid);
+         await Applicationformapi.getformbystid(Stid);
         //setData(data);
         
       } catch (error) {

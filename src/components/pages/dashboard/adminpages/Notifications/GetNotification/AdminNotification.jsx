@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
+import NotificationPlacement from "../../../../../../services/NotificationPlacementapi";
 import NewSidebar from "../../../../../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import "./AdminNotification.css"
@@ -9,7 +9,7 @@ import { ACTIVE } from "../../../../../../services/Globalvalues";
 const Adminnotification = () => {
   const [Data, setData] = useState([]);
   const [searchmod, setsearchmod] = useState("");
-
+  const [modules,setmodules] = useState([]);
 
   const clearsearch = () => {
     setsearchmod("");
@@ -22,7 +22,7 @@ const Adminnotification = () => {
   useEffect(() => {
     (async () => {
       try {
-        NotificationPlacementapi.getall().then((res) => {
+        NotificationPlacement.getall().then((res) => {
         
           const filtered = res.data.filter(item => item.status === ACTIVE)
           setData(filtered);
@@ -30,6 +30,16 @@ const Adminnotification = () => {
         });
       } catch (error) {
       //  console.log("Error");
+      }
+    })();
+    (async () => {
+      try {
+        NotificationPlacement.getmodules(ACTIVE).then((res) => {
+          setmodules(res.data);
+        });
+        
+      } catch (error) {
+      //  console.log(error);
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
@@ -57,11 +67,9 @@ const Adminnotification = () => {
             style={{marginLeft:'10px'}}
           >
             <option value="">Select Module</option>
-            <option value="abap">ABAP</option>
-            <option value="mm">MM</option>
-            <option value="pp">PP</option>
-            <option value="hr">HR/HCM</option>
-            <option value="fico">FICO</option>
+            {modules.map(ele=>(
+                        <option value={ele.moduleName} key={ele.id}>{ele.moduleName}</option>
+                    ))}
           </select>
           
           <button onClick={() => clearsearch()} style={{backgroundColor:"black",

@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../Modal";
 import {BASE_URL , ACTIVE } from "../../../../../services/Globalvalues";
-import Adminservice from "../../../../../services/admin.service";
+import Adminapi from "../../../../../services/admin.service";
 import NewSidebar from "../../../../Navbar/Navbar";
 import SuccessMessage from "../../Alerts/SuccessMessage";
-//import AdminService from "../../../../../services/admin.service";
-//import "./ViewAdmin.css"
+
 const AllAdmin = () => {
   //const [did, setdid] = useState(0);
   const [nme, setnme] = useState("");
@@ -32,7 +31,7 @@ const AllAdmin = () => {
   const handleConfirm = () => {
         const st = "inactive"
         const Did = parseInt(sessionStorage.getItem('did'),10)
-        Adminservice.update(dept,mail,ctc,nme,pass,pos,st,Did).then((res)=>{
+        Adminapi.update(dept,mail,ctc,nme,pass,pos,st,Did).then((res)=>{
           setDeleteModal(false);
           sessionStorage.removeItem('did')
           window.location.reload();
@@ -46,7 +45,7 @@ const AllAdmin = () => {
 
   const Updatedetails = () => {
     const Upid = sessionStorage.getItem('did')
-    Adminservice.update(dept,mail,ctc,nme,pass,pos,statt,Upid).then((res) => {
+    Adminapi.update(dept,mail,ctc,nme,pass,pos,statt,Upid).then((res) => {
         setQueryModal(false);
         setDeleteModal(false);
         sessionStorage.removeItem('Upid')
@@ -105,7 +104,7 @@ const AllAdmin = () => {
             }
           }
         );
-        // const { data } = AdminService.getadmin(stat)
+        
         setData(data);
         //setSid(data.records.student_id);
         

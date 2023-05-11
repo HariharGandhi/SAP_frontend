@@ -70,7 +70,7 @@ class AuthService {
     });
   }
 }
+const authservice = new AuthService()
 
-
-export default new AuthService();
+export default authservice;
 

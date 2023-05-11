@@ -37,5 +37,5 @@ class Applicationformservice {
         return axios.post()
     }
 }
-
-export default new Applicationformservice();
+const Applicationformapi = new Applicationformservice()
+export default Applicationformapi;

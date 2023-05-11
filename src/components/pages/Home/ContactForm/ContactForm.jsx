@@ -2,11 +2,13 @@
 import React, { useEffect } from 'react'
 import './ContactForm.css'
 import {ACTIVE, BASE_URL} from '../../../../services/Globalvalues'
+import NotificationPlacement from '../../../../services/NotificationPlacementapi'
 
 
 const ContactForm = () => {
   const [formStatus, setFormStatus] = React.useState('Send')
   const [formSent, setFormSent] = React.useState(false)
+  const [modules,setmodules] = React.useState([]);
   const [nfield,setnfield] = React.useState(false)
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -55,6 +57,16 @@ const ContactForm = () => {
       }, 3000);
       return () => clearTimeout(timerId);
     }
+    (async () => {
+      try {
+        NotificationPlacement.getmodules(ACTIVE).then((res) => {
+          setmodules(res.data);
+        });
+        
+      } catch (error) {
+      //  console.log(error);
+      }
+    })();
   }, [formSent]);
   const redirectToPage = () => {
     window.location.href = "/applicationprocces"
@@ -92,12 +104,9 @@ const ContactForm = () => {
       <h3> Module:</h3>
         <select name="module" style={{cursor:'pointer'}}>
           <option value="">Select Module</option>
-          <option value="PP">PP</option>
-          <option value="SD">SD</option>
-          <option value="ABAP">ABAP</option>
-          <option value="MM">MM</option>
-          <option value="HR/HCM">HR/HCM</option>
-          <option value="HR/HCM">HR/HCM</option>
+          {modules.map(ele=>(
+                        <option value={ele.moduleName} key={ele.id}>{ele.moduleName}</option>
+                    ))}
         </select>
         
       </label>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Adminservice from '../../../../../services/admin.service';
+import Adminapi from '../../../../../services/admin.service';
 import NewSidebar from '../../../../Navbar/Navbar';
 import { ACTIVE } from '../../../../../services/Globalvalues';
 import SuccessMessage from '../../Alerts/SuccessMessage';
@@ -32,7 +32,7 @@ const handleemail = async (e) =>{
 
 const Addadmin = () => {
     
-    Adminservice.Register(dept,email,mb,nme,pass,pos,ACTIVE).then(response => {
+  Adminapi.Register(dept,email,mb,nme,pass,pos,ACTIVE).then(response => {
       setsuccess(true)
       setTimeout(()=>{
         setsuccess(false)

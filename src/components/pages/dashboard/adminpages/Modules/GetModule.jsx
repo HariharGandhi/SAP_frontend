@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi";
+import NotificationPlacement from "../../../../../services/NotificationPlacementapi";
 import NewSidebar from "../../../../Navbar/Navbar";
 import Modal from "../../Modal";
 import AddModule from "./AddModule";
+import { ACTIVE } from "../../../../../services/Globalvalues";
 
 const GetModule = () => {
     const [addmodal,setaddmodal] = useState(false)
@@ -12,9 +13,9 @@ const GetModule = () => {
     const [Data,setData] = useState([])
     useEffect(() => {
         (async () => {
-            const stat = "active"
+            
             try {
-                NotificationPlacementapi.getmodules(stat)
+                NotificationPlacement.getmodules(ACTIVE)
                 .then((res)=> {
                  
                   setData(res.data)

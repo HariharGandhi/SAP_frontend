@@ -4,7 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
-import AuthService from "../../../services/auth.service";
+import authservice from "../../../services/auth.service";
 import Navbarforhome from "../Home/Navbarforhome";
 
 const required = value => {
@@ -123,7 +123,7 @@ export default class Register extends Component {
     this.form.validateAll();
       if (this.checkBtn.context._errors.length === 0) {
         if(this.state.password === this.state.confirm_password){
-        AuthService.register(
+        authservice.register(
           this.state.name,
           this.state.email,
           this.state.mobile,
@@ -270,7 +270,7 @@ export default class Register extends Component {
                   {this.state.message}
                 </div>
               </div><br /><br /><br />
-              <p>Redirecting to Login Page</p>
+              {this.state.successful && <p>Redirecting to Login Page</p>}
               </div>
             )}
             <CheckButton

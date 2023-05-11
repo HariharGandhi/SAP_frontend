@@ -5,3 +5,11 @@ export const INITIAL = "initial";
 export const NOTVERIFIED = 'notVerified';
 export const VERIFIED = 'Verified';
 export const ISQUERY = 'isquery';
+export const DEPT = [
+    "Computer",
+    "Civil",
+    "Mechanical",
+    "Electrical",
+    "Structural",
+    "Electronics",
+  ];

@@ -9,7 +9,7 @@ import { SidebarSuperAdminData } from "./SidebarSuperAdminData";
 import SubMenu from "./SubMenu";
 import Modal from "../pages/dashboard/Modal";
 import { IconContext } from "react-icons/lib";
-import AuthService from "../../services/auth.service";
+import authservice from "../../services/auth.service";
 import ReactBellIcon from "react-bell-icon";
 import "./Navbar.css"
 import Notification from "../pages/dashboard/Studentdashboard/notifications";
@@ -84,7 +84,7 @@ const NewSidebar = () => {
     }
   const [not, setnot] = useState(false);
   function Onlogout() {
-    AuthService.logout();
+    authservice.logout();
   }
   const handleCancel = () => {
     // hide confirmation modal
