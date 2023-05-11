@@ -10,7 +10,7 @@ const AllAdmin = () => {
   //const [did, setdid] = useState(0);
   const [nme, setnme] = useState("");
   const [ctc, setctc] = useState("");
-  
+  const [nodata, setnodata] = useState(false);
   const [mail, setmail] = useState("");
   const [dept, setdept] = useState("");
   const [statt, setstatt] = useState("");
@@ -106,7 +106,12 @@ const AllAdmin = () => {
         );
         
         setData(data);
-        //setSid(data.records.student_id);
+        if (data.length === 0) {
+          setnodata(true);
+        } else {
+          setnodata(false);
+        }
+
         
       } catch (error) {
       //  console.log("Error");
@@ -148,6 +153,13 @@ const AllAdmin = () => {
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
+          {nodata && (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <h3 style={{ color: "brown" }}>No data present here</h3>
+            </div>
+          )}
+          {!nodata && (
+            <>
           <tbody>
             {data
               .filter((item) => {
@@ -197,6 +209,8 @@ const AllAdmin = () => {
                 );
               })}
           </tbody>
+          </>
+          )}
         </table>
         {DeleteModal && (
           <Modal>
