@@ -161,11 +161,12 @@ const SendNotice = () => {
           onClick={() => Sendnotification()}
           className="btn btn-outline-white"
           style={{
+            backgroundColor:"black",color:"white",borderRadius:"5px",
             cursor: "pointer",
             marginRight: "400px",
             width: "150px",
             height: "50px",
-            borderRadius: "10px",
+           
           }}
         >
           {" "}
@@ -173,7 +174,7 @@ const SendNotice = () => {
         </button>
         <button
           className="btn btn-outline-white"
-          style={{ width: "60px", borderRadius: "10px", height: "50px" }}
+          style={{backgroundColor:"black",color:"white",borderRadius:"5px", width: "60px", height: "50px" }}
         >
           <Link to="/getnotification" className="linkto">
             {"  "} Back {"  "}

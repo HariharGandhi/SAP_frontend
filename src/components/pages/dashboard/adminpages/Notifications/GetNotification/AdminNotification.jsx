@@ -72,7 +72,8 @@ const Adminnotification = () => {
                     ))}
           </select>
           
-          <button onClick={() => clearsearch()} style={{ marginLeft: "50px", width:'50px', height:'30px' }}>
+          <button onClick={() => clearsearch()} style={{backgroundColor:"black",
+            color:"white",borderRadius:"5px", marginLeft: "50px", width:'50px', height:'30px' }}>
             Clear
           </button>
           <button className="place-button-up"><Link to="/addnotice">Add Notification </Link></button></label>
@@ -110,13 +111,13 @@ const Adminnotification = () => {
                   <td style={{ width: "100px", padding: "2px" }}>
                     <button
                       /*onClick={() => Modalview(ele)}*/ title="Delete Notice"
-                      style={{ marginRight: "5px", cursor: "pointer" }}
+                      style={{backgroundColor:"black",color:"white",borderRadius:"5px", marginRight: "5px", cursor: "pointer" }}
                     >
                       <i className="fa fa-trash" aria-hidden="true"></i>
                     </button>
                     <button
                       onClick={() => Sendit(ele)} title="Send Notice"
-                      style={{ marginRight: "5px", cursor: "pointer" }}
+                      style={{backgroundColor:"black",color:"white",borderRadius:"5px", marginRight: "5px", cursor: "pointer" }}
                     >
                       Send
                     </button>

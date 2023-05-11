@@ -129,7 +129,7 @@ const Getplace = () => {
               />
               <button
                 onClick={() => clearsearch()}
-                style={{ width: "90px", marginLeft: "20px" }}
+                style={{backgroundColor:"black",color:"white",borderRadius:"5px", width: "90px", marginLeft: "20px" }}
               >
                 Clear
               </button>
@@ -272,7 +272,7 @@ const Getplace = () => {
             >
               <button
                 onClick={()=>handleCancelModal()}
-                style={{ marginTop: "10px", height: "25px", width: "50px" }}
+                style={{backgroundColor:"black",color:"white",borderRadius:"5px", marginTop: "10px", height: "25px", width: "50px" }}
               >
                 Cancel
               </button>

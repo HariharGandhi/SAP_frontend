@@ -78,22 +78,7 @@ const VerifyForm = () => {
         window.location.reload();
       });
   };
-  // const handleUpdatequery = async (q) => {
-  //   const AId = parseInt(localStorage.getItem("Aid"),10);
-  //   const Q = Boolean(q)
-  //   try {
-  //   await axios
-  //     .put(
-  //       BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${Q}`
-  //     )
-  //       setquery(false);
-  //       setstat("");
-  //       setUpdateModal(false);
-  //       localStorage.removeItem("Userid");
-  //       window.location.reload();
-  // }catch(err){
-  //   console.error(err);
-  // }};
+
   const Modalview = (ele) => {
     setdid(ele.id);
     setDeleteModal(true);
@@ -266,7 +251,7 @@ const VerifyForm = () => {
             <button
               onClick={() => handleSearch()}
               className="csvbutton"
-              // style={{ width: "90px", marginLeft: "20px" }}
+               style={{backgroundColor:"black",color:"white",borderRadius:"5px",width:"80px", marginTop: "5", marginLeft: "5" }}
             >
               {"  "}Search{"  "}
             </button>
@@ -276,7 +261,7 @@ const VerifyForm = () => {
             headers={headers}
             filename={"Application form.csv"}
             className="csvbutton"
-            // style={{ marginTop: "5", marginLeft: "5" }}
+            style={{backgroundColor:"black",color:"white",borderRadius:"5px", marginTop: "5", marginLeft: "5",width:"220px" }}
           >
             {" "}
             Download{" "}
@@ -288,8 +273,7 @@ const VerifyForm = () => {
             headers={headers}
             filename={"Application form.csv"}
             className="csvbutton"
-            // style={{ marginTop: "5", marginLeft: "5" }}
-          >
+            style={{backgroundColor:"skyblue",color:"black",borderRadius:"5px", marginTop: "5", marginLeft: "5",width:"220px" }}          >
             {" "}
             Download{" "}
           </CSVLink>
@@ -297,8 +281,7 @@ const VerifyForm = () => {
             <button
               onClick={() => clearsearch()}
               className="csvbutton"
-              // style={{ width: "90px", marginLeft: "20px" }}
-            >
+              style={{backgroundColor:"red",color:"white",borderRadius:"5px", marginTop: "5", marginLeft: "5",width:"80px" }}            >
               {" "}Clear{" "}
             </button>
           </label>
@@ -345,7 +328,7 @@ const VerifyForm = () => {
                     {/* <td>{ele.uploadImage}</td> */}
                     <td>
                       <button
-                        style={{ marginRight: "5px", cursor: "pointer" }}
+                        style={{color:"Green",padding:"8px", marginRight: "5px", cursor: "pointer" }}
                         onClick={() => viewModal(ele)}
                         title="Verify Form"
                       >
@@ -355,7 +338,7 @@ const VerifyForm = () => {
                       <button
                         onClick={() => Modalview(ele)}
                         title="Delete Form"
-                        style={{ marginRight: "5px", cursor: "pointer" }}
+                        style={{ color:"red",marginRight: "5px", cursor: "pointer" }}
                       >
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
@@ -395,7 +378,7 @@ const VerifyForm = () => {
                     {/* <td>{ele.uploadImage}</td> */}
                     <td>
                       <button
-                        style={{ marginRight: "5px", cursor: "pointer" }}
+                        style={{color:"green",padding:"10px", marginRight: "5px", cursor: "pointer" }}
                         onClick={() => viewModal(ele)}
                         title="Verify Form"
                       >
@@ -464,11 +447,14 @@ const VerifyForm = () => {
                 className="btn-md"
                 onClick={handleVerify}
                 style={{
+                  color:"white",
+                  backgroundColor:"green",
                   marginRight: "25px",
                   cursor: "pointer",
                   width: "100px",
                   height: "25px",
                   marginTop: "10px",
+                  borderRadius:"5px"
                 }}
               >
                 Verify Form
@@ -484,10 +470,13 @@ const VerifyForm = () => {
                 className="btn-md"
                 onClick={handleCancel}
                 style={{
+                  color:"white",
+                  backgroundColor:"black",
                   cursor: "pointer",
                   width: "100px",
                   height: "25px",
                   marginTop: "10px",
+                  borderRadius:"5px"
                 }}
               >
                 Cancel
