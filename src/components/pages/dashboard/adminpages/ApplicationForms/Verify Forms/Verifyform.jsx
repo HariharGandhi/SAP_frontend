@@ -2,13 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
-import "./Verifyform.css"
+import "./Verifyform.css";
 import Applicationformapi from "../../../../../../services/applicationformservice";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
-import { ACTIVE, BASE_URL, DEPT, INITIAL } from "../../../../../../services/Globalvalues";
+import {
+  ACTIVE,
+  BASE_URL,
+  DEPT,
+  INITIAL,
+} from "../../../../../../services/Globalvalues";
 import { CSVLink } from "react-csv";
 const VerifyForm = () => {
   const [data, setData] = useState([]);
+  const [nodata, setnodata] = useState(false);
   const [did, setdid] = useState(0);
   const [stat, setstat] = useState("");
   const [title, settitle] = useState("");
@@ -57,7 +63,6 @@ const VerifyForm = () => {
   };
   const handleConfirm = () => {
     axios.delete(BASE_URL + `api/deleteapplicationform/${did}`).then((res) => {
-    
       setDeleteModal(false);
       window.location.reload();
     });
@@ -68,7 +73,7 @@ const VerifyForm = () => {
   };
   const handleUpdate = () => {
     const AId = parseInt(localStorage.getItem("Aid"), 10);
-   
+
     axios
       .put(BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${query}`)
       .then((res) => {
@@ -100,7 +105,7 @@ const VerifyForm = () => {
     const AId = parseInt(localStorage.getItem("Aid"), 10);
     const Q = true;
     try {
-    const res=  await axios.put(
+      const res = await axios.put(
         BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${Q}`
       );
       console.log(res);
@@ -108,7 +113,7 @@ const VerifyForm = () => {
       setstat("");
       setUpdateModal(false);
       localStorage.removeItem("Userid");
-    const postRes=  await axios.post(
+      const postRes = await axios.post(
         BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${did}`,
         {
           applicationId: did,
@@ -123,7 +128,7 @@ const VerifyForm = () => {
           userId: uid,
         }
       );
-      console.log("post",postRes);
+      console.log("post", postRes);
       //window.location.reload();
       //   .then((response)=>{
       //   console.log(response.status)
@@ -134,19 +139,15 @@ const VerifyForm = () => {
       console.error(err);
     }
   };
-  
 
   const handleSearch = () => {
     setfiltered(true);
     const status = INITIAL;
-    Applicationformapi.getfiltered(
-      search,
-      searchmod,
-      searchdept,
-      status
-    ).then((res) => {
-      setfilterData(res.data.records);
-    });
+    Applicationformapi.getfiltered(search, searchmod, searchdept, status).then(
+      (res) => {
+        setfilterData(res.data.records);
+      }
+    );
   };
   const clearsearch = () => {
     setSearch("");
@@ -174,7 +175,7 @@ const VerifyForm = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(
+        const { rec } = await axios.get(
           BASE_URL + "api/fetchlistofApplicationFormbyfilter",
           {
             params: {
@@ -198,14 +199,18 @@ const VerifyForm = () => {
           }
         );
 
-        setData(data.records);
-      
+        setData(rec.records);
+        if (data.length === 0) {
+          setnodata(true);
+        } else {
+          setnodata(false);
+        }
       } catch (error) {
-       // console.log(error);
+        // console.log(error);
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-  }, [search, searchmod, searchdept]);
+  }, [search, searchmod, searchdept, data.length]);
 
   return (
     <>
@@ -228,15 +233,18 @@ const VerifyForm = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
             <select
-                  className="table-drop"
-                  value={searchdept}
-                  onChange={(e) => setsearchdept(e.target.value)}
-                  style={{width:'250px'}}>
-                    <option value =""> Select Branch</option>
-                    {DEPT.map(ele=>(
-                        <option value={ele} key={ele}>{ele}</option>
-                    ))}
-                  </select>
+              className="table-drop"
+              value={searchdept}
+              onChange={(e) => setsearchdept(e.target.value)}
+              style={{ width: "250px" }}
+            >
+              <option value=""> Select Branch</option>
+              {DEPT.map((ele) => (
+                <option value={ele} key={ele}>
+                  {ele}
+                </option>
+              ))}
+            </select>
           </label>
           <label>
             Module :
@@ -251,38 +259,69 @@ const VerifyForm = () => {
             <button
               onClick={() => handleSearch()}
               className="csvbutton"
-               style={{backgroundColor:"black",color:"white",borderRadius:"5px",width:"80px", marginTop: "5", marginLeft: "5" }}
+              style={{
+                backgroundColor: "black",
+                color: "white",
+                borderRadius: "5px",
+                width: "80px",
+                marginTop: "5",
+                marginLeft: "5",
+              }}
             >
               {"  "}Search{"  "}
             </button>
             {filtered && (
-          <CSVLink
-            data={filterData}
-            headers={headers}
-            filename={"Application form.csv"}
-            className="csvbutton"
-            style={{backgroundColor:"black",color:"white",borderRadius:"5px", marginTop: "5", marginLeft: "5",width:"220px" }}
-          >
-            {" "}
-            Download{" "}
-          </CSVLink>
-        )}
-        {!filtered && (
-          <CSVLink
-            data={data}
-            headers={headers}
-            filename={"Application form.csv"}
-            className="csvbutton"
-            style={{backgroundColor:"skyblue",color:"black",borderRadius:"5px", marginTop: "5", marginLeft: "5",width:"220px" }}          >
-            {" "}
-            Download{" "}
-          </CSVLink>
-        )}
+              <CSVLink
+                data={filterData}
+                headers={headers}
+                filename={"Application form.csv"}
+                className="csvbutton"
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                  borderRadius: "5px",
+                  marginTop: "5",
+                  marginLeft: "5",
+                  width: "220px",
+                }}
+              >
+                {" "}
+                Download{" "}
+              </CSVLink>
+            )}
+            {!filtered && (
+              <CSVLink
+                data={data}
+                headers={headers}
+                filename={"Application form.csv"}
+                className="csvbutton"
+                style={{
+                  backgroundColor: "skyblue",
+                  color: "black",
+                  borderRadius: "5px",
+                  marginTop: "5",
+                  marginLeft: "5",
+                  width: "220px",
+                }}
+              >
+                {" "}
+                Download{" "}
+              </CSVLink>
+            )}
             <button
               onClick={() => clearsearch()}
               className="csvbutton"
-              style={{backgroundColor:"red",color:"white",borderRadius:"5px", marginTop: "5", marginLeft: "5",width:"80px" }}            >
-              {" "}Clear{" "}
+              style={{
+                backgroundColor: "red",
+                color: "white",
+                borderRadius: "5px",
+                marginTop: "5",
+                marginLeft: "5",
+                width: "80px",
+              }}
+            >
+              {" "}
+              Clear{" "}
             </button>
           </label>
         </div>
@@ -308,42 +347,58 @@ const VerifyForm = () => {
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
-          {!filtered && (
-            <tbody>
-              {data.map((ele) => {
-                return (
-                  <tr key={ele.id} className="main-table">
-                    <td>{ele.adhaarCard}</td>
-                    <td>{ele.applicationFromStatus}</td>
-                    <td>{ele.branch}</td>
-                    {/* <td>{ele.collegeEmail}</td> */}
-                    <td>{ele.contactNumber}</td>
-                    <td>{ele.email}</td>
-                    <td>{ele.isQueryInApplication ? "Yes" : "No"}</td>
-                    <td>{ele.name}</td>
-                    <td>{ele.passoutYear}</td>
-                    <td>{ele.sapModule}</td>
-                    <td>{ele.specialization}</td>
-                    <td>{ele.studentType}</td>
-                    {/* <td>{ele.uploadImage}</td> */}
-                    <td>
-                      <button
-                        style={{color:"Green",padding:"8px", marginRight: "5px", cursor: "pointer" }}
-                        onClick={() => viewModal(ele)}
-                        title="Verify Form"
-                      >
-                        <i className="far fa-edit"></i>
-                      </button>
-                      {"    "}
-                      <button
-                        onClick={() => Modalview(ele)}
-                        title="Delete Form"
-                        style={{ color:"red",marginRight: "5px", cursor: "pointer" }}
-                      >
-                        <i className="fa fa-trash" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                    {/* <td>
+          {nodata && (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <h3 style={{ color: "brown" }}>No data present here</h3>
+            </div>
+          )}
+          {!nodata && (
+            <>
+              {!filtered && (
+                <tbody>
+                  {data.map((ele) => {
+                    return (
+                      <tr key={ele.id} className="main-table">
+                        <td>{ele.adhaarCard}</td>
+                        <td>{ele.applicationFromStatus}</td>
+                        <td>{ele.branch}</td>
+                        {/* <td>{ele.collegeEmail}</td> */}
+                        <td>{ele.contactNumber}</td>
+                        <td>{ele.email}</td>
+                        <td>{ele.isQueryInApplication ? "Yes" : "No"}</td>
+                        <td>{ele.name}</td>
+                        <td>{ele.passoutYear}</td>
+                        <td>{ele.sapModule}</td>
+                        <td>{ele.specialization}</td>
+                        <td>{ele.studentType}</td>
+                        {/* <td>{ele.uploadImage}</td> */}
+                        <td>
+                          <button
+                            style={{
+                              color: "Green",
+                              padding: "8px",
+                              marginRight: "5px",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => viewModal(ele)}
+                            title="Verify Form"
+                          >
+                            <i className="far fa-edit"></i>
+                          </button>
+                          {"    "}
+                          <button
+                            onClick={() => Modalview(ele)}
+                            title="Delete Form"
+                            style={{
+                              color: "red",
+                              marginRight: "5px",
+                              cursor: "pointer",
+                            }}
+                          >
+                            <i className="fa fa-trash" aria-hidden="true"></i>
+                          </button>
+                        </td>
+                        {/* <td>
                       <button
                         onClick={() => viewReceipt(ele)}
                         title="Payment Details"
@@ -353,63 +408,69 @@ const VerifyForm = () => {
                       </button>
                       
                     </td> */}
-                  </tr>
-                );
-              })}
-            </tbody>
-          )}
-          {filtered && (
-            <tbody>
-              {filterData.map((ele) => {
-                return (
-                  <tr key={ele.id} className="main-table">
-                    <td>{ele.adhaarCard}</td>
-                    <td>{ele.applicationFromStatus}</td>
-                    <td>{ele.branch}</td>
-                    {/* <td>{ele.collegeEmail}</td> */}
-                    <td>{ele.contactNumber}</td>
-                    <td>{ele.email}</td>
-                    <td>{ele.isQueryInApplication ? "Yes" : "No"}</td>
-                    <td>{ele.name}</td>
-                    <td>{ele.passoutYear}</td>
-                    <td>{ele.sapModule}</td>
-                    <td>{ele.specialization}</td>
-                    <td>{ele.studentType}</td>
-                    {/* <td>{ele.uploadImage}</td> */}
-                    <td>
-                      <button
-                        style={{color:"green",padding:"10px", marginRight: "5px", cursor: "pointer" }}
-                        onClick={() => viewModal(ele)}
-                        title="Verify Form"
-                      >
-                        <i className="far fa-edit"></i>
-                      </button>
-                      {"    "}
-                      <button
-                        onClick={() => Modalview(ele)}
-                        title="Delete Form"
-                        style={{ marginRight: "5px", cursor: "pointer" }}
-                      >
-                        <i className="fa fa-trash" aria-hidden="true"></i>
-                      </button>
-                      </td>
-                      <td>
-                      {/* <button
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              )}
+              {filtered && (
+                <tbody>
+                  {filterData.map((ele) => {
+                    return (
+                      <tr key={ele.id} className="main-table">
+                        <td>{ele.adhaarCard}</td>
+                        <td>{ele.applicationFromStatus}</td>
+                        <td>{ele.branch}</td>
+                        {/* <td>{ele.collegeEmail}</td> */}
+                        <td>{ele.contactNumber}</td>
+                        <td>{ele.email}</td>
+                        <td>{ele.isQueryInApplication ? "Yes" : "No"}</td>
+                        <td>{ele.name}</td>
+                        <td>{ele.passoutYear}</td>
+                        <td>{ele.sapModule}</td>
+                        <td>{ele.specialization}</td>
+                        <td>{ele.studentType}</td>
+                        {/* <td>{ele.uploadImage}</td> */}
+                        <td>
+                          <button
+                            style={{
+                              color: "green",
+                              padding: "10px",
+                              marginRight: "5px",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => viewModal(ele)}
+                            title="Verify Form"
+                          >
+                            <i className="far fa-edit"></i>
+                          </button>
+                          {"    "}
+                          <button
+                            onClick={() => Modalview(ele)}
+                            title="Delete Form"
+                            style={{ marginRight: "5px", cursor: "pointer" }}
+                          >
+                            <i className="fa fa-trash" aria-hidden="true"></i>
+                          </button>
+                        </td>
+                        <td>
+                          {/* <button
                         onClick={() => viewReceipt(ele)}
                         title="Payment Details"
                         style={{ marginRight: "5px", cursor: "pointer" }}
                       >
                        Receipts <i class='fas fa-receipt'></i>
                       </button> */}
-                      
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              )}
+            </>
           )}
         </table>
-        
+
         {DeleteModal && (
           <Modal>
             <div>
@@ -447,14 +508,14 @@ const VerifyForm = () => {
                 className="btn-md"
                 onClick={handleVerify}
                 style={{
-                  color:"white",
-                  backgroundColor:"green",
+                  color: "white",
+                  backgroundColor: "green",
                   marginRight: "25px",
                   cursor: "pointer",
                   width: "100px",
                   height: "25px",
                   marginTop: "10px",
-                  borderRadius:"5px"
+                  borderRadius: "5px",
                 }}
               >
                 Verify Form
@@ -470,13 +531,13 @@ const VerifyForm = () => {
                 className="btn-md"
                 onClick={handleCancel}
                 style={{
-                  color:"white",
-                  backgroundColor:"black",
+                  color: "white",
+                  backgroundColor: "black",
                   cursor: "pointer",
                   width: "100px",
                   height: "25px",
                   marginTop: "10px",
-                  borderRadius:"5px"
+                  borderRadius: "5px",
                 }}
               >
                 Cancel

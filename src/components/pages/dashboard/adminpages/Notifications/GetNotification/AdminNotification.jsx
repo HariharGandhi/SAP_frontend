@@ -10,7 +10,7 @@ const Adminnotification = () => {
   const [Data, setData] = useState([]);
   const [searchmod, setsearchmod] = useState("");
   const [modules,setmodules] = useState([]);
-
+  const [nodata, setnodata] = useState(false);
   const clearsearch = () => {
     setsearchmod("");
   };
@@ -26,7 +26,11 @@ const Adminnotification = () => {
         
           const filtered = res.data.filter(item => item.status === ACTIVE)
           setData(filtered);
-        
+          if (Data.length === 0) {
+            setnodata(true);
+          } else {
+            setnodata(false);
+          }
         });
       } catch (error) {
       //  console.log("Error");
@@ -43,7 +47,7 @@ const Adminnotification = () => {
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-  }, []);
+  }, [Data.length]);
 
   return (
     <>
@@ -92,6 +96,13 @@ const Adminnotification = () => {
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
+          {nodata && (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <h3 style={{ color: "brown" }}>No data present here</h3>
+            </div>
+          )}
+          {!nodata && (
+            <>
           <tbody>
             {Data.filter((item) => {
               return searchmod.toLowerCase() === ""
@@ -125,7 +136,7 @@ const Adminnotification = () => {
                 </tr>
               );
             })}
-          </tbody>
+          </tbody></>)}
         </table>
       </div>
     </>

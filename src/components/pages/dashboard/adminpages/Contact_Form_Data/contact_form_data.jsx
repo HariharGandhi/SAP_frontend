@@ -5,15 +5,22 @@ import {BASE_URL} from "../../../../../services/Globalvalues";
 
 function ContactUsTable() {
   const [contactUsData, setContactUsData] = useState([]);
-
+  const [nodata, setnodata] = useState(false);
   useEffect(() => {
     fetch(BASE_URL + "api/auth/getcontactus")
       .then((response) => response.json())
-      .then((data) => setContactUsData(data))
+      .then((data) => {
+        setContactUsData(data);
+        if (contactUsData.length === 0) {
+          setnodata(true);
+        } else {
+          setnodata(false);
+        }
+      })
       .catch((error) => console.error(error));
 
       return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
-  }, []);
+  }, [contactUsData.length]);
 
   return (
     <>
@@ -38,6 +45,13 @@ function ContactUsTable() {
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
+          {nodata && (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <h3 style={{ color: "brown" }}>No data present here</h3>
+            </div>
+          )}
+          {!nodata && (
+            <>
           <tbody>
             {contactUsData.map((ele) => {
                 return (
@@ -60,7 +74,7 @@ function ContactUsTable() {
                   </tr>
                 );
               })}
-          </tbody>
+          </tbody></>)}
         </table>{" "}
       </div>
     </>

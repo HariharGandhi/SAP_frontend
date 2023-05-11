@@ -11,6 +11,7 @@ const Getreceipt = () => {
   const [imgsrc, setimgsrc] = useState("");
   const [Ruid, setRuid] = useState(0);
   const [Rid, setRid] = useState(0);
+  const [nodata, setnodata] = useState(false);
   const [inst, setinst] = useState(0);
   const [SAPname, setSAPname] = useState("");
   const [SAPpass, setSAPpass] = useState("");
@@ -84,13 +85,17 @@ const Getreceipt = () => {
       try {
         const { data } = await Axios.get(BASE_URL + "getReceiptverification");
         setData(data);
-        
+        if (Data.length === 0) {
+          setnodata(true);
+        } else {
+          setnodata(false);
+        }
       } catch (error) {
       //  console.log(error);
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-  },[]);
+  },[Data.length]);
   return (
     <>
       <NewSidebar />
@@ -114,6 +119,13 @@ const Getreceipt = () => {
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
+          {nodata && (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <h3 style={{ color: "brown" }}>No data present here</h3>
+            </div>
+          )}
+          {!nodata && (
+            <>
           <tbody>
             {Data.map((ele) => {
               return (
@@ -132,7 +144,7 @@ const Getreceipt = () => {
                 </tr>
               );
             })}
-          </tbody>
+          </tbody></>)}
         </table>
       </div>
 

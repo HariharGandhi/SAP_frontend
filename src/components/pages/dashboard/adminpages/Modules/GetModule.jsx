@@ -6,7 +6,8 @@ import AddModule from "./AddModule";
 import { ACTIVE } from "../../../../../services/Globalvalues";
 
 const GetModule = () => {
-    const [addmodal,setaddmodal] = useState(false)
+    const [addmodal,setaddmodal] = useState(false);
+    const [nodata, setnodata] = useState(false);
     const Addmodal = () => {
       setaddmodal(true)
     }
@@ -19,6 +20,11 @@ const GetModule = () => {
                 .then((res)=> {
                  
                   setData(res.data)
+                  if (Data.length === 0) {
+                    setnodata(true);
+                  } else {
+                    setnodata(false);
+                  }
                 })
                 
                 
@@ -29,7 +35,7 @@ const GetModule = () => {
             }
         })();
         return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-    }, []);
+    }, [Data.length]);
     return (
         <>
         <NewSidebar />
@@ -54,6 +60,13 @@ const GetModule = () => {
               {/*<th>User_id</th>*/}
             </tr>
           </thead>
+          {nodata && (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <h3 style={{ color: "brown" }}>No data present here</h3>
+            </div>
+          )}
+          {!nodata && (
+            <>
           <tbody>
             {Data.map((ele) => {
                 return (
@@ -73,7 +86,7 @@ const GetModule = () => {
                   </tr>
                 );
               })}
-          </tbody>
+          </tbody></>)}
         </table>{" "}
       </div>
       {addmodal && <>

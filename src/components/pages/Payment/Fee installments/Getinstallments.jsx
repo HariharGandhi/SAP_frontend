@@ -7,8 +7,6 @@ import { BASE_URL } from '../../../../services/Globalvalues';
 import { Card, CardContent, CardHeader } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 import SuccessMessage from '../../dashboard/Alerts/SuccessMessage';
-//import axios from 'axios';
-
 const Getinstallments = () => {
   const [success,setsuccess] = useState(false)
   const [itype,setitype] = useState(false)
