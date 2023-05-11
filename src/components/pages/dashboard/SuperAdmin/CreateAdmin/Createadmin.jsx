@@ -134,12 +134,18 @@ useEffect(() => {
         <button
           type="submit"
           onClick={() => Addadmin()}
-          className="btn btn-outline-white"
+          // className="btn btn-outline-white"
           style={{
             display: "flex",
             justifyContent: "center",
             margin: "auto",
             cursor: "pointer",
+            color:"white",
+            backgroundColor:"green",
+            width:"120px",
+            padding:"5px",
+            borderRadius:"5px"
+            
           }}
         >
           {" "}

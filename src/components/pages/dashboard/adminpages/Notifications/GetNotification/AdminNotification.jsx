@@ -73,10 +73,10 @@ const Adminnotification = () => {
           </select>
           
           <button onClick={() => clearsearch()} style={{backgroundColor:"black",
-            color:"white",borderRadius:"5px", marginLeft: "50px", width:'50px', height:'30px' }}>
+            color:"white",borderRadius:"5px", marginLeft: "50px", width:'50px', padding:"5px" }}>
             Clear
           </button>
-          <button className="place-button-up"><Link to="/addnotice">Add Notification </Link></button></label>
+          <button style={{color:"white",backgroundColor:"green",width:"150px",padding:"5px",margin:"10px",borderRadius:"5px"}}><Link to="/addnotice">Add Notification </Link></button></label>
         </div>
         <table style={{ width: "100%" }} className="THead">
           <thead >
@@ -111,13 +111,13 @@ const Adminnotification = () => {
                   <td style={{ width: "100px", padding: "2px" }}>
                     <button
                       /*onClick={() => Modalview(ele)}*/ title="Delete Notice"
-                      style={{backgroundColor:"black",color:"white",borderRadius:"5px", marginRight: "5px", cursor: "pointer" }}
+                      style={{color:"red",borderRadius:"5px",width:"20px", marginRight: "5px", cursor: "pointer" }}
                     >
                       <i className="fa fa-trash" aria-hidden="true"></i>
                     </button>
                     <button
                       onClick={() => Sendit(ele)} title="Send Notice"
-                      style={{backgroundColor:"black",color:"white",borderRadius:"5px", marginRight: "5px", cursor: "pointer" }}
+                      style={{backgroundColor:"green",color:"white",width:"50px", borderRadius:"5px", marginRight: "5px", cursor: "pointer" }}
                     >
                       Send
                     </button>

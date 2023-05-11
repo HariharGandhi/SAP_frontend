@@ -253,7 +253,8 @@ const Viewform = () => {
             />
             <button
               onClick={() => handleSearch()}
-              className="xlsbutton"
+              // className="xlsbutton"
+              style={{color:"white",backgroundColor:"black",padding:"5px",borderRadius:"5px",width:"100"}}
             >
               Search
             </button>
@@ -274,8 +275,8 @@ const Viewform = () => {
             data={data}
             headers={headers}
             filename={"Application form.csv"}
-            className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "5" ,backgroundColor:"skyblue",color:"white",borderRadius:"5px"}}
+            // className="xlsbutton"
+            style={{ marginTop: "5", marginLeft: "10px" ,backgroundColor:"skyblue",padding:"5px",color:"black",borderRadius:"5px"}}
           >
             {" "}
             Download{" "}
@@ -283,7 +284,8 @@ const Viewform = () => {
         )}
             <button
               onClick={() => clearsearch()}
-              className="xlsbutton"
+              // className="xlsbutton"
+              style={{color:"white",backgroundColor:"red",marginLeft:"10px",padding:"5px",width:"50px",borderRadius:"5px"}}
             >
               Clear
             </button>

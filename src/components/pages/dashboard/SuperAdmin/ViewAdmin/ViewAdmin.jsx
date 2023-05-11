@@ -132,12 +132,8 @@ const AllAdmin = () => {
           onChange={(e) => setSearch(e.target.value)}
           style={{border:"1px solid"}}
         />
-        {/* <select className="table-drop" name="cars" id="cars" onChange={(e) => setstat(e.target.value)}>
-          <option value="">Search by Status </option>
-          <option value="active">active</option>
-          <option value="inactive">inactive</option>
-        </select>{" "} */}
-        <button onClick={()=> clearsearch()} style={{marginLeft:'10px',width:'50px'}}>Clear</button>
+       
+        <button onClick={()=> clearsearch()} style={{color:"white",backgroundColor:"red",marginLeft:'10px',width:'80px',borderRadius:"5px"}}>Clear</button>
         <table style={{width:"100%", marginTop:'20px'}}>
           <thead>
             <tr className="main-table top-col-table">

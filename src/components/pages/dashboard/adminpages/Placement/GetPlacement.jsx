@@ -129,7 +129,7 @@ const Getplace = () => {
               />
               <button
                 onClick={() => clearsearch()}
-                style={{backgroundColor:"black",color:"white",borderRadius:"5px", width: "90px", marginLeft: "20px" }}
+                style={{backgroundColor:"red",padding:"5px",color:"white",borderRadius:"5px", width: "90px", marginLeft: "20px" }}
               >
                 Clear
               </button>
@@ -138,7 +138,7 @@ const Getplace = () => {
                 headers={headers}
                 filename={"placement Data.csv"}
                 className="xlsbutton"
-                style={{ marginTop: "5", marginLeft: "5" }}
+                style={{color:"black",backgroundColor:"skyblue",padding:"5px",borderRadius:'5px', marginTop: "5", marginLeft: "5" }}
               >
                 {" "}
                 Download in csv
