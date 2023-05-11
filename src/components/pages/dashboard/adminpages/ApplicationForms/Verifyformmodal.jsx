@@ -46,7 +46,7 @@ const VerifyFormmodal = () => {
   <Card key={data.id}>
     <CardHeader title={`Name: ${data.name}`} subheader={`SAP Module: ${data.sapModule}`} />
     <CardContent>
-      <img src="images/Profilepic.png" alt="profilepic"></img><hr />
+     
       <div className={classes.row}>
         <h4 className={classes.label}>Email:</h4>
         <p>{data.email}</p>
@@ -81,55 +81,7 @@ const VerifyFormmodal = () => {
       </div><hr />
     </CardContent>
   </Card>
-      {/* <table>
-      {data.map(item => (
-      <tbody >
-          <tr key={item.id}>
-            <td> Photo</td>
-            <td>{item.uploadImage}</td>
-          </tr>
-          <tr key={item.email}>
-            <td> Email</td>
-            <td>{item.email}</td>
-          </tr>
-          <tr key={item.name}>
-            <td> Name</td>
-            <td>{item.name}</td>
-          </tr>
-          <tr key={item.sapModule}>
-            <td> SAP Module</td>
-            <td>{item.sapModule}</td>
-          </tr>
-          <tr key={item.branch}>
-            <td> Branch</td>
-            <td>{item.branch}</td>
-          </tr>
-          <tr key={item.contactNumber}>
-            <td> Contact Number</td>
-            <td>{item.contactNumber}</td>
-          </tr>
-          <tr key={item.passoutYear}>
-            <td> Year of Passout</td>
-            <td>{item.passoutYear}</td>
-          </tr>
-          <tr key={item.studentType}>
-            <td>Type of student</td>
-            <td>{item.studentType}</td>
-          </tr>
-          <tr key={item.adhaarCard}>
-            <td> Adhar Card Number</td>
-            <td>{item.adhaarCard}</td>
-          </tr>
-          <tr key={item.applicationFromStatus}>
-            <td> Application Form Status</td>
-            <td>{item.applicationFromStatus}</td>
-          </tr>
-          <tr key={item.isQueryInApplication}>
-            <td>Is Query present in application</td>
-            <td>{item.isQueryInApplication?"Yes":"No"}</td>
-          </tr>
-      </tbody>))}
-    </table> */}
+    
 
       </div>
     </>

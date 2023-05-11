@@ -266,7 +266,7 @@ const Viewform = () => {
             headers={headers}
             filename={"Application form.csv"}
             className="xlsbutton"
-            // style={{ marginTop: "5", marginLeft: "5" }}
+            style={{ marginTop: "5", marginLeft: "5" ,backgroundColor:"skyblue",color:"white",borderRadius:"5px"}}
           >
             {" "}
             Download{" "}
@@ -278,7 +278,7 @@ const Viewform = () => {
             headers={headers}
             filename={"Application form.csv"}
             className="xlsbutton"
-            // style={{ marginTop: "5", marginLeft: "5" }}
+            style={{ marginTop: "5", marginLeft: "5" ,backgroundColor:"skyblue",color:"white",borderRadius:"5px"}}
           >
             {" "}
             Download{" "}
@@ -334,7 +334,7 @@ const Viewform = () => {
                     {/* <td>{ele.uploadImage}</td> */}
                     <td>
                       <button
-                        style={{ marginRight: "5px", cursor: "pointer" }}
+                        style={{ color:"green", marginRight: "5px", cursor: "pointer" }}
                         onClick={() => viewModal(ele)}
                         title="Verify Form"
                       >
@@ -344,7 +344,7 @@ const Viewform = () => {
                       <button
                         onClick={() => Modalview(ele)}
                         title="Delete Form"
-                        style={{ marginRight: "5px", cursor: "pointer" }}
+                        style={{color:"red", marginRight: "5px", cursor: "pointer" }}
                       >
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
@@ -353,7 +353,7 @@ const Viewform = () => {
                       <button
                         onClick={() => viewReceipt(ele)}
                         title="Payment Details"
-                        style={{ marginRight: "5px", cursor: "pointer" }}
+                        style={{ color:"white",backgroundColor:"green", marginRight: "5px", cursor: "pointer" }}
                       >
                        Receipts
                       </button>
@@ -382,7 +382,7 @@ const Viewform = () => {
                     {/* <td>{ele.uploadImage}</td> */}
                     <td>
                       <button
-                        style={{ marginRight: "5px", cursor: "pointer", marginTop:'5px' }}
+                        style={{color:"white",backgroundColor:"green", marginRight: "5px", cursor: "pointer", marginTop:'5px' }}
                         onClick={() => viewModal(ele)}
                         title="Verify Form"
                       >
@@ -442,10 +442,14 @@ const Viewform = () => {
                 className="btn-md"
                 onClick={handleVerify}
                 style={{
+                  color:"white",
+                  backgroundColor:"green",
                   marginRight: "20px",
                   cursor: "pointer",
                   width: "100px",
-                  height: "25px", marginTop:'10px'
+                  height: "25px", 
+                  marginTop:'10px',
+                  borderRadius :"5px"
                 }}
               >
                 Verify
@@ -453,7 +457,7 @@ const Viewform = () => {
               <button
                 className="btn-md"
                 onClick={handleCancel}
-                style={{ cursor: "pointer", width: "100px", height: "25px" , marginTop:'10px'}}
+                style={{color:"white", backgroundColor:"black", cursor: "pointer",borderRadius :"5px", width: "100px", height: "25px" , marginTop:'10px'}}
               >
                 Cancel
               </button>

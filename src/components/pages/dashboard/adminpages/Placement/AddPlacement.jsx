@@ -61,7 +61,7 @@ const Addplacement = () => {
         },4000)
         window.location.href = "/getplacement"
     }).catch((err)=>{
-    //  console.log(err)
+   
     })
 }
 useEffect(() => {
@@ -91,20 +91,7 @@ useEffect(() => {
               />
             </label>
             
-            {/* <label>
-              {" "}
-              Enter Name of Module:
-              <input
-                type="string"
-                value={mod}
-                name="Name of Module"
-                onChange={(e) => handlemod(e)}
-              />
-            </label> */}
-            {/* <br /> */}
-            
-            
-            
+           
             <label style={{marginRight:'50px'}}>
               {" "}
               Enter Package recieved:
@@ -162,7 +149,7 @@ useEffect(() => {
             <br />
           </form>
         </div>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
+        <div style={{borderRadius:"5px", display: "flex", justifyContent: "center", marginTop: "10px" }}>
         <button
           type="submit"
           onClick={() => Addplacement()}
@@ -178,7 +165,7 @@ useEffect(() => {
           {" "}
           Add Placement{" "}
         </button>
-        <button className="btn-place-up" style={{width:'100px', borderRadius:'10px', height:'45px'}}>
+        <button className="btn-place-up" style={{width:'100px', backgroundColor:"black",color:"white",borderRadius:"5px", height:'45px'}}>
           <Link to="/admindashboard">{"  "} Back {"  "}</Link>
         </button></div>
         

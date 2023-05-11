@@ -217,7 +217,7 @@ const UpdateNotification = () => {
         type="submit"
         onClick={() => updatenotice()}
         className="btn btn-outline-white"
-        style={{ display: "flex", justifyContent: "center", margin: "auto", marginBottom:'10px' }}
+        style={{backgroundColor:"black",color:"white",borderRadius:"5px", display: "flex", justifyContent: "center", margin: "auto", marginBottom:'10px' }}
         id="UpdateNotice"
       >
         {" "}

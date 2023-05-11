@@ -153,6 +153,9 @@ const Addnotification = () => {
             width: "150px",
             height: "50px",
             borderRadius: "10px",
+            backgroundColor:"black",
+            color:"white"
+
           }}
         >
           {" "}
@@ -160,7 +163,8 @@ const Addnotification = () => {
         </button>
         <button
           className="btn btn-outline-white"
-          style={{ width: "60px", borderRadius: "10px", height: "50px" }}
+          style={{backgroundColor:"black",
+            color:"white",  width: "60px", borderRadius: "10px", height: "50px" }}
         >
           <Link to="/getnotification">
             {"  "} Back {"  "}
