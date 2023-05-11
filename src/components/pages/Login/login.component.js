@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 // import Clglogo from "../../../../public/Photo/Clglogo.jpg";
 // import pp from "../../../../public/images/PP.jpeg"
-import AuthService from "../../../services/auth.service";
+import authservice from "../../../services/auth.service";
 import "../../../root.css";
 import Navbarforhome from "../Home/Navbarforhome";
 import { INITIAL, ISQUERY, VERIFIED } from "../../../services/Globalvalues";
@@ -57,12 +57,12 @@ export default class Login extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.login(this.state.email, this.state.password).then(
+      authservice.login(this.state.email, this.state.password).then(
         () => {
           const Role = localStorage.getItem("role");
           if (Role === "ROLE_STUDENT") {
             let userId = localStorage.getItem("id");
-            AuthService.getApplicationStatus(userId).then((response) => {
+            authservice.getApplicationStatus(userId).then((response) => {
               if (response === "notfilled") {
                 this.props.history.push("/application");
               }

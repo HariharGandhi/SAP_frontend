@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./SendNotice.css";
-import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
+import NotificationPlacement from "../../../../../../services/NotificationPlacementapi";
 import NewSidebar from "../../../../../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import { ACTIVE, BASE_URL } from "../../../../../../services/Globalvalues";
-//import applicationformservice from "../../../../../../services/applicationformservice";
+
 import Axios from "axios";
 import SuccessMessage from "../../../Alerts/SuccessMessage";
 const SendNotice = () => {
@@ -79,7 +79,7 @@ const SendNotice = () => {
   useEffect(() => {
     (async () => {
       try {
-        NotificationPlacementapi.getmodules(ACTIVE).then((res) => {
+        NotificationPlacement.getmodules(ACTIVE).then((res) => {
           setmodules(res.data);
         });
         
@@ -87,22 +87,9 @@ const SendNotice = () => {
       //  console.log(error);
       }
     })();
-    // (async () => {
-    //     try {
-    //       applicationformservice.getallforms().then((res) => {
-    //         setstype(res.data);
-    //       }).then(res=>{
-    //       const Typedata = stype.map(ele => ele.studentType)
-    //       const Type = [...new Set(Typedata)];
-    //       setSType(Type);}
-    //       );
-          
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   })();
+    
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-  },[modules]);
+  },[]);
   return (
     <div>
       <NewSidebar />

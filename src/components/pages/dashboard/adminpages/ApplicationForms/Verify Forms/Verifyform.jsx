@@ -3,9 +3,9 @@ import axios from "axios";
 import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
 import "./Verifyform.css"
-import Applicationformservice from "../../../../../../services/applicationformservice";
+import Applicationformapi from "../../../../../../services/applicationformservice";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
-import { ACTIVE, BASE_URL, INITIAL } from "../../../../../../services/Globalvalues";
+import { ACTIVE, BASE_URL, DEPT, INITIAL } from "../../../../../../services/Globalvalues";
 import { CSVLink } from "react-csv";
 const VerifyForm = () => {
   const [data, setData] = useState([]);
@@ -154,7 +154,7 @@ const VerifyForm = () => {
   const handleSearch = () => {
     setfiltered(true);
     const status = INITIAL;
-    Applicationformservice.getfiltered(
+    Applicationformapi.getfiltered(
       search,
       searchmod,
       searchdept,
@@ -243,18 +243,15 @@ const VerifyForm = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
             <select
-              className="table-drop"
-              value={searchdept}
-              onChange={(e) => setsearchdept(e.target.value)}
-              style={{ width: "250px" }}
-            >
-              <option value="">Department</option>
-              <option value="comp">Computer</option>
-              <option value="it">IT</option>
-              <option value="mech">Mechanical</option>
-              <option value="ece">ECE</option>
-              <option value="civil">Civil</option>
-            </select>
+                  className="table-drop"
+                  value={searchdept}
+                  onChange={(e) => setsearchdept(e.target.value)}
+                  style={{width:'250px'}}>
+                    <option value =""> Select Branch</option>
+                    {DEPT.map(ele=>(
+                        <option value={ele} key={ele}>{ele}</option>
+                    ))}
+                  </select>
           </label>
           <label>
             Module :

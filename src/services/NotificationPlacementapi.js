@@ -37,5 +37,5 @@ class NotificationPlacementapi {
         })
     }
 }
-
-export default new NotificationPlacementapi();
+const NotificationPlacement = new NotificationPlacementapi()
+export default NotificationPlacement;

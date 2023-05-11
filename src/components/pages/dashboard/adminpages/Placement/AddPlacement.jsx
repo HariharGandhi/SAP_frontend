@@ -4,13 +4,15 @@ import NewSidebar from '../../../../Navbar/Navbar';
 import "./AddPlacement.css"
 import SuccessMessage from '../../Alerts/SuccessMessage';
 import Axios from 'axios';
-import { BASE_URL } from '../../../../../services/Globalvalues';
+import { ACTIVE, BASE_URL } from '../../../../../services/Globalvalues';
+import NotificationPlacement from '../../../../../services/NotificationPlacementapi';
 
 const Postplace = () =>{
 const [mod,setmod] = useState("");
 const [nme,setnme] = useState("");
 const [cnme,setcnme] = useState("");
 const [pack,setpack] = useState(0.0);
+const [modules,setmodules] = useState([]);
 const [year,setyear] = useState("");
 const [itype,setitype] = useState(false)
 const [image, setImage] = useState(null);
@@ -65,8 +67,18 @@ const Addplacement = () => {
     })
 }
 useEffect(() => {
+  (async () => {
+    try {
+      NotificationPlacement.getmodules(ACTIVE).then((res) => {
+        setmodules(res.data);
+      });
+      
+    } catch (error) {
+    //  console.log(error);
+    }
+  })();
   return () => sessionStorage.setItem('sidebar',JSON.stringify(false));
-});
+},[]);
     return (
         <>
         <NewSidebar />
@@ -151,12 +163,9 @@ useEffect(() => {
               Enter Module :
               <select value={mod} onChange={(e)=>setmod(e.target.value)} style={{width:'100%'}}>
                 <option value="">Select Module</option>
-                <option value="ABAP">ABAP</option>
-                <option value="MM">MM</option>
-                <option value="PP">PP</option>
-                <option value="HR/HCM">HR/HCM</option>
-                <option value="FICO">FICO</option>
-                <option value="SD">SD</option>
+                {modules.map(ele=>(
+                        <option value={ele.moduleName} key={ele.id}>{ele.moduleName}</option>
+                    ))}
               </select>
             </label> 
             <br />

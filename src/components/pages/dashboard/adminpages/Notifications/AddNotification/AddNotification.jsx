@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./AddNotification.css";
-import NotificationPlacementapi from "../../../../../../services/NotificationPlacementapi";
+import NotificationPlacement from "../../../../../../services/NotificationPlacementapi";
 import NewSidebar from "../../../../../Navbar/Navbar";
 import { ACTIVE } from "../../../../../../services/Globalvalues";
 import { Link } from "react-router-dom";
@@ -27,7 +27,7 @@ const Addnotification = () => {
       title !== "" &&
       uid !== 0
     ) {
-      NotificationPlacementapi.addnotification(
+      NotificationPlacement.addnotification(
         bd,
         cd,
         cdtm,

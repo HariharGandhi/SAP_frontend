@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
 
-import AuthService from "./services/auth.service";
+import authservice from "./services/auth.service";
 import RoleAuth from "./services/RoleAuth";
 import Login from "./components/pages/Login/login.component";
 import Register from "./components/pages/Register/register.component";
@@ -80,7 +80,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const user = AuthService.getCurrentUser();
+    const user = authservice.getCurrentUser();
 
     if (user) {
       this.setState({
@@ -100,7 +100,7 @@ class App extends Component {
   }
 
   logOut() {
-    AuthService.logout();
+    authservice.logout();
     this.setState({
       showModeratorBoard: false,
       showAdminBoard: false,

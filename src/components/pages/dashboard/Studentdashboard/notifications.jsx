@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import NotificationPlacementapi from "../../../../services/NotificationPlacementapi";
+import NotificationPlacement from "../../../../services/NotificationPlacementapi";
 
 const Notification = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    NotificationPlacementapi.getall().then((res)=> {
+    NotificationPlacement.getall().then((res)=> {
     
       setData(res.data);
     });

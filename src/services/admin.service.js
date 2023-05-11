@@ -35,5 +35,5 @@ class Adminservice {
         }})
     }
 }
-
-export default new Adminservice();
+const Adminapi = new Adminservice()
+export default Adminapi;

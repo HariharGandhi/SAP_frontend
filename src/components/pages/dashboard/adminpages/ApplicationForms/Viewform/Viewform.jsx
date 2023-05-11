@@ -3,10 +3,10 @@ import axios from "axios";
 import Modal from "../../../Modal";
 import VerifyFormmodal from "../Verifyformmodal";
 import "./Viewform.css";
-import Applicationformservice from "../../../../../../services/applicationformservice";
+import Applicationformapi from "../../../../../../services/applicationformservice";
 import NewSidebar from "../../../../../Navbar/Navbar";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
-import {BASE_URL} from "../../../../../../services/Globalvalues";
+import {BASE_URL, DEPT} from "../../../../../../services/Globalvalues";
 import { CSVLink } from "react-csv";
 import Axios from "axios";
 
@@ -126,7 +126,7 @@ const Viewform = () => {
   const handleSearch = () => {
     setfiltered(true)
     const status = ""
-    Applicationformservice.getfiltered(search,searchmod,searchdept,status)
+    Applicationformapi.getfiltered(search,searchmod,searchdept,status)
     .then((res)=> {
       setfilterData(res.data.records);
       return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
@@ -200,7 +200,7 @@ const Viewform = () => {
   useEffect(() => {
     (async () => {
       try {
-         const { data } = await Applicationformservice.getallforms();
+         const { data } = await Applicationformapi.getallforms();
         setData(data);
       
       } catch (error) {
@@ -231,18 +231,15 @@ const Viewform = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
             <select
-              className="table-drop"
-              value={searchdept}
-              onChange={(e) => setsearchdept(e.target.value)}
-              style={{width:'250px'}}
-            >
-              <option value="">Department</option>
-              <option value="comp">Computer</option>
-              <option value="it">IT</option>
-              <option value="mech">Mechanical</option>
-              <option value="ece">ECE</option>
-              <option value="civil">Civil</option>
-            </select>
+                  className="table-drop"
+                  value={searchdept}
+                  onChange={(e) => setsearchdept(e.target.value)}
+                  style={{width:'250px'}}>
+                    <option value =""> Select Branch</option>
+                    {DEPT.map(ele=>(
+                        <option value={ele} key={ele}>{ele}</option>
+                    ))}
+                  </select>
           </label>
           <label>
             Module :

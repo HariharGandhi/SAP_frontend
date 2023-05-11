@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi"
+import NotificationPlacement from "../../../../../services/NotificationPlacementapi"
 import { ACTIVE } from '../../../../../services/Globalvalues';
 import "./AddModule.css"
 import SuccessMessage from '../../Alerts/SuccessMessage';
@@ -16,7 +16,7 @@ const handlemod = async (e) => {
 }
 
 const Addmodule = () => {
-  NotificationPlacementapi.addmodules(nme,mod,ACTIVE).then(response => {
+  NotificationPlacement.addmodules(nme,mod,ACTIVE).then(response => {
     setsuccess(true)
     setTimeout(()=>{
       setsuccess(false)

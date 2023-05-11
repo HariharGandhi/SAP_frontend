@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import AuthService from "../../../services/auth.service";
+import authservice from "../../../services/auth.service";
 import Navbarforhome from "../Home/Navbarforhome";
 import SuccessMessage from "../dashboard/Alerts/SuccessMessage";
 import ErrorMessage from "../dashboard/Alerts/ErrorMessage";
@@ -17,7 +17,7 @@ const Changepassword = () => {
     if(pass !== "" && passn !== ""){
     if (pass === passn) {
       setIsSuccess(true);
-      AuthService.setpassword(mail,passn)
+      authservice.setpassword(mail,passn)
         .then((res) => {
           
           sessionStorage.removeItem("EMAIL");

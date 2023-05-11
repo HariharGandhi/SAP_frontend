@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NotificationPlacementapi from "../../../../../services/NotificationPlacementapi";
+import NotificationPlacement from "../../../../../services/NotificationPlacementapi";
 import NewSidebar from "../../../../Navbar/Navbar";
 import "./GetPlacement.css";
 import { CSVLink } from "react-csv";
@@ -81,7 +81,7 @@ const Getplace = () => {
   useEffect(() => {
     (async () => {
       try {
-        NotificationPlacementapi.getplacement().then((response) => {
+        NotificationPlacement.getplacement().then((response) => {
           setData(response.data);
         });
       } catch (error) {

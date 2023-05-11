@@ -1,6 +1,6 @@
 import React, { Component } from "react"; //, useState -removed
 import "./Forgotpassword.css";
-import AuthService from "../../../services/auth.service";
+import authservice from "../../../services/auth.service";
 import Navbarforhome from "../Home/Navbarforhome";
 
 class ForgotPassword extends Component {
@@ -20,7 +20,7 @@ class ForgotPassword extends Component {
     this.setState({
       sending:true
     })
-    AuthService.forgotpassword(mail)
+    authservice.forgotpassword(mail)
       .then((res) => {
         this.setState({
           notsent:false,
