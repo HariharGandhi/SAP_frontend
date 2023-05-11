@@ -99,7 +99,7 @@ const AllAdmin = () => {
     (async () => {
       try {
         const { data } = await axios.get(
-          BASE_URL + `admin/auth/getAdminUsers/{status}`,{
+          BASE_URL + `admin/auth/getAllAdminUsers/{status}`,{
             params: {
                 status: ACTIVE
             }
