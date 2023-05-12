@@ -265,7 +265,7 @@ const VerifyForm = () => {
                 borderRadius: "5px",
                 width: "80px",
                 marginTop: "5",
-                marginLeft: "5",
+                marginLeft: "5",cursor:'pointer'
               }}
             >
               {"  "}Search{"  "}
@@ -282,7 +282,7 @@ const VerifyForm = () => {
                   borderRadius: "5px",
                   marginTop: "5",
                   marginLeft: "5",
-                  width: "220px",
+                  width: "220px",cursor:'pointer'
                 }}
               >
                 {" "}
@@ -301,7 +301,7 @@ const VerifyForm = () => {
                   borderRadius: "5px",
                   marginTop: "5",
                   marginLeft: "5",
-                  width: "220px",
+                  width: "220px",cursor:'pointer'
                 }}
               >
                 {" "}
@@ -317,7 +317,7 @@ const VerifyForm = () => {
                 borderRadius: "5px",
                 marginTop: "5",
                 marginLeft: "5",
-                width: "80px",
+                width: "80px",cursor:'pointer'
               }}
             >
               {" "}

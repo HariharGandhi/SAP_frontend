@@ -151,7 +151,7 @@ const Viewform = () => {
       console.log(res);
       setquery(false);
       setstat("");
-      setUpdateModal(false);
+      
       localStorage.removeItem("Userid");
       const postRes = await axios.post(
         BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${did}`,
@@ -169,6 +169,7 @@ const Viewform = () => {
         }
       );
       console.log("post", postRes);
+      setUpdateModal(false);
       //window.location.reload();
       //   .then((response)=>{
       //   console.log(response.status)
@@ -256,7 +257,7 @@ const Viewform = () => {
             <button
               onClick={() => handleSearch()}
               // className="xlsbutton"
-              style={{color:"white",backgroundColor:"black",padding:"5px",borderRadius:"5px",width:"100"}}
+              style={{color:"white",backgroundColor:"black",padding:"5px",borderRadius:"5px",width:"100",cursor:'pointer'}}
             >
               Search
             </button>
@@ -266,7 +267,7 @@ const Viewform = () => {
             headers={headers}
             filename={"Application form.csv"}
             className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "5" ,backgroundColor:"skyblue",color:"white",borderRadius:"5px"}}
+            style={{ marginTop: "5", marginLeft: "5" ,backgroundColor:"skyblue",color:"white",borderRadius:"5px",cursor:'pointer'}}
           >
             {" "}
             Download{" "}
@@ -278,7 +279,7 @@ const Viewform = () => {
             headers={headers}
             filename={"Application form.csv"}
             // className="xlsbutton"
-            style={{ marginTop: "5", marginLeft: "10px" ,backgroundColor:"skyblue",padding:"5px",color:"black",borderRadius:"5px"}}
+            style={{ marginTop: "5", marginLeft: "10px" ,backgroundColor:"skyblue",padding:"5px",color:"black",borderRadius:"5px",cursor:'pointer'}}
           >
             {" "}
             Download{" "}
@@ -287,7 +288,7 @@ const Viewform = () => {
             <button
               onClick={() => clearsearch()}
               // className="xlsbutton"
-              style={{color:"white",backgroundColor:"red",marginLeft:"10px",padding:"5px",width:"50px",borderRadius:"5px"}}
+              style={{color:"white",backgroundColor:"red",marginLeft:"10px",padding:"5px",width:"50px",borderRadius:"5px",cursor:'pointer'}}
             >
               Clear
             </button>
@@ -470,7 +471,7 @@ const Viewform = () => {
             <div>
               <div>
                 <h2>Change the status of this application to :</h2>
-                <dropdown>
+                
                   <select
                     name=""
                     id=""
@@ -481,7 +482,7 @@ const Viewform = () => {
                     <option value="notverified">Not Verified</option>
                     <option value="isquery">In Query</option>
                   </select>
-                </dropdown>
+                
                 {stat === "isquery" && (
                   <>
                     <div>
