@@ -76,13 +76,13 @@ export default function Footer() {
           </p>
 
           <div className="footer-icons">
-            <a href="/">
+            <a href="https://www.facebook.com/profile.php?id=100084731814201&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-facebook-square"></i>
             </a>
-            <a href="/">
+            <a href="https://twitter.com/Sanjivani_Group?s=20" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="/">
+            <a href="https://www.linkedin.com/company/sanjivani-sap-student-academy/" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-linkedin"></i>
             </a>
             {/* <a href="/">
