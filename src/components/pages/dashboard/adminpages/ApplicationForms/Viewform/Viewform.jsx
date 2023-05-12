@@ -6,7 +6,7 @@ import "./Viewform.css";
 import Applicationformapi from "../../../../../../services/applicationformservice";
 import NewSidebar from "../../../../../Navbar/Navbar";
 import PostInstallment from "../../../../Payment/Fee installments/PostInstallment";
-import {BASE_URL, DEPT} from "../../../../../../services/Globalvalues";
+import {ACTIVE, BASE_URL, DEPT} from "../../../../../../services/Globalvalues";
 import { CSVLink } from "react-csv";
 import Axios from "axios";
 
@@ -108,21 +108,7 @@ const Viewform = () => {
         window.location.reload();
       });
   };
-  const handleUpdatequery = (q) => {
-    const AId = parseInt(localStorage.getItem("Aid"),10);
-    //const q = true
-    axios
-      .put(
-        BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${q}`
-      )
-      .then((res) => {
-        setquery(false);
-        setstat("");
-        setUpdateModal(false);
-        localStorage.removeItem("Userid");
-        window.location.reload();
-      });
-  };
+  
   const handleSearch = () => {
     setfiltered(true)
     const status = ""
@@ -155,15 +141,25 @@ const Viewform = () => {
     setVerifyModal(true);
   };
 
-  const Addquery = () => {
-    const AId = parseInt(localStorage.getItem("Aid"),10);
-    axios
-      .post(
-        BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${AId}`,
+  const Addquery = async () => {
+    const AId = parseInt(localStorage.getItem("Aid"), 10);
+    const Q = true;
+    try {
+      const res = await axios.put(
+        BASE_URL + `api/applicationFormStatusUpdate/${AId}/${stat}/${Q}`
+      );
+      console.log(res);
+      setquery(false);
+      setstat("");
+      setUpdateModal(false);
+      localStorage.removeItem("Userid");
+      const postRes = await axios.post(
+        BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${did}`,
         {
-          applicationId: AId,
+          applicationId: did,
           contactDetails: `Contact no.: ${num}, Email: ${mail}`,
-          isActive: stat,
+          id: did,
+          isActive: ACTIVE,
           queryDesc: desc,
           queryTitle: title,
           reachoutPersonContactNumber: ctc,
@@ -171,11 +167,17 @@ const Viewform = () => {
           reachoutPersonName: rname,
           userId: uid,
         }
-      )
-      .then((res) => {
-        setquery(true);
-        handleUpdatequery(true);
-      });
+      );
+      console.log("post", postRes);
+      //window.location.reload();
+      //   .then((response)=>{
+      //   console.log(response.status)
+      //   setquery(true);
+      //   handleUpdatequery(true);
+      // })
+    } catch (err) {
+      console.error(err);
+    }
   };
   const handletitle = async (event) => {
     settitle(event.target.value);
