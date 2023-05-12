@@ -19,9 +19,36 @@ const Seemoreplacements = () => {
     )
       setPage(selectedPage);
   };
-  useEffect(() => {
+  // useEffect(() => {
 
-    const promises = users.map((value) => {
+  //   const promises = users.map((value) => {
+  //     const fileimg = "" + value;
+  //     return axios.get(BASE_URL + `getplacementimage/${fileimg}`, {
+  //       responseType: "blob",
+  //     }).then((response) => {
+  //       const imageUrl = URL.createObjectURL(response.data);
+  //       return imageUrl;
+  //     });
+  //   });
+
+  //   Promise.all(promises).then((results) => {
+  //     setResults(results);
+  //   });
+  // }, [users,results]);
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const res = await fetch(BASE_URL + "getAllPlacement");
+  //     setUsers(await res.json());
+  //     // console.log(await users.body)
+  //   };
+
+  //   getUsers();
+  // }, [users]);
+
+  useEffect(() => {
+    const datasrc = users.map((ele) => ele.studentfilename);
+
+    const promises = datasrc.map((value) => {
       const fileimg = "" + value;
       return axios.get(BASE_URL + `getplacementimage/${fileimg}`, {
         responseType: "blob",
@@ -35,16 +62,11 @@ const Seemoreplacements = () => {
       setResults(results);
     });
   }, [users]);
-  useEffect(() => {
-    const getUsers = async () => {
-      const res = await fetch(BASE_URL + "getAllPlacement");
-      setUsers(await res.json());
-      // console.log(await users.body)
-    };
 
-    getUsers();
-  }, [users]);
-
+useEffect(() => {
+  axios.get(BASE_URL + "getAllPlacement")
+    .then(response => setUsers(response.data));
+}, []);
   return (
     <div>
       <Navbar />
