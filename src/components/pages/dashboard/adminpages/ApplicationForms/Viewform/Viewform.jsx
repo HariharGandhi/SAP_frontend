@@ -558,7 +558,7 @@ const Viewform = () => {
                         <button
                           className="btn btn-outline-white"
                           onClick={handleCancel}
-                          style={{ marginLeft: "10px", cursor: "pointer" }}
+                          style={{color:"white", backgroundColor:"black", cursor: "pointer",borderRadius :"5px", width: "100px", height: "25px" , marginTop:'10px'}}
                         >
                           cancel
                         </button>

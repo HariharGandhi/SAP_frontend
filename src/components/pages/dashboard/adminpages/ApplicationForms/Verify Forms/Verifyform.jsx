@@ -111,7 +111,7 @@ const VerifyForm = () => {
       console.log(res);
       setquery(false);
       setstat("");
-      setUpdateModal(false);
+      
       localStorage.removeItem("Userid");
       const postRes = await axios.post(
         BASE_URL + `applicationFrom/postapplicationformbyapplicationId/${did}`,
@@ -129,6 +129,7 @@ const VerifyForm = () => {
         }
       );
       console.log("post", postRes);
+      setUpdateModal(false);
       //window.location.reload();
       //   .then((response)=>{
       //   console.log(response.status)
@@ -200,6 +201,7 @@ const VerifyForm = () => {
         );
 
         setData(rec.records);
+        //console.log(data);
         if (data.length === 0) {
           setnodata(true);
         } else {
