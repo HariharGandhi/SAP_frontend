@@ -5,10 +5,12 @@ import Navbar from "./Navbarforhome";
 import Footer from "../Footer/Footer";
 
 import { BASE_URL } from "../../../services/Globalvalues";
+import axios from "axios";
 
 const Seemoreplacements = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
+  const [results, setResults] = useState([]);
   const selectPageHandler = (selectedPage) => {
     if (
       selectedPage >= 1 &&
@@ -17,28 +19,22 @@ const Seemoreplacements = () => {
     )
       setPage(selectedPage);
   };
-  //    const getUsers= async ()=>{
-  //     const res = await fetch('https://ecombackend.sonarpratik.repl.co/api/product');
-  //     setLoading(true)
-  //     setUsers(await res.json());
-  //     // const rrrr=res.json();
-  //     console.log(await users.body)
-  // setTimeout(() => {
-  //   setLoading(false)
-  // }, 3000);
+  useEffect(() => {
 
-  // // if(users===null){
-  // //   setLoading(true)
-  // // }
+    const promises = users.map((value) => {
+      const fileimg = "" + value;
+      return axios.get(BASE_URL + `getplacementimage/${fileimg}`, {
+        responseType: "blob",
+      }).then((response) => {
+        const imageUrl = URL.createObjectURL(response.data);
+        return imageUrl;
+      });
+    });
 
-  //     // const data =await res.json();
-  //     // console.log(data);
-
-  //    }
-  //     useEffect(() => {
-  //         getUsers();
-
-  //     }, []);
+    Promise.all(promises).then((results) => {
+      setResults(results);
+    });
+  }, [users]);
   useEffect(() => {
     const getUsers = async () => {
       const res = await fetch(BASE_URL + "getAllPlacement");
@@ -56,7 +52,7 @@ const Seemoreplacements = () => {
 
       <div>
         <div className="main-Placement">
-          {users.slice(page * 15 - 15, page * 15).map((cur) => {
+          {/* {users.slice(page * 15 - 15, page * 15).map((cur) => {
             return (
               <div
                 className="con-p"
@@ -64,14 +60,28 @@ const Seemoreplacements = () => {
                 data-aos-delay="50"
                 key={cur.id}
               >
-                <img src="images/Profilepic.png" className="my-pic" alt="" />
+                
                 <h2>{cur.name}</h2>
                 <h3>{cur.companyname}</h3>
                 <h3>{cur.module}</h3>
                 <h3>{cur.packages} LPA</h3>
               </div>
             );
-          })}
+          })} */}
+          {results.map((imageUrl, index) => {
+          const item = users[index];
+          return (
+            <div data-aos="fade-right" data-aos-delay="100" key={item.id}>
+              <div className="con-p">
+                <img src={imageUrl} className="my-pic" alt="" />
+                <h2>{item.name}</h2>
+                <h3>{item.companyname}</h3>
+                <h3>{item.packages} LPA</h3>
+              </div>
+            </div>
+          );
+        })}
+        
         </div>
         {users.length > 0 && (
           <div className="pagination">
