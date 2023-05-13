@@ -6,6 +6,7 @@ const ApplicationProcess = () => {
   return (
     <div className="applyback">
         <Navbarforhome />
+        
     <div className="container apply">
       <h1 className="applyheading">SAP Admission Process</h1>
 
@@ -81,7 +82,24 @@ const ApplicationProcess = () => {
           10. You will receive an email after 15 to 20 days from SAP for booking of exam. This exam booking will be valid for 1 year from the date you received an email.
         </h2>
       </div>
-    </div></div>
+
+      <a
+        style={{
+          marginRight: "10px",
+          marginLeft: "80%",
+          marginBottom: "50px",
+          color: "black",
+          textDecorationLine: "underline",
+          cursor: "pointer",
+        }}
+        href="/home"
+      >
+        {" "}
+        Back to Home{" "}
+      </a>
+    </div>
+    
+    </div>
   );
 };
 
