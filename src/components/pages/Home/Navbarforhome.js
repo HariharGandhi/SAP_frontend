@@ -29,16 +29,16 @@ export default function Navbarforhome() {
     <nav className="nav" data-aos="fade-down" data-aos-delay="50" data-aos-offset="00">
   <div className="nav-left">
     <a href="/" className="site-title">
-      <h2>Sanjivani<span className="color-change">SAP</span></h2>
+      <h3>Sanjivani<span className="color-change">SAP</span></h3>
     </a>
   </div>
   <div className="nav-right">
     <ul>
       <li>
-        <a href="/login">Login</a>
+        <a style={{border:"2px solid black"}} href="/login">Login</a>
       </li>
       <li>
-        <a href="/register">Register</a>
+        <a className="r-bg-black" href="/register">Register</a>
       </li>
     </ul>
   </div>

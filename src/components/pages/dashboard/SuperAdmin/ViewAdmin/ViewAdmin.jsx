@@ -83,12 +83,7 @@ const AllAdmin = () => {
     setmail(event.target.value);
     setstatt(ACTIVE)
   };
-  // const handledept = async (event) => {
-  //   setdept(event.target.value);
-  // };
-  // const handlestatt = async (event) => {
-  //   setstatt(event.target.value);
-  // };
+
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const clearsearch =() => {
@@ -303,17 +298,6 @@ const AllAdmin = () => {
                   />
                 </label>
                 <br />
-                {/* <label>
-                  {" "}
-                  Status: 
-                  <input
-                    type="string"
-                    value={statt}
-                    name=" Form Status"
-                    onChange={(e) => handlestatt(e)}
-                  />
-                </label>
-                <br /> */}
                 
                 <div>
                 <button

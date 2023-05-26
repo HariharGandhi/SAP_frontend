@@ -1,5 +1,5 @@
 .main-Placement{
-    /* background-color: red; */
+     background-color: #f8f4ed;
     min-height: 50vh;
     padding: 20px;
     display: flex;
@@ -13,12 +13,12 @@
     height: 150px;
     border-radius: 360px;
     margin-bottom: 20px;
-    /* align-content: ce; */
+    
 
 }
 
 .con-p{
-    background-color:  rgb(221, 190, 190);
+    background-color:  #e8dfd0;
     
    min-width: 20vw;
     height: 50vh;
@@ -27,14 +27,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    /* margin-right: 20px;
-    margin-left: 20px; */
+    
     margin: 20px 0px;
 }
 .con-p:hover{
     cursor: pointer;
-    /* transition: all .1s ease;
-transform: scale(1.04); */
+    
 }
 
 .center-p{
@@ -46,7 +44,6 @@ transform: scale(1.04); */
     color: blue;
     font-weight: bolder;
     cursor: pointer;
-    /* text-decoration: underline; */
 }
 
 .center-spinner{
@@ -54,6 +51,5 @@ transform: scale(1.04); */
     min-height: 50vh;
     margin: auto;
     width: 100%;
-    /* position: relative; */
-    /* top: 20px; */
+    
 }

@@ -49,8 +49,8 @@ const Logindone = () => {
             <div
               className="box"
               data-aos="fade-down-right"
-              data-aos-duration="2000"
-              data-aos-delay="1000"
+              data-aos-delay="300"
+              data-aos-offset="120"
               onClick={() => NevigatePayment()}
               style={{ cursor: "pointer" }}
             >

@@ -3,43 +3,59 @@ import "./NewBody.css";
 // import { useTransition, animated } from "react-spring";
 // import { useState, useEffect } from "react";
 const NewBody = () => {
-  // const [isVis, setIsVis] = useState(true);
-
-  // const transition = useTransition(isVis, {
-  //   from: { x: -100, y: 300, opacity: 0 },
-  //   enter: { x: 0, y: 0, opacity: 1 },
-  //   leave: { x: -100, y: 300, opacity: 0 },
-  // });
-
-  // const useThiss = () => {
-  //   setIsVis((v) => !v);
-  // };
-  // setInterval(() => {}, 3000);
 
   return (
     <div className="new-con">
-      {/* {transition((style, item) =>
-        item ? (
-          <animated.div style={style} className="item"> */}
-            <div className="right "  data-aos="fade-down">
-              <div className="forimg">
-                <img className="san-img" src="images/mylogo.png" alt="" />
-              </div>
-              <div className="content-right">
-                <h1 className="doit">
-                  Sanjivani College Of <br /> Engneering
-                </h1>
-              </div>
-            </div>
-          {/* </animated.div>
-        ) : (
-          ""
-        )
-      )} */}
 
-      {/* <div className="left">
-                <img src="images/SAP_logo.webp" alt="" />
-            </div> */}
+            <div className="right "  data-aos="fade-down">
+             <div className="right-top-n">
+            <h2 style={{fontSize:"2.2rem",color:"black"}}>
+
+             Discover The Power of <span className="color-change">SAP</span> 
+            </h2>
+
+             </div>
+             <div className="right-middle-n">
+             Streamline your business processes with our suite of enterprise software solutions. <br/> Register now to access our resources and expertise.
+             </div>
+             <div className="right-down-n">
+              <a  className="b-n-right" href="/register">Register Now</a>
+              <button className="b-n-right c-n-right">Learn More</button>
+
+             </div>
+            </div>
+            <div className="left">
+            <div className="left-n-box">
+                    <img className="left-n-pic" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=" ashdgasjd"/>
+                    <br/>
+                  
+                    <p>Dr.A.B.Pawar</p>
+                    <p style={{fontSize:"12px"}}>Dean Of Acadamics</p>
+
+                  </div><div className="left-n-box">
+                    <img className="left-n-pic" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=" ashdgasjd"/>
+                    <br/>
+                    
+                    <p>Dr.A.B.Pawar</p>
+                    <p style={{fontSize:"12px"}}>Dean Of Acadamics</p>
+
+                  </div><div className="left-n-box">
+                    <img className="left-n-pic" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=" ashdgasjd"/>
+                    <br/>
+                   
+                    <p>Dr.A.B.Pawar</p>
+                    <p style={{fontSize:"12px"}}>Dean Of Acadamics</p>
+
+                  </div><div className="left-n-box">
+                    <img className="left-n-pic" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=" ashdgasjd"/>
+                    <br/>
+                    <p>Dr.A.B.Pawar</p>
+                    <p style={{fontSize:"12px"}}>Dean Of Acadamics</p>
+
+                  </div>
+            </div>
+
+
     </div>
   );
 };

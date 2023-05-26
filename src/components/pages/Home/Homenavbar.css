@@ -2,13 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
+  background-color: white;
   padding: 10px;
+  height: 60px;
 }
 
 .site-title {
   text-decoration: none;
-  color: white;
+  color: black;
   font-size: 1.5rem;
 }
 
@@ -30,7 +31,13 @@
 
 .nav-right a {
   text-decoration: none;
-  color: white;
+  color: black;
+  padding: 7px 14px;
+  border-radius: 7px;
+}
+.nav-right .r-bg-black{
+  color: white!important;
+  background-color: black!important;
 }
 
 @media (max-width: 400px) {
@@ -42,6 +49,7 @@
   
   .nav-right {
     margin-top: 10px;
+
   }
   
   .nav-right li {

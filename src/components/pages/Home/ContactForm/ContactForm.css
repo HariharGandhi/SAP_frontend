@@ -1,12 +1,13 @@
 .ctcform-container {
-  /* background: linear-gradient(to bottom, #feffe3, #edfed0 );  */
+  background-color: #f8f4ed;
 }
+
 #contactform {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 20px;
-  /* background: linear-gradient(to bottom,#f18cac  , #6b75d6); */
+  background-color:#fef6e9 ;
 }
 
 #contactform form {
@@ -93,56 +94,3 @@
   color: black;
 }
 
-/* .ctcform-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  }
-  
-  .image-container {
-    flex-basis: 40%;
-    margin-right: 20px;
-    text-align: center;
-  }
-  
-  .image {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  #contactform.form-container {
-    flex-basis: 40%;
-  }
-  
-  #contactform h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  #contactform form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #contactform label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
-  
-  #contactform input,
-  select {
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
-  #contactform button {
-    margin-top: 20px;
-  } */

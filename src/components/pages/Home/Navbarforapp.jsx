@@ -19,7 +19,7 @@ export default function Navbarforapp() {
       <ul>
        
       <li>
-            <a style={{borderRadius: '8px', border: '1px solid white',padding:'8px'}}  href="/" onClick={Onlogout}>
+            <a style={{borderRadius: '8px', border: '1px solid black',padding:'8px'}}  href="/" onClick={Onlogout}>
               Logout
             </a>
             

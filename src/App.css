@@ -54,7 +54,7 @@ body {
   border: none;
   color: #fff;
   font-size: 1.2rem;
-  transition: all .5s;
+  transition: all .0s;
   cursor: pointer;
   text-transform: capitalize
 }
@@ -174,10 +174,10 @@ form{
   text-align: center;
 }
 .center span{
-  color:teal;
+  color:#b5884b;
 }
 .color-change{
-  color:teal;
+  color:#b5884b;
   
 
 }
