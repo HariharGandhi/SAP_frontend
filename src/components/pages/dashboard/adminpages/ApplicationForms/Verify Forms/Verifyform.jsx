@@ -176,7 +176,7 @@ const VerifyForm = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { rec } = await axios.get(
+        const {data } = await axios.get(
           BASE_URL + "api/fetchlistofApplicationFormbyfilter",
           {
             params: {
@@ -199,20 +199,21 @@ const VerifyForm = () => {
             },
           }
         );
-
-        setData(rec.records);
-        //console.log(data);
-        if (data.length === 0) {
+          setData(data.records);
+          console.log(data,"jdfdhfj");
+          if (data.length === 0) {
           setnodata(true);
         } else {
           setnodata(false);
         }
-      } catch (error) {
+        }
+        
+       catch (error) {
         // console.log(error);
       }
     })();
     return () => sessionStorage.setItem("sidebar", JSON.stringify(false));
-  }, [search, searchmod, searchdept, data.length]);
+  }, [search, searchmod, searchdept, data]);
 
   return (
     <>
